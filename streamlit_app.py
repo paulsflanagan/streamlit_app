@@ -34,7 +34,7 @@ if search_enabled:
             description="useful for when you need to answer questions about current events. You should ask targeted questions"
         )
     ]
-    tools.append('search')
+    tools.append(search)
 
 # define toolset
 
