@@ -21,20 +21,24 @@ prompt = st.text_area('Write your prompt here:')
 # define llm
 llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
 
+# define dynamic toolset
+tools = []
 
 # create our tools
-search = DuckDuckGoSearchRun()
-tools = [
-    Tool(
-        name = "search",
-        func=search.run,
-        description="useful for when you need to answer questions about current events. You should ask targeted questions"
-    )
-]
-
+if search_enabled:
+    search = DuckDuckGoSearchRun()
+    tools = [
+        Tool(
+            name = "search",
+            func=search.run,
+            description="useful for when you need to answer questions about current events. You should ask targeted questions"
+        )
+    ]
+    tools.append('search')
+st.write(tools)
 
 # define toolset
-tools = [search]
+
 
 
 # conversational agent memory
