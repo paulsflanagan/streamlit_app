@@ -69,7 +69,7 @@ if prompt:
                 raise e
             response = response.removeprefix("Could not parse LLM output: `").removesuffix("`")
             
-  st.write(response)
+st.write(response)
 
   
   
