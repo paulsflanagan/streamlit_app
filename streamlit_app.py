@@ -35,7 +35,6 @@ if search_enabled:
         )
     ]
     tools.append('search')
-st.write(tools)
 
 # define toolset
 
