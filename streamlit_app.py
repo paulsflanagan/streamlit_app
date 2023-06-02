@@ -60,14 +60,17 @@ conversational_agent = initialize_agent(
 )
 
 
+
+response = ''
+
 if prompt:
     try:
         response = conversational_agent.run(prompt)
     except ValueError as e:
-            response = str(e)
-            if not response.startswith("Could not parse LLM output: `"):
-                raise e
-            response = response.removeprefix("Could not parse LLM output: `").removesuffix("`")
+        response = str(e)
+        if not response.startswith("Could not parse LLM output: `"):
+            raise e
+        response = response.removeprefix("Could not parse LLM output: `").removesuffix("`")
             
 st.write(response)
 
