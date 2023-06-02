@@ -56,7 +56,7 @@ conversational_agent = initialize_agent(
 
 
 if prompt:
-  response = conversational_agent(prompt)
+  response = conversational_agent.run(prompt)
   st.write(response)
 
   
