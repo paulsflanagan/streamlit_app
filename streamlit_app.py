@@ -19,7 +19,7 @@ st.write('Tools:')
 # define tools row
 checks = st.columns(4)
 with checks[0]:
-    search_enabled = st.checkbox('Duck Duck Go Search', value=True)    
+    search_enabled = st.checkbox('Web Search', value=True)    
 with checks[1]:
     st.checkbox('1')
 with checks[2]:
