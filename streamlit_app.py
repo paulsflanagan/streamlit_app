@@ -17,7 +17,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 # define llm
-llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], verbose=False)
+llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
 
 
 # create our tools
@@ -48,7 +48,7 @@ conversational_agent = initialize_agent(
     agent='chat-conversational-react-description',
     tools=tools,
     llm=llm,
-    verbose=True,
+    verbose=False,
     max_iterations=3,
     early_stopping_method='generate',
     memory=memory
