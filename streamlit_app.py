@@ -14,7 +14,23 @@ from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOut
 # define ui
 st.title('LP AI Assistant')
 st.write('Tools:')
-search_enabled = st.checkbox('Duck Duck Go Search', value=True)
+
+
+# tools row
+
+checks = st.columns(4)
+with checks[0]:
+    st.checkbox('0')
+with checks[1]:
+    st.checkbox('1')
+with checks[2]:
+    st.checkbox('2')
+with checks[3]:
+    st.checkbox('3')
+
+search_enabled = st.checkbox('Duck Duck Go Search', value=True)    
+    
+
 prompt = st.text_area('Write your prompt here:')
 
 
@@ -26,6 +42,7 @@ tools = []
 
 # create our tools
 if search_enabled:
+    
     search = DuckDuckGoSearchRun()
     tools = [
         Tool(
