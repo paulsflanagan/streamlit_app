@@ -45,10 +45,9 @@ memory = ConversationBufferWindowMemory(
 
 # create our agent
 conversational_agent = initialize_agent(
-    agent='chat-conversational-react-description',
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     tools=tools,
     llm=llm,
-    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True,
     max_iterations=3,
     early_stopping_method='generate',
