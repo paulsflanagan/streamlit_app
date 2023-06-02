@@ -16,11 +16,10 @@ st.title('LP AI Assistant')
 st.write('Tools:')
 
 
-# tools row
-
+# define tools row
 checks = st.columns(4)
 with checks[0]:
-    st.checkbox('0')
+    search_enabled = st.checkbox('Duck Duck Go Search', value=True)    
 with checks[1]:
     st.checkbox('1')
 with checks[2]:
@@ -28,14 +27,15 @@ with checks[2]:
 with checks[3]:
     st.checkbox('3')
 
-search_enabled = st.checkbox('Duck Duck Go Search', value=True)    
-    
 
+
+# prompt prompt
 prompt = st.text_area('Write your prompt here:')
 
 
 # define llm
 llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+
 
 # define dynamic toolset
 tools = []
