@@ -9,14 +9,15 @@ from langchain.agents import Tool
 from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
 
+
+# define ui
 st.title('LP AI Assistant')
-
 prompt = st.text_area('Write your prompt here:')
-
 
 
 # define llm
 llm = OpenAI(temperature=0)
+
 
 # create our tools
 search = DuckDuckGoSearchRun()
@@ -51,8 +52,6 @@ conversational_agent = initialize_agent(
     early_stopping_method='generate',
     memory=memory
 )
-
-
 
 
 if prompt:
