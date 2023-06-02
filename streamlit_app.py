@@ -3,7 +3,7 @@ import os
 import streamlit as st
 from langchain.llms import OpenAI
 
-st.title('YoutTube GPT Creator')
+st.title('Ask A Question')
 
 prompt = st.text_input('Plug in your prompt here')
 
