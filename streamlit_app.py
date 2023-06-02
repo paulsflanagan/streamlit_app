@@ -17,7 +17,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 # define llm
-llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], verbose=False)
 
 
 # create our tools
