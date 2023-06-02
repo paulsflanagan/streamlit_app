@@ -16,7 +16,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 # define llm
-llm = OpenAI(temperature=0)
+llm = OpenAI(temperature=0, verbose=False)
 
 
 # create our tools
