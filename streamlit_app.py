@@ -8,6 +8,7 @@ from langchain.tools import DuckDuckGoSearchRun
 from langchain.agents import Tool
 from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
+from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 
 
 # define ui
@@ -16,7 +17,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 # define llm
-llm = OpenAI(temperature=0, verbose=False)
+llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
 
 
 # create our tools
@@ -47,7 +48,8 @@ conversational_agent = initialize_agent(
     agent='chat-conversational-react-description',
     tools=tools,
     llm=llm,
-    verbose=False,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True,
     max_iterations=3,
     early_stopping_method='generate',
     memory=memory
