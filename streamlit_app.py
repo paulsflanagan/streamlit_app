@@ -2,6 +2,8 @@
 import os
 import streamlit as st
 from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
+from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.agents import Tool
 from langchain.tools import BaseTool
