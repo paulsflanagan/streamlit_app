@@ -1,3 +1,2 @@
--m pip install --upgrade pip
 !pip install langchain 
 !pip install openai
