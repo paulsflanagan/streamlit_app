@@ -15,6 +15,9 @@ prompt = st.text_area('Write your prompt here:')
 
 
 
+# define llm
+llm = OpenAI(temperature=0)
+
 # create our tools
 search = DuckDuckGoSearchRun()
 tools = [
@@ -50,7 +53,7 @@ conversational_agent = initialize_agent(
 )
 
 
-#llm = OpenAI(temperature=0.9)
+
 
 if prompt:
   response = conversational_agent(prompt)
