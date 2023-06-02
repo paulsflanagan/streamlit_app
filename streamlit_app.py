@@ -1,5 +1,3 @@
-pip install langchain 
-pip install openai
 
 import os
 import streamlit as st
