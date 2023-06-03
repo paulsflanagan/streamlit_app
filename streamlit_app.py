@@ -29,8 +29,8 @@ with st.sidebar:
     st.text('Alpha 3.1')
     st.text("User: " + st.experimental_user['email'])
     st.divider()
-    values = st.slider('Select a range of values',0, 1, (25.0, 75.0)) 
-    st.write('Values:', values)
+    age = st.slider('How old are you?', 0, 130, 25)
+    st.write('Values:', age)
     
     st.divider()
     st.text("")
