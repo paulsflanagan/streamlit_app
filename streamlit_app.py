@@ -23,8 +23,9 @@ st.title('AI Assistant')
 st.text("")
 
 
-
+tab1, tab2 = st.tabs(["Open AI", "Agents"])
 # define sidebar
+with tab1:
 with st.sidebar:
     st.title('Settings:')
     st.text("")
@@ -40,9 +41,11 @@ with st.sidebar:
     if simple_enabled:
         search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
         scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+        python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
     else:
         search_enabled = st.checkbox('Web Search Tool', value=True)
         scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
+        python_agent_enabled = st.checkbox('Python Agent', value=True) 
     st.divider() 
     temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
 
@@ -54,7 +57,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 # define empty dynamic toolset
-tools = [PythonREPLTool()]
+tools = []
 
 
 
