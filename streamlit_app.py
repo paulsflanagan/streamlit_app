@@ -40,7 +40,7 @@ with st.sidebar:
         st.title('Settings:')
         st.text("")
         st.text("")
-        st.text('Version: Alpha 3.1')
+        st.text('Version: Alpha 5.1.3')
         st.text("User: " + st.experimental_user['email'])
         st.divider()
         agent_type = st.selectbox(
