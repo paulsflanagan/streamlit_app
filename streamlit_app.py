@@ -23,8 +23,6 @@ from io import StringIO
 # define max tokens
 max_tokens = 3000
 
-# define empty dataframe
-df = pd.DataFrame()
 
 
 # define logo
@@ -215,7 +213,8 @@ if defined_agent:
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
         if agent_type == 'Pandas Agent':
-                agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
+                if df not None:
+                        agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
         if prompt:
                 try:
                         response = agent_executor.run(prompt)
