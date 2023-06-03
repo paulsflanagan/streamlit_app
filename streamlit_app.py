@@ -37,9 +37,9 @@ with st.expander("Advnaced Tools:"):
         with checks[1]:
             scrape_enabled = st.checkbox('Web Scrape', value=True)    
         with checks[2]:
-            st.checkbox('2')
+            st.checkbox('Placeholder')
         with checks[3]:
-            st.checkbox('3')    
+            st.checkbox('Placeholder')    
  
 
 
