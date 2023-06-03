@@ -41,11 +41,13 @@ with st.sidebar:
         st.write('Advanced:')
         if simple_enabled:
             advanced_enabled = False
+            agent = False
             search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
             python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
         else:
             advanced_enabled = True
+            agent = False
             search_enabled = st.checkbox('Web Search Tool', value=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
             python_agent_enabled = st.checkbox('Python Agent', value=True) 
