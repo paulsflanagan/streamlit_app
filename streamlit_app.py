@@ -18,7 +18,7 @@ image = Image.open('Logo.png')
 st.image(image)
 #st.title('AI Assistant')
 st.text("")
-st.write(st.experimental_user)
+st.write(st.experimental_user['email'])
 
 
 # define sidebar
