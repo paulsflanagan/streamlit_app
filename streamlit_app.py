@@ -23,6 +23,7 @@ st.title('LP AI Assistant')
 
 with st.sidebar:
     st.title('Version')
+    st.divider()
     vanilla_enabled = st.checkbox('Original', value=True)
     st.divider()
     st.write('Advanced:')
