@@ -35,7 +35,6 @@ with st.sidebar:
         st.text('Version: Alpha 3.1')
         st.text("User: " + st.experimental_user['email'])
         st.divider()
-
         st.write('Simple:')
         simple_enabled = st.checkbox('Open AI Only', value=True)
         st.divider()
@@ -57,6 +56,7 @@ with st.sidebar:
         st.text('Version: Alpha 3.1')
         st.text("User: " + st.experimental_user['email'])
         st.divider()
+        st.write('Agents:')
 
     
 # user prompt
