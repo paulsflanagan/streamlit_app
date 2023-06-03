@@ -165,7 +165,7 @@ if advanced_enabled:
         st.write(response)
 
     if defined_agent:
-        if agent_type = 'Python Agent':
+        if agent_type == 'Python Agent':
                 agent_executor = create_python_agent(
                 llm=OpenAI(temperature=temperature, max_tokens=3000),
                 tool=PythonREPLTool(),
