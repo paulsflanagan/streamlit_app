@@ -11,9 +11,9 @@ from langchain.agents import initialize_agent
 from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from bs4 import BeautifulSoup
 from PIL import Image
-#from langchain.agents.agent_toolkits import create_python_agent
-#from langchain.tools.python.tool import PythonREPLTool
-#from langchain.python import PythonREPL
+from langchain.agents.agent_toolkits import create_python_agent
+from langchain.tools.python.tool import PythonREPLTool
+from langchain.python import PythonREPL
 
 
 # define logo
@@ -27,8 +27,6 @@ st.text("")
 # define sidebar
 
 with st.sidebar:
-    #tab1, tab2 = st.tabs(["Open AI", "Agents"])
-    #with tab1:
         st.title('Settings:')
         st.text("")
         st.text("")
@@ -40,6 +38,7 @@ with st.sidebar:
             ('Open AI Agent', 'Python Agent', 'CSV Agent'))
         
         if agent_type == 'Open AI Agent':
+            defined_agent = False
             st.divider()
             st.write('Simple:')
             simple_enabled = st.checkbox('Open AI Only', value=True)
@@ -57,6 +56,7 @@ with st.sidebar:
             temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
             
         else:
+            defined_agent = True
             st.divider()
             st.write('Simple:')
             simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
@@ -165,6 +165,13 @@ if advanced_enabled:
         st.write(response)
 
   
-  
-  
+  if defined_agent:
+        if agent_type = 'Python Agent':
+            agent_executor = create_python_agent(
+            llm=OpenAI(temperature=temperature, max_tokens=3000),
+            tool=PythonREPLTool(),
+            verbose=True
+        if prompt:
+            response = agent_executor(prompt)
+            st.write(response)
   
