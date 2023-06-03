@@ -169,7 +169,7 @@ if defined_agent:
                 agent_executor = create_python_agent(
                 llm=OpenAI(temperature=temperature, max_tokens=2000),
                 tool=PythonREPLTool(),
-                verbose=True)
+                verbose=False)
         if prompt:
                 response = agent_executor(prompt)
                 st.write(response)
