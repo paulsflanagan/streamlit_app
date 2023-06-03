@@ -13,16 +13,15 @@ from bs4 import BeautifulSoup
 from PIL import Image
 
 
-
-# define ui
+# define logo
+image = Image.open('Logo.png')
+st.image(image, caption='liveperson_logo')
 st.title('LP AI Assistant')
 st.text("")
 st.text("")
 
 
 # define sidebar
-
-
 with st.sidebar:
     st.title('Version')
     st.divider()
