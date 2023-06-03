@@ -30,8 +30,8 @@ with st.sidebar:
     st.text("User: " + st.experimental_user['email'])
     st.divider()
     
-    st.text("")
-    vanilla_enabled = st.checkbox('Original', value=True)
+    st.write('Basic:')
+    vanilla_enabled = st.checkbox('Open AI Only', value=True)
     st.divider()
     st.write('Advanced:')
     if vanilla_enabled:
@@ -41,7 +41,7 @@ with st.sidebar:
         search_enabled = st.checkbox('Web Search', value=True)
         scrape_enabled = st.checkbox('Web Scrape', value=True)
     st.divider() 
-    temperature = st.slider('Temperature', 0.0, 1.0, 0.0, step=0.1)
+    temperature = st.slider('Temperature:', 0.0, 1.0, 0.0, step=0.1)
 
     
 # user prompt
