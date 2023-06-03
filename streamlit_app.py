@@ -70,7 +70,7 @@ with st.sidebar:
             search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
             st.divider() 
-            temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
+            temperature = st.slider('Temperature:', 0.0, 1.0, 0.0, step=0.1, disabled=True)
            
 
     
@@ -182,6 +182,6 @@ if defined_agent:
                         response = agent_executor(prompt)
                         st.write(response)
                 except:
-                        st.write(openai.error.InvalidRequestError)
+                        st.write("Your request exceeds this model's maximum context length (4097 tokens)")
                 
   
