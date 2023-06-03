@@ -62,10 +62,9 @@ with st.sidebar:
             simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
             st.divider()
             st.write('Advanced:')
-            if simple_enabled:
-                advanced_enabled = False
-                search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
-                scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+            advanced_enabled = False
+            search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+            scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
             st.divider() 
             temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
            
