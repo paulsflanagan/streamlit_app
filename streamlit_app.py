@@ -104,14 +104,14 @@ st.write('Response:')
 # vanilla experience
 
 if vanilla_enabled:
-    llm = OpenAI(temperature=0, max_tokens = 3000)
+    llm = OpenAI(temperature=temperature, max_tokens = 3000)
     if prompt:
         response = llm(prompt)
         st.write(response)
 
 else:
     # lang chain agent with tools experience
-    llm = OpenAI(temperature=0, max_tokens = 3000, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+    llm = OpenAI(temperature=temperature, max_tokens = 3000, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
     # conversational agent memory
     memory = ConversationBufferWindowMemory(
         memory_key='chat_history',
