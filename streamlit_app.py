@@ -137,7 +137,8 @@ if simple_enabled:
 
 if advanced_enabled:
     # lang chain agent with tools experience
-    llm = OpenAI(temperature=temperature, max_tokens = 3000, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+    #llm = OpenAI(temperature=temperature, max_tokens = 3000, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+    llm = OpenAI(temperature=temperature, max_tokens = 3000)
     # conversational agent memory
     memory = ConversationBufferWindowMemory(
         memory_key='chat_history',
