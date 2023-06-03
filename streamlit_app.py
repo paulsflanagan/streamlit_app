@@ -1,6 +1,6 @@
-
 import os
 import streamlit as st
+import requests
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -9,11 +9,14 @@ from langchain.agents import Tool
 from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
 from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
+from bs4 import BeautifulSoup
+
 
 
 # define ui
 st.title('LP AI Assistant')
 st.write('Tools:')
+
 
 
 # define tools row
@@ -28,21 +31,26 @@ with checks[3]:
     st.checkbox('3')
 
 
-
+    
 # prompt prompt
 prompt = st.text_area('Write your prompt here:')
+
 
 
 # define llm
 llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
 
 
-# define dynamic toolset
+
+# define empty dynamic toolset
 tools = []
 
+
+
 # create our tools
+
+# Web Search
 if search_enabled:
-    
     search = DuckDuckGoSearchRun()
     tools = [
         Tool(
@@ -53,8 +61,33 @@ if search_enabled:
     ]
     tools.append(search)
 
-# define toolset
+    
+    
+# Web Scrape
 
+class WebPageTool(BaseTool):
+    name = "Get Webpage"
+    description = "Useful for when you need to get the content from a specific webpage"
+
+    def _run(self, webpage: str):
+        response = requests.get(webpage)
+        html_content = response.text
+
+        def strip_html_tags(html_content):
+            soup = BeautifulSoup(html_content, "html.parser")
+            stripped_text = soup.get_text()
+            return stripped_text
+
+        stripped_content = strip_html_tags(html_content)
+        if len(stripped_content) > 4000:
+            stripped_content = stripped_content[:4000]
+        return stripped_content
+    
+    def _arun(self, webpage: str):
+        raise NotImplementedError("This tool does not support async")
+        
+scrape = WebPageTool()
+tools.append(scrape)
 
 
 # conversational agent memory
@@ -63,6 +96,7 @@ memory = ConversationBufferWindowMemory(
     k=3,
     return_messages=True
 )
+
 
 
 # create our agent
