@@ -19,7 +19,7 @@ st.title('LP AI Assistant')
 
 
 # define tools row
-with st.expander("Tools:"):
+with st.expander("Advnaced Tools:"):
     vanilla_enabled = st.checkbox('Vanilla', value=True)   
     checks = st.columns(4)
     if vanilla_enabled:
