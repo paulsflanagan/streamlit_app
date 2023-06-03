@@ -101,10 +101,9 @@ if agent_type == 'Pandas Agent':
                 string_data = stringio.read()
                 st.write(string_data)
                 df = pd.read_csv(uploaded_file)
-        if string_data:
                 st.write("Active CSV: " + string_data)
-        else:
-                st.write("Active CSV: None")
+        
+
         
 # prompt text
 st.text("")
