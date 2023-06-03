@@ -39,7 +39,7 @@ with st.sidebar:
         st.divider()
         agent_type = st.selectbox(
             'Agent Type:',
-            ('Open AI Agent', 'Python Agent', 'CSV Agent'))
+            ('Open AI Agent', 'Python Agent'))
         
         if agent_type == 'Open AI Agent':
             defined_agent = False
