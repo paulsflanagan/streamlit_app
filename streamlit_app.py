@@ -8,7 +8,7 @@ from langchain.tools import DuckDuckGoSearchRun
 from langchain.agents import Tool
 from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
-from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
+#from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from bs4 import BeautifulSoup
 from PIL import Image
 from langchain.agents.agent_toolkits import create_python_agent
@@ -104,7 +104,7 @@ if search_enabled:
 # Web Scrape
 class WebPageTool(BaseTool):
     name = "Get Webpage"
-    description = "useful for when you need to get the content from a specific webpage"
+    description = "useful for when you need to get upt to date content from a specific webpage"
 
     def _run(self, webpage: str):
         response = requests.get(webpage)
