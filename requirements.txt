@@ -2,3 +2,4 @@ openai
 langchain
 duckduckgo-search
 bs4
+tabulate
