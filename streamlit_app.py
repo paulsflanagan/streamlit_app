@@ -35,11 +35,11 @@ with st.sidebar:
     st.divider()
     st.write('Advanced:')
     if vanilla_enabled:
-        search_enabled = st.checkbox('Web Search', value=False, disabled=True)
-        scrape_enabled = st.checkbox('Web Scrape', value=False, disabled=True)  
+        search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+        scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
     else:
-        search_enabled = st.checkbox('Web Search', value=True)
-        scrape_enabled = st.checkbox('Web Scrape', value=True)
+        search_enabled = st.checkbox('Web Search Tool', value=True)
+        scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
     st.divider() 
     temperature = st.slider('Temperature:', 0.0, 1.0, 0.0, step=0.1)
 
