@@ -106,7 +106,7 @@ if vanilla_enabled:
     llm = OpenAI(temperature=0)
     if prompt:
         response = llm(prompt)
-        st.text(response)
+        st.write(response)
 else:
     # lang chain agent with tools experience
     llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
@@ -134,7 +134,7 @@ else:
             response = conversational_agent.run(prompt)
         except :
             response = 'Please try to re-phrase the question'
-        st.text(response)
+        st.write(response)
 
   
   
