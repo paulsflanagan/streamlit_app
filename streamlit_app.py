@@ -11,9 +11,9 @@ from langchain.agents import initialize_agent
 from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from bs4 import BeautifulSoup
 from PIL import Image
-from langchain.agents.agent_toolkits import create_python_agent
-from langchain.tools.python.tool import PythonREPLTool
-from langchain.python import PythonREPL
+#from langchain.agents.agent_toolkits import create_python_agent
+#from langchain.tools.python.tool import PythonREPLTool
+#from langchain.python import PythonREPL
 
 
 # define logo
@@ -43,7 +43,6 @@ with st.sidebar:
             advanced_enabled = False
             search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
-            python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
         else:
             advanced_enabled = True
             search_enabled = st.checkbox('Web Search Tool', value=True)
