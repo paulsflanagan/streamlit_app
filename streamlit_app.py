@@ -34,7 +34,11 @@ with st.sidebar:
         st.text("")
         st.text('Version: Alpha 3.1')
         st.text("User: " + st.experimental_user['email'])
-        option = st.selectbox("How would you like to be contacted?", ("Email", "Home phone", "Mobile phone"))
+        option = st.selectbox(
+            'How would you like to be contacted?',
+            ('Email', 'Home phone', 'Mobile phone'))
+
+        st.write('You selected:', option)
         st.divider()
         st.write('Simple:')
         simple_enabled = st.checkbox('Open AI Only', value=True)
