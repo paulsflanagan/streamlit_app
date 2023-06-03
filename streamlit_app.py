@@ -212,9 +212,9 @@ if defined_agent:
                                 stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
                                 st.write(stringio)
                                 string_data = stringio.read()
-                                st.write(string_data)
+                                #st.write(string_data)
                                 df = pd.read_csv(uploaded_file)
-                                st.write("Active CSV: " + string_data)
+                                #st.write("Active CSV: " + string_data)
                         agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=temperature), df, verbose=True)
                 except:
                         st.write('No DataFrame')
