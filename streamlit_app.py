@@ -27,28 +27,27 @@ tab1, tab2 = st.tabs(["Open AI", "Agents"])
 # define sidebar
 
 with st.sidebar:
-    with tab1:
-        st.title('Settings:')
-        st.text("")
-        st.text("")
-        st.text('Version: Alpha 3.1')
-        st.text("User: " + st.experimental_user['email'])
-        st.divider()
+    st.title('Settings:')
+    st.text("")
+    st.text("")
+    st.text('Version: Alpha 3.1')
+    st.text("User: " + st.experimental_user['email'])
+    st.divider()
 
-        st.write('Simple:')
-        simple_enabled = st.checkbox('Open AI Only', value=True)
-        st.divider()
-        st.write('Advanced:')
-        if simple_enabled:
-            search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
-            scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
-            python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
-        else:
-            search_enabled = st.checkbox('Web Search Tool', value=True)
-            scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
-            python_agent_enabled = st.checkbox('Python Agent', value=True) 
-        st.divider() 
-        temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
+    st.write('Simple:')
+    simple_enabled = st.checkbox('Open AI Only', value=True)
+    st.divider()
+    st.write('Advanced:')
+    if simple_enabled:
+        search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+        scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+        python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
+    else:
+        search_enabled = st.checkbox('Web Search Tool', value=True)
+        scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
+        python_agent_enabled = st.checkbox('Python Agent', value=True) 
+    st.divider() 
+    temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
 
     
 # user prompt
