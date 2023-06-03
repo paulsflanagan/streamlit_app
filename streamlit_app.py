@@ -213,9 +213,8 @@ if defined_agent:
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
         if agent_type == 'Pandas Agent':
-                if not df.empty:
-                        st.write('Executing')
-                        agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
+                agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
+                
         if prompt:
                 try:
                         response = agent_executor.run(prompt)
