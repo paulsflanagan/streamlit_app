@@ -30,7 +30,7 @@ with st.sidebar:
     st.text("User: " + st.experimental_user['email'])
     st.divider()
     
-    st.write('Basic:')
+    st.write('Simple:')
     vanilla_enabled = st.checkbox('Open AI Only', value=True)
     st.divider()
     st.write('Advanced:')
