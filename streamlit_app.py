@@ -29,7 +29,7 @@ with st.sidebar:
     st.text('Alpha 3.1')
     st.text("User: " + st.experimental_user['email'])
     st.divider()
-    
+    values = st.slider('Select a range of values',0, 1, (25.0, 75.0)) st.write('Values:', values)
     
     st.divider()
     st.text("")
