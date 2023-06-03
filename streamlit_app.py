@@ -24,7 +24,7 @@ from io import StringIO
 max_tokens = 3000
 
 # define empty df
-df = pd.DataFrame()
+#df = pd.DataFrame()
 
 # define logo
 #image = Image.open('Logo.png')
@@ -213,7 +213,10 @@ if defined_agent:
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
         if agent_type == 'Pandas Agent':
-                agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
+                try:
+                        agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=temperature), df, verbose=True)
+                except:
+                        st.write('No DataFrame')
                 
         if prompt:
                 try:
