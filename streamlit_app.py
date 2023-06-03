@@ -28,7 +28,7 @@ max_tokens = 3000
 #image = Image.open('Logo.png')
 #st.image(image)
 st.title('AI Assistant')
-st.text("")
+
 
 
 
@@ -66,7 +66,7 @@ with st.sidebar:
         else:
             defined_agent = True
             # get csv for pandas agent
-            if defined_agent == 'Pandas Agent':
+            if agent_type == 'Pandas Agent':
                 uploaded_file = st.file_uploader("Choose a file")
                 if uploaded_file is not None:
                         bytes_data = uploaded_file.getvalue()
@@ -96,6 +96,11 @@ if agent_type == 'Open AI Agent':
                 st.write(agent_type + " - Simple")
         else:
                 st.write(agent_type + " - Advanced")
+else:
+        st.write(agent_type)
+        
+        
+st.text("")
 prompt = st.text_area('Write your prompt here:')
 
 
