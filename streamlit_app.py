@@ -116,8 +116,8 @@ class WebPageTool(BaseTool):
             return stripped_text
 
         stripped_content = strip_html_tags(html_content)
-        if len(stripped_content) > 2000:
-            stripped_content = stripped_content[:2000]
+        if len(stripped_content) > 1000:
+            stripped_content = stripped_content[:1000]
         return stripped_content
     
     def _arun(self, webpage: str):
