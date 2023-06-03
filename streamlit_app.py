@@ -15,31 +15,31 @@ from bs4 import BeautifulSoup
 
 # define ui
 st.title('LP AI Assistant')
-st.write('Tools:')
 
 
 
 # define tools row
-vanilla_enabled = st.checkbox('Vanilla', value=True)   
-checks = st.columns(4)
-if vanilla_enabled:
-    with checks[0]:
-        search_enabled = st.checkbox('Web Search', value=False, disabled=True)    
-    with checks[1]:
-        scrape_enabled = st.checkbox('Web Scrape', value=False, disabled=True)    
-    with checks[2]:
-        st.checkbox('2')
-    with checks[3]:
-        st.checkbox('3')
-else:
-    with checks[0]:
-        search_enabled = st.checkbox('Web Search', value=True)    
-    with checks[1]:
-        scrape_enabled = st.checkbox('Web Scrape', value=True)    
-    with checks[2]:
-        st.checkbox('2')
-    with checks[3]:
-        st.checkbox('3')    
+with st.expander("Tools:"):
+    vanilla_enabled = st.checkbox('Vanilla', value=True)   
+    checks = st.columns(4)
+    if vanilla_enabled:
+        with checks[0]:
+            search_enabled = st.checkbox('Web Search', value=False, disabled=True)    
+        with checks[1]:
+            scrape_enabled = st.checkbox('Web Scrape', value=False, disabled=True)    
+        with checks[2]:
+            st.checkbox('2')
+        with checks[3]:
+            st.checkbox('3')
+    else:
+        with checks[0]:
+            search_enabled = st.checkbox('Web Search', value=True)    
+        with checks[1]:
+            scrape_enabled = st.checkbox('Web Scrape', value=True)    
+        with checks[2]:
+            st.checkbox('2')
+        with checks[3]:
+            st.checkbox('3')    
  
 
 
