@@ -18,7 +18,7 @@ from langchain.python import PythonREPL
 
 
 # define max tokens
-max_tokens = 256
+max_tokens = 3000
 
 # define logo
 #image = Image.open('Logo.png')
