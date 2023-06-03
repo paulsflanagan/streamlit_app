@@ -15,7 +15,7 @@ from PIL import Image
 
 # define logo
 image = Image.open('Logo.png')
-st.image(image, caption='liveperson_logo')
+st.image(image)
 st.title('LP AI Assistant')
 st.text("")
 st.text("")
