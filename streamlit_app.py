@@ -29,6 +29,9 @@ with st.sidebar:
     st.text('Alpha 3.1')
     st.text("User: " + st.experimental_user['email'])
     st.divider()
+    
+    
+    st.divider()
     st.text("")
     vanilla_enabled = st.checkbox('Original', value=True)
     st.divider()
