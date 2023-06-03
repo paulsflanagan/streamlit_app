@@ -92,7 +92,7 @@ else:
         
 # get csv for pandas agent
 if agent_type == 'Pandas Agent':
-        uploaded_file = st.file_uploader("Choose a file")
+        uploaded_file = st.file_uploader("Upload a CSV file")
 
         
 
