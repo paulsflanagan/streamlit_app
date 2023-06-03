@@ -213,7 +213,7 @@ if defined_agent:
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
         if agent_type == 'Pandas Agent':
-                if df not None:
+                if df:
                         agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
         if prompt:
                 try:
