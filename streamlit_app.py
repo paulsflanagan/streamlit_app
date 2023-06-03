@@ -29,7 +29,6 @@ st.text("")
 with st.sidebar:
     tab1, tab2 = st.tabs(["Open AI", "Agents"])
     with tab1:
-        simple_enabled = True
         st.title('Settings:')
         st.text("")
         st.text("")
@@ -42,29 +41,26 @@ with st.sidebar:
         st.write('Advanced:')
         if simple_enabled:
             advanced_enabled = False
-            agent = False
             search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
             python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
         else:
             advanced_enabled = True
-            agent = False
             search_enabled = st.checkbox('Web Search Tool', value=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
-            python_agent_enabled = st.checkbox('Python Agent', value=True) 
         st.divider() 
         temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
     with tab2:
-        simple_enabled = False
-        advanced_enabled = False
+        #simple_enabled = False
+        #advanced_enabled = False
         st.title('Settings:')
         st.text("")
         st.text("")
         st.text('Version: Alpha 3.1')
         st.text("User: " + st.experimental_user['email'])
         st.divider()
-        st.write('Agents:')
-        agent = st.radio("Agent:",options=["python"],
+        agent = st.radio("Agent:",options=["python"])
+                         
     )
 
     
