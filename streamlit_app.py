@@ -35,35 +35,40 @@ with st.sidebar:
         st.text('Version: Alpha 3.1')
         st.text("User: " + st.experimental_user['email'])
         st.divider()
-        option = st.selectbox(
+        agent_type = st.selectbox(
             'Agent Type:',
             ('Open AI Agent', 'Python Agent', 'CSV Agent'))
-        st.divider()
-        st.write('Simple:')
-        simple_enabled = st.checkbox('Open AI Only', value=True)
-        st.divider()
-        st.write('Advanced:')
-        if simple_enabled:
-            advanced_enabled = False
-            search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
-            scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+        
+        if agent_type == 'Open AI Agent':
+            st.divider()
+            st.write('Simple:')
+            simple_enabled = st.checkbox('Open AI Only', value=True)
+            st.divider()
+            st.write('Advanced:')
+            if simple_enabled:
+                advanced_enabled = False
+                search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+                scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+            else:
+                advanced_enabled = True
+                search_enabled = st.checkbox('Web Search Tool', value=True)
+                scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
+            st.divider() 
+            temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
+            
         else:
-            advanced_enabled = True
-            search_enabled = st.checkbox('Web Search Tool', value=True)
-            scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
-        st.divider() 
-        temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
-    #with tab2:
-        #simple_enabled = False
-        #advanced_enabled = False
-        #st.title('Settings:')
-        #st.text("")
-        #st.text("")
-        #st.text('Version: Alpha 3.1')
-        #st.text("User: " + st.experimental_user['email'])
-        #st.divider()
-        #agent = st.radio("Agent:",options=["Python","CSV","JSON"])
-
+            st.divider()
+            st.write('Simple:')
+            simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
+            st.divider()
+            st.write('Advanced:')
+            if simple_enabled:
+                advanced_enabled = False
+                search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+                scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+            st.divider() 
+            temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
+           
 
     
 # user prompt
