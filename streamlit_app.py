@@ -131,7 +131,7 @@ st.text("")
 st.text("")
 st.write('Response:')    
     
-# vanilla experience
+# simple experience
 
 if simple_enabled:
     llm = OpenAI(temperature=temperature, max_tokens = max_tokens)
@@ -176,7 +176,7 @@ if defined_agent:
                 agent_executor = create_python_agent(
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens),
                 tool=PythonREPLTool(),
-                verbose=False)
+                verbose=True)
         if agent_type == 'Math Agent':
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
