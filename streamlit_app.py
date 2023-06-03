@@ -29,8 +29,7 @@ with st.sidebar:
     st.text('Alpha 3.1')
     st.text("User: " + st.experimental_user['email'])
     st.divider()
-    age = st.slider('How old are you?', 0, 130, 25)
-    st.write('Values:', age)
+    temperature = st.slider('Temperature', 0.0, 1.0, 0.0, step=0.1)
     
     st.divider()
     st.text("")
