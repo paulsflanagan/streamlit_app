@@ -34,6 +34,7 @@ with st.sidebar:
         st.text("")
         st.text('Version: Alpha 3.1')
         st.text("User: " + st.experimental_user['email'])
+        st.divider()
         option = st.selectbox(
             'Agent Type:',
             ('Open AI Agent', 'Python Agent', 'CSV Agent'))
