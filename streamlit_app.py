@@ -60,8 +60,7 @@ with st.sidebar:
         st.text("User: " + st.experimental_user['email'])
         st.divider()
         agent = st.radio("Agent:",options=["python"])
-                         
-    )
+
 
     
 # user prompt
