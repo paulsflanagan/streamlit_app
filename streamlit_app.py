@@ -112,7 +112,7 @@ st.write('Response:')
 # vanilla experience
 
 if vanilla_enabled:
-    llm = OpenAI(temperature=0)
+    llm = OpenAI(temperature=0, max_tokens = 256)
     if prompt:
         response = llm(prompt)
         with st.expander('Response:', expanded=True):
