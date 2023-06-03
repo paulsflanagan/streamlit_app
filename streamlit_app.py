@@ -116,6 +116,7 @@ if vanilla_enabled:
     if prompt:
         response = llm(prompt)
         st.write(response)
+        print(response)
 else:
     # lang chain agent with tools experience
     llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
