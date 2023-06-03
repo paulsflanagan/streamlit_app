@@ -29,9 +29,7 @@ with st.sidebar:
     st.text('Alpha 3.1')
     st.text("User: " + st.experimental_user['email'])
     st.divider()
-    temperature = st.slider('Temperature', 0.0, 1.0, 0.0, step=0.1)
     
-    st.divider()
     st.text("")
     vanilla_enabled = st.checkbox('Original', value=True)
     st.divider()
@@ -41,7 +39,8 @@ with st.sidebar:
         scrape_enabled = st.checkbox('Web Scrape', value=False, disabled=True)  
     else:
         search_enabled = st.checkbox('Web Search', value=True)
-        scrape_enabled = st.checkbox('Web Scrape', value=True)  
+        scrape_enabled = st.checkbox('Web Scrape', value=True)
+    temperature = st.slider('Temperature', 0.0, 1.0, 0.0, step=0.1)
 
     
 # user prompt
