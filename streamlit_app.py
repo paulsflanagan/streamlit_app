@@ -178,6 +178,10 @@ if defined_agent:
                 tool=PythonREPLTool(),
                 verbose=False)
         if prompt:
-                response = agent_executor(prompt)
-                st.write(response)
+                try:
+                        response = agent_executor(prompt)
+                        st.write(response)
+                        except e:
+                        st.write(e)
+                
   
