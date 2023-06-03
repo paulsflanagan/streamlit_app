@@ -65,17 +65,8 @@ with st.sidebar:
             
         else:
             defined_agent = True
-            # get csv for pandas agent
-            if agent_type == 'Pandas Agent':
-                uploaded_file = st.file_uploader("Choose a file")
-                if uploaded_file is not None:
-                        bytes_data = uploaded_file.getvalue()
-                        st.write(bytes_data)
-                        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-                        st.write(stringio)
-                        string_data = stringio.read()
-                        st.write(string_data)
-                        df = pd.read_csv(uploaded_file)
+
+
                         
             st.divider()
             st.write('Simple:')
@@ -98,8 +89,22 @@ if agent_type == 'Open AI Agent':
                 st.write(agent_type + " - Advanced")
 else:
         st.write(agent_type)
+
+        
+# get csv for pandas agent
+if agent_type == 'Pandas Agent':
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+        bytes_data = uploaded_file.getvalue()
+        st.write(bytes_data)
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        st.write(stringio)
+        string_data = stringio.read()
+        st.write(string_data)
+        df = pd.read_csv(uploaded_file)    
         
         
+# prompt text
 st.text("")
 prompt = st.text_area('Write your prompt here:')
 
