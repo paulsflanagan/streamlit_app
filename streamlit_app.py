@@ -187,7 +187,7 @@ if defined_agent:
                 agent.run("how many rows are there?")
         if prompt:
                 try:
-                        response = agent_executor(prompt)
+                        response = agent_executor.run(prompt)
                         st.write(response)
                 except:
                         st.write("Your request exceeds this model's maximum context length (4097 tokens)")
