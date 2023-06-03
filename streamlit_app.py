@@ -13,18 +13,6 @@ from bs4 import BeautifulSoup
 
 
 
-# define background
-page_bg_img = '''
-<style>
-body {
-background-color: blue;
-background-size: cover;
-}
-</style>
-'''
-
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
 
 # define ui
 st.title('LP AI Assistant')
@@ -37,6 +25,7 @@ st.title('LP AI Assistant')
 with st.sidebar:
     st.title('Version')
     st.divider()
+    st.text("")
     vanilla_enabled = st.checkbox('Original', value=True)
     st.divider()
     st.write('Advanced:')
