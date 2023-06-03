@@ -181,7 +181,7 @@ if defined_agent:
                 try:
                         response = agent_executor(prompt)
                         st.write(response)
-                        except e:
+                except as e:
                         st.write(e)
                 
   
