@@ -40,10 +40,12 @@ with st.sidebar:
         st.divider()
         st.write('Advanced:')
         if simple_enabled:
+            advanced_enabled = False
             search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
             python_agent_enabled = st.checkbox('Python Agent', value=False, disabled=True) 
         else:
+            advanced_enabled = True
             search_enabled = st.checkbox('Web Search Tool', value=True)
             scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
             python_agent_enabled = st.checkbox('Python Agent', value=True) 
@@ -57,6 +59,7 @@ with st.sidebar:
         st.text("User: " + st.experimental_user['email'])
         st.divider()
         st.write('Agents:')
+        option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
 
     
 # user prompt
@@ -124,7 +127,7 @@ if simple_enabled:
         response = llm(prompt)
         st.write(response)
 
-else:
+if advanced_enabled:
     # lang chain agent with tools experience
     llm = OpenAI(temperature=temperature, max_tokens = 3000, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
     # conversational agent memory
