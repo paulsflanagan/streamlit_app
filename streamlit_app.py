@@ -23,6 +23,9 @@ from io import StringIO
 # define max tokens
 max_tokens = 3000
 
+# define empty dataframe
+df = pd.DataFrame()
+
 
 # define logo
 #image = Image.open('Logo.png')
