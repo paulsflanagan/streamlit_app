@@ -18,12 +18,14 @@ image = Image.open('Logo.png')
 st.image(image)
 #st.title('AI Assistant')
 st.text("")
-st.text("User:" + st.experimental_user['email'])
+
 
 
 # define sidebar
 with st.sidebar:
     st.title('Version')
+    st.text('Alpha 3.1')
+    st.text("User: " + st.experimental_user['email'])
     st.divider()
     st.text("")
     vanilla_enabled = st.checkbox('Original', value=True)
