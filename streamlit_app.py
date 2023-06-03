@@ -52,7 +52,7 @@ with st.sidebar:
         st.divider() 
         temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
     with tab2:
-        advanced_enabled = False
+        simple_enabled = False
         advanced_enabled = False
         st.title('Settings:')
         st.text("")
