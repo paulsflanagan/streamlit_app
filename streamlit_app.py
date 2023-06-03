@@ -17,10 +17,12 @@ from langchain import LLMMathChain
 #from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from bs4 import BeautifulSoup
 from PIL import Image
+from io import StringIO
 
 
 # define max tokens
 max_tokens = 3000
+
 
 # define logo
 #image = Image.open('Logo.png')
@@ -41,7 +43,7 @@ with st.sidebar:
         st.divider()
         agent_type = st.selectbox(
             'Agent Type:',
-            ('Open AI Agent', 'Python Agent','Math Agent'))
+            ('Open AI Agent', 'Python Agent','Math Agent','Pandas Agent'))
         
         if agent_type == 'Open AI Agent':
             defined_agent = False
@@ -63,6 +65,18 @@ with st.sidebar:
             
         else:
             defined_agent = True
+            # get csv for pandas agent
+            if defined_agent == 'Pandas Agent':
+                uploaded_file = st.file_uploader("Choose a file")
+                if uploaded_file is not None:
+                        bytes_data = uploaded_file.getvalue()
+                        st.write(bytes_data)
+                        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+                        st.write(stringio)
+                        string_data = stringio.read()
+                        st.write(string_data)
+                        df = pd.read_csv(uploaded_file)
+                        
             st.divider()
             st.write('Simple:')
             simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
@@ -77,6 +91,11 @@ with st.sidebar:
 
     
 # user prompt
+if agent_type == 'Open AI Agent':
+        if simple_enabled:
+                st.write(agent_type + " - Simple")
+        else:
+                st.write(agent_type + " - Advanced")
 prompt = st.text_area('Write your prompt here:')
 
 
@@ -184,7 +203,6 @@ if defined_agent:
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
         if agent_type == 'Pandas Agent':
                 agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
-                agent.run("how many rows are there?")
         if prompt:
                 try:
                         response = agent_executor.run(prompt)
