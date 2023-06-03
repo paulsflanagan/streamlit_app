@@ -167,7 +167,7 @@ if advanced_enabled:
 if defined_agent:
         if agent_type == 'Python Agent':
                 agent_executor = create_python_agent(
-                llm=OpenAI(temperature=temperature, max_tokens=3000),
+                llm=OpenAI(temperature=temperature, max_tokens=2000),
                 tool=PythonREPLTool(),
                 verbose=True)
         if prompt:
