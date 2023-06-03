@@ -18,7 +18,7 @@ image = Image.open('Logo.png')
 st.image(image)
 #st.title('AI Assistant')
 st.text("")
-st.text("")
+
 
 
 # define sidebar
@@ -39,6 +39,7 @@ with st.sidebar:
     
 # user prompt
 prompt = st.text_area('Write your prompt here:')
+st.text("")
 
 
 
