@@ -27,8 +27,8 @@ st.text("")
 # define sidebar
 
 with st.sidebar:
-    tab1, tab2 = st.tabs(["Open AI", "Agents"])
-    with tab1:
+    #tab1, tab2 = st.tabs(["Open AI", "Agents"])
+    #with tab1:
         st.title('Settings:')
         st.text("")
         st.text("")
@@ -50,16 +50,16 @@ with st.sidebar:
             scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
         st.divider() 
         temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
-    with tab2:
+    #with tab2:
         #simple_enabled = False
         #advanced_enabled = False
-        st.title('Settings:')
-        st.text("")
-        st.text("")
-        st.text('Version: Alpha 3.1')
-        st.text("User: " + st.experimental_user['email'])
-        st.divider()
-        agent = st.radio("Agent:",options=["python"])
+        #st.title('Settings:')
+        #st.text("")
+        #st.text("")
+        #st.text('Version: Alpha 3.1')
+        #st.text("User: " + st.experimental_user['email'])
+        #st.divider()
+        #agent = st.radio("Agent:",options=["Python","CSV","JSON"])
 
 
     
