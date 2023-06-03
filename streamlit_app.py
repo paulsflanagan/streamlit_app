@@ -43,6 +43,8 @@ st.title('LP AI Assistant')
  
 with st.sidebar:
     vanilla_enabled = st.checkbox('Vanilla', value=True)
+    st.divider()
+    st.write('Advanced Tools')
     if vanilla_enabled:
         search_enabled = st.checkbox('Web Search', value=False, disabled=True)
         scrape_enabled = st.checkbox('Web Scrape', value=False, disabled=True)  
