@@ -66,10 +66,7 @@ with st.sidebar:
             temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
             
         else:
-            defined_agent = True
-
-
-                        
+            defined_agent = True      
             st.divider()
             st.write('Simple:')
             simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
@@ -103,8 +100,11 @@ if agent_type == 'Pandas Agent':
                 st.write(stringio)
                 string_data = stringio.read()
                 st.write(string_data)
-                df = pd.read_csv(uploaded_file)    
-        
+                df = pd.read_csv(uploaded_file)
+        if string_data:
+                st.write("Active CSV: " + string_data)
+        else:
+                st.write("Active CSV: None")
         
 # prompt text
 st.text("")
