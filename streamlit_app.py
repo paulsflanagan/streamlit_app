@@ -25,8 +25,9 @@ st.text("")
 
 tab1, tab2 = st.tabs(["Open AI", "Agents"])
 # define sidebar
-with tab1:
-    with st.sidebar:
+
+with st.sidebar:
+    with tab1:
         st.title('Settings:')
         st.text("")
         st.text("")
