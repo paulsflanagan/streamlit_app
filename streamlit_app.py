@@ -220,13 +220,13 @@ if defined_agent:
                         st.write('No DataFrame')
                 
         if prompt:
-                response = agent_executor.run(prompt)
-                st.write(response)
-                #try:
-                #        response = agent_executor.run(prompt)
-                #        st.write(response)
-                #except:
-                #        st.write("Your request exceeds this model's maximum context length (4097 tokens)")
+                #response = agent_executor.run(prompt)
+                #st.write(response)
+                try:
+                        response = agent_executor.run(prompt)
+                        st.write(response)
+                except:
+                        st.write("Your request exceeds this model's maximum context length (4097 tokens)")
           
                 
   
