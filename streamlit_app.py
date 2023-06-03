@@ -11,6 +11,9 @@ from langchain.agents import initialize_agent
 from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from bs4 import BeautifulSoup
 from PIL import Image
+from langchain.agents.agent_toolkits import create_python_agent
+from langchain.tools.python.tool import PythonREPLTool
+from langchain.python import PythonREPL
 
 
 # define logo
@@ -51,7 +54,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 # define empty dynamic toolset
-tools = []
+tools = [PythonREPLTool()]
 
 
 
