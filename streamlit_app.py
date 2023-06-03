@@ -115,7 +115,7 @@ if vanilla_enabled:
     llm = OpenAI(temperature=0)
     if prompt:
         response = llm(prompt)
-        with st.container():
+        with st.expander(expanded=True):
             st.write(response)
 
 else:
@@ -145,7 +145,7 @@ else:
             response = conversational_agent.run(prompt)
         except :
             response = 'Please try to re-phrase the question'
-        with st.container():
+        with st.expander(expanded=True):
             st.write(response)
 
   
