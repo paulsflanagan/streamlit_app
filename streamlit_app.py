@@ -104,7 +104,7 @@ if search_enabled:
 # Web Scrape
 class WebPageTool(BaseTool):
     name = "Get Webpage"
-    description = "useful for when you need to get upt to date content from a specific webpage"
+    description = "useful for when you need to get up to date content from a specific webpage"
 
     def _run(self, webpage: str):
         response = requests.get(webpage)
@@ -116,8 +116,8 @@ class WebPageTool(BaseTool):
             return stripped_text
 
         stripped_content = strip_html_tags(html_content)
-        if len(stripped_content) > 4000:
-            stripped_content = stripped_content[:4000]
+        if len(stripped_content) > 3000:
+            stripped_content = stripped_content[:3000]
         return stripped_content
     
     def _arun(self, webpage: str):
