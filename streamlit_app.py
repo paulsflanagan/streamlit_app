@@ -10,7 +10,7 @@ from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
 from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from bs4 import BeautifulSoup
-
+from PIL import Image
 
 
 
