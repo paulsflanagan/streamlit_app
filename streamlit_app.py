@@ -39,7 +39,6 @@ with st.sidebar:
     
 # user prompt
 prompt = st.text_area('Write your prompt here:')
-st.text("")
 
 
 
