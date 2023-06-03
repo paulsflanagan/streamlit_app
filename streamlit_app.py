@@ -16,6 +16,10 @@ from langchain.tools.python.tool import PythonREPLTool
 from langchain.python import PythonREPL
 
 
+
+# define max tokens
+max_tokens = 256
+
 # define logo
 #image = Image.open('Logo.png')
 #st.image(image)
@@ -130,15 +134,15 @@ st.write('Response:')
 # vanilla experience
 
 if simple_enabled:
-    llm = OpenAI(temperature=temperature, max_tokens = 3000)
+    llm = OpenAI(temperature=temperature, max_tokens = max_tokens)
     if prompt:
         response = llm(prompt)
         st.write(response)
 
 if advanced_enabled:
     # lang chain agent with tools experience
-    #llm = OpenAI(temperature=temperature, max_tokens = 3000, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
-    llm = OpenAI(temperature=temperature, max_tokens = 3000)
+    #llm = OpenAI(temperature=temperature, max_tokens = max_tokens, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+    llm = OpenAI(temperature=temperature, max_tokens = max_tokens)
     # conversational agent memory
     memory = ConversationBufferWindowMemory(
         memory_key='chat_history',
@@ -168,7 +172,7 @@ if advanced_enabled:
 if defined_agent:
         if agent_type == 'Python Agent':
                 agent_executor = create_python_agent(
-                llm=OpenAI(temperature=temperature, max_tokens=2000),
+                llm=OpenAI(temperature=temperature, max_tokens=max_tokens),
                 tool=PythonREPLTool(),
                 verbose=False)
         if prompt:
