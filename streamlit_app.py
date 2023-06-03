@@ -24,7 +24,7 @@ checks = st.columns(4)
 with checks[0]:
     search_enabled = st.checkbox('Web Search', value=True)    
 with checks[1]:
-    st.checkbox('1')
+    scrape_enabled = st.checkbox('Web Scrape', value=True)    
 with checks[2]:
     st.checkbox('2')
 with checks[3]:
@@ -49,6 +49,7 @@ tools = []
 
 # create our tools
 
+
 # Web Search
 if search_enabled:
     search = DuckDuckGoSearchRun()
@@ -61,13 +62,11 @@ if search_enabled:
     ]
     tools.append(search)
 
-    
-    
-# Web Scrape
 
+# Web Scrape
 class WebPageTool(BaseTool):
     name = "Get Webpage"
-    description = "Useful for when you need to get the content from a specific webpage"
+    description = "useful for when you need to get the content from a specific webpage"
 
     def _run(self, webpage: str):
         response = requests.get(webpage)
@@ -85,11 +84,12 @@ class WebPageTool(BaseTool):
     
     def _arun(self, webpage: str):
         raise NotImplementedError("This tool does not support async")
-        
-scrape = WebPageTool()
-tools.append(scrape)
+if scrape_enabled:
+    scrape = WebPageTool()
+    tools.append(scrape)
 
 
+    
 # conversational agent memory
 memory = ConversationBufferWindowMemory(
     memory_key='chat_history',
