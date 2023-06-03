@@ -40,6 +40,7 @@ with st.sidebar:
     else:
         search_enabled = st.checkbox('Web Search', value=True)
         scrape_enabled = st.checkbox('Web Scrape', value=True)
+    st.divider() 
     temperature = st.slider('Temperature', 0.0, 1.0, 0.0, step=0.1)
 
     
