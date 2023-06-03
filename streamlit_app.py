@@ -134,7 +134,7 @@ else:
             response = conversational_agent.run(prompt)
         except :
             response = 'Please try to re-phrase the question'
-        st.write(response)
+        st.text(response)
 
   
   
