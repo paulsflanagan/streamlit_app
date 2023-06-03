@@ -1,4 +1,5 @@
 import os
+import logging
 import streamlit as st
 import requests
 import pandas as pd
@@ -19,6 +20,8 @@ from bs4 import BeautifulSoup
 from PIL import Image
 from io import StringIO
 
+
+logging.basicConfig(filename='scraper.log', level=logging.DEBUG, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 # define max tokens
 max_tokens = 3000
