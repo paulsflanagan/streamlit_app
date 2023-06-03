@@ -52,6 +52,8 @@ with st.sidebar:
         st.divider() 
         temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
     with tab2:
+        advanced_enabled = False
+        advanced_enabled = False
         st.title('Settings:')
         st.text("")
         st.text("")
@@ -59,7 +61,8 @@ with st.sidebar:
         st.text("User: " + st.experimental_user['email'])
         st.divider()
         st.write('Agents:')
-        option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+        agent = st.radio("Agent:",options=["python"],
+    )
 
     
 # user prompt
