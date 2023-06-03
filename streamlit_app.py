@@ -24,6 +24,7 @@ st.text("")
 # define sidebar
 with st.sidebar:
     st.title('Version')
+    st.text("")
     st.text('Alpha 3.1')
     st.text("User: " + st.experimental_user['email'])
     st.divider()
