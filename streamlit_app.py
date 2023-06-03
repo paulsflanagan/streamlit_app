@@ -31,10 +31,10 @@ with st.sidebar:
     st.divider()
     
     st.write('Simple:')
-    vanilla_enabled = st.checkbox('Open AI Only', value=True)
+    simple_enabled = st.checkbox('Open AI Only', value=True)
     st.divider()
     st.write('Advanced:')
-    if vanilla_enabled:
+    if simple_enabled:
         search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
         scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
     else:
@@ -103,7 +103,7 @@ st.write('Response:')
     
 # vanilla experience
 
-if vanilla_enabled:
+if simple_enabled:
     llm = OpenAI(temperature=temperature, max_tokens = 3000)
     if prompt:
         response = llm(prompt)
