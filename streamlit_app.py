@@ -20,6 +20,7 @@ st.write('Tools:')
 
 
 # define tools row
+vanilla_enabled = st.checkbox('Vanilla', value=True)   
 checks = st.columns(4)
 with checks[0]:
     search_enabled = st.checkbox('Web Search', value=True)    
