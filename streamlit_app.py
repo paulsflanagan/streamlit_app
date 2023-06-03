@@ -29,6 +29,7 @@ st.text("")
 with st.sidebar:
     tab1, tab2 = st.tabs(["Open AI", "Agents"])
     with tab1:
+        simple_enabled = True
         st.title('Settings:')
         st.text("")
         st.text("")
