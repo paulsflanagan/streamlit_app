@@ -50,6 +50,13 @@ with st.sidebar:
             python_agent_enabled = st.checkbox('Python Agent', value=True) 
         st.divider() 
         temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
+    with tab2:
+        st.title('Settings:')
+        st.text("")
+        st.text("")
+        st.text('Version: Alpha 3.1')
+        st.text("User: " + st.experimental_user['email'])
+        st.divider()
 
     
 # user prompt
