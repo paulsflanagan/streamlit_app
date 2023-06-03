@@ -14,7 +14,7 @@ from PIL import Image
 from langchain.agents.agent_toolkits import create_python_agent
 from langchain.tools.python.tool import PythonREPLTool
 from langchain.python import PythonREPL
-
+from langchain import LLMMathChain
 
 
 # define max tokens
@@ -39,7 +39,7 @@ with st.sidebar:
         st.divider()
         agent_type = st.selectbox(
             'Agent Type:',
-            ('Open AI Agent', 'Python Agent'))
+            ('Open AI Agent', 'Python Agent','Math Agent'))
         
         if agent_type == 'Open AI Agent':
             defined_agent = False
@@ -177,11 +177,15 @@ if defined_agent:
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens),
                 tool=PythonREPLTool(),
                 verbose=False)
+        if agent_type == 'Math Agent':
+                llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
+                agent_executor = LLMMathChain.from_llm(llm, verbose=True)
         if prompt:
                 try:
                         response = agent_executor(prompt)
                         st.write(response)
                 except:
                         st.write("Your request exceeds this model's maximum context length (4097 tokens)")
+          
                 
   
