@@ -49,8 +49,7 @@ prompt = st.text_area('Write your prompt here:')
 
 
 
-# define llm
-llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+
 
 
 
@@ -111,6 +110,7 @@ memory = ConversationBufferWindowMemory(
 
 
 
+
 # create our agent
 conversational_agent = initialize_agent(
     agent='chat-conversational-react-description',
@@ -131,8 +131,7 @@ if prompt:
         response = conversational_agent.run(prompt)
     except :
         response = 'Please try to re-phrase the question'
-            
-st.write(response)
+    st.write(response)
 
   
   
