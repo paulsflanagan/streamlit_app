@@ -181,7 +181,7 @@ if defined_agent:
                 try:
                         response = agent_executor(prompt)
                         st.write(response)
-                except as e:
-                        st.write(e)
+                except:
+                        st.write(openai.error.InvalidRequestError)
                 
   
