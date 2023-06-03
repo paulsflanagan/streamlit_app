@@ -44,13 +44,9 @@ else:
 
 
     
-# prompt prompt
+# user prompt
 prompt = st.text_area('Write your prompt here:')
 
-
-
-# define llm
-llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
 
 
 
@@ -102,37 +98,43 @@ if scrape_enabled:
 
 
     
-# conversational agent memory
-memory = ConversationBufferWindowMemory(
-    memory_key='chat_history',
-    k=3,
-    return_messages=True
-)
+    
+    
+# vanilla experience
 
-
-
-
-# create our agent
-conversational_agent = initialize_agent(
-    agent='chat-conversational-react-description',
-    tools=tools,
-    llm=llm,
-    verbose=True,
-    max_iterations=3,
-    early_stopping_method='generate',
-    memory=memory
-)
-
-
-
-response = ''
-
-if prompt:
-    try:
-        response = conversational_agent.run(prompt)
-    except :
-        response = 'Please try to re-phrase the question'
-    st.write(response)
+if vanilla_enabled:
+    llm = OpenAI(temperature=0)
+    if prompt:
+        response = llm(prompt)
+        st.write(response)
+else:
+    # lang chain agent with tools experience
+    llm = OpenAI(temperature=0, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
+    # conversational agent memory
+    memory = ConversationBufferWindowMemory(
+        memory_key='chat_history',
+        k=3,
+        return_messages=True
+    )
+    
+    # create our agent
+    conversational_agent = initialize_agent(
+        agent='chat-conversational-react-description',
+        tools=tools,
+        llm=llm,
+        verbose=True,
+        max_iterations=3,
+        early_stopping_method='generate',
+        memory=memory
+    )
+    
+    response = ''
+    if prompt:
+        try:
+            response = conversational_agent.run(prompt)
+        except :
+            response = 'Please try to re-phrase the question'
+        st.write(response)
 
   
   
