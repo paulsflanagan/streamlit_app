@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 page_bg_img = '''
 <style>
 body {
-background-image: url("https://authentication.liveperson.net/img/background_new.png");
+background-color: blue;
 background-size: cover;
 }
 </style>
