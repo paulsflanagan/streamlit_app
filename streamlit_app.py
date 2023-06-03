@@ -163,11 +163,13 @@ if advanced_enabled:
     
     response = ''
     if prompt:
-        try:
-            response = conversational_agent.run(prompt)
-        except :
-            response = 'Please try to re-phrase the question'
+        response = conversational_agent.run(prompt)
         st.write(response)
+        #try:
+            #response = conversational_agent.run(prompt)
+        #except :
+            #response = 'Please try to re-phrase the question'
+        #st.write(response)
 
 if defined_agent:
         if agent_type == 'Python Agent':
