@@ -19,9 +19,9 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     #st.write(bytes_data)
     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    st.write(stringio)
+    #st.write(stringio)
     string_data = stringio.read()
-    st.write(string_data)
+    #st.write(string_data)
     df = pd.read_csv(uploaded_file)
     st.write("Active CSV: " + string_data)    
 
