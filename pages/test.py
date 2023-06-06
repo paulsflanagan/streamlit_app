@@ -38,16 +38,16 @@ if uploaded_file is not None:
 
 task = st.text_area('Write your prompt here:', height=400, value='''
 <Conversation>
-  <Conversation_id> What is the Conversation ID? 
-  <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
-  <Sub_Intent> What is the Sub Intent?
-  <Sale_Made> Was a sale made?
-  <Reason_for_No_Sale> Why do you think a sale was made?
-  <Product_or_Device> What product or device is the customer discussing?
-  <Information_Asked> Summarise the information the agent asked for?
-  <Query_Resolved> Was the customer query resolved?
-  <Reason_for_Unresolved> Why do you think the sale was resolved?
-  <Agent_Summary> Summarise what the agent did in this conversation?
+<Conversation_id> What is the Conversation ID? 
+<Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
+<Sub_Intent> What is the Sub Intent?
+<Sale_Made> Was a sale made?
+<Reason_for_No_Sale> Why do you think a sale was made?
+<Product_or_Device> What product or device is the customer discussing?
+<Information_Asked> Summarise the information the agent asked for?
+<Query_Resolved> Was the customer query resolved?
+<Reason_for_Unresolved> Why do you think the sale was resolved?
+<Agent_Summary> Summarise what the agent did in this conversation?
 </Conversation>
 
 ''')
