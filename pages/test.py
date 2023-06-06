@@ -93,7 +93,7 @@ if st.button('Go'):
     
     # Download the Result
     
-    st.download_button('Download Output', data=master_xml, file_name="Export1234.xlm")
+    st.download_button('Download Output', data=master_xml, file_name="Export1234.xml")
 
 
 
