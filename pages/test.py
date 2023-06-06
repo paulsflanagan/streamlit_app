@@ -57,7 +57,7 @@ task = """
 if st.button('Go'):
 
     for x in range(df.shape[0]):
-      st.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]-1) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
+      st.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
       transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
       template = """
       % INSTRUCTIONS
