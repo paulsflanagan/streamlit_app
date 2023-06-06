@@ -36,8 +36,7 @@ if uploaded_file is not None:
 
 # Task
 
-
-task = """ 
+task = st.text_area('Write your prompt here:','''
 
 <Conversation>
   <Conversation_id> What is the Conversation ID? 
@@ -52,7 +51,9 @@ task = """
   <Agent_Summary> Summarise what the agent did in this conversation?
 </Conversation>
 
-"""  
+'''
+)
+
 
 if st.button('Go'):
 
