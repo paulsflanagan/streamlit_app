@@ -48,19 +48,19 @@ with st.sidebar:
         
         if agent_type == 'Open AI Agent':
             defined_agent = False
-            st.divider()
-            st.write('Simple:')
-            simple_enabled = st.checkbox('Open AI Only', value=True)
-            st.divider()
-            st.write('Advanced:')
-            if simple_enabled:
-                advanced_enabled = False
-                search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
-                scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
-            else:
-                advanced_enabled = True
-                search_enabled = st.checkbox('Web Search Tool', value=True)
-                scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
+            #st.divider()
+            #st.write('Simple:')
+            #simple_enabled = st.checkbox('Open AI Only', value=True)
+            #st.divider()
+            #st.write('Advanced:')
+            #if simple_enabled:
+            #    advanced_enabled = False
+            #    search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+            #    scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+            #else:
+            #   advanced_enabled = True
+            #    search_enabled = st.checkbox('Web Search Tool', value=True)
+            #    scrape_enabled = st.checkbox('Web Scrape Tool', value=True)
             st.divider() 
             temperature = st.slider('Temperature:', 0.0, 1.0, 0.5, step=0.1)
             
