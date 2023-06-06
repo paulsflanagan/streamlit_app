@@ -36,7 +36,7 @@ if uploaded_file is not None:
 
 # Task
 
-task = st.text_area('Write your prompt here:', height=400, value='''
+task = st.text_area('Write your questions here:', height=400, value='''
 <Conversation>
 <Conversation_id> What is the Conversation ID? 
 <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
@@ -51,7 +51,7 @@ task = st.text_area('Write your prompt here:', height=400, value='''
 </Conversation>''')
 
 
-if st.button('Go'):
+if st.button('Analyse'):
 
     for x in range(df.shape[0]):
       st.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
