@@ -167,6 +167,7 @@ if simple_enabled:
         response = llm(prompt)
         st.write(response)
 
+advanced_enabled = False #!!! Remove if retunrning to multi tool        
 if advanced_enabled:
     # lang chain agent with tools experience
     #llm = OpenAI(temperature=temperature, max_tokens = max_tokens, streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()])
