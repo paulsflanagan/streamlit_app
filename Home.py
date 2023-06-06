@@ -67,14 +67,15 @@ with st.sidebar:
             
         else:
             defined_agent = True      
-            st.divider()
-            st.write('Simple:')
-            simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
-            st.divider()
-            st.write('Advanced:')
-            advanced_enabled = False
-            search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
-            scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
+            #st.divider()
+            #st.write('Simple:')
+            simple_enabled = False # Remove if reutning to multi tool
+            #simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
+            #st.divider()
+            #st.write('Advanced:')
+            #advanced_enabled = False
+            #search_enabled = st.checkbox('Web Search Tool', value=False, disabled=True)
+            #scrape_enabled = st.checkbox('Web Scrape Tool', value=False, disabled=True)  
             st.divider() 
             temperature = st.slider('Temperature:', 0.0, 1.0, 0.0, step=0.1, disabled=True)
            
