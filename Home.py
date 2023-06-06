@@ -1,1 +1,1 @@
-streamlit run [entrypoint file]
+streamlit run test.py
