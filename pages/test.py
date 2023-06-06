@@ -46,3 +46,53 @@ task = """
 </Conversation>
 
 """  
+
+if st.button('Go')
+
+    for x in range(len(raw_data)):
+      print("Executing: " + str(x + 1) + " of " + str(len(raw_data)-1) + " : " + str(round(((x)/len(raw_data))*100)) +"% Complete ")
+      transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
+      template = """
+      % INSTRUCTIONS
+       - You are an AI Bot that is very good at analysing conversation transcripts
+       - Your goal is to find relevant information from the transcript
+       - Do not go outside the transcript provided
+       - Output in an xml format with the questions as the headers. Do not Output [<?xml version="1.0" encoding="UTF-8"?>]. Do not output a Root Node
+
+      % Transcript for Analysis:
+      {transcript}
+
+      % YOUR TASK
+      {task}
+
+      """
+
+      prompt = PromptTemplate(
+          input_variables=["transcript","task"],
+          template=template,
+      )
+
+      final_prompt = prompt.format(transcript=transcript,task=task)
+
+      try:
+        data = llm.predict(final_prompt)
+        master_xml = master_xml + '\n' + data
+      except:
+        print("Error From Open AI - Token Count too high")
+
+    master_xml = master_xml + '\n</Analysis>'
+
+    st.write(master_xml)
+    
+    # Download the Result
+    
+    st.download_button('Download Output', data=master_xml, file_name="Export1234.xlm")
+
+
+
+
+
+
+
+
+
