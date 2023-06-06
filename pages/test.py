@@ -18,18 +18,31 @@ master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
-    #st.write(bytes_data)
     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    #st.write(stringio)
     string_data = stringio.read()
-    #st.write(string_data)
     df = pd.read_csv(uploaded_file)
     df.columns = ['Conversation ID', 'Transcript']
-    #st.write("Active CSV: " + string_data)
     st.write("First Conversation ID: " + df['Conversation ID'][0])
     st.write("Last Conversation ID: " + df['Conversation ID'][df.shape[0]-1])
     st.write("Conversation Count: " + str(df.shape[0]))
 
-       #print("First Conversation ID: " + raw_data[0][0])
-       #print("Last Conversation ID: " + raw_data[len(raw_data)-1][0])
-       #print("Conversation Count: " + str(len(raw_data)-1))
+
+# Task
+
+
+task = """ 
+
+<Conversation>
+  <Conversation_id> What is the Conversation ID? 
+  <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
+  <Sub_Intent> What is the Sub Intent?
+  <Sale_Made> Was a sale made?
+  <Reason_for_No_Sale> Why do you think a sale was made?
+  <Product_or_Device> What product or device is the customer discussing?
+  <Information_Asked> Summarise the information the agent asked for?
+  <Query_Resolved> Was the customer query resolved?
+  <Reason_for_Unresolved> Why do you think the sale was resolved?
+  <Agent_Summary> Summarise what the agent did in this conversation?
+</Conversation>
+
+"""  
