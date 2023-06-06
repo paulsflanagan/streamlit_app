@@ -14,10 +14,10 @@ master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 
 # Upload CSV
 
-uploaded_file = st.file_uploader("Upload a CSV file")
+uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    st.write(bytes_data)
+    #bytes_data = uploaded_file.getvalue()
+    st.write(uploaded_file.name)
     #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     #st.write(stringio)
     #string_data = stringio.read()
