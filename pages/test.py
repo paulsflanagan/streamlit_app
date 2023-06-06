@@ -6,7 +6,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
 from io import StringIO
 
-st.title('AI Transcript Assistant')
+st.title('AI Transcript Analysis')
 
 
 llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
@@ -28,7 +28,7 @@ if uploaded_file is not None:
         st.write("Last Conversation ID: " + df['Conversation ID'][df.shape[0]-1])
         st.write("Conversation Count: " + str(df.shape[0]))
     except UnicodeDecodeError:
-        st.write("Error Decoding CSV - Ensure export is utf-8")
+        st.write("Error Decoding CSV - Ensure encoding is utf-8")
         
     
 
