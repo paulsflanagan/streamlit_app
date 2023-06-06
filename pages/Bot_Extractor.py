@@ -10,9 +10,9 @@ if uploaded_file is not None:
     
       bytes_data = uploaded_file.getvalue()
       stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-      string_data = stringio.read()
-      data = json.load(f)
-      st.write(data)  
+      #string_data = stringio.read()
+      #data = json.load(f)
+      #st.write(data)  
 
 
 
