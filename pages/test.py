@@ -1,6 +1,6 @@
 import streamlit as st
 import csv
-       
+import StringIO       
 from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
 
