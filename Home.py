@@ -50,7 +50,7 @@ with st.sidebar:
             defined_agent = False
             #st.divider()
             #st.write('Simple:')
-            simple_enabled = True # Remove if returning to multi tool
+            simple_enabled = True #!!! Remove if returning to multi tool
             #simple_enabled = st.checkbox('Open AI Only', value=True)
             #st.divider()
             #st.write('Advanced:')
@@ -69,7 +69,7 @@ with st.sidebar:
             defined_agent = True      
             #st.divider()
             #st.write('Simple:')
-            simple_enabled = False # Remove if reutning to multi tool
+            simple_enabled = False #!!! Remove if reutning to multi tool
             #simple_enabled = st.checkbox('Open AI Only', value=False, disabled=True)
             #st.divider()
             #st.write('Advanced:')
@@ -114,6 +114,7 @@ tools = []
 
 
 # Web Search
+search_enabled = False #!!! Remove if retunrning to multi tool
 if search_enabled:
     search = DuckDuckGoSearchRun()
     tools = [
@@ -126,7 +127,7 @@ if search_enabled:
     tools.append(search)
 
 
-# Web Scrape
+# Web Scrape 
 class WebPageTool(BaseTool):
     name = "Get Webpage"
     description = "useful for when you need to get up to date content from a specific webpage"
@@ -147,6 +148,8 @@ class WebPageTool(BaseTool):
     
     def _arun(self, webpage: str):
         raise NotImplementedError("This tool does not support async")
+        
+scrape_enabled = False #!!! Remove if retunrning to multi tool
 if scrape_enabled:
     scrape = WebPageTool()
     tools.append(scrape)
