@@ -1,9 +1,9 @@
 import streamlit as st
 import csv
-import StringIO       
+    
 from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
-
+from io import StringIO
 
 st.title('AI Transcript Assistant')
 
@@ -17,12 +17,12 @@ master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 uploaded_file = st.file_uploader("Upload a CSV file")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
-    #st.write(bytes_data)
+    st.write(bytes_data)
     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    #st.write(stringio)
+    st.write(stringio)
     string_data = stringio.read()
     #st.write(string_data)
-    df = pd.read_csv(uploaded_file)
+    #df = pd.read_csv(uploaded_file)
     #st.write("Active CSV: " + string_data)       
        #file = open("uploaded_file.csv", "r")
        #raw_data = list(csv.reader(file, delimiter=","))
