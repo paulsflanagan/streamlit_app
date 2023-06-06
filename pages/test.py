@@ -48,9 +48,7 @@ task = st.text_area('Write your prompt here:', height=400, value='''
 <Query_Resolved> Was the customer query resolved?
 <Reason_for_Unresolved> Why do you think the sale was resolved?
 <Agent_Summary> Summarise what the agent did in this conversation?
-</Conversation>
-
-''')
+</Conversation>''')
 
 
 if st.button('Go'):
