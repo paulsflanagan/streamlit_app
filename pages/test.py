@@ -47,7 +47,7 @@ task = """
 
 """  
 
-if st.button('Go')
+if st.button('Go'):
 
     for x in range(len(raw_data)):
       print("Executing: " + str(x + 1) + " of " + str(len(raw_data)-1) + " : " + str(round(((x)/len(raw_data))*100)) +"% Complete ")
