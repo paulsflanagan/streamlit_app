@@ -16,7 +16,7 @@ master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 
 uploaded_file = st.file_uploader("Upload a CSV file")
 if uploaded_file is not None:
-       file = open("Import.csv", "r")
+       file = open("uploaded_file.csv", "r")
        raw_data = list(csv.reader(file, delimiter=","))
        file.close()
 
