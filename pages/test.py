@@ -17,11 +17,13 @@ master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 
 uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
+    
     try:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        bytes_data = uploaded_file.getvalue()
     except UnicodeDecodeError:
         st.write("Error Decoding CSV - Ensure export is utf-8")
+        
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     string_data = stringio.read()
     df = pd.read_csv(uploaded_file)
     df.columns = ['Conversation ID', 'Transcript']
