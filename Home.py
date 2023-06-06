@@ -50,6 +50,7 @@ with st.sidebar:
             defined_agent = False
             #st.divider()
             #st.write('Simple:')
+            simple_emables = True # Remove if returning to multi tool
             #simple_enabled = st.checkbox('Open AI Only', value=True)
             #st.divider()
             #st.write('Advanced:')
