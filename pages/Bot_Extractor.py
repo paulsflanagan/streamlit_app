@@ -14,3 +14,4 @@ if uploaded_file is not None:
     data = json.loads(string_data)
 
 
+#st.json()
