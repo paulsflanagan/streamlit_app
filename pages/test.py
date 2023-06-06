@@ -3,7 +3,7 @@ import csv
     
 from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
-#from io import StringIO
+from io import StringIO
 
 st.title('AI Transcript Assistant')
 
@@ -17,7 +17,7 @@ master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
-    st.write(bytes_data)
+    #st.write(bytes_data)
     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     st.write(stringio)
     string_data = stringio.read()
