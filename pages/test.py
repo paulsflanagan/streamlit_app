@@ -26,7 +26,7 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     df.columns = ['Conversation ID', 'Transcript']
     #st.write("Active CSV: " + string_data)
-    st.write("Test: " + df['Conversation ID'][0] + df['Transcript'][0])]
+    st.write("Test: " + df['Conversation ID'][0] + df['Transcript'][0])
 
        #print("First Conversation ID: " + raw_data[0][0])
        #print("Last Conversation ID: " + raw_data[len(raw_data)-1][0])
