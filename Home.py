@@ -40,7 +40,7 @@ st.title('AI Assistant')
 
 with st.sidebar:
         st.title('Settings:')
-        st.text("User: " + st.experimental_user['email'])
+        st.text("User: " + str(st.experimental_user['email']))
         st.divider()
         agent_type = st.selectbox(
             'Agent Type:',
