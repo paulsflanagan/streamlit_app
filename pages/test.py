@@ -37,7 +37,6 @@ if uploaded_file is not None:
 # Task
 
 task = st.text_area('Write your prompt here:','''
-
 <Conversation>
   <Conversation_id> What is the Conversation ID? 
   <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
