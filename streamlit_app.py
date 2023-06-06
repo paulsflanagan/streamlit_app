@@ -41,7 +41,6 @@ st.title('AI Assistant')
 with st.sidebar:
         st.title('Settings:')
         st.text("")
-        st.text("")
         st.text('Version: Alpha 5.1.3')
         st.text("User: " + st.experimental_user['email'])
         st.divider()
