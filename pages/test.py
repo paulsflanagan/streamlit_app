@@ -50,8 +50,7 @@ task = st.text_area('Write your prompt here:', height=1000,'''
   <Agent_Summary> Summarise what the agent did in this conversation?
 </Conversation>
 
-'''
-)
+''')
 
 
 if st.button('Go'):
