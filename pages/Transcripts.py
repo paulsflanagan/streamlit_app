@@ -52,46 +52,48 @@ task = st.text_area('Write your questions here:', height=400, value='''
 
 t = st.empty()
 if st.button('Analyse'):
-    for x in range(df.shape[0]):
-      t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
-      transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
-      template = """
-      % INSTRUCTIONS
-       - You are an AI Bot that is very good at analysing conversation transcripts
-       - Your goal is to find relevant information from the transcript
-       - Do not go outside the transcript provided
-       - Output in an xml format with the questions as the headers. Do not Output [<?xml version="1.0" encoding="UTF-8"?>]. Do not output a Root Node
+    if uploaded_file is not None:
+        for x in range(df.shape[0]):
+          t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
+          transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
+          template = """
+          % INSTRUCTIONS
+           - You are an AI Bot that is very good at analysing conversation transcripts
+           - Your goal is to find relevant information from the transcript
+           - Do not go outside the transcript provided
+           - Output in an xml format with the questions as the headers. Do not Output [<?xml version="1.0" encoding="UTF-8"?>]. Do not output a Root Node
 
-      % Transcript for Analysis:
-      {transcript}
+          % Transcript for Analysis:
+          {transcript}
 
-      % YOUR TASK
-      {task}
+          % YOUR TASK
+          {task}
 
-      """
+          """
 
-      prompt = PromptTemplate(
-          input_variables=["transcript","task"],
-          template=template,
-      )
+          prompt = PromptTemplate(
+              input_variables=["transcript","task"],
+              template=template,
+          )
 
-      final_prompt = prompt.format(transcript=transcript,task=task)
+          final_prompt = prompt.format(transcript=transcript,task=task)
 
-      try:
-        data = llm.predict(final_prompt)
-        master_xml = master_xml + '\n' + data
-      except:
-        st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x])
+          try:
+            data = llm.predict(final_prompt)
+            master_xml = master_xml + '\n' + data
+          except:
+            st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x])
 
-    master_xml = master_xml + '\n</Analysis>'
-    
-    t.write("Analysis Completed")
-    
-    # Download the Result
-    strip_file_name = uploaded_file.name[:-4]
-    export_file_name = "AT - " + strip_file_name + ".xml"
-    st.download_button('Download Output', data=master_xml, file_name=export_file_name)
+        master_xml = master_xml + '\n</Analysis>'
 
+        t.write("Analysis Completed")
+
+        # Download the Result
+        strip_file_name = uploaded_file.name[:-4]
+        export_file_name = "AT - " + strip_file_name + ".xml"
+        st.download_button('Download Output', data=master_xml, file_name=export_file_name)
+    else:
+        st.write("No Data Set to Analyse")
 
 
 
