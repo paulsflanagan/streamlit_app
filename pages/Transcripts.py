@@ -81,7 +81,7 @@ if st.button('Analyse'):
         data = llm.predict(final_prompt)
         master_xml = master_xml + '\n' + data
       except:
-        st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x))
+        st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x])
 
     master_xml = master_xml + '\n</Analysis>'
     
