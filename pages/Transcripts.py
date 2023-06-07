@@ -88,8 +88,8 @@ if st.button('Analyse'):
     t.write("Analysis Completed")
     
     # Download the Result
-    
-    st.download_button('Download Output', data=master_xml, file_name="Export1234.xml")
+    export_file_name = uploaded_file.name + ".xml"
+    st.download_button('Download Output', data=master_xml, file_name=export_file_name)
 
 
 
