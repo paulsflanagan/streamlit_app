@@ -4,7 +4,7 @@ import json
 from io import StringIO
 
 
-st.title('Bot Extractor')
+st.title('Bot Extractor - JSON Test')
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
