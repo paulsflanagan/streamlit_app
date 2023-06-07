@@ -11,7 +11,7 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     string_data = stringio.read()
-    data = jsons.load(string_data.read())
+    data = json.load(string_data.read())
 
 
 #st.json()
