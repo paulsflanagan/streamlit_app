@@ -50,11 +50,11 @@ task = st.text_area('Write your questions here:', height=400, value='''
 <J_Agent_Summary> Summarise what the agent did in this conversation?
 </Conversation>''')
 
-
+t = st.empty()
 if st.button('Analyse'):
-
+    t.write('Running your request')
     for x in range(df.shape[0]):
-      st.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
+      t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
       transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
       template = """
       % INSTRUCTIONS
@@ -82,11 +82,11 @@ if st.button('Analyse'):
         data = llm.predict(final_prompt)
         master_xml = master_xml + '\n' + data
       except:
-        print("Error From Open AI - Token Count too high")
+        st.write("Error From Open AI - Token count too high")
 
     master_xml = master_xml + '\n</Analysis>'
 
-    st.write(master_xml)
+    #st.write(master_xml)
     
     # Download the Result
     
