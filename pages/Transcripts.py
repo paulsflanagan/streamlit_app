@@ -84,7 +84,8 @@ if st.button('Analyse'):
         st.write("Error From Open AI - Token count too high")
 
     master_xml = master_xml + '\n</Analysis>'
-
+    
+     t.write("Analysis Completed")
     #st.write(master_xml)
     
     # Download the Result
