@@ -81,11 +81,11 @@ if st.button('Analyse'):
         data = llm.predict(final_prompt)
         master_xml = master_xml + '\n' + data
       except:
-        st.write("Error From Open AI - Token count too high")
+        st.write("Error From Open AI - Token count too high for Conversation: " + x)
 
     master_xml = master_xml + '\n</Analysis>'
     
-     t.write("Analysis Completed")
+    t.write("Analysis Completed")
     #st.write(master_xml)
     
     # Download the Result
