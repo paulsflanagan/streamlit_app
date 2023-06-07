@@ -88,7 +88,8 @@ if st.button('Analyse'):
     t.write("Analysis Completed")
     
     # Download the Result
-    export_file_name = "AT - " + uploaded_file.name.rstrip(foo[-4:] + ".xml"
+    strip_file_name = uploaded_file.name[:-4]
+    export_file_name = "AT - " + strip_file_name + ".xml"
     st.download_button('Download Output', data=master_xml, file_name=export_file_name)
 
 
