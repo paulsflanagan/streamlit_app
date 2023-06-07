@@ -52,7 +52,6 @@ task = st.text_area('Write your questions here:', height=400, value='''
 
 t = st.empty()
 if st.button('Analyse'):
-    t.write('Running your request')
     for x in range(df.shape[0]):
       t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
       transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
