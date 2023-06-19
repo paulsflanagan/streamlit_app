@@ -6,7 +6,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
 from io import StringIO
 
-st.title('AI Transcript Analysis')
+st.title('AI Transcript Analysis - Test')
 
 
 llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
@@ -90,7 +90,7 @@ if st.button('Analyse'):
 
         # Download the Result
         strip_file_name = uploaded_file.name[:-4]
-        export_file_name = "AT - " + strip_file_name + ".csv"
+        export_file_name = "AT Output - " + strip_file_name + ".csv"
         df_out = pd.read_xml(master_xml)
         csv_ouput = df_out.to_csv()
         st.download_button('Download Output', data=csv_ouput, file_name=export_file_name)
