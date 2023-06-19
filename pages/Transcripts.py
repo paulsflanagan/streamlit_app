@@ -90,8 +90,10 @@ if st.button('Analyse'):
 
         # Download the Result
         strip_file_name = uploaded_file.name[:-4]
-        export_file_name = "AT - " + strip_file_name + ".xml"
-        st.download_button('Download Output', data=master_xml, file_name=export_file_name)
+        export_file_name = "AT - " + strip_file_name + ".csv"
+        df_out = pd.read_xml(master_xml)
+        csv_ouput = df_out.to_csv()
+        st.download_button('Download Output', data=csv_ouput, file_name=export_file_name)
     else:
         st.write("No Data Set to Analyse")
 
