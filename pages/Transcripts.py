@@ -38,16 +38,16 @@ if uploaded_file is not None:
 
 task = st.text_area('Write your questions here:', height=400, value='''
 <Conversation>
-<A_Conversation_id> What is the Conversation ID? 
-<B_Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
-<C_Sub_Intent> What is the Sub Intent?
-<D_Sale_Made> Was a sale made?
-<E_Reason_for_No_Sale> Why do you think a sale was made?
-<F_Product_or_Device> What product or device is the customer discussing?
-<G_Information_Asked> Summarise the information the agent asked for?
-<H_Query_Resolved> Was the customer query resolved?
-<I_Reason_for_Unresolved> Why do you think the sale was resolved?
-<J_Agent_Summary> Summarise what the agent did in this conversation?
+<Conversation_id> What is the Conversation ID? 
+<Intent> What is the Intent of the conversation? [Purchase, Upgrade, MagicMobile, Customer Support, Refund, Billing, Unknown]
+<Sub_Intent> What is the Sub Intent?
+<Sale_Made> Was a sale made?
+<Reason_for_Sale> Why do you think a sale was made?
+<Product_or_Device> What product or device is the customer discussing?
+<Information_Asked> Summarise the information the agent asked for?
+<Query_Resolved> Was the customer query resolved?
+<Reason_for_Unresolved> Why do you think the sale was resolved?
+<Agent_Summary> Summarise what the agent did in this conversation?
 </Conversation>''')
 
 t = st.empty()
