@@ -6,7 +6,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
 from io import StringIO
 
-st.title('AI Transcript Analysis - Test')
+st.title('AI Transcript Analysis')
 
 
 llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
