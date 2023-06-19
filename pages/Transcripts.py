@@ -41,12 +41,12 @@ task = st.text_area('Write your questions here:', height=400, value='''
 <Conversation_id> What is the Conversation ID? 
 <Intent> What is the Intent of the conversation? [Purchase, Upgrade, MagicMobile, Customer Support, Refund, Billing, Unknown]
 <Sub_Intent> What is the Sub Intent?
-<Sale_Made> Was a sale made?
-<Reason_for_Sale> Why do you think a sale was made?
+<Sale_Made> Was a sale made by the agent?
+<Reason_for_Sale_Answer> Explain why you believe a sale was made?
 <Product_or_Device> What product or device is the customer discussing?
 <Information_Asked> Summarise the information the agent asked for?
 <Query_Resolved> Was the customer query resolved?
-<Reason_for_Unresolved> Why do you think the sale was resolved?
+<Reason_for_Resolution_Answer> Explain why you believe the customer query was resolved or not resolved?
 <Agent_Summary> Summarise what the agent did in this conversation?
 </Conversation>''')
 
