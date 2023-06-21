@@ -61,6 +61,7 @@ if st.button('Analyse'):
            - You are an AI Bot that is very good at analysing conversation transcripts
            - Your goal is to find relevant information from the transcript
            - Do not go outside the transcript provided
+           - Use only the xml tags provided in the task
            - Output in an xml format with the questions as the headers. Do not Output [<?xml version="1.0" encoding="UTF-8"?>]. Do not output a Root Node
 
           % Transcript for Analysis:
