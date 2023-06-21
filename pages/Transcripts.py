@@ -90,11 +90,20 @@ if st.button('Analyse'):
         t.write("Analysis Completed")
 
         # Download the Result
-        strip_file_name = uploaded_file.name[:-4]
-        export_file_name = "AT Output - " + strip_file_name + ".csv"
-        df_out = pd.read_xml(master_xml)
-        csv_ouput = df_out.to_csv()
-        st.download_button('Download Output', data=csv_ouput, file_name=export_file_name)
+        try:
+            strip_file_name = uploaded_file.name[:-4]
+            export_file_name = "AT Output - " + strip_file_name + ".csv"
+            df_out = pd.read_xml(master_xml)
+            csv_ouput = df_out.to_csv()
+            st.download_button('Download Output - CSV', data=csv_ouput, file_name=export_file_name)
+        except:
+            strip_file_name = uploaded_file.name[:-4]
+            export_file_name = "AT Output - " + strip_file_name + ".xml"
+            #df_out = pd.read_xml(master_xml)
+            #csv_ouput = df_out.to_csv()
+            st.write("Error Encoding CSV - Outputting as XML")
+            st.download_button('Download Output - XML', data=master_xml, file_name=export_file_name)
+            
     else:
         st.write("No Data Set to Analyse")
 
