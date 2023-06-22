@@ -62,6 +62,7 @@ if st.button('Analyse'):
            - Your goal is to find relevant information from the transcript
            - Do not go outside the transcript provided
            - Use only the xml tags provided in the task and do not duplicate them
+           - Do not use a new line charachter
            - Output in an xml format with the questions as the headers. Do not Output [<?xml version="1.0" encoding="UTF-8"?>]. Do not output a Root Node
 
           % Transcript for Analysis:
