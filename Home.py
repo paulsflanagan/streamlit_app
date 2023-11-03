@@ -8,7 +8,7 @@ from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.agents import Tool
 #from langchain.agents.agent_toolkits import create_python_agent
-from langchain.agents import create_pandas_dataframe_agent
+#from langchain.agents import create_pandas_dataframe_agent
 from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
 from langchain.tools.python.tool import PythonREPLTool
@@ -209,20 +209,20 @@ if defined_agent:
         if agent_type == 'Math Agent':
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
-        if agent_type == 'Pandas Agent':
-                try:
-                        if uploaded_file is not None:
-                                bytes_data = uploaded_file.getvalue()
+        #if agent_type == 'Pandas Agent':
+                #try:
+                       # if uploaded_file is not None:
+                                #bytes_data = uploaded_file.getvalue()
                                 #st.write(bytes_data)
-                                stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+                                #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
                                 #st.write(stringio)
-                                string_data = stringio.read()
+                                #string_data = stringio.read()
                                 #st.write(string_data)
-                                df = pd.read_csv(uploaded_file)
+                                #df = pd.read_csv(uploaded_file)
                                 #st.write("Active CSV: " + string_data)
-                        agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=temperature), df, verbose=True)
-                except:
-                        st.write('No DataFrame')
+                        #agent_executor = create_pandas_dataframe_agent(OpenAI(temperature=temperature), df, verbose=True)
+               # except:
+                        #st.write('No DataFrame')
                 
         if prompt:
                 #response = agent_executor.run(prompt)
