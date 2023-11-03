@@ -7,7 +7,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.agents import Tool
-from langchain.agents.agent_toolkits import create_python_agent
+#from langchain.agents.agent_toolkits import create_python_agent
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.tools import BaseTool
 from langchain.agents import initialize_agent
@@ -202,10 +202,10 @@ if advanced_enabled:
 
 if defined_agent:
         if agent_type == 'Python Agent':
-                agent_executor = create_python_agent(
-                llm=OpenAI(temperature=temperature, max_tokens=max_tokens),
-                tool=PythonREPLTool(),
-                verbose=True)
+                #agent_executor = create_python_agent(
+                #llm=OpenAI(temperature=temperature, max_tokens=max_tokens),
+                #tool=PythonREPLTool(),
+                #verbose=True)
         if agent_type == 'Math Agent':
                 llm=OpenAI(temperature=temperature, max_tokens=max_tokens)
                 agent_executor = LLMMathChain.from_llm(llm, verbose=True)
