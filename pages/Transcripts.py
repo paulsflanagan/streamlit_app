@@ -34,26 +34,63 @@ if uploaded_file is not None:
         st.write("Conversation Count: " + str(df.shape[0]))
     except UnicodeDecodeError:
         st.write("Error Decoding CSV - Ensure encoding is utf-8")
-        
-    
 
 
 
-# Task
+# Build Strings For Prompt
 
-task = st.text_area('Write your questions here:', height=400, value='''
+instructions = """
+
+% INSTRUCTIONS
+   - You are an AI Bot that is very good at analysing conversation transcripts
+   - Your goal is to find relevant information from the transcript
+   - Do not Output [<?xml version="1.0" encoding="UTF-8"?>]
+   - Do not go outside the transcript provided
+   - For every opening tag you must add a closing tag
+   - Only use the opening tags provided.
+   - Do not invent new tags
+   - Output in xml
+
+
+"""
+
+transcriptTitle = """
+
+% TRANSCRIPT
+
+"""
+
+questionsTitle = '''
+
+% QUESTIONS
+
+'''
+
+questions = st.text_area('Write your questions here:', height=400, value='''
+
 <Conversation>
-<Conversation_id> What is the Conversation ID? 
-<Intent> What is the Intent of the conversation? [Purchase, Upgrade, MagicMobile, Customer Support, Refund, Billing, Unknown]
-<Sub_Intent> What is the Sub Intent?
-<Sale_Made> Was a sale made by the agent?
-<Reason_for_Sale_Answer> Explain why you believe a sale was made?
-<Product_or_Device> What product or device is the customer discussing?
-<Information_Asked> Summarise the information the agent asked for?
-<Query_Resolved> Was the customer query resolved?
-<Reason_for_Resolution_Answer> Explain why you believe the customer query was resolved or not resolved?
-<Agent_Summary> Summarise what the agent did in this conversation?
-</Conversation>''')
+  <Conversation_id> What is the Conversation ID?
+  <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
+  <Sub_Intent> What is the Sub Intent?
+  <Sale_Made> Was a sale made?
+  <Reason_for_No_Sale> Why do you think a sale was made? 
+  <Product_or_Device> What product or device is the customer discussing?
+  <Information_Asked> Summarise the information the agent asked for?
+  <Query_Resolved> Was the customer query resolved?
+  <Reason_for_Unresolved> Why do you think the sale was resolved?
+  <Agent_Summary> Summarise what the agent did in this conversation?
+</Conversation>
+
+''')
+
+trigger = """
+
+Run your Instructions
+
+"""
+
+
+
 
 t = st.empty()
 if st.button('Analyse'):
