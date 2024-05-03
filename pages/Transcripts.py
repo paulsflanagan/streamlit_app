@@ -2,16 +2,13 @@ import streamlit as st
 import csv
 import pandas as pd
 from openai import AzureOpenAI
-#from langchain.chat_models import ChatOpenAI
-#from langchain import PromptTemplate
 from io import StringIO
 
 st.title('Transcript AI Annotator')
 
 st.write("Paul:", st.secrets["paul"])
 
-#llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
-master_xml = '<Analysis>'
+master_xml = '\n<Analysis>'
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
@@ -65,22 +62,18 @@ questionsTitle = '''
 
 '''
 
-questions = st.text_area('Write your questions here:', height=400, value='''
-
-<Conversation>
+questions = st.text_area('Write your questions here:', height=400, value='''<Conversation>
   <Conversation_id> What is the Conversation ID?
   <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
   <Sub_Intent> What is the Sub Intent?
   <Sale_Made> Was a sale made?
   <Reason_for_No_Sale> Why do you think a sale was made? 
   <Product_or_Device> What product or device is the customer discussing?
-  <Information_Asked> Summarise the information the agent asked for?
+  <Information_Asked> Summarise in a sentence the information the agent asked for?
   <Query_Resolved> Was the customer query resolved?
   <Reason_for_Unresolved> Why do you think the sale was resolved?
-  <Agent_Summary> Summarise what the agent did in this conversation?
-</Conversation>
-
-''')
+  <Agent_Summary> Summarise in a sentence what the agent did in this conversation?
+</Conversation>''')
 
 trigger = """
 
