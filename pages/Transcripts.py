@@ -11,7 +11,7 @@ st.title('Transcript AI Annotator')
 st.write("Paul:", st.secrets["paul"])
 
 #llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
-#master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
+master_xml = ''
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
