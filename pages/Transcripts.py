@@ -106,8 +106,8 @@ if st.button('Analyse'):
         master_xml = master_xml.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
         master_xml = master_xml.replace('```xml', '')
         master_xml = master_xml.replace('```', '')
-        master_xml = master_xml.replace('\n', '')
-        master_xml = master_xml.replace('>  <', '><')
+        #master_xml = master_xml.replace('\n', '')
+        #master_xml = master_xml.replace('>  <', '><')
         master_xml = '<?xml version="1.0" encoding="UTF-8"?>' + master_xml
             
         t.write("Analysis Completed")
