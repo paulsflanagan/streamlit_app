@@ -6,8 +6,6 @@ from io import StringIO
 
 st.title('Transcript AI Annotator')
 
-st.write("Paul:", st.secrets["paul"])
-
 master_xml = '\n<Analysis>'
 
 client = AzureOpenAI(
@@ -85,7 +83,7 @@ Run your Instructions
 t = st.empty()
 if st.button('Analyse'):
     if uploaded_file is not None:
-        for x in range(df.shape[0]-40):
+        for x in range(df.shape[0]-41):
             t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
             transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
             prompt = instructions + transcriptTitle + transcript + questionsTitle + questions;
@@ -106,8 +104,6 @@ if st.button('Analyse'):
         master_xml = master_xml.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
         master_xml = master_xml.replace('```xml', '')
         master_xml = master_xml.replace('```', '')
-        #master_xml = master_xml.replace('\n', '')
-        #master_xml = master_xml.replace('>  <', '><')
         master_xml = '<?xml version="1.0" encoding="UTF-8"?>' + master_xml
             
         t.write("Analysis Completed")
@@ -124,7 +120,7 @@ if st.button('Analyse'):
             export_file_name = "AT Output - " + strip_file_name + ".xml"
             #df_out = pd.read_xml(master_xml)
             #csv_ouput = df_out.to_csv()
-            st.write("Error Encoding CSV - Outputting as XML")
+            #st.write("Error Encoding CSV - Outputting as XML")
             st.download_button('Download Output - XML', data=master_xml, file_name=export_file_name)
             
     else:
