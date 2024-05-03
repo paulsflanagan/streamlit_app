@@ -41,7 +41,7 @@ instructionsTitle = """
 
 """
 
-instructions = st.text_area('Write your instructions here:', height=400, value="""- You are an AI Bot that is very good at analysing conversation transcripts
+instructions = st.text_area('Write your instructions here:', height=250, value="""- You are an AI Bot that is very good at analysing conversation transcripts
    - Your goal is to find relevant information from the transcript
    - Only use information in the transcript provided
    - For every opening tag you must add a closing tag
