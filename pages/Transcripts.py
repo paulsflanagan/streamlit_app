@@ -46,7 +46,7 @@ instructions = st.text_area('Write your instructions here:', height=400, value="
    - Only use information in the transcript provided
    - For every opening tag you must add a closing tag
    - Only use the tags provided. Do not create new tags
-   - Output in xml"""
+   - Output in xml""")
 
 transcriptTitle = """
 
