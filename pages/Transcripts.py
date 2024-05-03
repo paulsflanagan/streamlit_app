@@ -45,11 +45,9 @@ instructions = """
 % INSTRUCTIONS
    - You are an AI Bot that is very good at analysing conversation transcripts
    - Your goal is to find relevant information from the transcript
-   - Do not Output [<?xml version="1.0" encoding="UTF-8"?>]
-   - Do not go outside the transcript provided
+   - Only use information in the transcript provided
    - For every opening tag you must add a closing tag
-   - Only use the opening tags provided.
-   - Do not invent new tags
+   - Only use the tags provided. Do not create new tags
    - Output in xml
 
 
