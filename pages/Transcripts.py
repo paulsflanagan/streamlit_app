@@ -11,7 +11,7 @@ st.title('Transcript AI Annotator')
 st.write("Paul:", st.secrets["paul"])
 
 #llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
-master_xml = ''
+master_xml = '<Analysis>'
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
@@ -94,7 +94,7 @@ Run your Instructions
 t = st.empty()
 if st.button('Analyse'):
     if uploaded_file is not None:
-        for x in range(df.shape[0]):
+        for x in range(df.shape[0]-40):
             t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
             transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
             prompt = instructions + transcriptTitle + transcript + questionsTitle + questions;
@@ -110,11 +110,12 @@ if st.button('Analyse'):
                 master_xml = master_xml + '\n' + completion.choices[0].message.content
             except:
                 st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x])
-            master_xml = master_xml + '\n</Analysis>'
-            master_xml = master_xml.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
-            master_xml = master_xml.replace('```xml', '')
-            master_xml = master_xml.replace('```', '')
-            master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>' + master_xml
+            
+        master_xml = master_xml + '\n</Analysis>'
+        master_xml = master_xml.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
+        master_xml = master_xml.replace('```xml', '')
+        master_xml = master_xml.replace('```', '')
+        master_xml = '<?xml version="1.0" encoding="UTF-8"?>' + master_xml
             
         t.write("Analysis Completed")
 
