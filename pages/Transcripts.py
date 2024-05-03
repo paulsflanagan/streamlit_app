@@ -1,7 +1,7 @@
 import streamlit as st
 import csv
 import pandas as pd
-    
+from openai import AzureOpenAI
 #from langchain.chat_models import ChatOpenAI
 #from langchain import PromptTemplate
 from io import StringIO
@@ -12,6 +12,11 @@ st.title('Transcript AI Annotator')
 #llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
 #master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>'
 
+client = AzureOpenAI(
+    api_key=st.secrets["api_key"],
+    api_version=st.secrets["api_version"],
+    azure_endpoint=st.secrets["azure_endpoint"]
+)
 
 # Upload CSV
 
