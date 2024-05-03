@@ -35,18 +35,18 @@ if uploaded_file is not None:
 
 # Build Strings For Prompt
 
-instructions = """
+instructionsTitle = """
 
 % INSTRUCTIONS
-   - You are an AI Bot that is very good at analysing conversation transcripts
+
+"""
+
+instructions = st.text_area(= """- You are an AI Bot that is very good at analysing conversation transcripts
    - Your goal is to find relevant information from the transcript
    - Only use information in the transcript provided
    - For every opening tag you must add a closing tag
    - Only use the tags provided. Do not create new tags
-   - Output in xml
-
-
-"""
+   - Output in xml"""
 
 transcriptTitle = """
 
@@ -86,7 +86,7 @@ if st.button('Analyse'):
         for x in range(df.shape[0]-41):
             t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
             transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
-            prompt = instructions + transcriptTitle + transcript + questionsTitle + questions;
+            prompt = instructionsTitle + instructions + transcriptTitle + transcript + questionsTitle + questions;
             try:
                 # Run Completion
                 completion = client.chat.completions.create(
