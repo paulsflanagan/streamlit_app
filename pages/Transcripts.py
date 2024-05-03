@@ -90,46 +90,31 @@ Run your Instructions
 """
 
 
-
-
 t = st.empty()
 if st.button('Analyse'):
     if uploaded_file is not None:
         for x in range(df.shape[0]):
-          t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
-          transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
-          template = """
-          % INSTRUCTIONS
-           - You are an AI Bot that is very good at analysing conversation transcripts
-           - Your goal is to find relevant information from the transcript
-           - Do not go outside the transcript provided
-           - Use only the xml tags provided in the task and do not duplicate them
-           - Do not use a new line charachter
-           - Output in an xml format with the questions as the headers. Do not Output [<?xml version="1.0" encoding="UTF-8"?>]. Do not output a Root Node
-
-          % Transcript for Analysis:
-          {transcript}
-
-          % YOUR TASK
-          {task}
-
-          """
-
-          prompt = PromptTemplate(
-              input_variables=["transcript","task"],
-              template=template,
-          )
-
-          final_prompt = prompt.format(transcript=transcript,task=task)
-
-          try:
-            data = llm.predict(final_prompt)
-            master_xml = master_xml + '\n' + data
-          except:
-            st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x])
-
-        master_xml = master_xml + '\n</Analysis>'
-
+            t.write("Executing: " + str(x + 1) + " of " + str(df.shape[0]) + " : " + str(round(((x)/df.shape[0])*100)) +"% Complete ")
+            transcript = "Conversation ID: " + df['Conversation ID'][x] + "\n" + df['Transcript'][x]
+            prompt = instructions + transcriptTitle + transcript + questionsTitle + questions;
+            try:
+                # Run Completion
+                completion = client.chat.completions.create(
+                    model='llmgateway-text-35turbo-1106-model',
+                    messages=[
+                        {"role": "system", "content": prompt},
+                        {"role": "user", "content": trigger}
+                    ]
+                )
+                master_xml = master_xml + '\n' + completion.choices[0].message.content
+            except:
+                st.write("Error From Open AI - Token count too high for Conversation: " + str(x) + " : " + df['Conversation ID'][x])
+            master_xml = master_xml + '\n</Analysis>'
+            master_xml = master_xml.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
+            master_xml = master_xml.replace('```xml', '')
+            master_xml = master_xml.replace('```', '')
+            master_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Analysis>' + master_xml
+            
         t.write("Analysis Completed")
 
         # Download the Result
