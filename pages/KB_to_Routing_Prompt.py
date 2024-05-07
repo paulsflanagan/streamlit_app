@@ -80,7 +80,7 @@ if uploaded_file is not None:
             detail = str(detail).replace("\n", ". ").replace("\"", "\\\"")
 
             article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}\n\nIntent and Description List: '
-            print(f"{i}/{len(rows)}")
+            #print(f"{i}/{len(rows)}")
             possible_intents = call_oai(article_data, sPromptIntentsFromKB)
             generated_intents.append(possible_intents)
             
