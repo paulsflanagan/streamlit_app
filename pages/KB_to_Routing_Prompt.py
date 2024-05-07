@@ -17,7 +17,7 @@ client = AzureOpenAI(
 sPromptIntentsFromKB = """
 Your job is to analyze the following article and provide an intent and description that could be served by that article.
 An intent is a short phrase (5 words or less) that describes something that a customer could want to do. 
-A description is a sentence that describes what the user is doing in detail.
+A description is a sentence that describes what the user is wanting to do in detail.
 You should return each intent and description in this format: Intent:<intent name>\nDescription:<description>"""
 sPromptRoutesFromIntent = ""
 
