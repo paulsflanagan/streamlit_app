@@ -58,11 +58,11 @@ if uploaded_file is not None:
         
         #st.write(reader)
 
-        if st.button("Run"):
+        #if st.button("Run"):
         
             #rows = list(reader)
-            intent_data = []
-            armed = False
+            #intent_data = []
+            #armed = False
     
             #for i, row in enumerate(rows): // Ethans
             #for z in range(df.shape[1]):
@@ -72,29 +72,29 @@ if uploaded_file is not None:
             #st.write("INTEND DATA" + str(intent_data))
             
                 
-            for x in range(df.shape[1]):
-                phrases = []
-                for y in range(df.shape[0]):
+            #for x in range(df.shape[1]):
+                #phrases = []
+                #for y in range(df.shape[0]):
                     #st.write(df[x].iloc[y])
                     #for i, row in enumerate(rows): // Ethans
                     # First row has intent names
                     #if len(row) == 0:
                         #if len(row) == 0:
                         #continue
-                    if df[x][y] == "SampleSentences": 
+                    #if df[x][y] == "SampleSentences": 
                         #if row[intent_data[0]['intent']] == "SampleSentences": 
                         #st.write("FOUND IT!!!! ::::" + df[x][y])
-                        armed = True
-                        continue
+                        #armed = True
+                        #continue
                         #pd.isnull(df.at[2, 'Salary']
-                    if pd.isnull(df.at[y,x]):
-                        armed = False
-                    if armed:
-                            phrases.append(df[x][y])
+                    #if pd.isnull(df.at[y,x]):
+                        #armed = False
+                   # if armed:
+                            #phrases.append(df[x][y])
                             
                 #st.write(str(phrases))
-                istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
-                intent_data.append(istruct)
+                #istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
+                #intent_data.append(istruct)
             #st.write("INTEND DATA" + str(intent_data))
                             #for intent_elem in intent_data:
                             #intent_elem['phrases'].append(row[intent_elem['intent']])
