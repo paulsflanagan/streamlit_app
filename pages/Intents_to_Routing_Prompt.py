@@ -84,10 +84,10 @@ if uploaded_file is not None:
                     armed = True
                     continue
                     #pd.isnull(df.at[2, 'Salary']
-                if pd.isnull(df.at[x][y]):
+                if pd.isnull(df.at[x,y]):
                     armed = False
                 if armed:
-                        phrases.append(df[x,y])
+                        phrases.append(df[x][y])
                         
             #st.write(str(phrases))
             istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
