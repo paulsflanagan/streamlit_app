@@ -14,14 +14,16 @@ client = AzureOpenAI(
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
+sPromptIntentsFromKB = "Your job is to analyze the following article and provide a list of possible intents and description that could be served by that article. An intent is a short phrase (5 words or less) that describes something that a customer could want to do. A description is a short sentence that describes what the user is doing. You should provide at least one and not more than 10 possible intents and decription for the article. You should return each intent and description in this format: 1. Intent:<intent name>\nDescription:<description>\n2. Intent:..."
+sPromptRoutesFromIntent = ""
 
-def call_oai(prompt):
+def call_oai(prompt, systemPrompt):
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
     messages=[
         {
         "role": "system",
-        "content": "Your job is to describe what the user is trying to do given the follow examples input messages in a single sentenc. Your description should be at most 20 words."
+        "content": systemPrompt
         },
         {
         "role": "user",
@@ -41,7 +43,7 @@ def call_oai(prompt):
 
 # Upload CSV
 
-uploaded_file = st.file_uploader("Upload an Intents CSV file", accept_multiple_files=False)
+uploaded_file = st.file_uploader("Upload a Knoweldgebase CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     
     try:
@@ -50,9 +52,9 @@ if uploaded_file is not None:
         #string_data = stringio.read()
         df = pd.read_csv(uploaded_file, header=None)
 
-        #st.write(df)
+        st.write(df)
         
-        reader = csv.DictReader(df)
+        #reader = csv.DictReader(df)
         
         #st.write(reader)
 
