@@ -4,6 +4,7 @@ import csv
 import streamlit as st
 import pandas as pd
 from io import StringIO
+import numpy as np
 
 
 st.title('Intents To Routing Prompt')
@@ -82,7 +83,7 @@ if uploaded_file is not None:
                     #st.write("FOUND IT!!!! ::::" + df[x][y])
                     armed = True
                     continue
-                if df[x][y] == 'nan':
+                if np.isnan(df[x][y]):
                     armed = False
                 if armed:
                         phrases.append(df[x][y])
