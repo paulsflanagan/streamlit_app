@@ -69,6 +69,7 @@ if uploaded_file is not None:
         
             
         for x in range(df.shape[1]):
+            phrases = []
             for y in range(df.shape[0]):
                 #st.write(df[x].iloc[y])
                 #for i, row in enumerate(rows): // Ethans
@@ -83,9 +84,12 @@ if uploaded_file is not None:
                     continue
                 if armed:
                     if df[x][y] is not None:
-                        st.write("NOT YET ::::" + df[x][y])
+                        #st.write("NOT YET ::::" + df[x][y])
+                        #intent_elem['phrases'].append(row[intent_elem['intent']])
+                        phrases.append(df[x][y])
                     else:
                         armed = False
+                        st.write(str(phrases)
                         #for intent_elem in intent_data:
                             #intent_elem['phrases'].append(row[intent_elem['intent']])
         #amnt = len(intent_data)
