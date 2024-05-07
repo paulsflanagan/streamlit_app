@@ -62,20 +62,21 @@ if uploaded_file is not None:
         for x in range(df.shape[1]):
             for y in range(df.shape[0]):
                 st.write(df[x].iloc[y])
-        #for i, row in enumerate(rows):
+        #for i, row in enumerate(rows): // Ethans
             # First row has intent names
-            if not intent_data:
-                for elem in row.keys():
-                    istruct = {'intent': elem, 'phrases': []}
-                    intent_data.append(istruct)
-            if len(row) == 0:
-                continue
-            if row[intent_data[0]['intent']] == "SampleSentences": 
-                armed = True
-                continue
-            if armed:
-                for intent_elem in intent_data:
-                    intent_elem['phrases'].append(row[intent_elem['intent']])
+                if not intent_data:
+                    for z in range(df.shape[1]):
+                        istruct = {'intent': df[x].iloc[z], 'phrases': []}
+                        intent_data.append(istruct)
+                    st.write(intent_data)
+                if len(row) == 0:
+                    continue
+                if row[intent_data[0]['intent']] == "SampleSentences": 
+                    armed = True
+                    continue
+                if armed:
+                    for intent_elem in intent_data:
+                        intent_elem['phrases'].append(row[intent_elem['intent']])
         amnt = len(intent_data)
 
         st.write(amnt)
