@@ -15,7 +15,8 @@ client = AzureOpenAI(
 )
 
 sPromptIntentsFromKB = """
-Your job is to analyze the following article and provide a list of possible intents and description that could be served by that article. 
+Your job is to analyze the following article and provide a list of possible intents and description that could be served by that article.
+Do not duplicate intents and descriptions.
 An intent is a short phrase (5 words or less) that describes something that a customer could want to do. 
 A description is a sentence that describes what the user is doing. 
 You should provide at least one and not more than 10 possible intents and decription for the article. 
