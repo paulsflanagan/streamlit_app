@@ -99,19 +99,19 @@ if uploaded_file is not None:
 
         st.write(amnt)
             
-        #for i, intent_elem in enumerate(intent_data):
-            #intent_name = intent_elem['intent']
-            #if "MetaIntent" in intent_name:
-                #st.write(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
+        for i, intent_elem in enumerate(intent_data):
+            intent_name = intent_elem['intent']
+            if "MetaIntent" in intent_name:
+                st.write(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
                 #print(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
-                #continue
-            #route_name = intent_name.upper().replace(" ", "_")
-            #st.write(f"{i}/{amnt} Intent: {intent_elem['intent']}")
+                continue
+            route_name = intent_name.upper().replace(" ", "_")
+            st.write(f"{i}/{amnt} Intent: {intent_elem['intent']}")
             #print(f"{i}/{amnt} Intent: {intent_elem['intent']}")
-            #phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
-            #user_message = f"Examples of user messages: {phrases}"
-            #description = call_oai(user_message)
-            #st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
+            phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
+            user_message = f"Examples of user messages: {phrases}"
+            description = call_oai(user_message)
+            st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
             #prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
             
         #bytes_data = uploaded_file.getvalue()
