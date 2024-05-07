@@ -51,7 +51,7 @@ if uploaded_file is not None:
         #string_data = stringio.read()
         df = pd.read_csv(uploaded_file, header=None)
 
-        st.write(df)
+        #st.write(df)
         
         reader = csv.DictReader(df)
         
@@ -118,6 +118,7 @@ if uploaded_file is not None:
                 #st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
                 outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n"
                 #prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
+            st.write("OUTPUT:")
             st.write(outputString)
             strip_file_name = uploaded_file.name[:-5]
             export_file_name = "Exported Routing Prompt - " + strip_file_name + ".txt"
