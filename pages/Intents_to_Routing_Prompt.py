@@ -2,8 +2,8 @@ import json
 from openai import AzureOpenAI
 import csv
 import streamlit as st
-import pandas as pd
-from io import StringIO
+#import pandas as pd
+#from io import StringIO
 
 
 st.title('Intents To Routing Prompt')
