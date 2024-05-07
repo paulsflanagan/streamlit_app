@@ -108,8 +108,8 @@ if uploaded_file is not None:
                 if not desc and line:
                     if "Description:" in line:
                         desc = line.split("Description:")[1].strip()
-                    elif "-" in line:
-                          desc = line.split("-")[1].strip()
+                    #elif "-" in line:
+                          #desc = line.split("-")[1].strip()
                     elif ":" in line:
                           desc = line.split(":")[1].strip()
                     elif ":" in line:
