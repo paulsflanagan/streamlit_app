@@ -38,6 +38,19 @@ if uploaded_file is not None:
             if armed:
                 for intent_elem in intent_data:
                     intent_elem['phrases'].append(row[intent_elem['intent']])
+        amnt = len(intent_data)
+            
+        for i, intent_elem in enumerate(intent_data):
+            intent_name = intent_elem['intent']
+            if "MetaIntent" in intent_name: 
+                print(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
+                continue
+            route_name = intent_name.upper().replace(" ", "_")
+            print(f"{i}/{amnt} Intent: {intent_elem['intent']}")
+            phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
+            user_message = f"Examples of user messages: {phrases}"
+            description = call_oai(user_message)
+            prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
         #bytes_data = uploaded_file.getvalue()
         #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         #string_data = stringio.read()
