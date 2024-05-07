@@ -91,7 +91,7 @@ if uploaded_file is not None:
                         armed = False
                         st.write(str(phrases)
                         #for intent_elem in intent_data:
-                            #intent_elem['phrases'].append(row[intent_elem['intent']])
+                        #intent_elem['phrases'].append(row[intent_elem['intent']])
         #amnt = len(intent_data)
 
         #st.write(amnt)
