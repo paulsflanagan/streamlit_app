@@ -119,7 +119,7 @@ if uploaded_file is not None:
         st.write(outputString)
         strip_file_name = uploaded_file.name[:-5]
         export_file_name = "Exported Routing Prompt - " + strip_file_name + ".txt"
-        st.download_button('Download Output', data=str, file_name=export_file_name)
+        st.download_button('Download Output', data=outputString, file_name=export_file_name)
             
         #bytes_data = uploaded_file.getvalue()
         #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
