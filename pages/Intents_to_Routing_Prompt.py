@@ -95,9 +95,9 @@ if uploaded_file is not None:
         st.write("INTEND DATA" + str(intent_data))
                         #for intent_elem in intent_data:
                         #intent_elem['phrases'].append(row[intent_elem['intent']])
-        #amnt = len(intent_data)
+        amnt = len(intent_data)
 
-        #st.write(amnt)
+        st.write(amnt)
             
         #for i, intent_elem in enumerate(intent_data):
             #intent_name = intent_elem['intent']
