@@ -53,10 +53,8 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
 
         st.write(df)
-        
-        #reader = csv.DictReader(df)
-        
-        #st.write(reader)
+
+        generated_intents = []
 
         #if st.button("Run"):
         
@@ -72,7 +70,19 @@ if uploaded_file is not None:
             #st.write("INTEND DATA" + str(intent_data))
             
                 
-            #for x in range(df.shape[1]):
+            for x in range(df.shape[0]):
+                title = row['title']
+                summary = row['summary']
+                detail = row['detail']
+                category = row['category']
+                tags = row["detail"]
+                
+                st.write(df['title'].iloc[x])
+                st.write(df['summary'].iloc[x])
+                st.write(df['detail'].iloc[x])
+                st.write(df['category'].iloc[x])
+                st.write(df['tags'].iloc[x])
+    
                 #phrases = []
                 #for y in range(df.shape[0]):
                     #st.write(df[x].iloc[y])
