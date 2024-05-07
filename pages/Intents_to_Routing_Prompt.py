@@ -89,7 +89,8 @@ if uploaded_file is not None:
                         phrases.append(df[x][y])
                     else:
                         armed = False
-                        st.write(str(phrases))
+                        
+                st.write(str(phrases))
                         #for intent_elem in intent_data:
                         #intent_elem['phrases'].append(row[intent_elem['intent']])
         #amnt = len(intent_data)
