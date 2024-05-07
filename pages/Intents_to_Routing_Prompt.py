@@ -56,10 +56,13 @@ if uploaded_file is not None:
         
         st.write(reader)
         
-        rows = list(reader)
+        #rows = list(reader)
         intent_data = []
         armed = False
-        for i, row in enumerate(rows):
+        for x in range(df.shape[0]):
+            for y in range(df.shape[1]):
+                st.write(df[x].iloc[y])
+        #for i, row in enumerate(rows):
             # First row has intent names
             if not intent_data:
                 for elem in row.keys():
