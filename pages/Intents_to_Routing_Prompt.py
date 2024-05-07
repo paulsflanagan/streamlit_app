@@ -118,8 +118,8 @@ if uploaded_file is not None:
                 #st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
                 outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n"
                 #prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
-            st.write("OUTPUT:")
-            st.write(outputString)
+            #st.write("OUTPUT:")
+            #st.write(outputString)
             strip_file_name = uploaded_file.name[:-5]
             export_file_name = "Exported Routing Prompt - " + strip_file_name + ".txt"
             st.download_button('Download Output', data=outputString, file_name=export_file_name)
