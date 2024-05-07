@@ -83,13 +83,13 @@ if uploaded_file is not None:
                     armed = True
                     continue
                 if armed:
-                    if df[x][y] != "Regexes":
+                    if df[x][y]:
                         #st.write("NOT YET ::::" + df[x][y])
                         #intent_elem['phrases'].append(row[intent_elem['intent']])
                         phrases.append(df[x][y])
                     else:
                         armed = False
-                        phrases.pop()
+                        #phrases.pop()
                         
             #st.write(str(phrases))
             istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
