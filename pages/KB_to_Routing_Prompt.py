@@ -71,17 +71,25 @@ if uploaded_file is not None:
             
                 
         for x in range(df.shape[0]):
-            #title = row['title']
-            #summary = row['summary']
-            #detail = row['detail']
-            #category = row['category']
-            #tags = row["detail"]
+            title = df['title'].iloc[x]
+            summary = df['summary'].iloc[x]
+            detail = df['detail'].iloc[x]
+            category = df['category'].iloc[x]
+            tags = df['tags'].iloc[x]
+            summary = summary.replace("\n", ". ").replace("\"", "\\\"")
+            detail = detail.replace("\n", ". ").replace("\"", "\\\"")
+
+            article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}\n\nIntent and Description List: '
+            print(f"{i}/{len(rows)}")
+            possible_intents = call_oai(article_data, sPromptIntentsFromKB)
+            generated_intents.append(possible_intents)
             
-            st.write(df['title'].iloc[x])
-            st.write(df['summary'].iloc[x])
-            st.write(df['detail'].iloc[x])
-            st.write(df['category'].iloc[x])
-            st.write(df['tags'].iloc[x])
+        st.write("GENERATED INTENTS:: " + generated_intents)
+            #st.write(df['title'].iloc[x])
+            #st.write(df['summary'].iloc[x])
+            #st.write(df['detail'].iloc[x])
+            #st.write(df['category'].iloc[x])
+            #st.write(df['tags'].iloc[x])
     
                 #phrases = []
                 #for y in range(df.shape[0]):
