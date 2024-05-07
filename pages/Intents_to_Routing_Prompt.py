@@ -60,9 +60,9 @@ if uploaded_file is not None:
         intent_data = []
         armed = False
         
-        for z in range(df.shape[0]):
+        for z in range(df.shape[1]):
             #for elem in row.keys():
-            istruct = {'intent': df[0].iloc[z], 'phrases': []}
+            istruct = {'intent': df[z].iloc[0], 'phrases': []}
             intent_data.append(istruct)
         st.write("INTEND DATA" + str(intent_data))
         
