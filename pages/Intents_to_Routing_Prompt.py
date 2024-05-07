@@ -55,7 +55,7 @@ if uploaded_file is not None:
         reader = csv.DictReader(df)
 
         for i in reader:
-            st.write(i)
+            st.write(i-1)
         
         st.write(reader)
         
