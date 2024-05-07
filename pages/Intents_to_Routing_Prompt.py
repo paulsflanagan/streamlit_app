@@ -14,6 +14,31 @@ client = AzureOpenAI(
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
+
+def call_oai(prompt):
+    response = client.chat.completions.create(
+    model="llmgateway-text-35turbo-1106-model",
+    messages=[
+        {
+        "role": "system",
+        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be at most 20 words."
+        },
+        {
+        "role": "user",
+        "content": prompt
+        }
+    ],
+    temperature=0,
+    max_tokens=256,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0
+    )
+    return response.choices[0].message.content
+
+
+
+
 # Upload CSV
 
 uploaded_file = st.file_uploader("Upload an Intents CSV file", accept_multiple_files=False)
