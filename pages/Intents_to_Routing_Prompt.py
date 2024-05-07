@@ -59,7 +59,8 @@ if uploaded_file is not None:
         #rows = list(reader)
         intent_data = []
         armed = False
-        
+
+        #for i, row in enumerate(rows): // Ethans
         for z in range(df.shape[1]):
             #for elem in row.keys():
             istruct = {'intent': df[z].iloc[0], 'phrases': []}
