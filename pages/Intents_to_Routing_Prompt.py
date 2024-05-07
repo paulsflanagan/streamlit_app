@@ -98,6 +98,8 @@ if uploaded_file is not None:
         amnt = len(intent_data)
 
         st.write(amnt)
+
+        outputString = ''
             
         for i, intent_elem in enumerate(intent_data):
             intent_name = intent_elem['intent']
@@ -112,7 +114,9 @@ if uploaded_file is not None:
             user_message = f"Examples of user messages: {phrases}"
             description = call_oai(user_message)
             st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
+            outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n"
             #prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
+        st.write(outputString)
             
         #bytes_data = uploaded_file.getvalue()
         #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
