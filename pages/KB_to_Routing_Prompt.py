@@ -70,18 +70,18 @@ if uploaded_file is not None:
             #st.write("INTEND DATA" + str(intent_data))
             
                 
-            for x in range(df.shape[0]):
-                #title = row['title']
-                #summary = row['summary']
-                #detail = row['detail']
-                #category = row['category']
-                #tags = row["detail"]
+        for x in range(df.shape[0]):
+            #title = row['title']
+            #summary = row['summary']
+            #detail = row['detail']
+            #category = row['category']
+            #tags = row["detail"]
                 
-                st.write(df[x].iloc['title'])
-                st.write(df[x].iloc['summary'])
-                st.write(df[x].iloc['detail'])
-                st.write(df[x].iloc['category'])
-                st.write(df[x].iloc['tags'])
+            st.write(df[x].iloc['title'])
+            st.write(df[x].iloc['summary'])
+            st.write(df[x].iloc['detail'])
+            st.write(df[x].iloc['category'])
+            st.write(df[x].iloc['tags'])
     
                 #phrases = []
                 #for y in range(df.shape[0]):
