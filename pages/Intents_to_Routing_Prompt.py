@@ -24,14 +24,14 @@ if uploaded_file is not None:
         rows = list(reader)
         intent_data = []
         armed = False
-        for i, row in enumerate(rows):
+        #for i, row in enumerate(rows):
             # First row has intent names
-            if not intent_data:
-                for elem in row.keys():
-                    istruct = {'intent': elem, 'phrases': []}
-                    intent_data.append(istruct)
-            if len(row) == 0:
-                continue
+            #if not intent_data:
+                #for elem in row.keys():
+                    #istruct = {'intent': elem, 'phrases': []}
+                    #intent_data.append(istruct)
+            #if len(row) == 0:
+                #continue
             #if row[intent_data[0]['intent']] == "SampleSentences": 
                 #armed = True
                 #continue
