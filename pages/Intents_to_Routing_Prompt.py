@@ -26,7 +26,7 @@ if uploaded_file is not None:
         #df = pd.read_csv(uploaded_file)
         
         reader = csv.DictReader(bytes_data)
-        #rows = list(reader)
+        rows = list(reader)
         intent_data = []
         armed = False
         #for i, row in enumerate(rows):
