@@ -82,7 +82,7 @@ if uploaded_file is not None:
                     armed = True
                     continue
                 if armed:
-                    if df[x][y] not None:
+                    if df[x][y] is not None:
                         st.write("NOT YET ::::" + df[x][y])
                         #for intent_elem in intent_data:
                             #intent_elem['phrases'].append(row[intent_elem['intent']])
