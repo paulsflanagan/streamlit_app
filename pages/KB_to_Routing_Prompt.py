@@ -76,8 +76,8 @@ if uploaded_file is not None:
             detail = df['detail'].iloc[x]
             category = df['category'].iloc[x]
             tags = df['tags'].iloc[x]
-            summary = summary.replace("\n", ". ").replace("\"", "\\\"")
-            detail = detail.replace("\n", ". ").replace("\"", "\\\"")
+            summary = str(summary).replace("\n", ". ").replace("\"", "\\\"")
+            detail = str(detail).replace("\n", ". ").replace("\"", "\\\"")
 
             article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}\n\nIntent and Description List: '
             print(f"{i}/{len(rows)}")
