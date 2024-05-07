@@ -78,10 +78,10 @@ if uploaded_file is not None:
             #tags = row["detail"]
             
             st.write(df['title'].iloc[0])
-            #st.write(df[x].iloc['summary'])
-            #st.write(df[x].iloc['detail'])
-            #st.write(df[x].iloc['category'])
-            #st.write(df[x].iloc['tags'])
+            st.write(df['summary'].iloc[0])
+            st.write(df['detail'].iloc[0])
+            st.write(df['category'].iloc[0])
+            st.write(df['tags'].iloc[0])
     
                 #phrases = []
                 #for y in range(df.shape[0]):
