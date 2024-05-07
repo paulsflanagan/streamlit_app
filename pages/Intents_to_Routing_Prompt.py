@@ -50,12 +50,12 @@ if uploaded_file is not None:
         #string_data = stringio.read()
         df = pd.read_csv(uploaded_file, header=None)
 
-        #st.write(df)
+        st.write(df)
         
-        reader = csv.DictReader(string_data)
+        reader = csv.DictReader(df)
 
-        #for i in reader:
-            #st.write(i)
+        for i in reader:
+            st.write(i)
         
         st.write(reader)
         
