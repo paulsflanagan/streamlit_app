@@ -79,7 +79,7 @@ if uploaded_file is not None:
                     #continue
                 if df[x][y] == "SampleSentences": 
                     #if row[intent_data[0]['intent']] == "SampleSentences": 
-                    st.write("FOUND IT!!!! ::::" + df[x][y])
+                    #st.write("FOUND IT!!!! ::::" + df[x][y])
                     armed = True
                     continue
                 if armed:
@@ -90,7 +90,7 @@ if uploaded_file is not None:
                     else:
                         armed = False
                         
-            st.write(str(phrases))
+            #st.write(str(phrases))
             istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
             intent_data.append(istruct)
         st.write("INTEND DATA" + str(intent_data))
