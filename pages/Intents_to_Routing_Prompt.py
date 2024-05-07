@@ -84,7 +84,7 @@ if uploaded_file is not None:
                     armed = True
                     continue
                     #pd.isnull(df.at[2, 'Salary']
-                if pd.isnull(df.at[x,y]):
+                if pd.isnull(df.at[y,x]):
                     armed = False
                 if armed:
                         phrases.append(df[x][y])
