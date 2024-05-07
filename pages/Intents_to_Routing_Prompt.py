@@ -22,7 +22,7 @@ def call_oai(prompt):
     messages=[
         {
         "role": "system",
-        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be at most 20 words."
+        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be at most 20 words. Do not use bullet points."
         },
         {
         "role": "user",
@@ -57,7 +57,7 @@ if uploaded_file is not None:
         
         #st.write(reader)
 
-        if st.button("Say hello"):
+        if st.button("Run"):
         
             #rows = list(reader)
             intent_data = []
