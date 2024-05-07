@@ -20,8 +20,8 @@ uploaded_file = st.file_uploader("Upload an Intents CSV file", accept_multiple_f
 if uploaded_file is not None:
     
     try:
-        reader = csv.DictReader(uploaded_file.getvalue())
-        rows = list(reader)
+        #reader = csv.DictReader(uploaded_file.getvalue())
+        #rows = list(reader)
         intent_data = []
         armed = False
         #for i, row in enumerate(rows):
