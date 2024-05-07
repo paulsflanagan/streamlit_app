@@ -21,12 +21,14 @@ if uploaded_file is not None:
     
     try:
         bytes_data = uploaded_file.getvalue()
-        #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        #string_data = stringio.read()
-        #df = pd.read_csv(uploaded_file)
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        string_data = stringio.read()
+        df = pd.read_csv(uploaded_file)
+
         
-        reader = csv.DictReader(bytes_data)
-        rows = list(reader)
+        
+        reader = csv.DictReader(df)
+        #rows = list(reader)
         intent_data = []
         armed = False
         #for i, row in enumerate(rows):
