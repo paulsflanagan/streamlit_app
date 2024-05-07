@@ -53,9 +53,6 @@ if uploaded_file is not None:
         st.write(df)
         
         reader = csv.DictReader(df)
-
-        for i in reader:
-            st.write(i)
         
         st.write(reader)
         
