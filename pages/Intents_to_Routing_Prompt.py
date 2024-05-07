@@ -49,11 +49,12 @@ if uploaded_file is not None:
 
         st.write(amnt)
             
-        #for i, intent_elem in enumerate(intent_data):
-            #intent_name = intent_elem['intent']
-            #if "MetaIntent" in intent_name: 
+        for i, intent_elem in enumerate(intent_data):
+            intent_name = intent_elem['intent']
+            if "MetaIntent" in intent_name:
+                st.write(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
                 #print(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
-                #continue
+                continue
             #route_name = intent_name.upper().replace(" ", "_")
             #print(f"{i}/{amnt} Intent: {intent_elem['intent']}")
             #phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
