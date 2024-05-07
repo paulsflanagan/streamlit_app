@@ -6,7 +6,7 @@ import pandas as pd
 from io import StringIO
 
 
-st.title('Convert Intents To Routing Prompt')
+st.title('Convert Intents to Routing Prompts')
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
