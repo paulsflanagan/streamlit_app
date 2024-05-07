@@ -14,7 +14,12 @@ client = AzureOpenAI(
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
-sPromptIntentsFromKB = "Your job is to analyze the following article and provide a list of possible intents and description that could be served by that article. An intent is a short phrase (5 words or less) that describes something that a customer could want to do. A description is a short sentence that describes what the user is doing. You should provide at least one and not more than 10 possible intents and decription for the article. You should return each intent and description in this format: Intent:<intent name>\nDescription:<description>\n2. Intent:..."
+sPromptIntentsFromKB = """
+Your job is to analyze the following article and provide a list of possible intents and description that could be served by that article. 
+An intent is a short phrase (5 words or less) that describes something that a customer could want to do. 
+A description is a short sentence that describes what the user is doing. 
+You should provide at least one and not more than 10 possible intents and decription for the article. 
+You should return each intent and description in this format: Intent:<intent name>\nDescription:<description>\n2. Intent:..."""
 sPromptRoutesFromIntent = ""
 
 def call_oai(prompt, systemPrompt):
@@ -85,6 +90,42 @@ if uploaded_file is not None:
             generated_intents.append(possible_intents)
             
         st.write("GENERATED INTENTS:: " + str(generated_intents))
+
+        intents_data = {}
+    
+        for intent_generation in generated_intents:
+            intent = None
+            desc = None
+            for line in intent_generation.split("\n"):
+                #print(line)
+                if not intent and line:
+                    if "Intent:" in line:
+                        intent = line.split("Intent:")[1].strip()
+                        line = line.split("Intent:")[1].strip()
+    
+                    elif line[0] in [s for s in map(str, range(11))]:
+                        intent = line.split(".")[1].strip()
+    
+                if not desc and line:
+                    if "Description:" in line:
+                        desc = line.split("Description:")[1].strip()
+                    elif "-" in line:
+                          desc = line.split("-")[1].strip()
+                    elif ":" in line:
+                          desc = line.split(":")[1].strip()
+                    elif ":" in line:
+                          desc = line.split(":")[1].strip()
+    
+                if intent and desc:
+                    #print(f"... 🔥 Intent: {intent} Desc: {desc}")
+                    st.write(f"... 🔥 Intent: {intent} Desc: {desc}")
+                    if intent not in intents_data:
+                        intents_data[intent] = [desc]
+                    else:
+                        intents_data[intent].append(desc)
+    
+                    intent = None
+                    desc = None
             #st.write(df['title'].iloc[x])
             #st.write(df['summary'].iloc[x])
             #st.write(df['detail'].iloc[x])
