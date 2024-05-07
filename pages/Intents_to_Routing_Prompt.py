@@ -82,7 +82,7 @@ if uploaded_file is not None:
                     #st.write("FOUND IT!!!! ::::" + df[x][y])
                     armed = True
                     continue
-                if df[x][y] == 'Nan':
+                if df[x][y] == 'nan':
                     armed = False
                 if armed:
                         phrases.append(df[x][y])
