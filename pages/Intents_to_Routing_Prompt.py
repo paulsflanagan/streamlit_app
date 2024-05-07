@@ -117,6 +117,7 @@ if uploaded_file is not None:
             outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n"
             #prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
         st.write(outputString)
+        st.download_button('Download Output', data=str, file_name=export_file_name)
             
         #bytes_data = uploaded_file.getvalue()
         #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
