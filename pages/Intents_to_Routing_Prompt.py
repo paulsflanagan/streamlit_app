@@ -5,7 +5,6 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 #import numpy as np
-import math
 
 
 st.title('Intents To Routing Prompt')
@@ -84,7 +83,8 @@ if uploaded_file is not None:
                     #st.write("FOUND IT!!!! ::::" + df[x][y])
                     armed = True
                     continue
-                if math.isnan(df[x][y]):
+                    #pd.isnull(df.at[2, 'Salary']
+                if pd.isnull(df.at[x][y]):
                     armed = False
                 if armed:
                         phrases.append(df[x][y])
