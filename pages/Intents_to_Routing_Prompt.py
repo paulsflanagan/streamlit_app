@@ -70,13 +70,15 @@ if uploaded_file is not None:
             
         for x in range(df.shape[1]):
             for y in range(df.shape[0]):
-                st.write(df[x].iloc[y])
+                #st.write(df[x].iloc[y])
                 #for i, row in enumerate(rows): // Ethans
                 # First row has intent names
-                if len(row) == 0:
+                #if len(row) == 0:
                     #if len(row) == 0:
-                    continue
-                if row[intent_data[0]['intent']] == "SampleSentences": 
+                    #continue
+                if df[x][y] == "SampleSentences": 
+                    #if row[intent_data[0]['intent']] == "SampleSentences": 
+                    st.write("FOUND IT!!!! ::::" + df[x][y])
                     armed = True
                     continue
                 if armed:
