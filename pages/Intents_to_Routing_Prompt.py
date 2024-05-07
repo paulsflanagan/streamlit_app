@@ -84,11 +84,13 @@ if uploaded_file is not None:
                 if armed:
                     if df[x][y] is not None:
                         st.write("NOT YET ::::" + df[x][y])
+                    else:
+                        armed = False
                         #for intent_elem in intent_data:
                             #intent_elem['phrases'].append(row[intent_elem['intent']])
-        amnt = len(intent_data)
+        #amnt = len(intent_data)
 
-        st.write(amnt)
+        #st.write(amnt)
             
         for i, intent_elem in enumerate(intent_data):
             intent_name = intent_elem['intent']
