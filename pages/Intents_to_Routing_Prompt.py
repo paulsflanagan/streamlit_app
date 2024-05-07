@@ -65,7 +65,8 @@ if uploaded_file is not None:
                             
                 istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
                 intent_data.append(istruct)
-    
+                
+            amnt = len(intent_data)
             outputString = ''
                 
             for i, intent_elem in enumerate(intent_data):
