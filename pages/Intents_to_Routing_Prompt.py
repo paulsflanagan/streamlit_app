@@ -64,8 +64,8 @@ if uploaded_file is not None:
         #for z in range(df.shape[1]):
             #for elem in row.keys():
             #istruct = {'intent': df[z].iloc[0], 'phrases': []}
-            intent_data.append(istruct)
-        st.write("INTEND DATA" + str(intent_data))
+            #intent_data.append(istruct)
+        #st.write("INTEND DATA" + str(intent_data))
         
             
         for x in range(df.shape[1]):
@@ -93,7 +93,7 @@ if uploaded_file is not None:
             st.write(str(phrases))
             istruct = {'intent': df[z].iloc[0], 'phrases': phrases}
             intent_data.append(istruct)
-        st.write(str(intent_data))
+        st.write("INTEND DATA" + str(intent_data))
                         #for intent_elem in intent_data:
                         #intent_elem['phrases'].append(row[intent_elem['intent']])
         #amnt = len(intent_data)
