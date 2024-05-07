@@ -53,6 +53,9 @@ if uploaded_file is not None:
         st.write(df)
         
         reader = csv.DictReader(df)
+
+        for i in cool_csv_dict:
+            print(i)
         
         st.write(reader)
         
