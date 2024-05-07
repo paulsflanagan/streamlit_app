@@ -55,7 +55,7 @@ if uploaded_file is not None:
         
         reader = csv.DictReader(df)
         
-        st.write(reader)
+        #st.write(reader)
         
         #rows = list(reader)
         intent_data = []
@@ -92,12 +92,12 @@ if uploaded_file is not None:
             #st.write(str(phrases))
             istruct = {'intent': df[x].iloc[0], 'phrases': phrases}
             intent_data.append(istruct)
-        st.write("INTEND DATA" + str(intent_data))
+        #st.write("INTEND DATA" + str(intent_data))
                         #for intent_elem in intent_data:
                         #intent_elem['phrases'].append(row[intent_elem['intent']])
         amnt = len(intent_data)
 
-        st.write(amnt)
+        #st.write(amnt)
 
         outputString = ''
             
@@ -108,7 +108,7 @@ if uploaded_file is not None:
                 #print(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
                 continue
             route_name = intent_name.upper().replace(" ", "_")
-            st.write(f"{i}/{amnt} Intent: {intent_elem['intent']}")
+            st.write(f"{i+1}/{amnt} Intent: {intent_elem['intent']}")
             #print(f"{i}/{amnt} Intent: {intent_elem['intent']}")
             phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
             user_message = f"Examples of user messages: {phrases}"
@@ -117,6 +117,8 @@ if uploaded_file is not None:
             outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n"
             #prompt_file.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
         st.write(outputString)
+        strip_file_name = uploaded_file.name[:-5]
+        export_file_name = "Exported Routing Prompt - " + strip_file_name + ".txt"
         st.download_button('Download Output', data=str, file_name=export_file_name)
             
         #bytes_data = uploaded_file.getvalue()
