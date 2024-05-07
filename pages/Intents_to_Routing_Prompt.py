@@ -59,11 +59,13 @@ if uploaded_file is not None:
         #rows = list(reader)
         intent_data = []
         armed = False
+        
         for z in range(df.shape[1]):
             #for elem in row.keys():
             istruct = {'intent': df[0].iloc[z], 'phrases': []}
             intent_data.append(istruct)
-            st.write(intent_data)
+        st.write("INTEND DATA" + intent_data)
+        
             
         for x in range(df.shape[1]):
             for y in range(df.shape[0]):
