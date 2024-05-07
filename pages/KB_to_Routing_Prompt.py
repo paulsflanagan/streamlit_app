@@ -84,7 +84,7 @@ if uploaded_file is not None:
             possible_intents = call_oai(article_data, sPromptIntentsFromKB)
             generated_intents.append(possible_intents)
             
-        st.write("GENERATED INTENTS:: " + generated_intents)
+        st.write("GENERATED INTENTS:: " + str(generated_intents))
             #st.write(df['title'].iloc[x])
             #st.write(df['summary'].iloc[x])
             #st.write(df['detail'].iloc[x])
