@@ -3,7 +3,7 @@ from openai import AzureOpenAI
 import csv
 import streamlit as st
 import pandas as pd
-#from io import StringIO
+from io import StringIO
 
 
 st.title('Intents To Routing Prompt')
@@ -46,16 +46,16 @@ if uploaded_file is not None:
     
     try:
         bytes_data = uploaded_file.getvalue()
-        #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        #string_data = stringio.read()
-        df = pd.read_csv(uploaded_file)
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        string_data = stringio.read()
+        #df = pd.read_csv(uploaded_file)
 
-        st.write(df)
+        #st.write(df)
         
-        reader = csv.DictReader(df)
+        reader = csv.DictReader(string_data)
 
         for i in reader:
-            st.write(i-1)
+            st.write(i)
         
         st.write(reader)
         
