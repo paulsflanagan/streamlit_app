@@ -42,10 +42,12 @@ if uploaded_file is not None:
             if row[intent_data[0]['intent']] == "SampleSentences": 
                 armed = True
                 continue
-            #if armed:
-                #for intent_elem in intent_data:
-                    #intent_elem['phrases'].append(row[intent_elem['intent']])
-        #amnt = len(intent_data)
+            if armed:
+                for intent_elem in intent_data:
+                    intent_elem['phrases'].append(row[intent_elem['intent']])
+        amnt = len(intent_data)
+
+        st.write(amnt)
             
         #for i, intent_elem in enumerate(intent_data):
             #intent_name = intent_elem['intent']
