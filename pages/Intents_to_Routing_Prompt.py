@@ -2,8 +2,8 @@ import json
 from openai import AzureOpenAI
 import csv
 import streamlit as st
-#import pandas as pd
-#from io import StringIO
+import pandas as pd
+from io import StringIO
 
 
 st.title('Intents To Routing Prompt')
@@ -20,7 +20,12 @@ uploaded_file = st.file_uploader("Upload an Intents CSV file", accept_multiple_f
 if uploaded_file is not None:
     
     try:
-        #reader = csv.DictReader(uploaded_file.getvalue())
+        bytes_data = uploaded_file.getvalue()
+        #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        #string_data = stringio.read()
+        #df = pd.read_csv(uploaded_file)
+        
+        reader = csv.DictReader(bytes_data)
         #rows = list(reader)
         intent_data = []
         armed = False
