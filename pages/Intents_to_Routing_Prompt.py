@@ -49,9 +49,13 @@ if uploaded_file is not None:
         #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         #string_data = stringio.read()
         df = pd.read_csv(uploaded_file)
+
+        st.write(df)
         
         reader = csv.DictReader(df)
+        
         st.write(reader)
+        
         rows = list(reader)
         intent_data = []
         armed = False
