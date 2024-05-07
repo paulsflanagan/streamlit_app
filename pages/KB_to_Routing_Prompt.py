@@ -71,11 +71,11 @@ if uploaded_file is not None:
             
                 
             for x in range(df.shape[0]):
-                title = row['title']
-                summary = row['summary']
-                detail = row['detail']
-                category = row['category']
-                tags = row["detail"]
+                #title = row['title']
+                #summary = row['summary']
+                #detail = row['detail']
+                #category = row['category']
+                #tags = row["detail"]
                 
                 st.write(df['title'].iloc[x])
                 st.write(df['summary'].iloc[x])
