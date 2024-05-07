@@ -46,9 +46,9 @@ if uploaded_file is not None:
     
     try:
         bytes_data = uploaded_file.getvalue()
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        string_data = stringio.read()
-        #df = pd.read_csv(uploaded_file)
+        #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        #string_data = stringio.read()
+        df = pd.read_csv(uploaded_file, header=None)
 
         #st.write(df)
         
