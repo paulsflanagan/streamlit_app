@@ -7,6 +7,7 @@ import pandas as pd
 
 
 st.title('Optimize Knowledgebase for AI Search')
+st.write("AI Search utilizes the summary for retrieval and the detail for response. Create a KB with the article in the detail. This app will summarise the article, replacing the summary and then adds the summary to the beginning of the detail")
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
