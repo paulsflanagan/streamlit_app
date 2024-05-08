@@ -125,6 +125,43 @@ if uploaded_file is not None:
     
                     intent = None
                     desc = None
+
+        # Potential here to generate user utterances to train NLU Model.
+        for intent, desc_list in intents_data.items():
+            tmp = ", ".join(desc_list)
+            st.write(f"{intent},{tmp}")
+            #print(f"{intent},{tmp}")
+
+        #json.dump(intents_data, open("kia_kb_2.json", "w+"), indent=4)
+        #prompt_file = open("kia_prompts.txt", "w+") // What is prompt file
+        
+        data_for_flow = []
+        
+        group_name = "FAQ Questions"
+        
+        for intent, desc in intents_data.items():
+            intent_name = intent
+            route_name = intent.upper().replace(" ", "_")
+            st.write(f"Intent: {intent}")
+            #print(f"Intent: {intent}")
+    
+            if False and len(desc) > 1:
+                sys_msg = f"Your job is to integrate list of descriptions for the intent:'{intent_name}' into a single description. These dscriptions will be provided by the user. Your single description should fully describe the intent."
+                user_msg = f"Here is a list of descriptions: {desc}\n\nSingle Descripton: "
+                description = call_oai_generic()
+            else:
+                description = desc[0]
+    
+            prompt_file.write(f"\nintent:{intent_name} |[ROUTE::{route_name}]\ndesc: {description}\n-\n")
+            flow_var_data = {}
+            flow_var_data["enabled"] = True
+            flow_var_data['name'] = intent_name
+            flow_var_data["description"] = description
+            flow_var_data["group"] = group_name
+            data_for_flow.append(flow_var_data)
+    
+            print(f"Desc: {desc}")
+            print("--")
             #st.write(df['title'].iloc[x])
             #st.write(df['summary'].iloc[x])
             #st.write(df['detail'].iloc[x])
