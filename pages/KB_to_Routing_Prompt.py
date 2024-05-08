@@ -134,7 +134,7 @@ if uploaded_file is not None:
 
         #json.dump(intents_data, open("kia_kb_2.json", "w+"), indent=4)
         #prompt_file = open("kia_prompts.txt", "w+") // What is prompt file
-        prompt_file = generated_intents
+        prompt_file = ''
         
         data_for_flow = []
         
@@ -153,22 +153,24 @@ if uploaded_file is not None:
             else:
                 description = desc[0]
     
-            prompt_file.write(f"\nintent:{intent_name} |[ROUTE::{route_name}]\ndesc: {description}\n-\n")
+            prompt_file = prompt_file + f"\nintent:{intent_name} |[ROUTE::{route_name}]\ndesc: {description}\n-\n"
             flow_var_data = {}
             flow_var_data["enabled"] = True
             flow_var_data['name'] = intent_name
             flow_var_data["description"] = description
             flow_var_data["group"] = group_name
             data_for_flow.append(flow_var_data)
-    
-            print(f"Desc: {desc}")
-            print("--")
+
+            st.write(f"Desc: {desc}")
+            #print(f"Desc: {desc}")
+            st.write("--")
+            #print("--")
             #st.write(df['title'].iloc[x])
             #st.write(df['summary'].iloc[x])
             #st.write(df['detail'].iloc[x])
             #st.write(df['category'].iloc[x])
             #st.write(df['tags'].iloc[x])
-    
+        st.write(prompt_file)
                 #phrases = []
                 #for y in range(df.shape[0]):
                     #st.write(df[x].iloc[y])
