@@ -45,7 +45,7 @@ def call_oai(prompt, systemPrompt):
 
 
 
-t = st.empty()
+
 uploaded_file = st.file_uploader("Upload a Knoweldgebase CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     
@@ -54,7 +54,9 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
 
         st.write(df)
-
+        
+        t = st.empty()
+        
         new_summaries = []
         #for i, row in kb_df.iterrows():
         for x in range(df.shape[0]):
@@ -72,6 +74,8 @@ if uploaded_file is not None:
             #st.write("New Summary: " + new_summary)
             new_summaries.append(new_summary)
             
+        t.write("Conversion Complete")
+        
         df["summary"] = new_summaries
         
         new_detail = []
