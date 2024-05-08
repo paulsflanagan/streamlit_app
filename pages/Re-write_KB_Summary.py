@@ -44,4 +44,12 @@ def call_oai(prompt, systemPrompt):
     return response.choices[0].message.content
 
 
+uploaded_file = st.file_uploader("Upload a Knoweldgebase CSV file", accept_multiple_files=False)
+if uploaded_file is not None:
+    
+    try:
+        bytes_data = uploaded_file.getvalue()
+        df = pd.read_csv(uploaded_file)
+
+        st.write(df)
 
