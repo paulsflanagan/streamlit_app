@@ -65,7 +65,7 @@ if uploaded_file is not None:
             new_summaries = []
             #for i, row in kb_df.iterrows():
             for x in range(df.shape[0]):
-                t.write(f"process row: {x}")
+                t.write(f"... 🔥 Processing Row: {x}")
                 #print(f"process row: {i}")
                 
                 title = df['title'].iloc[x]
@@ -79,7 +79,7 @@ if uploaded_file is not None:
                 #st.write("New Summary: " + new_summary)
                 new_summaries.append(new_summary)
                 
-            t.write("Conversion Complete")
+            t.write("... 🔥 Conversion Complete")
             
             df["summary"] = new_summaries
             
