@@ -56,10 +56,12 @@ if uploaded_file is not None:
         st.write("Original KB")
         st.write(df)
         
-        t = st.empty()
+        
 
         if st.button("Run"):
-        
+            
+            t = st.empty()
+            
             new_summaries = []
             #for i, row in kb_df.iterrows():
             for x in range(df.shape[0]):
