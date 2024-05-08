@@ -141,7 +141,7 @@ if uploaded_file is not None:
                     #description = desc[0]
                 
                 description = desc[0]
-                st.write(... 🔥 f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: [ROUTE::{route_name}]\n\n")
+                st.write(f"... 🔥 \nintent: {intent_name}\n\tdesc: {description}\n\troute: [ROUTE::{route_name}]\n\n")
                 prompt_file = prompt_file + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: [ROUTE::{route_name}]\n\n"
                 flow_var_data = {}
                 flow_var_data["enabled"] = True
