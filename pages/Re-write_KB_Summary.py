@@ -52,7 +52,8 @@ if uploaded_file is not None:
     try:
         bytes_data = uploaded_file.getvalue()
         df = pd.read_csv(uploaded_file)
-
+        
+        st.write("Original KB")
         st.write(df)
         
         t = st.empty()
@@ -86,6 +87,7 @@ if uploaded_file is not None:
         df["detail"] = new_detail
         #kb_df.to_csv(new_kb_filename, index=False)
 
+        st.write("Updated KB")
         st.write(df)
 
 
