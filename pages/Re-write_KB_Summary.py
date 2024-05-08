@@ -6,7 +6,8 @@ import pandas as pd
 from io import StringIO
 
 
-st.title('Optimize Knowledgebase For AI Search')
+st.title('Optimize Knowledgebase')
+st.title('For AI Search')
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
