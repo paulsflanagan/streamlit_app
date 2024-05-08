@@ -6,7 +6,7 @@ import pandas as pd
 #from io import StringIO
 
 
-st.title('Optimize Knowledgebase for AI Search')
+st.title('Optimize a Knowledgebase for AI Search')
 st.write("AI Search utilizes the KB summary for retrieval and the KB detail for response. This app will summarise the full article to replace the summary, then add the summary to the beginning of the detail.")
 
 client = AzureOpenAI(
