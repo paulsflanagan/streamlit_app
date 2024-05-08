@@ -49,6 +49,7 @@ if uploaded_file is not None:
         reader = csv.DictReader(df)
 
         if st.button("Run"):
+            st.write("... 🔥 Creating Routes")
             intent_data = []
             armed = False        
                 
@@ -76,7 +77,7 @@ if uploaded_file is not None:
                     #print(f"Skipping {i}/{amnt} Intent: {intent_elem['intent']}...")
                     continue
                 route_name = intent_name.upper().replace(" ", "_")
-                st.write(f"{i+1}/{amnt} Intent: {intent_elem['intent']}")
+                #st.write(f"{i+1}/{amnt} Intent: {intent_elem['intent']}")
                 #print(f"{i}/{amnt} Intent: {intent_elem['intent']}")
                 phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
                 user_message = f"Examples of user messages: {phrases}"
