@@ -82,7 +82,7 @@ if uploaded_file is not None:
                 user_message = f"Examples of user messages: {phrases}"
                 description = call_oai(user_message)
                 #st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
-                outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n"
+                outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: [ROUTE::{route_name}]\n"
 
             strip_file_name = uploaded_file.name[:-4]
             export_file_name = "Exported Routing Prompt - " + strip_file_name + ".txt"
