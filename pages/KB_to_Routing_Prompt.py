@@ -57,7 +57,7 @@ if uploaded_file is not None:
         st.write(df)
 
         generated_intents = []
-            
+        st.write("🔥 Creating Intents... 🔥")    
         if st.button("Run"):        
             for x in range(df.shape[0]):
                 title = df['title'].iloc[x]
@@ -102,7 +102,7 @@ if uploaded_file is not None:
         
                     if intent and desc:
                         #print(f"... 🔥 Intent: {intent} Desc: {desc}")
-                        st.write(f"... 🔥 Intent: {intent} Desc: {desc}")
+                        #st.write(f"... 🔥 Intent: {intent} Desc: {desc}")
                         if intent not in intents_data:
                             intents_data[intent] = [desc]
                         else:
@@ -125,6 +125,8 @@ if uploaded_file is not None:
             data_for_flow = []
             
             group_name = "FAQ Questions"
+            
+            st.write("🔥 Creating Routes... 🔥")
             
             for intent, desc in intents_data.items():
                 intent_name = intent
