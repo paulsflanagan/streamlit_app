@@ -45,7 +45,7 @@ def call_oai(prompt, systemPrompt):
 
 
 
-
+t = st.empty()
 uploaded_file = st.file_uploader("Upload a Knoweldgebase CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     
@@ -58,7 +58,7 @@ if uploaded_file is not None:
         new_summaries = []
         #for i, row in kb_df.iterrows():
         for x in range(df.shape[0]):
-            st.write(f"process row: {x}")
+            t.write(f"process row: {x}")
             #print(f"process row: {i}")
             
             title = df['title'].iloc[x]
