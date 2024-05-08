@@ -57,38 +57,40 @@ if uploaded_file is not None:
         st.write(df)
         
         t = st.empty()
-        
-        new_summaries = []
-        #for i, row in kb_df.iterrows():
-        for x in range(df.shape[0]):
-            t.write(f"process row: {x}")
-            #print(f"process row: {i}")
-            
-            title = df['title'].iloc[x]
-            summary = df['summary'].iloc[x]
-            detail = df['detail'].iloc[x]
-            category = df['category'].iloc[x]
-            tags = df['tags'].iloc[x]
-            article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
-            new_summary = call_oai(article_data, sPromptReWriteSummary)
-            #st.write("Old Summary: " + summary)
-            #st.write("New Summary: " + new_summary)
-            new_summaries.append(new_summary)
-            
-        t.write("Conversion Complete")
-        
-        df["summary"] = new_summaries
-        
-        new_detail = []
-        
-        #for i, row in df.iterrows():
-        for x in range(df.shape[0]):
-            new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
-        df["detail"] = new_detail
-        #kb_df.to_csv(new_kb_filename, index=False)
 
-        st.write("Updated KB")
-        st.write(df)
+        if st.button("Run"):
+        
+            new_summaries = []
+            #for i, row in kb_df.iterrows():
+            for x in range(df.shape[0]):
+                t.write(f"process row: {x}")
+                #print(f"process row: {i}")
+                
+                title = df['title'].iloc[x]
+                summary = df['summary'].iloc[x]
+                detail = df['detail'].iloc[x]
+                category = df['category'].iloc[x]
+                tags = df['tags'].iloc[x]
+                article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
+                new_summary = call_oai(article_data, sPromptReWriteSummary)
+                #st.write("Old Summary: " + summary)
+                #st.write("New Summary: " + new_summary)
+                new_summaries.append(new_summary)
+                
+            t.write("Conversion Complete")
+            
+            df["summary"] = new_summaries
+            
+            new_detail = []
+            
+            #for i, row in df.iterrows():
+            for x in range(df.shape[0]):
+                new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
+            df["detail"] = new_detail
+            #kb_df.to_csv(new_kb_filename, index=False)
+    
+            st.write("Updated KB")
+            st.write(df)
 
 
     
