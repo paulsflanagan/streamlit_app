@@ -57,8 +57,9 @@ if uploaded_file is not None:
         st.write(df)
 
         generated_intents = []
-        st.write("🔥 Creating Intents... 🔥")    
-        if st.button("Run"):        
+            
+        if st.button("Run"):
+            st.write("🔥 Creating Intents... 🔥")
             for x in range(df.shape[0]):
                 title = df['title'].iloc[x]
                 summary = df['summary'].iloc[x]
