@@ -3,7 +3,7 @@ from openai import AzureOpenAI
 import csv
 import streamlit as st
 import pandas as pd
-from io import StringIO
+#from io import StringIO
 
 
 st.title('Optimize Knowledgebase for AI Search')
