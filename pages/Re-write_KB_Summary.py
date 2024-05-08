@@ -53,3 +53,9 @@ if uploaded_file is not None:
 
         st.write(df)
 
+
+
+    
+    except UnicodeDecodeError:
+        st.write("Error Decoding CSV - Ensure encoding is utf-8")
+
