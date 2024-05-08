@@ -83,7 +83,7 @@ if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
         kb_df = pd.read_csv(uploaded_file)
 
-        st.write(df)
+        st.write(kb_df)
 
         new_summaries = []
         for i, row in kb_df.iterrows():
