@@ -78,7 +78,7 @@ if uploaded_file is not None:
         
         #for i, row in df.iterrows():
         for x in range(df.shape[0]):
-            new_detail.append(f"{row['summary']} {row['detail']}")
+            new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
         df["detail"] = new_detail
         #kb_df.to_csv(new_kb_filename, index=False)
 
