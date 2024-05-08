@@ -44,7 +44,7 @@ def call_oai(prompt, systemPrompt):
     return response.choices[0].message.content
 
 
-def process_row(row, llm):
+def process_row(row):
     title = row['title']
     summary = row['summary']
     detail = row['detail']
@@ -53,8 +53,10 @@ def process_row(row, llm):
     
     article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
     
-    query_chain = create_structured_output_chain(SummaryOuput, llm, rewrite_prompt, verbose=False)
-    query_resp = query_chain.invoke({"knowledge_article": article_data})
+    #query_chain = create_structured_output_chain(SummaryOuput, llm, rewrite_prompt, verbose=False)
+    #query_resp = query_chain.invoke({"knowledge_article": article_data})
+    #prompt_article = {"knowledge_article": article_data}
+    query_resp = call_oai({"knowledge_article": article_data}, sPromptReWriteSummary)
     
     new_summary = query_resp["function"].good_summary
     return new_summary
@@ -86,12 +88,16 @@ if uploaded_file is not None:
         st.write(kb_df)
 
         new_summaries = []
+        
         for i, row in kb_df.iterrows():
-            print(f"process row: {i}")
-            new_summary = process_row(row, llm)
+            st.write(f"process row: {i}")
+            #print(f"process row: {i}")
+            new_summary = process_row(row)
             new_summaries.append(new_summary)
         kb_df["summary"] = new_summaries
+        
         new_detail = []
+        
         for i, row in kb_df.iterrows():
             new_detail.append(f"{row['summary']} {row['detail']}")
         kb_df["detail"] = new_detail
