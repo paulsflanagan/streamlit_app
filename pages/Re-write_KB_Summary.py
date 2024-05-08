@@ -81,7 +81,7 @@ if uploaded_file is not None:
     
     try:
         bytes_data = uploaded_file.getvalue()
-        df = pd.read_csv(uploaded_file)
+        kb_df = pd.read_csv(uploaded_file)
 
         st.write(df)
 
