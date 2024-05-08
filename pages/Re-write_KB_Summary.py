@@ -68,8 +68,8 @@ if uploaded_file is not None:
             tags = df['tags'].iloc[x]
             article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
             new_summary = call_oai(article_data, sPromptReWriteSummary)
-            st.write("Old Summary: " + summary)
-            st.write("New Summary: " + new_summary)
+            #st.write("Old Summary: " + summary)
+            #st.write("New Summary: " + new_summary)
             new_summaries.append(new_summary)
             
         df["summary"] = new_summaries
