@@ -45,33 +45,15 @@ def call_oai(prompt, systemPrompt):
 
 
 
-# WORKING HERE
-def fix_summary(kb_filename, new_kb_filename, llm):
-    kb_df = pd.read_csv(kb_filename)
-     new_summaries = [process_row(df_row, llm) for _, df_row in kb_df.iterrows()]
-    new_summaries = []
-    for i, row in kb_df.iterrows():
-        print(f"process row: {i}")
-        new_summary = process_row(row, llm)
-        new_summaries.append(new_summary)
-    kb_df["summary"] = new_summaries
-    new_detail = []
-   for i, row in kb_df.iterrows():
-        new_detail.append(f"{row['summary']} {row['detail']}")
-    kb_df["detail"] = new_detail
-    kb_df.to_csv(new_kb_filename, index=False)
-
-
-
 
 uploaded_file = st.file_uploader("Upload a Knoweldgebase CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     
     try:
         bytes_data = uploaded_file.getvalue()
-        kb_df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file)
 
-        st.write(kb_df)
+        st.write(df)
 
         new_summaries = []
         #for i, row in kb_df.iterrows():
@@ -88,16 +70,16 @@ if uploaded_file is not None:
             new_summary = call_oai({"knowledge_article": article_data}, sPromptReWriteSummary)
             new_summaries.append(new_summary)
             
-        kb_df["summary"] = new_summaries
+        df["summary"] = new_summaries
         
         new_detail = []
         
-        for i, row in kb_df.iterrows():
+        for i, row in df.iterrows():
             new_detail.append(f"{row['summary']} {row['detail']}")
-        kb_df["detail"] = new_detail
+        df["detail"] = new_detail
         #kb_df.to_csv(new_kb_filename, index=False)
 
-        st.write(kb_df)
+        st.write(df)
 
 
     
