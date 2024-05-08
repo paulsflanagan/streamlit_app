@@ -153,7 +153,7 @@ if uploaded_file is not None:
             else:
                 description = desc[0]
     
-            prompt_file = prompt_file + f"\nintent:{intent_name} |[ROUTE::{route_name}]\ndesc: {description}\n-\n"
+            prompt_file = prompt_file + f"\nintent:{intent_name}\ndesc: {description}\n[ROUTE::{route_name}]\n\n"
             flow_var_data = {}
             flow_var_data["enabled"] = True
             flow_var_data['name'] = intent_name
