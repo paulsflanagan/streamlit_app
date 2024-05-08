@@ -103,7 +103,7 @@ if uploaded_file is not None:
         
                     if intent and desc:
                         #print(f"... 🔥 Intent: {intent} Desc: {desc}")
-                        st.write(f"... 🔥 Intent: {intent} Desc: {desc}")
+                        #st.write(f"... 🔥 Intent: {intent} Desc: {desc}")
                         if intent not in intents_data:
                             intents_data[intent] = [desc]
                         else:
