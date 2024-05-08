@@ -73,7 +73,7 @@ if uploaded_file is not None:
                 possible_intents = call_oai(article_data, sPromptIntentsFromKB)
                 generated_intents.append(possible_intents)
                 
-            st.write("GENERATED INTENTS:: " + str(generated_intents))
+            #st.write("GENERATED INTENTS:: " + str(generated_intents))
     
             intents_data = {}
         
@@ -114,7 +114,7 @@ if uploaded_file is not None:
             # Potential here to generate user utterances to train NLU Model.
             for intent, desc_list in intents_data.items():
                 tmp = ", ".join(desc_list)
-                st.write(f"{intent},{tmp}")
+                #st.write(f"{intent},{tmp}")
                 #print(f"{intent},{tmp}")
     
             #json.dump(intents_data, open("kia_kb_2.json", "w+"), indent=4)
@@ -129,7 +129,7 @@ if uploaded_file is not None:
             for intent, desc in intents_data.items():
                 intent_name = intent
                 route_name = intent.upper().replace(" ", "_")
-                st.write(f"Intent: {intent}")
+                #st.write(f"Intent: {intent}")
                 #print(f"Intent: {intent}")
         
                 if False and len(desc) > 1:
@@ -147,12 +147,12 @@ if uploaded_file is not None:
                 flow_var_data["group"] = group_name
                 data_for_flow.append(flow_var_data)
     
-                st.write(f"Desc: {desc}")
+                #st.write(f"Desc: {desc}")
                 #print(f"Desc: {desc}")
-                st.write("--")
+                #st.write("--")
                 #print("--")
 
-            st.write(prompt_file)
+            #st.write(prompt_file)
             strip_file_name = uploaded_file.name[:-4]
             export_file_name = "Exported Routing Prompt - " + strip_file_name + ".txt"
             st.download_button('Download Output', data=prompt_file, file_name=export_file_name)
