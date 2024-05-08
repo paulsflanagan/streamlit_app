@@ -45,7 +45,7 @@ if uploaded_file is not None:
     try:
         bytes_data = uploaded_file.getvalue()
         df = pd.read_csv(uploaded_file, header=None)
-        
+        st.write(df)
         reader = csv.DictReader(df)
 
         if st.button("Run"):
