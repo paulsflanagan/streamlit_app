@@ -134,6 +134,7 @@ if uploaded_file is not None:
 
         #json.dump(intents_data, open("kia_kb_2.json", "w+"), indent=4)
         #prompt_file = open("kia_prompts.txt", "w+") // What is prompt file
+        prompt_file = generated_intents
         
         data_for_flow = []
         
