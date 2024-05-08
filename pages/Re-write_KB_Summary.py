@@ -14,9 +14,34 @@ client = AzureOpenAI(
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
-sPromptIntentsFromKB = """
-Your job is to analyze the following article and provide an intent and description that could be served by that article.
-An intent is a short phrase (5 words or less) that describes something that a customer could want to do. 
-A description is a sentence that describes what the user could want to do in detail.
-You should return each intent and description in this format: Intent:<intent name>\nDescription:<description>"""
-sPromptRoutesFromIntent = ""
+sPromptReWriteSummary = """
+Your job is to Summarize the article in a way that is optimized for searches of knowledge bases and documentation.
+Specifically focus on:
+Using natural keywords and keyphrases from other fields in the rewritten summary
+The goal is to rewrite the summary in a way that improves its findability and searchability, helping more easily surface related knowledge, instructions or answers.
+The summary cannot exceed 1000 characters.
+Please provide only the optimized version of the summary."""
+
+def call_oai(prompt, systemPrompt):
+    response = client.chat.completions.create(
+    model="llmgateway-text-35turbo-1106-model",
+    messages=[
+        {
+        "role": "system",
+        "content": systemPrompt
+        },
+        {
+        "role": "user",
+        "content": prompt
+        }
+    ],
+    temperature=0,
+    max_tokens=256,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0
+    )
+    return response.choices[0].message.content
+
+
+
