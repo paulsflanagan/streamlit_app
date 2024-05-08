@@ -44,6 +44,38 @@ def call_oai(prompt, systemPrompt):
     return response.choices[0].message.content
 
 
+def process_row(row, llm):
+    title = row['title']
+    summary = row['summary']
+    detail = row['detail']
+    category = row['category']
+    tags = row["detail"]
+    
+    article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
+    
+    query_chain = create_structured_output_chain(SummaryOuput, llm, rewrite_prompt, verbose=False)
+    query_resp = query_chain.invoke({"knowledge_article": article_data})
+    
+    new_summary = query_resp["function"].good_summary
+    return new_summary
+
+
+#def fix_summary(kb_filename, new_kb_filename, llm):
+    #kb_df = pd.read_csv(kb_filename)
+    # new_summaries = [process_row(df_row, llm) for _, df_row in kb_df.iterrows()]
+    #new_summaries = []
+    #for i, row in kb_df.iterrows():
+    #    print(f"process row: {i}")
+    #    new_summary = process_row(row, llm)
+   #     new_summaries.append(new_summary)
+    #kb_df["summary"] = new_summaries
+    #new_detail = []
+   #for i, row in kb_df.iterrows():
+    #    new_detail.append(f"{row['summary']} {row['detail']}")
+    #kb_df["detail"] = new_detail
+    #kb_df.to_csv(new_kb_filename, index=False)
+
+
 uploaded_file = st.file_uploader("Upload a Knoweldgebase CSV file", accept_multiple_files=False)
 if uploaded_file is not None:
     
@@ -53,6 +85,19 @@ if uploaded_file is not None:
 
         st.write(df)
 
+        new_summaries = []
+        for i, row in kb_df.iterrows():
+            print(f"process row: {i}")
+            new_summary = process_row(row, llm)
+            new_summaries.append(new_summary)
+        kb_df["summary"] = new_summaries
+        new_detail = []
+        for i, row in kb_df.iterrows():
+            new_detail.append(f"{row['summary']} {row['detail']}")
+        kb_df["detail"] = new_detail
+        #kb_df.to_csv(new_kb_filename, index=False)
+
+        st.write(kb_df)
 
 
     
