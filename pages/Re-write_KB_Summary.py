@@ -93,6 +93,14 @@ if uploaded_file is not None:
     
             st.write("Updated KB")
             st.write(df)
+            
+            # Download the Result
+            data_as_csv = df.to_csv(index=False).encode("utf-8")
+            
+            strip_file_name = uploaded_file.name[:-4]
+            export_file_name = "EXP - " + strip_file_name + ".csv"
+            
+            st.download_button('Download Output', data=data_as_csv, file_name=export_file_name)
 
 
     
