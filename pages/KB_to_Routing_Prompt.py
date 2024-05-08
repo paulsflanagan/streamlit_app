@@ -136,9 +136,11 @@ if uploaded_file is not None:
                     #sys_msg = f"Your job is to integrate list of descriptions for the intent:'{intent_name}' into a single description. These dscriptions will be provided by the user. Your single description should fully describe the intent."
                     #user_msg = f"Here is a list of descriptions: {desc}\n\nSingle Descripton: "
                     #description = call_oai_generic()
-               # else:
+                #else:
                     #description = desc[0]
-        
+                
+                description = desc[0]
+                
                 prompt_file = prompt_file + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: [ROUTE::{route_name}]\n\n"
                 flow_var_data = {}
                 flow_var_data["enabled"] = True
