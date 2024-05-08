@@ -21,7 +21,7 @@ def call_oai(prompt):
     messages=[
         {
         "role": "system",
-        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be at most 20 words. Do not use bullet points."
+        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be a sentence at most 20 words. Do not use bullet points."
         },
         {
         "role": "user",
