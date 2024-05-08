@@ -88,12 +88,20 @@ if uploaded_file is not None:
         st.write(kb_df)
 
         new_summaries = []
-        
-        for i, row in kb_df.iterrows():
+        #for i, row in kb_df.iterrows():
+        for x in range(df.shape[0]):
             st.write(f"process row: {i}")
             #print(f"process row: {i}")
-            new_summary = process_row(row)
+            
+            title = df['title'].iloc[x]
+            summary = df['summary'].iloc[x]
+            detail = df['detail'].iloc[x]
+            category = df['category'].iloc[x]
+            tags = df['tags'].iloc[x]
+            article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
+            new_summary = call_oai({"knowledge_article": article_data}, sPromptReWriteSummary)
             new_summaries.append(new_summary)
+            
         kb_df["summary"] = new_summaries
         
         new_detail = []
