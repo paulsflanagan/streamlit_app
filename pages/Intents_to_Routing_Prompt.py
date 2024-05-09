@@ -7,6 +7,7 @@ from io import StringIO
 
 
 st.title('Convert Intents to Routing Prompts')
+st.write("Original Script Thanks to Ethan Selfridge")
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
