@@ -4,6 +4,8 @@ from supabase import create_client, Client
 import time
 
 st.title('Welcome')
+if st.button("Clear Conversation"):
+    data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
@@ -36,13 +38,6 @@ def update_screen():
                 st.write('Bot: ' + x['llm_response'])
                 st.write(' ')
                 
-    if st.button("Clear Conversation2"):
-        data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
-    #update_screen()
-    
-    #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
-
-    #t.write(testString)
 
 def call_oai(userPrompt, systemPrompt):
     response = client.chat.completions.create(
@@ -99,8 +94,7 @@ if userPrompt:
     #data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
     #update_screen()
 
-if st.button("Clear Conversation"):
-    data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+
     #update_screen()
 
 update_screen()
