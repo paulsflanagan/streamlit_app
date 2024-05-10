@@ -19,7 +19,13 @@ supabase: Client = create_client(spb_url, spb_key)
 
 response = supabase.table('StreamlitDB').select("*").execute()
 
+testString = data[0].test
+
+#data=[{'id': 1, 'created_at': '2024-05-10T15:09:19.501548+00:00', 'test': 'test 1234'}, {'id': 2, 'created_at': '2024-05-10T15:49:03.275302+00:00', 'test': 'did this work'}, {'id': 3, 'created_at': '2024-05-10T15:49:57.479494+00:00', 'test': 'YEY!!!!!'}] count=None
+
+
 st.text_area('Conversation:', height=400, value=str(response))
+st.text_area('DID IT WORK:', height=400, value=testString)
 submit_string = st.text_area('Add Here:', height=200, value="")
 if st.button("Submit"):
     data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
