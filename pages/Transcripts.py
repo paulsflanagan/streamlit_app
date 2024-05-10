@@ -19,11 +19,7 @@ client = AzureOpenAI(
 
 # Upload CSV
 
-ADMIN_USERS = {
-    'paul.s.flanagan@gmail.com',
-    'person2@email.com',
-    'person3@email.com'
-}
+ADMIN_USERS=st.secrets["ADMIN_USERS"]
 
 if st.experimental_user.email in ADMIN_USERS:
     uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
