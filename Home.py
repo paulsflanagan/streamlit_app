@@ -28,8 +28,8 @@ def update_screen():
         testString = testString + 'User: ' + x['user_query'] + '\nBot: ' + x['llm_response'] + '\n\n'
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
-    
-    st.text_area('Conversation:', height=400, value=str(testString))
+    t = st.empty()
+    #st.text_area('Conversation:', height=400, value=str(testString))
 
 def call_oai(userPrompt, systemPrompt):
     response = client.chat.completions.create(
@@ -58,7 +58,7 @@ def call_oai(userPrompt, systemPrompt):
 #testString = response.data[0]['test']
 #data=[{'id': 1, 'created_at': '2024-05-10T15:09:19.501548+00:00', 'test': 'test 1234'}, {'id': 2, 'created_at': '2024-05-10T15:49:03.275302+00:00', 'test': 'did this work'}, {'id': 3, 'created_at': '2024-05-10T15:49:57.479494+00:00', 'test': 'YEY!!!!!'}] count=None
 
-t = st.empty()
+
 #st.text_area('Conversation:', height=400, value=str(response))
 
 
