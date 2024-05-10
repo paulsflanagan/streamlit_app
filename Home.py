@@ -60,7 +60,7 @@ def call_oai(userPrompt, systemPrompt):
 placeholder = st.empty()
 update_screen()
 systemPrompt = 'You are a helpful assistant.'
-userPrompt = st.text_input('Query', label_visibility = 'hidden')
+userPrompt = st.text_input('Query', label_visibility = 'hidden', value = '')
 
 
 # STRUCTURE HERE
