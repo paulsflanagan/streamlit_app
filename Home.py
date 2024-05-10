@@ -33,7 +33,7 @@ def update_screen():
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
-    t.write(testString)
+    #t.write(testString)
 
 def call_oai(userPrompt, systemPrompt):
     response = client.chat.completions.create(
