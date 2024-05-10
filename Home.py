@@ -19,7 +19,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 def update_screen():
     response_full = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
-    response = response_full.data[-3:]
+    response = response_full[-3:]
     #st.text_area('Conversation:', height=400, value=str(response))
     testString = ''
     with placeholder.container():
