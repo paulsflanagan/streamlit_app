@@ -28,7 +28,7 @@ def update_screen():
     response = supabase.table('StreamlitDB').select("*").eq('user_name', userName).execute()
     #st.text_area('Conversation:', height=400, value=str(response))
     testString = ''
-    conversationHistory = 'Previous Questions Asked: '
+    conversationHistory = ''#'Previous Questions Asked: '
     with placeholder.container():
         #st.write("This is one element")
         #st.write("This is another")
@@ -39,7 +39,7 @@ def update_screen():
                 st.write('User: ' + x['user_query'])
                 st.write('Bot: ' + x['llm_response'])
                 st.write(' ')
-                conversationHistory = conversationHistory + ' - ' + x['user_query']
+                #conversationHistory = conversationHistory + ' - ' + x['user_query']
                 #conversationHistory = conversationHistory + 'User: ' + x['user_query'] + 'Bot: ' + x['llm_response']
     return conversationHistory
 
