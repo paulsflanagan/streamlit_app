@@ -82,7 +82,10 @@ userPrompt = st.text_input('Query', label_visibility = 'hidden', value = '')
 #userPrompt = ''
 
 #systemPrompt = st.text_area('System:', height=100, value='''You are a helpful assistant.''')
-
+if userPrompt:
+    llm_response = call_oai(userPrompt, systemPrompt)
+    data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
+    userPrompt = ''
 
 if st.button("Run"):
     llm_response = call_oai(userPrompt, systemPrompt)
