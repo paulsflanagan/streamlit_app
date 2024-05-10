@@ -28,8 +28,8 @@ def update_screen():
             #testString = 'test' + x['user_query']
             #testString = testString + tempTestString
             y = len(response.data)
-            st.write(type(x))
-            st.write(type(x))
+            st.write(x)
+            st.write(y)
             st.write(len(response.data))
             st.write('User: ' + x['user_query'])
             st.write('Bot: ' + x['llm_response'])
