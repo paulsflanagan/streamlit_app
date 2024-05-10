@@ -59,6 +59,7 @@ def call_oai(userPrompt, systemPrompt):
     return response.choices[0].message.content
 
 placeholder = st.empty()
+time.sleep(3)
 update_screen()
 systemPrompt = 'You are a helpful assistant.'
 userPrompt = st.text_input('Query', label_visibility = 'hidden', value = '')
@@ -87,9 +88,8 @@ userPrompt = st.text_input('Query', label_visibility = 'hidden', value = '')
 if st.button("Run"):
     llm_response = call_oai(userPrompt, systemPrompt)
     data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
-    update_screen()
+    #update_screen()
 
 if st.button("Clear Conversation"):
     data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
-    time.sleep(3)
-    update_screen()
+    #update_screen()
