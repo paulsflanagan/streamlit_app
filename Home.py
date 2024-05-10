@@ -27,7 +27,14 @@ supabase: Client = create_client(spb_url, spb_key)
 
 response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
 
-st.text_area('Conversation:', height=400, value=str(response))
+testString = ''
+
+for x in response.data:
+    testString = testString + 'User: ' response.data[0]['user_query'] + '\nBot: ' + response.data[x]['llm_reponse']
+
+#data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
+
+st.text_area('Conversation:', height=400, value=str(testString))
 
 # ADDD STUFF HERE
 #st.text_area('DID IT WORK:', height=400, value=testString)
