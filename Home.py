@@ -26,7 +26,7 @@ def update_screen():
         #st.write("This is another")
         count = 0
         for x in response.data:
-            count++
+            count += 1
             if count > len(response.data)-3:
                 st.write('User: ' + x['user_query'])
                 st.write('Bot: ' + x['llm_response'])
