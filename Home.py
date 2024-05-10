@@ -42,6 +42,7 @@ def update_screen():
                 conversationHistory = conversationHistory + 'User: ' + x['user_query'] + 'Bot: ' + x['llm_response']
     return conversationHistory
 
+placeholder = st.empty()
 conversationHistory = update_screen()
 
 
@@ -66,7 +67,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
     )
     return response.choices[0].message.content
 
-placeholder = st.empty()
+
 #time.sleep(3)
 
 systemPrompt = 'You are a helpful assistant.'
