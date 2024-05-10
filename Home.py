@@ -41,7 +41,9 @@ def update_screen():
                 st.write(' ')
                 conversationHistory = conversationHistory + 'User: ' + x['user_query'] + 'Bot: ' + x['llm_response']
     return conversationHistory
-                
+
+conversationHistory = update_screen()
+
 
 def call_oai(userPrompt, systemPrompt, conversationHistory):
     response = client.chat.completions.create(
@@ -101,4 +103,4 @@ if userPrompt:
 
     #update_screen()
 
-conversationHistory = update_screen()
+
