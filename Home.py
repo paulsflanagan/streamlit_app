@@ -75,7 +75,7 @@ userPrompt = st.text_area('Query:', height=50, value='')
 #if st.button("Submit"):
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
-userPrompt = ''
+#userPrompt = ''
 systemPrompt = 'You are a helpful assistant.'
 #systemPrompt = st.text_area('System:', height=100, value='''You are a helpful assistant.''')
 
