@@ -59,11 +59,10 @@ def call_oai(userPrompt, systemPrompt):
     return response.choices[0].message.content
 
 placeholder = st.empty()
-time.sleep(3)
-update_screen()
+#time.sleep(3)
+
 systemPrompt = 'You are a helpful assistant.'
 userPrompt = st.text_input('Query', label_visibility = 'hidden', value = '')
-
 
 # STRUCTURE HERE
 #response = supabase.table('StreamlitDB').select("*").execute()
@@ -93,3 +92,5 @@ if st.button("Run"):
 if st.button("Clear Conversation"):
     data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
     #update_screen()
+
+update_screen()
