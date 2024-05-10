@@ -14,10 +14,10 @@ client = AzureOpenAI(
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
-superbase_client = create_client(spb_url, spb_key)
+#superbase_client = create_client(spb_url, spb_key)
+supabase: Client = create_client(spb_url, spb_key)
 
-
-response = supabase_client.table('StreamlitDB').select("*").execute()
+response = supabase.table('StreamlitDB').select("*").execute()
 
 st.text_area(response)
 
