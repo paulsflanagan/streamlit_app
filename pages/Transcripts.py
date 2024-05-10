@@ -26,7 +26,7 @@ if st.experimental_user.email in ADMIN_USERS:
     uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 else:
     uploaded_file = None
-    st.write("Closed for Rennovation")
+    st.write("Specific Access Required - Reach out to Kristian Bade")
 
 
     
