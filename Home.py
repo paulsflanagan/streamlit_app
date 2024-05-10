@@ -31,6 +31,7 @@ def update_screen():
                 st.write('User: ' + x['user_query'])
                 st.write('Bot: ' + x['llm_response'])
                 st.write(' ')
+    userPrompt = st.text_area('Query:', height=50, value='')
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
@@ -80,7 +81,7 @@ systemPrompt = ''
 
 systemPrompt = 'You are a helpful assistant.'
 #systemPrompt = st.text_area('System:', height=100, value='''You are a helpful assistant.''')
-userPrompt = st.text_area('Query:', height=50, value='')
+
 
 if st.button("Run"):
     llm_response = call_oai(userPrompt, systemPrompt)
