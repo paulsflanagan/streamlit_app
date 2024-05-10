@@ -22,7 +22,7 @@ client = AzureOpenAI(
 ADMIN_USERS=st.secrets["admin_users"]
 
 if st.experimental_user.email in ADMIN_USERS:
-    st.write("User: " + st.experimental_user.email + " access granted.")
+    st.write("User: " + st.experimental_user.email + " - access granted.")
     uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 else:
     uploaded_file = None
