@@ -5,6 +5,9 @@ from openai import AzureOpenAI
 from io import StringIO
 
 st.title('Transcript AI Annotator')
+st.write("Closed for Rennovation")
+
+
 
 master_xml = '\n<Analysis>'
 
@@ -16,7 +19,15 @@ client = AzureOpenAI(
 
 # Upload CSV
 
-uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
+ADMIN_USERS = {
+    'person1@email.com',
+    'person2@email.com',
+    'person3@email.com'
+}
+
+if st.experimental_user.email in ADMIN_USERS:
+    uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
+    
 if uploaded_file is not None:
     
     try:
