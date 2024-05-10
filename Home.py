@@ -26,13 +26,13 @@ supabase: Client = create_client(spb_url, spb_key)
 #st.text_area('Conversation:', height=400, value=str(response))
 
 response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
-st.text_area('Conversation:', height=400, value=str(response))
+#st.text_area('Conversation:', height=400, value=str(response))
 testString = ''
 
 for x in response.data:
     #testString = 'test' + x['user_query']
     #testString = testString + tempTestString
-    testString = testString + 'User: ' + x['user_query'] + '\nBot: ' + x['llm_response']
+    testString = testString + 'User: ' + x['user_query'] + '\nBot: ' + x['llm_response'] + '\n"
 
 #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
