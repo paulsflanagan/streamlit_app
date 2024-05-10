@@ -35,6 +35,10 @@ def update_screen():
                 st.write('User: ' + x['user_query'])
                 st.write('Bot: ' + x['llm_response'])
                 st.write(' ')
+                
+    if st.button("Clear Conversation2"):
+        data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+    #update_screen()
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
