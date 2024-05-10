@@ -18,8 +18,7 @@ spb_key = st.secrets["spb_key"]
 supabase: Client = create_client(spb_url, spb_key)
 
 def update_screen():
-    response_full = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
-    response = response_full[-3:]
+    response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
     #st.text_area('Conversation:', height=400, value=str(response))
     testString = ''
     with placeholder.container():
@@ -28,6 +27,7 @@ def update_screen():
         for x in response.data:
             #testString = 'test' + x['user_query']
             #testString = testString + tempTestString
+            if x > len(response.data) -3:
             st.write('User: ' + x['user_query'])
             st.write('Bot: ' + x['llm_response'])
             st.write(' ')
