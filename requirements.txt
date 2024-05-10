@@ -3,3 +3,4 @@ duckduckgo-search
 bs4
 tabulate
 langchain
+supabase
