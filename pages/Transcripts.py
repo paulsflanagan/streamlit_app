@@ -75,7 +75,7 @@ questionsTitle = '''
 
 questions = st.text_area('Write your questions here:', height=400, value='''<Conversation>
   <Conversation_id> What is the Conversation ID?
-  <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Join O2, My O2, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
+  <Intent> What is the Intent of the conversation? [Purchase Watch, Upgrade, Payg Offers, Add Airpods, End Contract, Bolt Ons, Add Line, Unknown, Sim Card, Refund, Billing, Stock Enquiry, network Issue]
   <Sub_Intent> What is the Sub Intent?
   <Sale_Made> Was a sale made?
   <Reason_for_No_Sale> Why do you think a sale was made? 
