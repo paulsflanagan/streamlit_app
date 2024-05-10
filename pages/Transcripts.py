@@ -5,7 +5,7 @@ from openai import AzureOpenAI
 from io import StringIO
 
 st.title('Transcript AI Annotator')
-st.write("Closed for Rennovation")
+
 
 
 
@@ -22,10 +22,11 @@ client = AzureOpenAI(
 ADMIN_USERS=st.secrets["admin_users"]
 
 if st.experimental_user.email in ADMIN_USERS:
-    st.write("You Are Admin")
+    st.write("Hello " + st.experimental_user.email + " you are admin. Open Seseme...")
     uploaded_file = st.file_uploader("Upload a CSV file", accept_multiple_files=False)
 else:
     uploaded_file = None
+    st.write("Closed for Rennovation")
 
 
     
