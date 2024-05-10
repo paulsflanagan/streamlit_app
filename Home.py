@@ -25,10 +25,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 #st.text_area('Conversation:', height=400, value=str(response))
 
-response = supabase.table('StreamlitDB')
-  .select("*")
-  .eq('StreamlitDB.user_name', 'paul.s.flanagan@gmail.com')
-  .execute()
+response = supabase.table('StreamlitDB').select("*").eq('StreamlitDB.user_name', 'paul.s.flanagan@gmail.com').execute()
 
 st.text_area('Conversation:', height=400, value=str(response))
 
