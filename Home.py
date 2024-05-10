@@ -53,7 +53,7 @@ def call_oai(userPrompt, systemPrompt):
     return response.choices[0].message.content
 
 t = st.empty()
-
+update_screen()
 # STRUCTURE HERE
 #response = supabase.table('StreamlitDB').select("*").execute()
 #testString = response.data[0]['test']
