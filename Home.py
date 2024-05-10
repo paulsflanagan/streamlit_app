@@ -67,7 +67,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
 
 #time.sleep(3)
 
-systemPrompt = 'You are a helpful assistant.'
+systemPrompt = 'You are a helpful assistant. Limit your responses to 200 words.'
 userPrompt = st.chat_input("Say Something")
 
 placeholder = st.empty()
