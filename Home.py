@@ -1,6 +1,7 @@
 import streamlit as st
 from openai import AzureOpenAI
 from supabase import create_client, Client
+import time
 
 st.title('Welcome')
 
@@ -90,4 +91,5 @@ if st.button("Run"):
 
 if st.button("Clear Conversation"):
     data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+    time.sleep(1)
     update_screen()
