@@ -9,7 +9,7 @@ client = AzureOpenAI(
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
-
+userName = st.experimental_user.email
 #st.session_state.text = ""
 #st.text_input("Your input here", key="text")
 
@@ -21,11 +21,11 @@ supabase: Client = create_client(spb_url, spb_key)
 
 st.title('GPT Emulator')
 if st.button("Clear Conversation"):
-    data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+    data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
 
 def update_screen():
-    response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+    response = supabase.table('StreamlitDB').select("*").eq('user_name', userName).execute()
     #st.text_area('Conversation:', height=400, value=str(response))
     testString = ''
     conversationHistory = ''
@@ -75,7 +75,7 @@ conversationHistory = update_screen()
 
 if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
-    data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
+    data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     userPrompt = ''
     update_screen()
 
