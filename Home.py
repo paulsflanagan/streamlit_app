@@ -12,6 +12,9 @@ client = AzureOpenAI(
 )
 
 
+st.session_state.text = ""
+st.text_input("Your input here", key="text")
+
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
@@ -62,7 +65,7 @@ placeholder = st.empty()
 #time.sleep(3)
 
 systemPrompt = 'You are a helpful assistant.'
-userPrompt = st.text_input('Query', label_visibility = 'hidden', value = '')
+userPrompt = st.text_input('Query',key="text", label_visibility = 'hidden', value = '')
 
 # STRUCTURE HERE
 #response = supabase.table('StreamlitDB').select("*").execute()
