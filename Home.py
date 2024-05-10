@@ -16,6 +16,9 @@ SUPABASE_URL = st.secrets("SUPABASE_URL")
 SUPABASE_KEY = st.secrets("SUPABASE_KEY")
 cuperbase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+response = supabase.table('StreamlitDB').select("*").execute()
+
+st.text_area(response)
 
 
 systemPrompt = ''
