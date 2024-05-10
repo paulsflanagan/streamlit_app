@@ -11,8 +11,8 @@ client = AzureOpenAI(
 )
 
 
-spb_url = st.secrets("spb_url")
-spb_key = st.secrets("spb_key")
+spb_url = st.secrets["spb_url"]
+spb_key = st.secrets["spb_key"]
 
 cuperbase_client = create_client(spb_url, spb_key)
 
