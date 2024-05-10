@@ -33,8 +33,8 @@ def call_oai(userPrompt, systemPrompt):
     )
     return response.choices[0].message.content
 
-systemPrompt = st.text_area('System:', height=400, value='')
-userPrompt = st.text_area('User:', height=400, value='')
+systemPrompt = st.text_area('System:', height=200, value='')
+userPrompt = st.text_area('User:', height=200, value='')
 
 if st.button("Run"):
     st.write(call_oai(userPrompt, systemPrompt))
