@@ -20,7 +20,7 @@ client = AzureOpenAI(
 # Upload CSV
 
 ADMIN_USERS = {
-    'person1@email.com',
+    'paul.s.flanagan@gmail.com',
     'person2@email.com',
     'person3@email.com'
 }
