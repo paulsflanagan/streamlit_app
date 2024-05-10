@@ -90,9 +90,9 @@ if userPrompt:
     data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
     userPrompt = ''
 
-if st.button("Run"):
-    llm_response = call_oai(userPrompt, systemPrompt)
-    data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
+#if st.button("Run"):
+    #llm_response = call_oai(userPrompt, systemPrompt)
+    #data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
     #update_screen()
 
 if st.button("Clear Conversation"):
