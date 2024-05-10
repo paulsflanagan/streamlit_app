@@ -27,13 +27,13 @@ def update_screen():
         for x in response.data:
             #testString = 'test' + x['user_query']
             #testString = testString + tempTestString
-            y = int(len(response.data))
-            y = y-3
-            if x > y:
-                st.write(len(response.data))
-                st.write('User: ' + x['user_query'])
-                st.write('Bot: ' + x['llm_response'])
-                st.write(' ')
+            y = len(response.data)
+            st.write(type(x))
+            st.write(type(x))
+            st.write(len(response.data))
+            st.write('User: ' + x['user_query'])
+            st.write('Bot: ' + x['llm_response'])
+            st.write(' ')
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
