@@ -32,7 +32,7 @@ testString = ''
 for x in response.data:
     #testString = 'test' + x['user_query']
     #testString = testString + tempTestString
-    testString = testString + 'User: ' + x['user_query'] + '\nBot: ' + x['llm_reponse']
+    testString = testString + 'User: ' + x['user_query'] + '\nBot: ' + x['llm_response']
 
 #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
