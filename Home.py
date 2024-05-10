@@ -76,9 +76,6 @@ update_screen()
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
 
-systemPrompt = ''
-
-
 systemPrompt = 'You are a helpful assistant.'
 #systemPrompt = st.text_area('System:', height=100, value='''You are a helpful assistant.''')
 
