@@ -24,16 +24,13 @@ def update_screen():
     with placeholder.container():
         #st.write("This is one element")
         #st.write("This is another")
+        count = 0
         for x in response.data:
-            #testString = 'test' + x['user_query']
-            #testString = testString + tempTestString
-            y = len(response.data)
-            st.write(x)
-            st.write(y)
-            st.write(len(response.data))
-            st.write('User: ' + x['user_query'])
-            st.write('Bot: ' + x['llm_response'])
-            st.write(' ')
+            count++
+            if count > len(response.data)-3:
+                st.write('User: ' + x['user_query'])
+                st.write('Bot: ' + x['llm_response'])
+                st.write(' ')
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
