@@ -43,7 +43,7 @@ def update_screen():
                 conversationHistory = conversationHistory + 'User: ' + x['user_query'] + 'Bot: ' + x['llm_response']
                 
 
-def call_oai(userPrompt, systemPrompt):
+def call_oai(userPrompt, systemPrompt, conversationHistory):
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
     messages=[
@@ -89,7 +89,7 @@ userPrompt = st.chat_input("Say Something")
 
 #systemPrompt = st.text_area('System:', height=100, value='''You are a helpful assistant.''')
 if userPrompt:
-    llm_response = call_oai(userPrompt, systemPrompt)
+    llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
     data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
     userPrompt = ''
 
