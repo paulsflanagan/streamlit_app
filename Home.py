@@ -62,7 +62,7 @@ update_screen()
 systemPrompt = 'You are a helpful assistant.'
 userPrompt = st.text_input('Query', label_visibility = 'hidden')
 if userPrompt is not None:
-    llm_response = call_oai(userPrompt, systemPrompt)
+    #llm_response = call_oai(userPrompt, systemPrompt)
     data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
     update_screen()
 # STRUCTURE HERE
