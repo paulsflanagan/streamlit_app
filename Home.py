@@ -59,7 +59,7 @@ def call_oai(userPrompt, systemPrompt):
 
 placeholder = st.empty()
 update_screen()
-userPrompt = st.text_input()
+userPrompt = st.text_input('Query')
 # STRUCTURE HERE
 #response = supabase.table('StreamlitDB').select("*").execute()
 #testString = response.data[0]['test']
