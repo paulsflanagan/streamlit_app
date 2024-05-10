@@ -30,8 +30,8 @@ response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.fla
 testString = ''
 
 for x in response.data:
-    tempTestString = response.data[x]['user_query']
-    testString = testString + tempTestString
+    #tempTestString = response.data[x]['user_query']
+    #testString = testString + tempTestString
     #testString = testString + 'User: ' + str(response.data[x]['user_query']) + '\nBot: ' + str(response.data[x]['llm_reponse'])
 
 #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
