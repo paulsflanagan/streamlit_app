@@ -10,9 +10,9 @@ client = AzureOpenAI(
 )
 
 systemPrompt = ''
-userPrompt = ''
 
-def call_oai(prompt):
+
+def call_oai(userPrompt, systemPrompt):
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
     messages=[
@@ -33,3 +33,8 @@ def call_oai(prompt):
     )
     return response.choices[0].message.content
 
+
+userPrompt = st.text_area('', height=400, value='')
+
+if st.button("Run"):
+    call_oai(userPrompt, systemPrompt)
