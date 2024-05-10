@@ -31,7 +31,7 @@ testString = ''
 
 for x in response:
     testString = 'test'
-    tempTestString = data[x]['user_query']
+    tempTestString = ['user_query']
     #testString = testString + tempTestString
     #testString = testString + 'User: ' + str(response.data[x]['user_query']) + '\nBot: ' + str(response.data[x]['llm_reponse'])
 
