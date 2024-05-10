@@ -11,10 +11,11 @@ client = AzureOpenAI(
 )
 
 
+spb_url = st.secrets("spb_url")
+spb_key = st.secrets("spb_key")
 
-SUPABASE_URL = st.secrets("SUPABASE_URL")
-SUPABASE_KEY = st.secrets("SUPABASE_KEY")
-cuperbase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
+cuperbase_client = create_client(spb_url, spb_key)
+
 
 response = supabase.table('StreamlitDB').select("*").execute()
 
