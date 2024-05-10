@@ -3,10 +3,6 @@ from openai import AzureOpenAI
 from supabase import create_client, Client
 import time
 
-st.title('Welcome')
-if st.button("Clear Conversation"):
-    data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
-
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
     api_version=st.secrets["api_version"],
@@ -22,6 +18,11 @@ spb_key = st.secrets["spb_key"]
 
 #superbase_client = create_client(spb_url, spb_key)
 supabase: Client = create_client(spb_url, spb_key)
+
+st.title('Welcome')
+if st.button("Clear Conversation"):
+    data, count = supabase.table('StreamlitDB').delete().eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+
 
 def update_screen():
     response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
