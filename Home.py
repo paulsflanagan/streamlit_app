@@ -22,7 +22,7 @@ response = supabase.table('StreamlitDB').select("*").execute()
 st.text_area('Conversation:', height=400, value=str(response))
 submit_string = st.text_area('Add Here:', height=200, value="")
 if st.button("Submit"):
-    data, count = supabase.table('StreamlitDB').insert({"id": "", "created_at": "", "test": submit_string}).execute()
+    data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
 
 systemPrompt = ''
