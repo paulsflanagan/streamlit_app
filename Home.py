@@ -33,10 +33,9 @@ def call_oai(userPrompt, systemPrompt):
     )
     return response.choices[0].message.content
 
-systemPrompt = st.text_area('System:', height=200, value='''
-You are a helpful assistant.
+systemPrompt = st.text_area('System:', height=100, value='''You are a helpful assistant.
 ''')
-userPrompt = st.text_area('Query:', height=200, value='')
+userPrompt = st.text_area('Query:', height=100, value='')
 
 if st.button("Run"):
     st.write(call_oai(userPrompt, systemPrompt))
