@@ -1,5 +1,6 @@
 import streamlit as st
 from openai import AzureOpenAI
+from supabase import create_client, Client
 
 st.title('Welcome')
 
@@ -8,6 +9,14 @@ client = AzureOpenAI(
     api_version=st.secrets["api_version"],
     azure_endpoint=st.secrets["azure_endpoint"]
 )
+
+
+
+SUPABASE_URL = st.secrets("SUPABASE_URL")
+SUPABASE_KEY = st.secrets("SUPABASE_KEY")
+cuperbase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+
 
 systemPrompt = ''
 
