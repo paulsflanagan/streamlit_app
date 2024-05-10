@@ -19,7 +19,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 response = supabase.table('StreamlitDB').select("*").execute()
 
-st.text_area(str(response))
+st.text_area('Conversation:', height=400, value=str(response))
 
 
 systemPrompt = ''
