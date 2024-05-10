@@ -73,4 +73,7 @@ systemPrompt = st.text_area('System:', height=100, value='''You are a helpful as
 userPrompt = st.text_area('Query:', height=50, value='')
 
 if st.button("Run"):
-    st.write(call_oai(userPrompt, systemPrompt))
+    llm_response = call_oai(userPrompt, systemPrompt))
+    data, count = supabase.table('StreamlitDB').insert({"user_name": "paul.s.flanagan@gmail.com", "user_query": userPrompt, "llm_response": llm_response}).execute()
+
+
