@@ -21,11 +21,14 @@ def update_screen():
     response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
     #st.text_area('Conversation:', height=400, value=str(response))
     testString = ''
-    
-    for x in response.data:
-        #testString = 'test' + x['user_query']
-        #testString = testString + tempTestString
-        testString = testString + 'User: ' + x['user_query'] + '\nBot: ' + x['llm_response'] + '\n\n'
+    with placeholder.container():
+        #st.write("This is one element")
+        #st.write("This is another")
+        for x in response.data:
+            #testString = 'test' + x['user_query']
+            #testString = testString + tempTestString
+            st.write('User: ' + x['user_query'])
+            st.write('Bot: ' + x['llm_response'])
     
     #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
