@@ -28,7 +28,7 @@ supabase: Client = create_client(spb_url, spb_key)
 response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
 
 testString = ''
-testString = response.data[0]['test']
+testString = response.data[0]['user_query']
 
 #for x in response.data:
     #testString = testString + 'User: ' + str(response.data[x]['user_query']) + '\nBot: ' + str(response.data[x]['llm_reponse'])
