@@ -89,5 +89,5 @@ if st.button("Run"):
     update_screen()
 
 if st.button("Clear Conversation"):
-    data, count = supabase.table('StreamlitDB').select('*').eq('user_name', 'paul.s.flanagan@gmail.com').execute()
+    data, count = supabase.table('StreamlitDB').delete('*').eq('user_name', 'paul.s.flanagan@gmail.com').execute()
     update_screen()
