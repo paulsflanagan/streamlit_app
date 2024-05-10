@@ -32,10 +32,11 @@ response = supabase.table('StreamlitDB')
 
 st.text_area('Conversation:', height=400, value=str(response))
 
-st.text_area('DID IT WORK:', height=400, value=testString)
-submit_string = st.text_area('Add Here:', height=200, value="")
-if st.button("Submit"):
-    data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
+# ADDD STUFF HERE
+#st.text_area('DID IT WORK:', height=400, value=testString)
+#submit_string = st.text_area('Add Here:', height=200, value="")
+#if st.button("Submit"):
+    #data, count = supabase.table('StreamlitDB').insert({"test": submit_string}).execute()
 
 
 systemPrompt = ''
