@@ -30,8 +30,7 @@ response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.fla
 testString = ''
 
 for x in response:
-    testString = 'test'
-    tempTestString = ['user_query']
+    testString = 'test' + ['user_query']
     #testString = testString + tempTestString
     #testString = testString + 'User: ' + str(response.data[x]['user_query']) + '\nBot: ' + str(response.data[x]['llm_reponse'])
 
