@@ -23,13 +23,11 @@ spb_key = st.secrets["spb_key"]
 #superbase_client = create_client(spb_url, spb_key)
 supabase: Client = create_client(spb_url, spb_key)
 
-conversationHistory = ''
-
 def update_screen():
     response = supabase.table('StreamlitDB').select("*").eq('user_name', 'paul.s.flanagan@gmail.com').execute()
     #st.text_area('Conversation:', height=400, value=str(response))
     testString = ''
-
+    conversationHistory = ''
     with placeholder.container():
         #st.write("This is one element")
         #st.write("This is another")
@@ -41,6 +39,7 @@ def update_screen():
                 st.write('Bot: ' + x['llm_response'])
                 st.write(' ')
                 conversationHistory = conversationHistory + 'User: ' + x['user_query'] + 'Bot: ' + x['llm_response']
+    return conversationHistory
                 
 
 def call_oai(userPrompt, systemPrompt, conversationHistory):
@@ -101,4 +100,4 @@ if userPrompt:
 
     #update_screen()
 
-update_screen()
+conversationHistory = update_screen()
