@@ -108,6 +108,7 @@ if userPrompt:
     col1, col2, col3 = st.columns([1,1,1])
     with col1:
         if st.button(next_query_object[0]):
+            st.write('You Clicked button 1')
             st.session_state.key = next_query_object[0]
     with col2:
         if st.button(next_query_object[1]):
