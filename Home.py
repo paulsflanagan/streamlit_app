@@ -69,8 +69,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
 
 #time.sleep(3)
 
-systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words. 
-Add up to three suggested questions to the end of the response formatted like this: ["question 1", "question 2","question 3"]'''
+systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words.'''
 userPrompt = st.chat_input("Say Something")
 nextQueryPrompt = '''From the users utterance create three potential questions and return formatted like this: ["question 1", "question 2","question 3"]'''
 
