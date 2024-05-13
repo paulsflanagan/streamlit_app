@@ -20,6 +20,11 @@ spb_key = st.secrets["spb_key"]
 #superbase_client = create_client(spb_url, spb_key)
 supabase: Client = create_client(spb_url, spb_key)
 
+if 'key' not in st.session_state:
+    st.session_state['key'] = 'This is the key in the session state'
+
+st.write(st.session_state.key)
+
 st.title('GPT Emulator')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
