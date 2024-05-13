@@ -83,7 +83,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
 def next_query_button_click(query):
     st.session_state.key = query
 
-def submit_query:
+def submit_query():
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     st.write('User: ' + userPrompt)
