@@ -20,28 +20,29 @@ spb_key = st.secrets["spb_key"]
 supabase: Client = create_client(spb_url, spb_key)
 
 st.title('GPT Emulator')
-if st.button("Clear Conversation"):
-    data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
+#if st.button("Clear Conversation"):
+    #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
 
-def update_screen():
-    response = supabase.table('StreamlitDB').select("*").eq('user_name', userName).execute()
+#def update_screen():
+#    response = supabase.table('StreamlitDB').select("*").eq('user_name', userName).execute()
     #st.text_area('Conversation:', height=400, value=str(response))
-    testString = ''
-    conversationHistory = ''#'Previous Questions Asked: '
-    with placeholder.container():
+#    testString = ''
+#    conversationHistory = ''#'Previous Questions Asked: '
+#    with placeholder.container():
         #st.write("This is one element")
         #st.write("This is another")
-        count = 0
-        for x in response.data:
-            count += 1
-            if count > len(response.data)-3:
-                st.write('User: ' + x['user_query'])
-                st.write('Bot: ' + x['llm_response'])
-                st.write(' ')
+#        count = 0
+#        for x in response.data:
+#            count += 1
+#            if count > len(response.data)-3:
+#                st.write('User: ' + x['user_query'])
+#                st.write('Bot: ' + x['llm_response'])
+#                st.write(' ')
                 #conversationHistory = conversationHistory + ' - ' + x['user_query']
                 #conversationHistory = conversationHistory + 'User: ' + x['user_query'] + 'Bot: ' + x['llm_response']
-    return conversationHistory
+#    return conversationHistory
+
 
 
 def call_oai(userPrompt, systemPrompt, conversationHistory):
@@ -73,13 +74,20 @@ Add up to three suggested questions to the end of the response formatted like th
 userPrompt = st.chat_input("Say Something")
 
 placeholder = st.empty()
-conversationHistory = update_screen()
+#conversationHistory = update_screen()
+
+placeholder.text_area('Conversation:', height=400 )
+
+
 
 if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
+    st.write('User: ' + userPrompt)
+    st.write('Bot: ' + llm_response)
+    st.write(' ')
     userPrompt = ''
-    update_screen()
+    #update_screen()
 
 
 
