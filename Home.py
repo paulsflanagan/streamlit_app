@@ -2,6 +2,7 @@ import streamlit as st
 from openai import AzureOpenAI
 from supabase import create_client, Client
 import time
+import json
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
@@ -89,6 +90,10 @@ if userPrompt:
     st.write(' ')
     next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
     st.write(next_query_llm_response)
+    next_query_object = json.loads(next_query_llm_response)
+    st.write(next_query_object[0])
+    st.write(next_query_object[1])
+    st.write(next_query_object[2])
     userPrompt = ''
     #update_screen()
 
