@@ -91,8 +91,10 @@ if st.session_state.key == 'holding':
     st.write('holding')
 else:
     st.write('parsing' + st.session_state.key)
-    userPrompt = st.session_state.key
+    tempVariable = st.session_state.key
     st.session_state.key = 'holding'
+    userPrompt = tempVariable
+
 
 
 placeholder = st.empty()
