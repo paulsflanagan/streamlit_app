@@ -72,6 +72,8 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
 systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words. 
 Add up to three suggested questions to the end of the response formatted like this: ["question 1", "question 2","question 3"]'''
 userPrompt = st.chat_input("Say Something")
+nextQueryPrompt = '''From the users utterance create three potential questions and return formatted like this: ["question 1", "question 2","question 3"]'''
+
 
 placeholder = st.empty()
 conversationHistory = ''
@@ -86,6 +88,8 @@ if userPrompt:
     st.write('User: ' + userPrompt)
     st.write('Bot: ' + llm_response)
     st.write(' ')
+    next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
+    st.write(next_query_llm_response)
     userPrompt = ''
     #update_screen()
 
