@@ -29,7 +29,7 @@ if st.session_state.key == 'holding':
 else:
     st.write('not holding')
     userPrompt = st.session_state.key
-    st.session_state['key'] = 'holding'
+    st.session_state.key = 'holding'
 
 st.write(st.session_state.key)
 
