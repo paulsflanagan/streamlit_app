@@ -22,7 +22,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 
 
-st.write(st.session_state.key)
+#st.write(st.session_state.key)
 
 st.title('GPT Emulator')
 #if st.button("Clear Conversation"):
