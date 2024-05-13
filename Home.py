@@ -83,7 +83,23 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
 def next_query_button_click(query):
     st.session_state.key = query
 
-def submit_query():
+
+#time.sleep(3)
+
+systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words.'''
+if not userPrompt:
+    userPrompt = st.chat_input("Say Something", on_submit=submit_query)
+nextQueryPrompt = '''From the users utterance create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
+
+
+placeholder = st.empty()
+conversationHistory = ''
+
+#placeholder.text_area('Conversation:', height=400 )
+
+
+
+if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     st.write('User: ' + userPrompt)
@@ -103,23 +119,6 @@ def submit_query():
     with col3:
         if st.button(next_query_object[2]):
             st.session_state.key = next_query_object[2]
-
-#time.sleep(3)
-
-systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words.'''
-userPrompt = st.chat_input("Say Something", on_submit=submit_query)
-nextQueryPrompt = '''From the users utterance create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
-
-
-placeholder = st.empty()
-conversationHistory = ''
-
-#placeholder.text_area('Conversation:', height=400 )
-
-
-
-#if userPrompt:
-
             
     
     #update_screen()
