@@ -87,8 +87,9 @@ def next_query_button_click(query):
 #time.sleep(3)
 
 systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words.'''
-if not userPrompt:
-    userPrompt = st.chat_input("Say Something", on_submit=submit_query)
+#if not userPrompt:
+if 'userPrompt' in locals():
+    userPrompt = st.chat_input("Say Something")
 nextQueryPrompt = '''From the users utterance create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
 
 
