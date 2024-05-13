@@ -116,9 +116,9 @@ if userPrompt:
     with col1:
         st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[0]))
     with col2:
-        st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[1]))
+        st.button(next_query_object[1], on_click=next_query_button_click(next_query_object[1]))
     with col3:
-        st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[2]))
+        st.button(next_query_object[2], on_click=next_query_button_click(next_query_object[2]))
             
     
     #update_screen()
