@@ -91,9 +91,14 @@ if userPrompt:
     next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
     st.write(next_query_llm_response)
     next_query_object = json.loads(next_query_llm_response)
-    st.write(next_query_object[0])
-    st.write(next_query_object[1])
-    st.write(next_query_object[2])
+    col1, col2, col3 = st.columns([1,1,1])
+    
+    with col1:
+        st.button(next_query_object[0])
+    with col2:
+        st.button(next_query_object[1])
+    with col3:
+        st.button(next_query_object[2])
     userPrompt = ''
     #update_screen()
 
