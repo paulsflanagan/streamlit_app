@@ -74,7 +74,7 @@ Add up to three suggested questions to the end of the response formatted like th
 userPrompt = st.chat_input("Say Something")
 
 placeholder = st.empty()
-#conversationHistory = update_screen()
+conversationHistory = ''
 
 placeholder.text_area('Conversation:', height=400 )
 
