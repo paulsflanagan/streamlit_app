@@ -115,13 +115,10 @@ if userPrompt:
     col1, col2, col3 = st.columns([1,1,1])
     with col1:
         st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[0]))
-
     with col2:
-        if st.button(next_query_object[1]):
-            st.session_state.key = next_query_object[1]
+        st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[1]))
     with col3:
-        if st.button(next_query_object[2]):
-            st.session_state.key = next_query_object[2]
+        st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[2]))
             
     
     #update_screen()
