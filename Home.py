@@ -21,7 +21,11 @@ spb_key = st.secrets["spb_key"]
 supabase: Client = create_client(spb_url, spb_key)
 
 if 'key' not in st.session_state:
-    st.session_state['key'] = 'This is the key in the session state'
+    st.session_state['key'] = 'holding'
+
+if st.session_state.key != 'holding':
+    userPrompt = st.session_state.key
+    st.session_state['key'] = 'holding'
 
 st.write(st.session_state.key)
 
