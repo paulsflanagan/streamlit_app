@@ -81,7 +81,7 @@ systemPrompt = '''You are a helpful assistant. Answer the users query. Limit you
 #if not userPrompt:
 #if 'userPrompt' in locals():
 userPrompt = st.chat_input("Say Something")
-nextQueryPrompt = '''From the provided information create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
+nextQueryPrompt = '''From the provided information create three short 4-5 word questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
 
 if 'key' not in st.session_state:
     st.write('init holding')
