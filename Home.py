@@ -20,16 +20,7 @@ spb_key = st.secrets["spb_key"]
 #superbase_client = create_client(spb_url, spb_key)
 supabase: Client = create_client(spb_url, spb_key)
 
-if 'key' not in st.session_state:
-    st.write('init holding')
-    st.session_state['key'] = 'holding'
 
-if st.session_state.key == 'holding':
-    st.write('yeah its holding')
-else:
-    st.write('not holding: ' + st.session_state.key)
-    userPrompt = st.session_state.key
-    st.session_state.key = 'holding'
 
 st.write(st.session_state.key)
 
@@ -88,9 +79,20 @@ def next_query_button_click(query):
 
 systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words.'''
 #if not userPrompt:
-if 'userPrompt' in locals():
-    userPrompt = st.chat_input("Say Something")
+#if 'userPrompt' in locals():
+userPrompt = st.chat_input("Say Something")
 nextQueryPrompt = '''From the users utterance create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
+
+if 'key' not in st.session_state:
+    st.write('init holding')
+    st.session_state['key'] = 'holding'
+
+if st.session_state.key == 'holding':
+    st.write('yeah its holding')
+else:
+    st.write('not holding: ' + st.session_state.key)
+    userPrompt = st.session_state.key
+    st.session_state.key = 'holding'
 
 
 placeholder = st.empty()
