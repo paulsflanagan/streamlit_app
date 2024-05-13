@@ -109,7 +109,7 @@ if userPrompt:
     st.write('Bot: ' + llm_response)
     st.write(' ')
     next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
-    st.write(next_query_llm_response)
+    #st.write(next_query_llm_response)
     next_query_object = json.loads(next_query_llm_response)
     userPrompt = ''
     col1, col2, col3 = st.columns([1,1,1])
