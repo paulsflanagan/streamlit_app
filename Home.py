@@ -81,7 +81,7 @@ systemPrompt = '''You are a helpful assistant. Answer the users query. Limit you
 #if not userPrompt:
 #if 'userPrompt' in locals():
 userPrompt = st.chat_input("Say Something")
-nextQueryPrompt = '''From the users utterance create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
+nextQueryPrompt = '''From the provided information create three questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
 
 if 'key' not in st.session_state:
     st.write('init holding')
@@ -110,15 +110,16 @@ if userPrompt:
     st.write(' ')
     next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
     #st.write(next_query_llm_response)
-    next_query_object = json.loads(next_query_llm_response)
-    userPrompt = ''
-    col1, col2, col3 = st.columns([1,1,1])
-    with col1:
-        st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[0]))
-    with col2:
-        st.button(next_query_object[1], on_click=next_query_button_click(next_query_object[1]))
-    with col3:
-        st.button(next_query_object[2], on_click=next_query_button_click(next_query_object[2]))
+    try:
+        next_query_object = json.loads(next_query_llm_response)
+        userPrompt = ''
+        col1, col2, col3 = st.columns([1,1,1])
+        with col1:
+            st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[0]))
+        with col2:
+            st.button(next_query_object[1], on_click=next_query_button_click(next_query_object[1]))
+        with col3:
+            st.button(next_query_object[2], on_click=next_query_button_click(next_query_object[2]))
             
     
     #update_screen()
