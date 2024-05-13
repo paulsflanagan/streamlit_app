@@ -80,6 +80,8 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
     )
     return response.choices[0].message.content
 
+def next_query_button_click(query):
+    st.session_state.key = nquery
 
 #time.sleep(3)
 
@@ -107,9 +109,8 @@ if userPrompt:
     userPrompt = ''
     col1, col2, col3 = st.columns([1,1,1])
     with col1:
-        if st.button(next_query_object[0]):
-            st.write('You Clicked button 1')
-            st.session_state.key = next_query_object[0]
+        st.button(next_query_object[0], on_click=next_query_button_click(next_query_object[0])):
+
     with col2:
         if st.button(next_query_object[1]):
             st.session_state.key = next_query_object[1]
