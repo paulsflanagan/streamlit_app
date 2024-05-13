@@ -27,7 +27,7 @@ if 'key' not in st.session_state:
 if st.session_state.key == 'holding':
     st.write('yeah its holding')
 else:
-    st.write('not holding')
+    st.write('not holding: ' + st.session_state.key)
     userPrompt = st.session_state.key
     st.session_state.key = 'holding'
 
