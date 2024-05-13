@@ -120,6 +120,8 @@ if userPrompt:
             st.button(next_query_object[1], on_click=next_query_button_click(next_query_object[1]))
         with col3:
             st.button(next_query_object[2], on_click=next_query_button_click(next_query_object[2]))
+    except:
+        st.write(' ')
             
     
     #update_screen()
