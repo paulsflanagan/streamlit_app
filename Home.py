@@ -13,7 +13,9 @@ text_to_display = '''
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra dapibus nunc, vulputate eleifend ex tincidunt sit amet.
 '''
 
-for x in text_to_display:
+split_text = text_to_display .split(" ")
+
+for x in split_text:
   st.write(x)
 
 #    col1, col2, col3 = st.columns([1,1,1])
