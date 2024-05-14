@@ -20,8 +20,12 @@ Football, also known as soccer in some countries, is a team sport played between
 
 Football is a popular sport played and watched by millions of people around the world. It requires skill, strategy, and teamwork, and is known for its fast pace and exciting matches. It is governed by the rules of the game set by the International Football Association Board (IFAB) and is played on a rectangular field with a goal at each end.
     ''')
+with col2.expander("How do you make Chicken Soup?"):
+    st.write('''
+To make chicken soup, start by sautéing diced onions, carrots, and celery in a large pot with some olive oil. Once the vegetables are soft, add in diced chicken breast or thighs and cook until the chicken is no longer pink. Then, pour in chicken broth and bring the mixture to a boil. Reduce the heat and let the soup simmer for about 20-30 minutes, or until the chicken is fully cooked.
 
-
+You can also add in seasonings like salt, pepper, thyme, and bay leaves for flavor. Some people like to add noodles or rice to their chicken soup, so you can add those in and cook until they are tender. Finally, taste the soup and adjust the seasonings as needed. Serve the chicken soup hot and enjoy!
+''')
 
 
 
