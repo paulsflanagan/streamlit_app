@@ -24,7 +24,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 #st.write(st.session_state.key)
 
-st.title('GPT Emulator')
+st.title('Simple LLM Interface')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
