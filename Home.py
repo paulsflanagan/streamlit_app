@@ -4,6 +4,19 @@ from supabase import create_client, Client
 import time
 import json
 import random
+import uuid
+
+
+# Initialization
+if 'key' not in st.session_state:
+    st.session_state['key'] = uuid.uuid4()
+    UID = uuid.uuid4()
+else:
+    UID = st.session_state['key']
+    
+st.write(UID)
+
+
 
 
 st.title('Lorem ipsum dolor')
