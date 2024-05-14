@@ -29,7 +29,7 @@ for x in split_text:
   word_counter += 1
   text_buffer = text_buffer + ' ' + x
   if word_counter == word_limit:
-    displayed_text = displayed_text + ' ' + text_buffer + ' WL: ' + str(word_limit) + ' ST: ' + str(sleep_time)
+    displayed_text = displayed_text + ' ' + text_buffer
     placeholder.write(displayed_text)
     text_buffer = ''
     word_counter = 0
