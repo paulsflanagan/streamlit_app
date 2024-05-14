@@ -110,7 +110,7 @@ userPrompt = st.chat_input("Say Something")
 
 user_message_space = st.empty()
 placeholder = st.empty()
-conversationHistory = ''
+conversationHistory = 'None'
 
 
 #placeholder.text_area('Conversation:', height=400 )
