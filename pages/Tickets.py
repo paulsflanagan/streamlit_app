@@ -16,5 +16,5 @@ recommendation = st.text_area('Recommendation:', height=400, value='')
 
 
 if st.button("Submit"):
-  data, count = supabase.table('ticketsDB').insert({"creator": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
+  data, count = supabase.table('ticketsDB').insert({"creator": userName, "context": recommendation}).execute()
 
