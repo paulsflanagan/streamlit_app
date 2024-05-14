@@ -5,7 +5,7 @@ import time
 import json
 
 
-st.title('Simple LLM Interface')
+st.title('Lorem ipsum dolor')
 
 placeholder = st.empty()
 
