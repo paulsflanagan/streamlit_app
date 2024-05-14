@@ -24,7 +24,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 #st.write(st.session_state.key)
 
-st.title('Botty Mc Bot Face')
+st.title('GPT 3.5 Emulator')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
@@ -109,7 +109,7 @@ if userPrompt:
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llm_response.split(" ")
-    displayed_text = '#### BottyMBF \n\n'
+    displayed_text = '#### ChatGPT \n\n'
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
         placeholder.markdown(displayed_text)
