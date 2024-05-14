@@ -50,7 +50,7 @@ st.title('ChatGPT Emulator')
 
 
 
-def call_oai(userPrompt, systemPrompt, conversationHistory):
+def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
     messages=[
@@ -60,7 +60,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory):
         },
         {
         "role": "user",
-        "content": conversationHistory + userPrompt
+        "content": "%CONVERSATION HISTORY: "conversationHistory + "%USER QUERY: " userPrompt + " %ADDITIONAL CONTEXT: "
         }
     ],
     temperature=0,
@@ -99,13 +99,14 @@ userPrompt = st.chat_input("Say Something")
 user_message_space = st.empty()
 placeholder = st.empty()
 conversationHistory = ''
+additionalContext = ''
 
 #placeholder.text_area('Conversation:', height=400 )
 
 
 
 if userPrompt:
-    llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
+    llm_response = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llm_response.split(" ")
