@@ -34,7 +34,7 @@ for x in split_text:
     text_buffer = ''
     word_counter = 0
     time.sleep(sleep_time)
-    word_limit = random.randrange(1,3)
+    word_limit = random.randrange(1,5)
     sleep_time = word_limit / 10
     
 
