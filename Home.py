@@ -22,7 +22,7 @@ displayed_text = ''
 text_buffer = ''
 word_counter = 0
 word_limit = 1
-sleep_time = 0.1
+sleep_time = 0.2
 
 for x in split_text:
   word_counter += 1
