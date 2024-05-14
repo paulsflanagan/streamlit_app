@@ -17,7 +17,7 @@ split_text = text_to_display.split(" ")
 displayed_text = ''
 for x in split_text:
   displayed_text = displayed_text + ' ' + x
-  placeholder.write(x)
+  placeholder.write(displayed_text)
 
 #    col1, col2, col3 = st.columns([1,1,1])
 #    with col1:
