@@ -28,6 +28,19 @@ st.title('ChatGPT Emulator')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
+if uploaded_file is not None:
+    try:
+        bytes_data = uploaded_file.getvalue()
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        string_data = stringio.read()
+        df = pd.read_csv(uploaded_file)
+        df.columns = ['Conversation ID', 'Transcript']
+        st.write("First Conversation ID: " + df['Conversation ID'][0])
+        st.write("Last Conversation ID: " + df['Conversation ID'][df.shape[0]-1])
+        st.write("Conversation Count: " + str(df.shape[0]))
+    except UnicodeDecodeError:
+        st.write("Error Decoding CSV - Ensure encoding is utf-8")
+
 
 #def update_screen():
 #    response = supabase.table('StreamlitDB').select("*").eq('user_name', userName).execute()
