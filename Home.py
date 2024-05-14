@@ -4,43 +4,72 @@ from supabase import create_client, Client
 import time
 import json
 import random
-import uuid
+
+
+
+import numpy as np
+
+col1, col2 = st.columns([3, 1])
+data = np.random.randn(10, 1)
+
+col1.subheader("A wide column with a chart")
+col1.line_chart(data)
+
+col2.subheader("A narrow column with the data")
+col2.write(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#import uuid
 
 
 # Initialization
-if 'key' not in st.session_state:
-    st.session_state['key'] = uuid.uuid4()
-    UID = uuid.uuid4()
-else:
-    UID = st.session_state['key']
+#if 'key' not in st.session_state:
+#    st.session_state['key'] = uuid.uuid4()
+#    UID = uuid.uuid4()
+#else:
+#    UID = st.session_state['key']
     
-st.write(UID)
+#st.write(UID)
 
 
 
 
-st.title('Lorem ipsum dolor')
+#st.title('Lorem ipsum dolor')
 
-placeholder = st.empty()
+#placeholder = st.empty()
 
-text_to_display = '''
+#text_to_display = '''
 
-Football, also known as soccer in some countries, is a team sport played between two teams of eleven players each. The objective is to score goals by getting the ball into the opposing team's goal. Players primarily use their feet to kick the ball, but can also use their head or torso. The team with the most goals at the end of the game wins.
+#Football, also known as soccer in some countries, is a team sport played between two teams of eleven players each. The objective is to score goals by getting the ball into the opposing team's goal. Players primarily use their feet to kick the ball, but can also use their head or torso. The team with the most goals at the end of the game wins.
 
-Football is a popular sport played and watched by millions of people around the world. It requires skill, strategy, and teamwork, and is known for its fast pace and exciting matches. It is governed by the rules of the game set by the International Football Association Board (IFAB) and is played on a rectangular field with a goal at each end.
-'''
+#Football is a popular sport played and watched by millions of people around the world. It requires skill, strategy, and teamwork, and is known for its fast pace and exciting matches. It is governed by the rules of the game set by the International Football Association Board (IFAB) and is played on a rectangular field with a goal at each end.
+#'''
 
-split_text = text_to_display.split(" ")
-displayed_text = ''
+#split_text = text_to_display.split(" ")
+#displayed_text = ''
 #text_buffer = ''
 #word_counter = 0
 #word_limit = 1
 #sleep_time = 0.2
 
-for x in split_text:
-    displayed_text = displayed_text + ' ' + x
-    placeholder.markdown(displayed_text)
-    time.sleep(0.1)
+#for x in split_text:
+#    displayed_text = displayed_text + ' ' + x
+#    placeholder.markdown(displayed_text)
+#    time.sleep(0.1)
 
 
 #for x in split_text:
