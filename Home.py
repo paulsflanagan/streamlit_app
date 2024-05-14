@@ -18,7 +18,7 @@ displayed_text = ''
 for x in split_text:
   displayed_text = displayed_text + ' ' + x
   placeholder.write(displayed_text)
-  time.sleep(0.3)
+  time.sleep(0.2)
 
 #    col1, col2, col3 = st.columns([1,1,1])
 #    with col1:
