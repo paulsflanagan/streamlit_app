@@ -19,22 +19,28 @@ Football is a popular sport played and watched by millions of people around the 
 
 split_text = text_to_display.split(" ")
 displayed_text = ''
-text_buffer = ''
-word_counter = 0
-word_limit = 1
-sleep_time = 0.2
+#text_buffer = ''
+#word_counter = 0
+#word_limit = 1
+#sleep_time = 0.2
 
 for x in split_text:
-  word_counter += 1
-  text_buffer = text_buffer + ' ' + x
-  if word_counter == word_limit:
-    displayed_text = displayed_text + ' ' + text_buffer
-    placeholder.write(displayed_text)
-    text_buffer = ''
-    word_counter = 0
-    time.sleep(sleep_time)
-    word_limit = random.randrange(1,4)
-    #sleep_time = word_limit / 10
+    displayed_text = displayed_text + ' ' + x
+    placeholder.markdown(displayed_text)
+    time.sleep(0.1)
+
+
+#for x in split_text:
+#  word_counter += 1
+#  text_buffer = text_buffer + ' ' + x
+#  if word_counter == word_limit:
+#    displayed_text = displayed_text + ' ' + text_buffer
+#    placeholder.write(displayed_text)
+#    text_buffer = ''
+#    word_counter = 0
+#    time.sleep(sleep_time)
+#    word_limit = random.randrange(1,4)
+#    #sleep_time = word_limit / 10
     
 
 #    col1, col2, col3 = st.columns([1,1,1])
