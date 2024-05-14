@@ -35,6 +35,7 @@ for x in split_text:
     word_counter = 0
     time.sleep(sleep_time)
     word_limit = random.randrange(1,10)
+    st.write(word_limit)
     sleep_time = word_limit / 10
     
 
