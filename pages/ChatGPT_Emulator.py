@@ -29,6 +29,7 @@ st.title('ChatGPT Emulator')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
+uploaded_file = st.file_uploader("text file", accept_multiple_files=False)
 if uploaded_file is not None:
     try:
         bytes_data = uploaded_file.getvalue()
