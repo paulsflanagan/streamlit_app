@@ -7,7 +7,7 @@ import random
 
 
 
-
+st.title('ChatGPT Emulator')
 col1, col2 = st.columns([0.6, 0.4])
 
 col1.subheader("GPT Emulator Header Test")
