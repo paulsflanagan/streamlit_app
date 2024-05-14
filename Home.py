@@ -15,7 +15,7 @@ col1, col2 = st.columns([0.6, 0.4], gap="large")
 uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 col1.markdown('Conversation here')
 
-col2.subheader("Conversation History")
+#col2.subheader("Conversation History")
 #st.sidebar
 with col2.expander("What is Football?"):
     st.write('''
