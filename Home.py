@@ -9,7 +9,7 @@ import random
 
 st.title('ChatGPT Emulator')
 #uploaded_file = st.file_uploader("", accept_multiple_files=False)
-col1, col2 = st.columns([0.6, 0.4], gap="medium")
+col1, col2 = st.columns([0.6, 0.4], gap="large")
 
 #col1.subheader("GPT Emulator Header Test")
 uploaded_file = col1.file_uploader("", accept_multiple_files=False)
