@@ -19,10 +19,17 @@ In vitae risus sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultr
 
 split_text = text_to_display.split(" ")
 displayed_text = ''
+text_buffer = ''
+counter = 0
 for x in split_text:
-  displayed_text = displayed_text + ' ' + x
-  placeholder.write(displayed_text)
+  counter += 1
+  text_buffer = text_buffer + ' ' + x
+  if counter = 3:
+    displayed_text = displayed_text + ' ' + x
+    placeholder.write(displayed_text)
+    text_buffer = ''
   time.sleep(0.1)
+    
 
 #    col1, col2, col3 = st.columns([1,1,1])
 #    with col1:
