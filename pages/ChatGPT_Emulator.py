@@ -10,11 +10,11 @@ import uuid
 # Session ID
 if 'key' not in st.session_state:
     st.session_state['key'] = uuid.uuid4()
-    UID = uuid.uuid4()
+    session_id = uuid.uuid4()
 else:
-    UID = st.session_state['key']
+    session_id = st.session_state['key']
     
-st.write(UID)
+#st.write(UID)
 
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
@@ -134,7 +134,7 @@ conversationHistory = 'None'
 
 if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
-    data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
+    data, count = supabase.table('StreamlitDB').insert({"session_id": session_id, "user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute() session_id
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llm_response.split(" ")
     displayed_text = '#### ChatGPT \n\n'
