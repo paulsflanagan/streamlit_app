@@ -13,10 +13,10 @@ text_to_display = '''
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra dapibus nunc, vulputate eleifend ex tincidunt sit amet.
 '''
 
-split_text = text_to_display .split(" ")
+split_text = text_to_display.split(" ")
 
 for x in split_text:
-  st.write(x)
+  st.write(x + '\b')
 
 #    col1, col2, col3 = st.columns([1,1,1])
 #    with col1:
