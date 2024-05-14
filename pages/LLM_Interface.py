@@ -81,7 +81,7 @@ systemPrompt = '''You are a helpful assistant. Answer the users query. Limit you
 #if not userPrompt:
 #if 'userPrompt' in locals():
 userPrompt = st.chat_input("Say Something")
-nextQueryPrompt = '''From the provided information create three short 4-5 word questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
+#nextQueryPrompt = '''From the provided information create three short 4-5 word questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
 
 #if 'key' not in st.session_state:
 #    st.write('init holding')
@@ -108,9 +108,15 @@ if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     st.write('User: ' + userPrompt)
-    st.write('Bot: ' + llm_response)
-    st.write(' ')
-    next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
+    split_text = text_to_display.split(" ")
+    displayed_text = ''
+    for x in split_text:
+        displayed_text = displayed_text + ' ' + x
+        placeholder.write(displayed_text)
+        time.sleep(0.1)
+    #st.write('Bot: ' + llm_response)
+    #st.write(' ')
+    #next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
     #st.write(next_query_llm_response)
     #try:
     #    next_query_object = json.loads(next_query_llm_response)
