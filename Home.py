@@ -21,7 +21,7 @@ split_text = text_to_display.split(" ")
 displayed_text = ''
 text_buffer = ''
 counter = 0
-sleep_time = 0.1
+sleep_time = 0.3
 
 for x in split_text:
   counter += 1
