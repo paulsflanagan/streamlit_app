@@ -96,7 +96,7 @@ userPrompt = st.chat_input("Say Something")
 #    userPrompt = tempVariable
 
 
-
+user_message_space = st.empty()
 placeholder = st.empty()
 conversationHistory = ''
 
@@ -107,9 +107,9 @@ conversationHistory = ''
 if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory)
     data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
-    st.write('User: ' + userPrompt)
+    user_message_space.write('User: ' + userPrompt)
     split_text = llm_response.split(" ")
-    displayed_text = ''
+    displayed_text = 'Bot: '
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
         placeholder.write(displayed_text)
