@@ -17,6 +17,6 @@ with placeholder.container():
   st.write("This is one element")
   st.write("This is another")
   count = 0
-  for x in response.data:
+  for x in rcurrent_tickets.data:
       st.write('Created: ' + x['created_at'] + ' User: ' + x['creator'] + ' Reccomendation: ' + x['context'] + ' Completed: ' + str(x['context']))
       st.write(' ')
