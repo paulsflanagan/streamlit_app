@@ -3,6 +3,7 @@ from openai import AzureOpenAI
 from supabase import create_client, Client
 import time
 import json
+import random
 
 
 st.title('Lorem ipsum dolor')
@@ -20,17 +21,18 @@ In vitae risus sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultr
 split_text = text_to_display.split(" ")
 displayed_text = ''
 text_buffer = ''
-counter = 0
+word_counter = 0
+word_limit = 1
 sleep_time = 0.3
 
 for x in split_text:
-  counter += 1
+  word_counter += 1
   text_buffer = text_buffer + ' ' + x
-  if counter == 3:
+  if word_counter == word_limit:
     displayed_text = displayed_text + ' ' + text_buffer
     placeholder.write(displayed_text)
     text_buffer = ''
-    counter = 0
+    word_counter = 0
     time.sleep(sleep_time)
     
 
