@@ -19,4 +19,5 @@ with placeholder.container():
   count = 0
   for x in current_tickets.data:
       st.write('Created: ' + x['created_at'] + ' User: ' + x['creator'] + ' Reccomendation: ' + x['context'] + ' Completed: ' + str(x['context']))
+      st.write(' Completed: ' + str(x['context']))
       st.write(' ')
