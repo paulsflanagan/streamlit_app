@@ -7,16 +7,14 @@ import random
 
 
 
-import numpy as np
 
 col1, col2 = st.columns([3, 1])
-data = np.random.randn(10, 1)
 
-col1.subheader("A wide column with a chart")
-col1.line_chart(data)
+col1.subheader("GPT Emulator Header")
+col1.markdown('Conversation here')
 
 col2.subheader("A narrow column with the data")
-col2.write(data)
+col2.write("Conversation history here")
 
 
 
