@@ -14,12 +14,9 @@ placeholder = st.empty()
 current_tickets = supabase.table('ticketsDB').select("*").execute()
 
 with placeholder.container():
-  st.write("This is one element")
-  st.write("This is another")
-  count = 0
   for x in current_tickets.data:
+      st.write('__')
       st.write('Created: ' + x['created_at'])
       st.write('User: ' + x['creator'])
       st.write('Reccomendation: ' + x['context'])
       st.write('Completed: ' + str(x['complete']))
-      st.write('__')
