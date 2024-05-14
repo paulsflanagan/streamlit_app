@@ -27,7 +27,7 @@ sleep_time = 0.1
 
 for x in split_text:
   word_counter += 1
-  text_buffer = text_buffer + ' ' + x
+  text_buffer = text_buffer + ' ' + x + ' SHAWADDY WADDY '
   if word_counter == word_limit:
     displayed_text = displayed_text + ' ' + text_buffer + ' WL: ' + str(word_limit) + ' ST: ' + str(sleep_time)
     placeholder.write(displayed_text)
@@ -35,7 +35,6 @@ for x in split_text:
     word_counter = 0
     time.sleep(sleep_time)
     word_limit = random.randrange(1,10)
-    st.write(word_limit)
     sleep_time = word_limit / 10
     
 
