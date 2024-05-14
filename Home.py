@@ -14,10 +14,12 @@ col1.subheader("GPT Emulator Header Test")
 col1.markdown('Conversation here')
 
 col2.subheader("A narrow column with the data")
-col2.write("Conversation history here")
-
-
-
+with col2.expander("See explanation"):
+    st.write('''
+        The chart above shows some numbers I picked for you.
+        I rolled actual dice for these, so they're *guaranteed* to
+        be random.
+    ''')
 
 
 
