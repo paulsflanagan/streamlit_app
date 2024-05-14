@@ -14,11 +14,11 @@ col1.subheader("GPT Emulator Header Test")
 col1.markdown('Conversation here')
 
 col2.subheader("A narrow column with the data")
-with col2.expander("See explanation"):
+with col2.expander("What is Fottball?"):
     st.write('''
-        The chart above shows some numbers I picked for you.
-        I rolled actual dice for these, so they're *guaranteed* to
-        be random.
+Football, also known as soccer in some countries, is a team sport played between two teams of eleven players each. The objective is to score goals by getting the ball into the opposing team's goal. Players primarily use their feet to kick the ball, but can also use their head or torso. The team with the most goals at the end of the game wins.
+
+Football is a popular sport played and watched by millions of people around the world. It requires skill, strategy, and teamwork, and is known for its fast pace and exciting matches. It is governed by the rules of the game set by the International Football Association Board (IFAB) and is played on a rectangular field with a goal at each end.
     ''')
 
 
