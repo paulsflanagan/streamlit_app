@@ -19,4 +19,4 @@ recommendation = placeholder.text_area('Recommendation:', height=400, value='')
 
 if st.button("Submit"):
   #data, count = supabase.table('ticketsDB').insert({"creator": userName, "context": recommendation}).execute()
-  placeholder.text_area('Recommendation:', height=400, value='')
+  recommendation.empty()
