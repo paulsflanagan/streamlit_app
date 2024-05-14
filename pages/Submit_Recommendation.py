@@ -17,9 +17,10 @@ placeholder.write('Hello ' + st.experimental_user.email + '. Please submit your 
 recommendation = placeholder.text_area('Recommendation:', height=400, value='')
 
 
-if placeholder.button("Submit asdfasdfas"):
+if placeholder.button("Submit"):
   data, count = supabase.table('ticketsDB').insert({"creator": userName, "context": recommendation}).execute()
   placeholder.empty()
+  placeholder = st.empty()
   placeholder.write('Your Ticket has been submitted.')
   placeholder.write('Hello ' + st.experimental_user.email + '. Please submit your recommendation ticket below.')
   recommendation = placeholder.text_area('Recommendation:', height=400, value='')
