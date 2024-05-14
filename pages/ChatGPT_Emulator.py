@@ -1,6 +1,7 @@
 import streamlit as st
 from openai import AzureOpenAI
 from supabase import create_client, Client
+from io import StringIO
 import time
 import json
 
@@ -33,11 +34,7 @@ if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
-        df = pd.read_csv(uploaded_file)
-        df.columns = ['Conversation ID', 'Transcript']
-        st.write("First Conversation ID: " + df['Conversation ID'][0])
-        st.write("Last Conversation ID: " + df['Conversation ID'][df.shape[0]-1])
-        st.write("Conversation Count: " + str(df.shape[0]))
+        st.write(string_data)
     except UnicodeDecodeError:
         st.write("Error Decoding CSV - Ensure encoding is utf-8")
 
