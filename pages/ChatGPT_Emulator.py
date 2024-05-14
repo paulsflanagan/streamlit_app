@@ -5,6 +5,16 @@ from io import StringIO
 import time
 import json
 
+
+# Session ID
+if 'key' not in st.session_state:
+    st.session_state['key'] = uuid.uuid4()
+    UID = uuid.uuid4()
+else:
+    UID = st.session_state['key']
+    
+st.write(UID)
+
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
     api_version=st.secrets["api_version"],
