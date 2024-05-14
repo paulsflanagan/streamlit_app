@@ -34,6 +34,8 @@ for x in split_text:
     text_buffer = ''
     word_counter = 0
     time.sleep(sleep_time)
+    word_limit = random.randrange(1,3)
+    sleep_time = word_limit / 10
     
 
 #    col1, col2, col3 = st.columns([1,1,1])
