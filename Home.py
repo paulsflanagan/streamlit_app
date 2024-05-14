@@ -11,6 +11,7 @@ import random
 col1, col2 = st.columns([0.6, 0.4])
 
 col1.subheader("GPT Emulator Header Test")
+uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 col1.markdown('Conversation here')
 
 col2.subheader("Conversation History")
