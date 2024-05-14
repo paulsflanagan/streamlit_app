@@ -21,5 +21,5 @@ with placeholder.container():
       st.write('Created: ' + x['created_at'])
       st.write('User: ' + x['creator'])
       st.write('Reccomendation: ' + x['context'])
-      st.write('Completed: ' + str(x['context']))
-      st.write(' ')
+      st.write('Completed: ' + str(x['complete']))
+      st.write('__')
