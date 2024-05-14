@@ -8,7 +8,7 @@ import random
 
 
 
-col1, col2 = st.columns([0.7, 0.3])
+col1, col2 = st.columns([0.6, 0.4])
 
 col1.subheader("GPT Emulator Header Test")
 col1.markdown('Conversation here')
