@@ -14,7 +14,7 @@ placeholder = st.empty()
 
 userName = st.experimental_user.email
 placeholder.write('Hello ' + st.experimental_user.email + '. Please submit your recommendation ticket below.')
-recommendation = st.text_area('Recommendation:', height=400, value='')
+recommendation = placeholder.text_area('Recommendation:', height=400, value='')
 
 
 if st.button("Submit"):
