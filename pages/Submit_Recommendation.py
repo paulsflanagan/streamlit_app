@@ -21,3 +21,4 @@ if st.button("Submit"):
   #data, count = supabase.table('ticketsDB').insert({"creator": userName, "context": recommendation}).execute()
   #st.session_state.user_input = ""
   placeholder.empty()
+  placeholder.write('Your Ticket has been submitted.')
