@@ -99,7 +99,7 @@ userPrompt = st.chat_input("Say Something")
 user_message_space = st.empty()
 placeholder = st.empty()
 conversationHistory = ''
-additionalContext = 'User is from the UK.'
+additionalContext = ''
 
 #placeholder.text_area('Conversation:', height=400 )
 
