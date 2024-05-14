@@ -29,13 +29,14 @@ st.title('ChatGPT Emulator')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
+additionalContext = ''
 uploaded_file = st.file_uploader("text file", accept_multiple_files=False)
 if uploaded_file is not None:
     try:
         bytes_data = uploaded_file.getvalue()
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
-        st.write(string_data)
+        additionalContext = string_data
     except UnicodeDecodeError:
         st.write("Error Decoding CSV - Ensure encoding is utf-8")
 
@@ -110,7 +111,7 @@ userPrompt = st.chat_input("Say Something")
 user_message_space = st.empty()
 placeholder = st.empty()
 conversationHistory = ''
-additionalContext = ''
+
 
 #placeholder.text_area('Conversation:', height=400 )
 
