@@ -12,13 +12,12 @@ supabase: Client = create_client(spb_url, spb_key)
 
 placeholder = st.empty()
 placeholder2 = st.empty()
-placeholder2.write('Whats this?')
 userName = st.experimental_user.email
 placeholder.write('Hello ' + st.experimental_user.email + '. Please submit your recommendation ticket below.')
 recommendation = placeholder.text_area('Recommendation:', height=400, value='')
 
 
-if st.button("Submit"):
+if placeholder2.button("Submit"):
   data, count = supabase.table('ticketsDB').insert({"creator": userName, "context": recommendation}).execute()
   placeholder.empty()
   placeholder = st.empty()
