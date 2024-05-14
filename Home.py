@@ -13,7 +13,7 @@ col1, col2 = st.columns([0.7, 0.3])
 col1.subheader("GPT Emulator Header Test")
 col1.markdown('Conversation here')
 
-col2.subheader("A narrow column with the data")
+col2.subheader("Conversation History")
 with col2.expander("What is Football?"):
     st.write('''
 Football, also known as soccer in some countries, is a team sport played between two teams of eleven players each. The objective is to score goals by getting the ball into the opposing team's goal. Players primarily use their feet to kick the ball, but can also use their head or torso. The team with the most goals at the end of the game wins.
