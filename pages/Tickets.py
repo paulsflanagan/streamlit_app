@@ -11,7 +11,7 @@ supabase: Client = create_client(spb_url, spb_key)
 #current_tickets = supabase.table('ticketsDB').select("*").eq('user_name', userName).execute()
 
 userName = st.experimental_user.email
-st.write('Hello ' + st.experimental_user.email + '. Please ubmit your ticket below.')
+st.write('Hello ' + st.experimental_user.email + '. Please submit your recommendation ticket below.')
 recommendation = st.text_area('Recommendation:', height=400, value='')
 
 
