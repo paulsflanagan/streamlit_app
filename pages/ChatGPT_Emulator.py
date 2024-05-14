@@ -71,8 +71,12 @@ def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
         "content": systemPrompt
         },
         {
+        "role": "assistant",
+        "content": "%CONVERSATION HISTORY: " + conversationHistory + " %ADDITIONAL CONTEXT: " + additionalContext
+        },
+        {
         "role": "user",
-        "content": "%CONVERSATION HISTORY: " + conversationHistory + " %ADDITIONAL CONTEXT: " + additionalContext + "%USER QUERY: " + userPrompt
+        "content": userPrompt
         }
     ],
     temperature=0,
