@@ -60,7 +60,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
         },
         {
         "role": "user",
-        "content": "%CONVERSATION HISTORY: "conversationHistory + "%USER QUERY: " userPrompt + " %ADDITIONAL CONTEXT: "
+        "content": "%CONVERSATION HISTORY: " + conversationHistory + "%USER QUERY: " userPrompt + " %ADDITIONAL CONTEXT: "
         }
     ],
     temperature=0,
