@@ -21,6 +21,8 @@ split_text = text_to_display.split(" ")
 displayed_text = ''
 text_buffer = ''
 counter = 0
+sleep_time = 0.1
+
 for x in split_text:
   counter += 1
   text_buffer = text_buffer + ' ' + x
@@ -29,7 +31,7 @@ for x in split_text:
     placeholder.write(displayed_text)
     text_buffer = ''
     counter = 0
-  time.sleep(0.1)
+    time.sleep(sleep_time)
     
 
 #    col1, col2, col3 = st.columns([1,1,1])
