@@ -16,7 +16,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra dapibus nu
 split_text = text_to_display.split(" ")
 
 for x in split_text:
-  st.write(x + '\b')
+  placeholder.write(x)
 
 #    col1, col2, col3 = st.columns([1,1,1])
 #    with col1:
