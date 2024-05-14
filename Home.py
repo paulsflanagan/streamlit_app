@@ -24,10 +24,11 @@ counter = 0
 for x in split_text:
   counter += 1
   text_buffer = text_buffer + ' ' + x
-  if counter = 3:
+  if counter == 3:
     displayed_text = displayed_text + ' ' + x
     placeholder.write(displayed_text)
     text_buffer = ''
+    counter = 0
   time.sleep(0.1)
     
 
