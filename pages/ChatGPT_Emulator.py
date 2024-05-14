@@ -4,6 +4,7 @@ from supabase import create_client, Client
 from io import StringIO
 import time
 import json
+import uuid
 
 
 # Session ID
