@@ -27,9 +27,7 @@ if st.button("Run"):
         results = soup.find()
             
         job_elements = results.find_all("a")
-            
-    
-            
+               
         for job_element in job_elements:
             #clean_job_element = RemoveHTMLTags(str(job_element))
             if job_element.has_attr('href'):
@@ -43,4 +41,4 @@ if st.button("Run"):
         if len(buffer_list) > 0:
             url = buffer_list[0]
 
-        placeholder.write("Completed: " + str(buffer_list) + " Buffer: " + str(buffer_list))
+        st.write("Completed: " + str(buffer_list) + " Buffer: " + str(buffer_list))
