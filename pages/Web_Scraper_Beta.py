@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 from bs4 import BeautifulSoup
+import re
 
 def RemoveHTMLTags(strr):
     # Print string after removing tags
