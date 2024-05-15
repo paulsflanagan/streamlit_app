@@ -108,7 +108,7 @@ def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
     frequency_penalty=0,
     presence_penalty=0
     )
-    return response.choices[0].message.content, messages
+    return response.choices[0].message.content
 
 def next_query_button_click(query):
     st.session_state.key = query
