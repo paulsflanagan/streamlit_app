@@ -16,7 +16,7 @@ for current_char in page.text:
   if previous_char == '>':
     reading = True
   if reading:
-    text_buffer = text_buffer + x
-  previous_char = x
+    text_buffer = text_buffer + current_char
+  previous_char = current_char
   
 st.write(text_buffer)
