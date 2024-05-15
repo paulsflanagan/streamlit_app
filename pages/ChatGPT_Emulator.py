@@ -2,6 +2,7 @@ import streamlit as st
 from openai import AzureOpenAI
 from supabase import create_client, Client
 from io import StringIO
+from pypdf import PdfReader 
 import time
 import json
 import uuid
