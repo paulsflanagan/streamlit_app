@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-sep = '...'
+sep = '?'
 #stripped = text.split(sep, 1)[0]
 
 url = st.text_input("Enter URL", "https://www.geeksforgeeks.org/")
