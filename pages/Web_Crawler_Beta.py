@@ -12,12 +12,13 @@ if st.button("Run"):
         
     results = soup.find()
         
-    job_elements = results.find_all("a href")
+    job_elements = results.find_all("a")
         
     buffer_string = ''
         
     for job_element in job_elements:
         #clean_job_element = RemoveHTMLTags(str(job_element))
-        buffer_string = buffer_string + "\n\n" + str(job_element)
+        if job_element.has_attr('href'):
+            buffer_string = buffer_string + "\n\n" + str(job_element)
         
     st.write(buffer_string)
