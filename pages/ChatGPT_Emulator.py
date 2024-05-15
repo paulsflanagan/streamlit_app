@@ -49,8 +49,18 @@ if uploaded_file is not None:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
         additionalContext = string_data
-    except UnicodeDecodeError:
-        st.write("Error Decoding CSV - Ensure encoding is utf-8")
+    except:
+        try:
+            reader = PdfReader(uploaded_file)
+            st.write(len(reader.pages))
+            text = '%PDF Document: \n\n'
+            counter = 1
+            for each in reader.pages:
+                text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text() + "\n\n"
+                counter += 1
+                st.write(text)
+        except:
+            st.write("Error Reading File")
 
 
 #def update_screen():
