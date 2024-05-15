@@ -22,6 +22,6 @@ page = requests.get(URL)
 #    clean_job_element = RemoveHTMLTags(str(job_element))
 #    buffer_string = buffer_string + "\n\n" + clean_job_element
 
-buffer_string = RemoveHTMLTags(page)
+buffer_string = RemoveHTMLTags(str(page))
 
 st.write(buffer_string)
