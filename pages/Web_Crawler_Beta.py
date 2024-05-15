@@ -12,7 +12,7 @@ if st.button("Run"):
         
     results = soup.find()
         
-    job_elements = results.find_all("a")
+    job_elements = results.find_all("a href")
         
     buffer_string = ''
         
