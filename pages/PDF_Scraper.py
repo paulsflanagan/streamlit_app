@@ -7,20 +7,14 @@ if uploaded_file is not None:
   try:
     reader = PdfReader(uploaded_file)
     st.write(len(reader.pages))
+    text = ''
     for each in reader.pages:
-      text = each.extract_text()
-      st.write(text)
-      #bytes_data = uploaded_file.getvalue()
-      #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-      #string_data = stringio.read()
-      #additionalContext = string_data
+      text = text + "\n\n" + each.extract_text()
+    st.write(text)
   except UnicodeDecodeError:
     st.write("Error reading pdf")
-# importing required modules 
 
 
-
-  
 # creating a pdf reader object 
 #reader = PdfReader('example.pdf') 
   
