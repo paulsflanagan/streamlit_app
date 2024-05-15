@@ -58,7 +58,8 @@ if uploaded_file is not None:
             for each in reader.pages:
                 text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text() + "\n\n"
                 counter += 1
-                st.write(text)
+                additionalContext = text
+                #st.write(text)
         except:
             st.write("Error Reading File")
 
