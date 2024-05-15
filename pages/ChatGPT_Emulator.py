@@ -150,11 +150,11 @@ conversationHistory = 'None'
 
 
 if userPrompt:
-    llm_response, fullPrompt = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
-    st.write(fullPrompt)
-    data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
+    llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
+    #st.write(fullPrompt)
+    data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
-    split_text = llm_response.split(" ")
+    split_text = llmResponse.split(" ")
     displayed_text = '#### ChatGPT \n\n'
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
