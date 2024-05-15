@@ -7,13 +7,16 @@ page = requests.get(URL)
 st.write(page.text)
 
 text_buffer = ''
+previous_char = ''
 reading = True
-for x in page.text:
-  if x == '<':
+
+for current_char in page.text:
+  if current_char == '<':
     reading = False
-  if x == '>':
+  if previous_char == '>':
     reading = True
   if reading:
     text_buffer = text_buffer + x
+  previous_char = x
   
 st.write(text_buffer)
