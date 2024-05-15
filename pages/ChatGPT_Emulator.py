@@ -86,9 +86,8 @@ if uploaded_file is not None:
 
 
 def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
-    response = client.chat.completions.create(
-    model="llmgateway-text-35turbo-1106-model",
-    messages=[
+
+    fullPrompt = [
         {
         "role": "system",
         "content": systemPrompt
@@ -101,14 +100,19 @@ def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
         "role": "user",
         "content": userPrompt
         }
-    ],
+    ]
+
+    
+    response = client.chat.completions.create(
+    model="llmgateway-text-35turbo-1106-model",
+    messages=fullPrompt,
     temperature=0,
     max_tokens=256,
     top_p=1,
     frequency_penalty=0,
     presence_penalty=0
     )
-    st.write(str(response))
+    #st.write(str(response))
     return response.choices[0].message.content
 
 def next_query_button_click(query):
