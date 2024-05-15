@@ -7,9 +7,11 @@ if uploaded_file is not None:
   try:
     reader = PdfReader(uploaded_file)
     st.write(len(reader.pages))
-    text = ''
+    text = '%PDF Document: \n\n'
+    counter = 1
     for each in reader.pages:
-      text = text + "\n\n" + each.extract_text()
+      text = text + "%PAGE: " + counter + "\n\n" + each.extract_text()
+      counter += 1
     st.write(text)
   except UnicodeDecodeError:
     st.write("Error reading pdf")
