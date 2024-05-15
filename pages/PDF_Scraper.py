@@ -7,6 +7,9 @@ if uploaded_file is not None:
   try:
     reader = PdfReader(uploaded_file)
     st.write(len(reader.pages))
+    for each in reader.pages:
+      text = page.extract_text()
+      st.write(text)
       #bytes_data = uploaded_file.getvalue()
       #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
       #string_data = stringio.read()
