@@ -12,8 +12,8 @@ results = soup.find()
 job_elements = results.find_all("p")
 
 for job_element in job_elements:
-    location_element = job_element.find("p")
-    st.write("Element: " + location_element.text)
+    #location_element = job_element.find("p")
+    st.write(job_element)
 
 #st.write(page.text)
 #text_buffer = ''
