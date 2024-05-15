@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 #stripped = text.split(sep, 1)[0]
 
-url = st.text_input("Enter URL", "https://www.geeksforgeeks.org/")
+#url = st.text_input("Enter URL", "https://www.geeksforgeeks.org/")
 
 sep = '?'
 root = url
@@ -41,4 +41,5 @@ if st.button("Run"):
         if len(buffer_list) > 0:
             url = buffer_list[0]
 
-        placeholder.write("Completed: " + str(buffer_list) + " Buffer: " + str(buffer_list))
+        placeholder.write("Completed: " + str(completed_list) + " Buffer: " + str(buffer_list))
+    
