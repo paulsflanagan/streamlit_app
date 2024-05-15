@@ -22,5 +22,5 @@ if st.button("Run"):
             buffer_string = buffer_string + "\n\n" + job_element
         
         st.write(buffer_string)
-    except MissingSchema:
+    except:
         st.write("Full url required: https://")
