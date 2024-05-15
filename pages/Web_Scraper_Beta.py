@@ -15,7 +15,7 @@ for job_element in job_elements:
     title_element = job_element.find("h2", class_="title")
     company_element = job_element.find("h3", class_="company")
     location_element = job_element.find("p", class_="location")
-    st.write("Element: " + title_element.text + company_element.text + location_element.text
+    st.write("Element: " + title_element.text + company_element.text + location_element.text)
 
 #st.write(page.text)
 #text_buffer = ''
