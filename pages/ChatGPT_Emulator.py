@@ -52,7 +52,7 @@ if uploaded_file is not None:
     except:
         try:
             reader = PdfReader(uploaded_file)
-            st.write(len(reader.pages))
+            #st.write(len(reader.pages))
             text = '%PDF Document: \n\n'
             counter = 1
             for each in reader.pages:
