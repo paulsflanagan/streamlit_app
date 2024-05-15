@@ -41,4 +41,4 @@ if st.button("Run"):
         if len(buffer_list) > 0:
             url = buffer_list[0]
 
-        st.write("Completed: " + str(buffer_list) + " Buffer: " + str(buffer_list))
+        placeholder.write("Completed: " + str(buffer_list) + " Buffer: " + str(buffer_list))
