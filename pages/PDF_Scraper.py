@@ -6,7 +6,7 @@ uploaded_file = st.file_uploader("", accept_multiple_files=False)
 if uploaded_file is not None:
   try:
     reader = PdfReader(uploaded_file)
-    st.write(len(reader.pages))
+    #st.write(len(reader.pages))
     text = '%PDF Document: \n\n'
     counter = 1
     for each in reader.pages:
