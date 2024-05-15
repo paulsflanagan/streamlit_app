@@ -22,15 +22,10 @@ if uploaded_file is not None:
     st.write("Error reading pdf")
 
 
-# creating a pdf reader object 
-#reader = PdfReader('example.pdf') 
-  
-# printing number of pages in pdf file 
-#print(len(reader.pages)) 
-  
-# getting a specific page from the pdf file 
-#page = reader.pages[0] 
-  
-# extracting text from page 
-#text = page.extract_text() 
+# fitz vs pypdf
+#import fitz 
+#doc = fitz.open('sample.pdf') 
+#text = "" 
+#for page in doc: 
+#   text+=page.get_text() 
 #print(text) 
