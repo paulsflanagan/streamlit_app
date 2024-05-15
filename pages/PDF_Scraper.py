@@ -10,7 +10,7 @@ if uploaded_file is not None:
     text = '%PDF Document: \n\n'
     counter = 1
     for each in reader.pages:
-      text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text()
+      text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text() + "\n\n"
       counter += 1
     st.write(text)
   except UnicodeDecodeError:
