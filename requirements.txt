@@ -4,4 +4,4 @@ bs4
 tabulate
 langchain
 supabase
-ironpdf
+pypdf
