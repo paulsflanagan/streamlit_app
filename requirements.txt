@@ -5,3 +5,4 @@ tabulate
 langchain
 supabase
 pypdf
+beautifulsoup4
