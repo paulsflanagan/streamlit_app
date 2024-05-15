@@ -145,8 +145,8 @@ conversationHistory = 'None'
 
 
 if userPrompt:
-    llm_response, messages = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
-    placeholder.markdown(messages)
+    llm_response = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
+    placeholder.markdown(llm_response)
     data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llm_response.split(" ")
