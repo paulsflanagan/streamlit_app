@@ -18,6 +18,6 @@ if st.button("Run"):
         
     for job_element in job_elements:
         #clean_job_element = RemoveHTMLTags(str(job_element))
-        buffer_string = buffer_string + "\n\n" + job_element
+        buffer_string = buffer_string + "\n\n" + str(job_element)
         
     st.write(buffer_string)
