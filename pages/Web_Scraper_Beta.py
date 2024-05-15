@@ -9,16 +9,11 @@ soup = BeautifulSoup(page.content, "html.parser")
 
 results = soup.find()
 
-job_elements = results.find_all("div")
+job_elements = results.find_all("p")
 
 for job_element in job_elements:
-    title_element = job_element.find("h2")
-    company_element = job_element.find("h3")
     location_element = job_element.find("p")
-    try:
-        st.write("Element: " + location_element.text)
-    except:
-        st.write("An element missing?")
+    st.write("Element: " + location_element.text)
 
 #st.write(page.text)
 #text_buffer = ''
