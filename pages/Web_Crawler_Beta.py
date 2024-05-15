@@ -12,12 +12,14 @@ sep = '?'
 root = url
 completed_list = []
 buffer_list = []
+buffer_list.append(url)
 
 placeholder = st.empty()
 
 if st.button("Run"):
 
     while len(buffer_list) > 0:
+        
         page = requests.get(url)
             
         soup = BeautifulSoup(page.content, "html.parser")
