@@ -19,7 +19,7 @@ job_elements = results.find_all("p")
 buffer_string = ''
 
 for job_element in job_elements:
-    clean_job_element = RemoveHTMLTags(job_element)
+    clean_job_element = RemoveHTMLTags(str(job_element))
     buffer_string = buffer_string + "\n\n" + clean_job_element
 
 st.write(buffer_string)
