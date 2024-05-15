@@ -18,7 +18,7 @@ if uploaded_file is not None:
     st.download_button('Download Output', data=text, file_name=export_file_name)
     st.write(text)
     
-  except UnicodeDecodeError:
+  except:
     st.write("Error reading pdf")
 
 
