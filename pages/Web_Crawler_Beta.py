@@ -26,7 +26,7 @@ if st.button("Run"):
     for job_element in job_elements:
         #clean_job_element = RemoveHTMLTags(str(job_element))
         if job_element.has_attr('href'):
-            if root is in job_element['href']:
+            if root in job_element['href']:
                 buffer_list.append(job_element['href'].split(sep, 1)[0])
         
     st.write(str(buffer_list))
