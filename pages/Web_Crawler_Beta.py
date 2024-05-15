@@ -28,4 +28,4 @@ if st.button("Run"):
         if job_element.has_attr('href'):
             buffer_list.append(job_element['href'].split(sep, 1)[0])
         
-    st.write(buffer_string)
+    st.write(str(buffer_list))
