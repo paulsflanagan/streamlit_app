@@ -19,4 +19,6 @@ buffer_string = ''
 
 for job_element in job_elements:
     clean_job_element = RemoveHTMLTags(job_element)
-    buffer_string = buffer_string + clean_job_element
+    buffer_string = buffer_string + "\n\n" + clean_job_element
+
+st.write(buffer_string)
