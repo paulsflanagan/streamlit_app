@@ -4,7 +4,7 @@ import requests
 URL = "https://en.wikipedia.org/wiki/A.I._Artificial_Intelligence"
 page = requests.get(URL)
 
-#st.write(page.text)
+st.write(page.text)
 
 text_buffer = ''
 reading = True
