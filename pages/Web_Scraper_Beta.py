@@ -4,7 +4,6 @@ import requests
 import re
 
 def RemoveHTMLTags(strr):
-    # Print string after removing tags
     return re.compile(r'<[^>]+>').sub('', strr)
 
 URL = "https://en.wikipedia.org/wiki/A.I._Artificial_Intelligence"
