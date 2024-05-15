@@ -7,11 +7,12 @@ page = requests.get(URL)
 #st.write(page.text)
 
 text_buffer = ''
+reading = True
 for x in page.text:
   if x == '<':
-    reading = false
+    reading = False
   if x == '>':
-    reading = true
+    reading = True
   if reading:
     text_buffer = text_buffer + x
   
