@@ -16,7 +16,7 @@ for job_element in job_elements:
     company_element = job_element.find("h3")
     location_element = job_element.find("p")
     try:
-        st.write("Element: " + title_element.text + company_element.text + location_element.text)
+        st.write("Element: " + location_element.text)
     except:
         st.write("An element missing?")
 
