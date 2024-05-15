@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-URL = "https://realpython.github.io/fake-jobs/"
+URL = "https://paulsflanagan.com"
 page = requests.get(URL)
 
 st.write(page.text)
