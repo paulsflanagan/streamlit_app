@@ -108,7 +108,8 @@ def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
     frequency_penalty=0,
     presence_penalty=0
     )
-    return response.choices[0].message.content
+    #return response.choices[0].message.content
+    return response
 
 def next_query_button_click(query):
     st.session_state.key = query
@@ -146,7 +147,6 @@ conversationHistory = 'None'
 
 if userPrompt:
     llm_response = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
-    placeholder.markdown(llm_response)
     data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llm_response}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llm_response.split(" ")
