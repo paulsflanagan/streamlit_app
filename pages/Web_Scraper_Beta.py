@@ -27,4 +27,4 @@ if st.button("Run"):
         
         st.write(buffer_string)
     except MissingSchema:
-        st.write("Full url required: "https://")
+        st.write("Full url required: https://")
