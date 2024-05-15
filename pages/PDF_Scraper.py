@@ -14,7 +14,7 @@ if uploaded_file is not None:
       counter += 1
     strip_file_name = uploaded_file.name[:-4]
     export_file_name = "Exported PDF Scrape - " + strip_file_name + ".txt"
-    st.download_button('Download Output', data=prompt_file, file_name=export_file_name)
+    st.download_button('Download Output', data=text, file_name=export_file_name)
     st.write(text)
     
   except UnicodeDecodeError:
