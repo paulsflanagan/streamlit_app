@@ -9,7 +9,8 @@ soup = BeautifulSoup(page.content, "html.parser")
 
 results = soup.find()
 
-st.write(results)
+job_elements = results.find_all("div")
+st.write(job_elements)
 
 
 
