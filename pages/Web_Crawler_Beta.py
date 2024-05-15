@@ -32,7 +32,7 @@ if st.button("Run"):
             #clean_job_element = RemoveHTMLTags(str(job_element))
             if job_element.has_attr('href'):
                 if root in job_element['href']:
-                    if url not in buffer_list:
+                    if job_element['href'].split(sep, 1)[0] not in buffer_list:
                         buffer_list.append(job_element['href'].split(sep, 1)[0])
                     
         completed_list.append(url)
