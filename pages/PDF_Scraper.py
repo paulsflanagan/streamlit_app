@@ -1,6 +1,7 @@
 import streamlit as st
 from pypdf import PdfReader 
 
+st.title('PDF Scraper')
 
 uploaded_file = st.file_uploader("", accept_multiple_files=False)
 if uploaded_file is not None:
