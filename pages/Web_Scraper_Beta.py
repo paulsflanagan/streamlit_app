@@ -27,4 +27,4 @@ if st.button("Run"):
         
         st.write(buffer_string)
     except MissingSchema:
-        st.write(MissingSchema)
+        st.write(e)
