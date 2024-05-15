@@ -11,7 +11,7 @@ previous_char = ''
 reading = True
 x = 0
 for current_char in page.text:
-  if current_char == '<' or current_char == '{' or current_char == '[' or page.text[x]+page.text[x+1]+page.text[x+2] == '(fu':
+  if current_char == '<' or current_char == '{' or current_char == '[':
     reading = False
   if previous_char == '>' or previous_char == '}' or previous_char == ']':
     reading = True
