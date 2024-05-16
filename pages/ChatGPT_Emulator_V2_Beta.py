@@ -54,10 +54,11 @@ col2.write("Conversation History")
 #st.sidebar
 
 conversation_history = supabase.table('StreamlitDB').select("*").eq('session_id', session_id).execute()
-
+counter = 1
 for row in conversation_history.data:
-    with col2.expander(row['user_query']):
-        st.write(row['llm_response'])
+    if counter > len(conversation_history.data)-6:
+        with col2.expander(row['user_query']):
+            st.write(row['llm_response'])
 
 
 
