@@ -52,6 +52,9 @@ additionalContext = 'None'
 
 col2.write("Conversation History")
 #st.sidebar
+if st.button("Reset Session"):
+    st.session_state['key'] = uuid.uuid4()
+    st.write("Session Cleared")
 
 conversation_history = supabase.table('StreamlitDB').select("*").eq('session_id', session_id).execute()
 counter = 1
