@@ -134,7 +134,7 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
             "content": userPrompt
         }
 
-    
+    st.write(fullPrompt)
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
     messages=fullPrompt,
