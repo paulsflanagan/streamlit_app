@@ -59,6 +59,7 @@ for row in conversation_history.data:
     if counter > len(conversation_history.data)-6:
         with col2.expander(row['user_query']):
             st.write(row['llm_response'])
+    counter += 1
 
 
 
