@@ -53,6 +53,12 @@ additionalContext = 'None'
 col2.write("Conversation History")
 #st.sidebar
 
+conversation_history = supabase.table('StreamlitDB').select("*").eq('session_id', session_id).execute()
+
+for row in conversation_history.data:
+    with col2.expander(row['user_query']):
+        st.write(row['llm_response'])
+
 
 
 if uploaded_file is not None:
@@ -152,21 +158,22 @@ if userPrompt:
 
     ## ADD CONVERSATION HISTORY TO PROMPT
 
-    if conversationHistory == 'Non':
-        conversationHistory = "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
-        st.write(conversationHistory)
-    else:
-        conversationHistory = conversationHistory + "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
+    #if conversationHistory == 'Non':
+    #    conversationHistory = "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
+    #    st.write(conversationHistory)
+    #else:
+    #    conversationHistory = conversationHistory + "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
 
     ## ADD CONV HISTORY TO COL2
     
-    with col2.expander(userPrompt):
-        st.write(llmResponse)
+    #with col2.expander(userPrompt):
+    #    st.write(llmResponse)
     
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
         response_message_space.markdown(displayed_text)
         time.sleep(0.1)
+        
     #st.write('Bot: ' + llm_response)
     #st.write(' ')
     #next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
