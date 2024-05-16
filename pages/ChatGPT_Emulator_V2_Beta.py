@@ -109,7 +109,7 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
     fullPrompt = [
         {
             "role": "system",
-            "content": systemPrompt + " %ADDITIONAL CONTEXT: " + additionalContext
+            "content": systemPrompt + " %DOCUMENT: " + additionalContext
         }
     ]
     
