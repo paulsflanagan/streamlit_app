@@ -8,7 +8,8 @@ import json
 import uuid
 
 
-# Session ID
+## SESSION ID
+
 if 'key' not in st.session_state:
     st.session_state['key'] = uuid.uuid4()
     session_id = uuid.uuid4()
@@ -17,27 +18,25 @@ else:
     
 #st.write(UID)
 
+## AZURE CLIENT
+
 client = AzureOpenAI(
     api_key=st.secrets["api_key"],
     api_version=st.secrets["api_version"],
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
-userName = st.experimental_user.email
-#st.session_state.text = ""
-#st.text_input("Your input here", key="text")
+## SECRETS
 
+userName = st.experimental_user.email
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
-#superbase_client = create_client(spb_url, spb_key)
 supabase: Client = create_client(spb_url, spb_key)
 
 
 
-#st.write(st.session_state.key)
-
-## UI HERE ###
+## UI HERE
 
 st.title('ChatGPT Emulator')
 #if st.button("Clear Conversation"):
@@ -48,33 +47,13 @@ uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
 
-conv_history_space = col2.empty() # potentially not required
-
 conversationHistory = 'None'
-conversationHistoryList = []
-#st.title('ChatGPT Emulator Potential UI')
-#uploaded_file = st.file_uploader("", accept_multiple_files=False)
-
-
-#col1.subheader("GPT Emulator Header Test")
-#uploaded_file = col1.file_uploader("", accept_multiple_files=False)
-#col1.markdown('Conversation here')
+additionalContext = 'None'
 
 #col2.subheader("Conversation History")
 #st.sidebar
-with col2.expander("What is Football?"):
-    st.write('''
-Football, also known as soccer in some countries, is a team sport played between two teams of eleven players each. The objective is to score goals by getting the ball into the opposing team's goal. Players primarily use their feet to kick the ball, but can also use their head or torso. The team with the most goals at the end of the game wins.
 
-Football is a popular sport played and watched by millions of people around the world. It requires skill, strategy, and teamwork, and is known for its fast pace and exciting matches. It is governed by the rules of the game set by the International Football Association Board (IFAB) and is played on a rectangular field with a goal at each end.
-    ''')
-with col2.expander("How do you make Chicken Soup?"):
-    st.write('''
-To make chicken soup, start by sautéing diced onions, carrots, and celery in a large pot with some olive oil. Once the vegetables are soft, add in diced chicken breast or thighs and cook until the chicken is no longer pink. Then, pour in chicken broth and bring the mixture to a boil. Reduce the heat and let the soup simmer for about 20-30 minutes, or until the chicken is fully cooked.
 
-You can also add in seasonings like salt, pepper, thyme, and bay leaves for flavor. Some people like to add noodles or rice to their chicken soup, so you can add those in and cook until they are tender. Finally, taste the soup and adjust the seasonings as needed. Serve the chicken soup hot and enjoy!
-''')
-additionalContext = 'None'
 
 if uploaded_file is not None:
     try:
@@ -160,21 +139,6 @@ systemPrompt = '''You are a helpful assistant. Answer the users query. Limit you
 userPrompt = st.chat_input("Say Something")
 #nextQueryPrompt = '''From the provided information create three short 4-5 word questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
 
-#if 'key' not in st.session_state:
-#    st.write('init holding')
-#    st.session_state['key'] = 'holding'
-
-#if st.session_state.key == 'holding':
-#    st.write('holding')
-#else:
-#    st.write('parsing' + st.session_state.key)
-#    tempVariable = st.session_state.key
-#    st.session_state.key = 'holding'
-#    userPrompt = tempVariable
-
-
-#placeholder.text_area('Conversation:', height=400 )
-
 
 
 if userPrompt:
@@ -185,9 +149,16 @@ if userPrompt:
     split_text = llmResponse.split(" ")
     displayed_text = '#### ChatGPT \n\n'
 
+
+    ## ADD CONVERSATION HISTORY TO PROMPT
+
+    if conversationHistory == 'None':
+        conversationHistory = "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
+    else:
+        conversationHistory = conversationHistory + "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
+
     ## ADD CONV HISTORY TO COL2
-    #conversationHistoryList.append(userPrompt)
-    #conversationHistoryList.append(llmResponse)
+    
     with col2.expander(userPrompt):
         st.write(llmResponse)
     
