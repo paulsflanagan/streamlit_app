@@ -13,7 +13,6 @@ import uuid
 if 'key' not in st.session_state:
     st.session_state['key'] = uuid.uuid4()
     session_id = uuid.uuid4()
-    conversationHistory = 'None'
 else:
     session_id = st.session_state['key']
     
@@ -48,7 +47,7 @@ uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
 
-
+conversationHistory = 'Non'
 additionalContext = 'None'
 
 col2.write("Conversation History")
@@ -153,8 +152,9 @@ if userPrompt:
 
     ## ADD CONVERSATION HISTORY TO PROMPT
 
-    if conversationHistory == 'None':
+    if conversationHistory == 'Non':
         conversationHistory = "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
+        st.write(conversationHistory)
     else:
         conversationHistory = conversationHistory + "%User: " + userPrompt + " %Assistant: " + llmResponse + "\n"
 
