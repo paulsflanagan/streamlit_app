@@ -150,8 +150,8 @@ conversationHistory = 'None'
 
 
 #col1.subheader("GPT Emulator Header Test")
-uploaded_file = col1.file_uploader("", accept_multiple_files=False)
-col1.markdown('Conversation here')
+#uploaded_file = col1.file_uploader("", accept_multiple_files=False)
+#col1.markdown('Conversation here')
 
 #col2.subheader("Conversation History")
 #st.sidebar
