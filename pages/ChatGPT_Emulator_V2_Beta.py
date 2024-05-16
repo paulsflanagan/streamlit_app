@@ -134,7 +134,6 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
             "content": userPrompt
         }
 
-    st.write(fullPrompt)
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
     messages=fullPrompt,
@@ -144,7 +143,6 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
     frequency_penalty=0,
     presence_penalty=0
     )
-    #st.write(str(response))
     return response.choices[0].message.content, fullPrompt
 
 def next_query_button_click(query):
