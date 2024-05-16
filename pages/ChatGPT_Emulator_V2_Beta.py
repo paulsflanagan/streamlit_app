@@ -47,9 +47,11 @@ col1, col2 = st.columns([0.6, 0.4], gap="large")
 uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
-conv_history_space = col2.empty()
+
+conv_history_space = col2.empty() # potentially not required
 
 conversationHistory = 'None'
+conversationHistoryList = []
 #st.title('ChatGPT Emulator Potential UI')
 #uploaded_file = st.file_uploader("", accept_multiple_files=False)
 
@@ -60,13 +62,13 @@ conversationHistory = 'None'
 
 #col2.subheader("Conversation History")
 #st.sidebar
-with conv_history_space.expander("What is Football?"):
+with col2.expander("What is Football?"):
     st.write('''
 Football, also known as soccer in some countries, is a team sport played between two teams of eleven players each. The objective is to score goals by getting the ball into the opposing team's goal. Players primarily use their feet to kick the ball, but can also use their head or torso. The team with the most goals at the end of the game wins.
 
 Football is a popular sport played and watched by millions of people around the world. It requires skill, strategy, and teamwork, and is known for its fast pace and exciting matches. It is governed by the rules of the game set by the International Football Association Board (IFAB) and is played on a rectangular field with a goal at each end.
     ''')
-with conv_history_space.expander("How do you make Chicken Soup?"):
+with col2.expander("How do you make Chicken Soup?"):
     st.write('''
 To make chicken soup, start by sautéing diced onions, carrots, and celery in a large pot with some olive oil. Once the vegetables are soft, add in diced chicken breast or thighs and cook until the chicken is no longer pink. Then, pour in chicken broth and bring the mixture to a boil. Reduce the heat and let the soup simmer for about 20-30 minutes, or until the chicken is fully cooked.
 
@@ -182,6 +184,13 @@ if userPrompt:
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llmResponse.split(" ")
     displayed_text = '#### ChatGPT \n\n'
+
+    ## ADD CONV HISTORY TO COL2
+    #conversationHistoryList.append(userPrompt)
+    #conversationHistoryList.append(llmResponse)
+    with col2.expander(userPrompt):
+    st.write(llmResponse)
+    
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
         response_message_space.markdown(displayed_text)
