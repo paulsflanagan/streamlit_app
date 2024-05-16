@@ -13,6 +13,7 @@ import uuid
 if 'key' not in st.session_state:
     st.session_state['key'] = uuid.uuid4()
     session_id = uuid.uuid4()
+    conversationHistory = 'None'
 else:
     session_id = st.session_state['key']
     
@@ -47,7 +48,7 @@ uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
 
-conversationHistory = 'None'
+
 additionalContext = 'None'
 
 col2.write("Conversation History")
