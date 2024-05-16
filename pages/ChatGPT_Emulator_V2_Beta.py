@@ -133,6 +133,7 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
             "role": "user",
             "content": userPrompt
         }
+    )
 
     response = client.chat.completions.create(
     model="llmgateway-text-35turbo-1106-model",
