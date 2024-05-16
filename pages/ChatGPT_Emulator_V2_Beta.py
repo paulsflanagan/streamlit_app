@@ -189,7 +189,7 @@ if userPrompt:
     #conversationHistoryList.append(userPrompt)
     #conversationHistoryList.append(llmResponse)
     with col2.expander(userPrompt):
-    st.write(llmResponse)
+        st.write(llmResponse)
     
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
