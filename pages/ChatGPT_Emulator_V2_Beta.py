@@ -46,22 +46,22 @@ col1, col2 = st.columns([0.6, 0.4], gap="large")
 uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
-history_message_space = col2.empty()
+#history_message_space = col2.empty()
 
 #conversationHistory = 'None'
 additionalContext = 'None'
 
-history_message_space.write("Conversation History")
+col2.write("Conversation History")
 #st.sidebar
-if history_message_space.button("Reset Session"):
-    st.session_state['key'] = uuid.uuid4()
-    history_message_space.write("Session Cleared")
+#if col2.button("Reset Session"):
+#    st.session_state['key'] = uuid.uuid4()
+#    history_message_space.write("Session Cleared")
 
 conversation_history = supabase.table('StreamlitDB').select("*").eq('session_id', session_id).execute()
 counter = 1
 for row in conversation_history.data:
     if counter > len(conversation_history.data)-6:
-        with history_message_space.expander(row['user_query']):
+        with col2.expander(row['user_query']):
             st.write(row['llm_response'])
     counter += 1
 
