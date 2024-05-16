@@ -50,7 +50,7 @@ response_message_space = col1.empty()
 conversationHistory = 'None'
 additionalContext = 'None'
 
-col2.subheader("Conversation History")
+col2.write("Conversation History")
 #st.sidebar
 
 
