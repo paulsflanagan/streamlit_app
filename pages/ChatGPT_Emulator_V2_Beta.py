@@ -115,7 +115,7 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
     
     counter = 1
     for row in conversation_history.data:
-        if counter >= len(conversation_history.data)-3:
+        if counter > len(conversation_history.data)-3:
             fullPrompt.append( 
                 {
                     "role": "user",
