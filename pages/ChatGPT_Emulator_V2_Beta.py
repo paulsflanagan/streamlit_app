@@ -113,19 +113,22 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
         }
     ]
     
+    counter = 1
     for row in conversation_history.data:
-        fullPrompt.append( 
-            {
-                "role": "user",
-                "content": row['user_query']
-            }
-        )
-        fullPrompt.append(
-            {
-                "role": "assistant",
-                "content": row['llm_response']
-            }
-        )
+        if counter >= len(conversation_history.data)-3:
+            fullPrompt.append( 
+                {
+                    "role": "user",
+                    "content": row['user_query']
+                }
+            )
+            fullPrompt.append(
+                {
+                    "role": "assistant",
+                    "content": row['llm_response']
+                }
+            )
+            counter += 1
 
 
     fullPrompt.append(
