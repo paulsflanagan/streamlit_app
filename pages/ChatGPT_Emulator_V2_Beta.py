@@ -52,7 +52,7 @@ additionalContext = 'None'
 
 col2.write("Conversation History")
 #st.sidebar
-if st.button("Reset Session"):
+if col2.button("Reset Session"):
     st.session_state['key'] = uuid.uuid4()
     st.write("Session Cleared")
 
