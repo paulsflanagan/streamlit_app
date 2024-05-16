@@ -162,7 +162,7 @@ userPrompt = st.chat_input("Say Something")
 
 
 if userPrompt:
-    llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext)
+    llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
     #st.write(fullPrompt)
     data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
