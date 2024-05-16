@@ -128,7 +128,7 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
                     "content": row['llm_response']
                 }
             )
-            counter += 1
+        counter += 1
 
 
     fullPrompt.append(
