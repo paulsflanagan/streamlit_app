@@ -47,7 +47,7 @@ uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
 
-conversationHistory = 'Non'
+#conversationHistory = 'None'
 additionalContext = 'None'
 
 col2.write("Conversation History")
@@ -103,22 +103,36 @@ if uploaded_file is not None:
 
 
 
-def call_oai(userPrompt, systemPrompt, conversationHistory, additionalContext):
+def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
 
+    
     fullPrompt = [
         {
-        "role": "system",
-        "content": systemPrompt
-        },
-        {
-        "role": "assistant",
-        "content": "%CONVERSATION HISTORY: " + conversationHistory + " %ADDITIONAL CONTEXT: " + additionalContext
-        },
-        {
-        "role": "user",
-        "content": userPrompt
+            "role": "system",
+            "content": systemPrompt + " %ADDITIONAL CONTEXT: " + additionalContext
         }
     ]
+    
+    for row in conversation_history.data:
+        fullPrompt.append( 
+            {
+                "role": "user",
+                "content": row['user_query']
+            }
+        )
+        fullPrompt.append(
+            {
+                "role": "assistant",
+                "content": row['llm_response']
+            }
+        )
+
+
+    fullPrompt.append(
+        {
+            "role": "user",
+            "content": userPrompt
+        }
 
     
     response = client.chat.completions.create(
