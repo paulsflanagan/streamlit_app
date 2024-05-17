@@ -74,7 +74,13 @@ if symbol:
         data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "value_at_purchase": currentValue}).execute()
         newAvailableCash = float(availableCash) - float(total_cost)
         data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
-        symbol = ""
+        account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+        if pull_count == 0:
+          st.write("No Account Found - Visit Account to Begin")
+        else:
+          availableCash = account_details[1][0]['available_cash']
+          amount_input_display.write("Available Cash: $" + str(availableCash))
+        
     else:
       st.write("Insufficient Funds")
   #st.write(chart_data)
