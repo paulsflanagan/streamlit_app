@@ -22,10 +22,7 @@ if st.button("Check"):
   response = requests.get(url)
   #st.write(response.status_code)
   #st.write(response.json())
-  st.write("Symbol: " + response.json()["meta"]["symbol"])
-  st.write("Exchange: " + response.json()["meta"]["exchange"]) 
-  st.write("Type: " + response.json()["meta"]["type"]) 
-  st.write("Value (USD): " + response.json()["values"][0]["close"])
+
   chart_data = response.json()["values"]
   #df = pd.read_json(chart_data)
   #df = pd.read_json(str(chart_data))
@@ -43,9 +40,14 @@ if st.button("Check"):
     #and Close price for Y
   df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])
   
-  st.write(df)
+  #st.write(df)
   
   st.line_chart(data=df, x="Date-Time", y="Value")
+
+  st.write("Symbol: " + response.json()["meta"]["symbol"])
+  st.write("Exchange: " + response.json()["meta"]["exchange"]) 
+  st.write("Type: " + response.json()["meta"]["type"]) 
+  st.write("Value (USD): " + response.json()["values"][0]["close"])
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
