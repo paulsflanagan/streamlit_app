@@ -8,9 +8,13 @@ fz_key=st.secrets["fz_key"]
 #quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
 
 
-url = "https://api.finazon.io/latest?apikey=" + fz_key
+#url = "https://api.finazon.io/latest/time_series?apikey=" + fz_key
+
+
+url = "https://api.finazon.io/latest/time_series?dataset=sip_non_pro&ticker=AAPL&interval=1m&page=0&page_size=30&adjust=all?apikey=" + fz_key
+
+
 response = requests.get(url)
-st.write(fz_key)
 st.write(response.status_code)
 st.write(response.json())
 
