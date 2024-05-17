@@ -65,18 +65,38 @@ if symbol:
   st.subheader("Purchase")
 
   trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
-
   
+  #extracted_stocks_list = []
+  owns_current_stock = False
+  amount_owned_current_stock = 0
+  cost_owned_current_stock = 0
+
+  for row in trade_details.data:
+    current_stock = row['stock_symbol']
+    if current_stock == symbol:
+      owns_current_stock = True
+      amount_owned_current_stock = row['stock_amount']
+      cost_owned_current_stock = row['stock_cost']
   
   available_cash_display = st.empty()
-  available_cash_display.write("Available Cash: $" + str(availableCash))
+
+  if owns_current_stock:
+    available_cash_display.write("Available Cash: $" + str(availableCash) + " Currently Owned: " + amount_owned_current_stock)
+  else:
+    available_cash_display.write("Available Cash: $" + str(availableCash))
+    
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
     total_cost = float(amount) * float(currentValue)
     st.write(total_cost)
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
-        data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost}).execute()
+        if owns_current_stock:
+          total_cost = total_Cost + cost_owned_current_stock
+          amount = amount + amount_owned_current_stock
+          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost}).eq("user_name", userName).execute()
+        else:
+          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost}).execute()
         newAvailableCash = float(availableCash) - float(total_cost)
         data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
         account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
