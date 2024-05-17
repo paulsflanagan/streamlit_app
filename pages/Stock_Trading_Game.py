@@ -72,7 +72,7 @@ if symbol:
       if st.button("Buy Now"):
         data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "value_at_purchase": currentValue}).execute()
         newAvailableCash = float(availableCash) - float(total_cost)
-        data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name": userName).execute()
+        data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
     else:
       st.write("Insufficient Funds")
   #st.write(chart_data)
