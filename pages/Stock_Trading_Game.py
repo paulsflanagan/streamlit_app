@@ -86,7 +86,7 @@ if symbol:
   available_cash_display = st.empty()
 
   if owns_current_stock:
-    available_cash_display.write("Available Cash: $" + str(availableCash) + " Currently Owned: " + str(amount_owned_current_stock))
+    available_cash_display.write("Available Cash: $" + str(availableCash) + "     Currently Owned: " + str(amount_owned_current_stock))
   else:
     available_cash_display.write("Available Cash: $" + str(availableCash))
     
@@ -124,7 +124,7 @@ if symbol:
           st.write("No Account Found - Visit Account to Begin")
         else:
           availableCash = account_details[1][0]['available_cash']
-          available_cash_display.write("Available Cash: $" + str(availableCash) + " Currently Owned: " + str(amount_owned_current_stock))
+          available_cash_display.write("Available Cash: $" + str(availableCash) + "     Currently Owned: " + str(amount_owned_current_stock))
         
     else:
       st.write("Insufficient Funds")
