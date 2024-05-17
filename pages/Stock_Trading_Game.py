@@ -26,6 +26,9 @@ else:
 #st.write(account_details)
 
 st.title("Stock Trading Game")
+stock_chart_display = st.empty()
+stock_info_display = st.empty()
+purchase_are_display = st.empty()
 
 symbol = st.text_input("Enter a stock symbol 👇")
 if st.button("Check"):
@@ -61,7 +64,7 @@ if st.button("Check"):
   st.write("Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
   st.write("") 
   st.write("Current Value (USD): $" + currentValue)
-  st.line_chart(data=df, x="Date-Time", y="Value")
+  stock_chart_display.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
   st.write("Available Cash: $" + str(availableCash))
 amount = st.text_input("Enter an amount to purchase 👇")
