@@ -70,8 +70,7 @@ if symbol:
     st.write(total_cost)
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
-        st.write("bleh")
-        #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol,}).execute()
+        data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "value_at_purchase": currentValue}).execute()
     else:
       st.write("Insufficient Funds")
   #st.write(chart_data)
