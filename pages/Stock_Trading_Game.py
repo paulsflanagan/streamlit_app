@@ -20,7 +20,7 @@ if st.button("Check"):
   #try:
   response = requests.get(url)
   st.write(response.status_code)
-  #st.write(response.json())
+  st.write(response.json())
   st.write("Symbol: " + response.json()["meta"]["symbol"])
   st.write("Exchange: " + response.json()["meta"]["exchange"]) 
   st.write("Type: " + response.json()["meta"]["type"]) 
