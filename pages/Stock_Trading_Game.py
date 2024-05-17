@@ -64,13 +64,13 @@ if st.button("Check"):
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
   st.write("Available Cash: $" + str(availableCash))
-amount = st.text_input("Enter an amount to purchase 👇")
-if st.button("Purchase"):
-  total_cost = amount * currentValue
-  if total_cost <= availableCash:
-    st.write("Lets Make that Trade")
-  else:
-    st.write("Insufficient Funds")
+  amount = st.text_input("Enter an amount to purchase 👇")
+  if st.button("Purchase"):
+    total_cost = amount * currentValue
+    if total_cost <= availableCash:
+      output =sp.st_custom_pop_up("Lets Make that Trade",key="first-key")
+    else:
+      output =sp.st_custom_pop_up("Insufficient Funds",key="first-key")
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
