@@ -25,6 +25,13 @@ if pull_count == 0:
 else:
   availableCash = account_details[1][0]['available_cash']
   trade_details, pull_count = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+  completed_stocks_list = []
+  current_stock = ""
+  for row in trade_details.data:
+    current_stock = row['stock_symbol']
+    if current_stock not in completed_stocks_list:
+      completed_stocks_list.append(row['stock_symbol'])
+  st.write(completed_stocks_list)
   
 #st.write(account_details)
 st.write(availableCash)
