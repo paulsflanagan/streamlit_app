@@ -11,10 +11,16 @@ userName = st.experimental_user.email
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
+availableCash = 0
+stockOwned = []
+
 supabase: Client = create_client(spb_url, spb_key)
 
 account_details, count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
-if count = 0:
+if count == 0:
+  data, count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000, "stock_owned": "[]"}).execute()
+  availableCash = 0
+  stockOwned = []
+else:
   
-
 st.write(account_details)
