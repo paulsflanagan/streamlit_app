@@ -28,7 +28,7 @@ else:
 
 
 st.title("Stock Trading Game")
-st.write("Available Cash: " + availableCash)
+st.write("Available Cash: " + str(availableCash))
 
 symbol = st.text_input("Enter a stock symbol 👇")
 if st.button("Check"):
