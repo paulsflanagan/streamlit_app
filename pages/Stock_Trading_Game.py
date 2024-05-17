@@ -22,7 +22,6 @@ if pull_count == 0:
   st.write("No Account Found - Visit Account to Begin")
 else:
   availableCash = account_details[1][0]['available_cash']
-  stockOwned = account_details[1][0]['stock_owned']
   
 #st.write(account_details)
 
