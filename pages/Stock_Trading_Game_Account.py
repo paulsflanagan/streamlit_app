@@ -11,3 +11,7 @@ spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
 supabase: Client = create_client(spb_url, spb_key)
+
+account_details = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', user_name).execute()
+
+st.write(account_details)
