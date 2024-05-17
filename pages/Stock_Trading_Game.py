@@ -32,15 +32,20 @@ if st.button("Check"):
   #st.write(df)
 
   ### FOR EACH IN VALUES
-
+  datetime_list = []
+  value_list = []
   for row in chart_data:
-    st.write("DateTime): " + row['datetime'])
-    st.write("Value (USD): " + row['close'])
+    #st.write("DateTime): " + row['datetime'])
+    datetime_list.append(row['datetime'])
+    #st.write("Value (USD): " + row['close'])
+    value_list.append(row['close'])
     #take the date / time for x
     #and Close price for Y
-
+  df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])
   
-  st.line_chart(data=chart_data)
+  st.write(df)
+  
+  st.line_chart(data=df)
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
