@@ -6,4 +6,7 @@ url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IB
 
 page = requests.get(url)
 
-st.write(page)
+response = requests.get("https://api.open-notify.org/this-api-doesnt-exist") 
+print(response.status_code)
+
+#st.write(page)
