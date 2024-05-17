@@ -34,10 +34,10 @@ if st.button("Check"):
   ### FOR EACH IN VALUES
 
   for row in cart_data:
-    st.write("DateTime): " + row['cdatetime']
-    st.write("Value (USD): " + row['close']
-  #take the date / time for x
-  #and Close price for Y
+    st.write("DateTime): " + row['cdatetime'])
+    st.write("Value (USD): " + row['close'])
+    #take the date / time for x
+    #and Close price for Y
 
   
   st.line_chart(data=chart_data)
