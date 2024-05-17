@@ -15,7 +15,7 @@ availableCash = 0
 stockOwned = []
 
 supabase: Client = create_client(spb_url, spb_key)
-
+data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000, "stock_owned": "[]"}).execute()
 account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
 st.write(account_details)
 if pull_count == 0:
