@@ -59,9 +59,8 @@ if symbol:
   currentValue = response.json()["values"][0]["close"]
   st.write("") 
   st.subheader("Symbol: " + symbol)
-  st.write("Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
+  st.write("Current Value (USD): $" + currentValue + " Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
   st.write("") 
-  st.write("Current Value (USD): $" + currentValue)
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
   st.write("Available Cash: $" + str(availableCash))
