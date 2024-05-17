@@ -71,7 +71,7 @@ if symbol:
     st.write(total_cost)
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
-        data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "value_at_purchase": currentValue}).execute()
+        data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost}).execute()
         newAvailableCash = float(availableCash) - float(total_cost)
         data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
         account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
