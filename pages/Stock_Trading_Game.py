@@ -16,5 +16,5 @@ quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IB
 response = requests.get(quoteApiUrl) 
 
 st.write(response.status_code)
-st.write(response.json())
+st.write(str(response.json()))
 
