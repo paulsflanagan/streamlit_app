@@ -55,16 +55,23 @@ if st.button("Check"):
   df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])
   
   #st.write(df)
+
+  currentValue = response.json()["values"][0]["close"]
   st.write("") 
-  st.subheader("Symbol: " + response.json()["meta"]["symbol"])
+  st.subheader("Symbol: " + symbol)
   st.write("Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
   st.write("") 
-  st.write("Current Value (USD): $" + response.json()["values"][0]["close"])
+  st.write("Current Value (USD): $" + currentValue)
   st.line_chart(data=df, x="Date-Time", y="Value")
-  st.write("") 
   st.subheader("Purchase")
   st.write("Available Cash: $" + str(availableCash))
-  
+  amount = st.text_input("Enter an amount to purchase 👇")
+  if st.button("Purchase"):
+    total_cost = amount * currentValue
+    if total_cost <= availableCash:
+      st.write("Lets Make that Trade")
+    else:
+      st.write("Insufficient Funds")
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
