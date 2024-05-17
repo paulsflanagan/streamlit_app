@@ -27,6 +27,6 @@ else:
   availableCash = account_details[1][0]['available_cash']
   stockOwned = account_details[1][0]['stock_owned']
   
-st.write(account_details)
+#st.write(account_details)
 st.write(availableCash)
 st.write(stockOwned)
