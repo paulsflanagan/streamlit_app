@@ -24,7 +24,7 @@ if pull_count == 0:
   availableCash = 0
 else:
   availableCash = account_details[1][0]['available_cash']
-  trade_details, pull_count = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+  trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
   completed_stocks_list = []
   current_stock = ""
   for row in trade_details.data:
