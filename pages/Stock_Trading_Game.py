@@ -2,7 +2,7 @@ import requests
 import streamlit as st
 import json
 import pandas as pd
-import StringIO
+from io import StringIO
 
 td_key=st.secrets["td_key"]
 
