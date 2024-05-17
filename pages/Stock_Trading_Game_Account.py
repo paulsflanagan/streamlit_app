@@ -22,6 +22,7 @@ if pull_count == 0:
   availableCash = 0
   stockOwned = []
 else:
+  st.write(availableCash)
   availableCash = account_details.available_cash
   stockOwned = account_details['stock_owned']
   
