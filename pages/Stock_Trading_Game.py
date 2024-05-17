@@ -30,6 +30,12 @@ if st.button("Check"):
   #df = pd.read_json(chart_data)
   #df = pd.read_json(str(chart_data))
   #st.write(df)
+
+  ### FOR EACH IN VALUES
+  #take the date / time for x
+  #and Close price for Y
+
+  
   st.line_chart(data=chart_data)
   #st.write(chart_data)
   #except:
