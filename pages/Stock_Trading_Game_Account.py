@@ -24,6 +24,8 @@ if pull_count == 0:
   availableCash = 0
 else:
   availableCash = account_details[1][0]['available_cash']
+  trade_details, pull_count = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
   
 #st.write(account_details)
 st.write(availableCash)
+st.write(trade_details)
