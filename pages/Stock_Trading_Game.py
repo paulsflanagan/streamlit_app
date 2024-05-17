@@ -67,7 +67,7 @@ if symbol:
   st.write("Available Cash: $" + str(availableCash))
   amount = st.text_input("Enter an amount to purchase 👇")
   if st.button("Purchase"):
-    total_cost = amount * currentValue
+    total_cost = int(amount) * currentValue
     if total_cost <= availableCash:
       output =sp.st_custom_pop_up("Lets Make that Trade",key="first-key")
     else:
