@@ -66,7 +66,7 @@ if symbol:
   st.write("Available Cash: $" + str(availableCash))
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
-    total_cost = amount * float(currentValue)
+    total_cost = float(amount) * float(currentValue)
     st.write(total_cost)
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
