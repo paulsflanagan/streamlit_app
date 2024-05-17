@@ -45,7 +45,7 @@ if st.button("Check"):
   st.subheader("Symbol: " + response.json()["meta"]["symbol"])
   st.write("Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
   st.write("") 
-  st.write("Value (USD): " + response.json()["values"][0]["close"])
+  st.write("Current Value (USD): $" + response.json()["values"][0]["close"])
   st.line_chart(data=df, x="Date-Time", y="Value")
 
 
