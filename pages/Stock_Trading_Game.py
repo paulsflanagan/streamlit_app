@@ -79,7 +79,7 @@ if symbol:
           st.write("No Account Found - Visit Account to Begin")
         else:
           availableCash = account_details[1][0]['available_cash']
-          amount_input_display.write("Available Cash: $" + str(availableCash))
+          available_cash_display.write("Available Cash: $" + str(availableCash))
         
     else:
       st.write("Insufficient Funds")
