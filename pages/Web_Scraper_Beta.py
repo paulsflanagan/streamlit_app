@@ -27,6 +27,7 @@ if st.button("Run"):
         
         st.write(buffer_string)
         if st.button("Export"):
-            
+            export_file_name = "Web Scrape - " + url + ".txt"
+            st.download_button('Download Output', data=buffer_string, file_name=export_file_name)
     except MissingSchema:
         st.write("Full url required: https://")
