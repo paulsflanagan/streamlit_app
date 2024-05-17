@@ -2,6 +2,7 @@ import requests
 import streamlit as st
 import json
 import pandas as pd
+import StringIO
 
 td_key=st.secrets["td_key"]
 
@@ -26,7 +27,9 @@ if st.button("Check"):
   st.write("Type: " + response.json()["meta"]["type"]) 
   st.write("Value (USD): " + response.json()["values"][0]["close"])
   chart_data = response.json()["values"]
-  df = pd.read_json(chart_data)
+  #df = pd.read_json(chart_data)
+  df = d.read_json(StringIO(chart_data), dtype_backend="numpy_nullable")
+  st.write(df)
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
