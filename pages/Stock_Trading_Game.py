@@ -20,9 +20,9 @@ if st.button("Check"):
   response = requests.get(url)
   st.write(response.status_code)
   #st.write(response.json())
-  st.write("Symbol: " + response.json()["meta"][0]["symbol"])
-  st.write("Exchange: " + response.json()["meta"][0]["exchange"]) 
-  st.write("Type: " + response.json()["meta"][0]["type"]) 
+  st.write("Symbol: " + response.json()["meta"]["symbol"])
+  st.write("Exchange: " + response.json()["meta"]["exchange"]) 
+  st.write("Type: " + response.json()["meta"]["type"]) 
   st.write("Value (USD): " + response.json()["values"][0]["close"])
   #except:
    # st.write("Unable to find stock symbol")
