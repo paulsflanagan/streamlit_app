@@ -68,7 +68,7 @@ if symbol:
   if amount:
     total_cost = amount * float(currentValue)
     st.write(total_cost)
-    if total_cost <= float(availableCash):
+    if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
         st.write("bleh")
         #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol,}).execute()
