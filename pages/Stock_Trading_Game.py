@@ -2,10 +2,16 @@ import requests
 import streamlit as st
 import json
 
-
 fz_key=st.secrets["fz_key"]
+
 # Quote Api
-quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
+#quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
+
+
+url = "https://api.finazon.io/latest?apikey=" + fz_key
+response = requests.get(url) 
+st.write(response.status_code)
+st.write(response.json())
 
 #API DOCS
 #https://www.alphavantage.co/documentation/
