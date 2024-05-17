@@ -67,9 +67,9 @@ if symbol:
   st.write("Available Cash: $" + str(availableCash))
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
-    total_cost = int(amount) * int(currentValue)
+    total_cost = float(amount) * float(currentValue)
     st.write(total_cost)
-    if int(total_cost) <= int(availableCash):
+    if float(total_cost) <= float(availableCash):
       output =sp.st_custom_pop_up("Lets Make that Trade",key="first-key")
     else:
       output =sp.st_custom_pop_up("Insufficient Funds",key="first-key")
