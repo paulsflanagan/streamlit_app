@@ -26,9 +26,7 @@ else:
   
 #st.write(account_details)
 
-
 st.title("Stock Trading Game")
-st.write("Available Cash: " + str(availableCash))
 
 symbol = st.text_input("Enter a stock symbol 👇")
 if st.button("Check"):
@@ -63,8 +61,10 @@ if st.button("Check"):
   st.write("") 
   st.write("Current Value (USD): $" + response.json()["values"][0]["close"])
   st.line_chart(data=df, x="Date-Time", y="Value")
-
-
+  st.write("") 
+  st.subheader("Purchase")
+  st.write("Available Cash: $" + str(availableCash))
+  
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
