@@ -17,7 +17,7 @@ response = requests.get(quoteApiUrl)
 
 st.write(response.status_code)
 st.write(str(response.json()))
-st.write("Price: " + response.json()['Global Quote'])
+#st.write("Price: " + response.json()['Global Quote'])
 
 st.write(response['Global Quote']['05. price'])
 
