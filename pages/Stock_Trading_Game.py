@@ -12,14 +12,14 @@ quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IB
 #https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=demo
 #https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=TSCO.LON&apikey=demo
 
+symbol = st.text_input("Enter a stock code 👇")
+if st.button("Check"):
+  function = "GLOBAL_QUOTE"
+  # GLOBAL QUOTE QUERY
+  url = "https://www.alphavantage.co/query?function=" + function + "GLOBAL_QUOTE&symbol=" + symbol +"&apikey=demo" 
+  response = requests.get(url) 
 
-response = requests.get(quoteApiUrl) 
-
-st.write(response.status_code)
-st.write(str(response.json()))
-#st.write("Price: " + response.json()['Global Quote'])
-
-st.write(response.json()['Global Quote']['05. price'])
+  st.write(response.json()['Global Quote']['05. price'])
 
 
 # Assuming the JSON string is stored in a variable called 'json_data'
