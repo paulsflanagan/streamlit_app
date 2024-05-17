@@ -19,7 +19,7 @@ st.write(response.status_code)
 st.write(str(response.json()))
 st.write("Price: " + response.json()['Global Quote'])
 
-st.write(str(data_dict['Global Quote']['05. price']))
+st.write(response['Global Quote']['05. price'])
 
 
 # Assuming the JSON string is stored in a variable called 'json_data'
