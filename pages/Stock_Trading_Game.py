@@ -33,7 +33,7 @@ if st.button("Check"):
 
   ### FOR EACH IN VALUES
 
-  for row in cart_data:
+  for row in chart_data:
     st.write("DateTime): " + row['cdatetime'])
     st.write("Value (USD): " + row['close'])
     #take the date / time for x
