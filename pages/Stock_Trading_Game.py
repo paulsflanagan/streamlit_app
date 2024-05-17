@@ -70,9 +70,10 @@ if symbol:
     total_cost = float(amount) * float(currentValue)
     st.write(total_cost)
     if float(total_cost) <= float(availableCash):
-      output =sp.st_custom_pop_up("Lets Make that Trade",key="first-key")
+      if st.button("Buy Now"):
+        st.write("What What")
     else:
-      output =sp.st_custom_pop_up("Insufficient Funds",key="first-key")
+      st.write("Insufficient Funds")
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
