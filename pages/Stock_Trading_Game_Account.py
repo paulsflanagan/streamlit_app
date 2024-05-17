@@ -28,7 +28,7 @@ else:
   #extracted_stocks_list = []
   #current_stock = ""
   #current_stock_count = 0
-  #current_stock_value = 0
+  #current_stock_cost = 0
   
   #for row in trade_details.data:
   #  current_stock = row['stock_symbol']
