@@ -10,7 +10,10 @@ td_key=st.secrets["td_key"]
 # Quote Api
 #quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
 
+st.title("Stock Trading Game")
+
 userName = st.experimental_user.email
+st.write(userName)
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
@@ -25,7 +28,7 @@ else:
   
 #st.write(account_details)
 
-st.title("Stock Trading Game")
+
 
 symbol = st.text_input("Enter a stock symbol 👇")
 #if st.button("Check"):
