@@ -16,9 +16,19 @@ spb_key = st.secrets["spb_key"]
 
 supabase: Client = create_client(spb_url, spb_key)
 
-#url = "https://api.finazon.io/latest/time_series?apikey=" + fz_key
+account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+#st.write(account_details)
+if pull_count == 0:
+  st.write("No Account Found - Visit Account to Begin")
+else:
+  availableCash = account_details[1][0]['available_cash']
+  stockOwned = account_details[1][0]['stock_owned']
+  
+#st.write(account_details)
+
 
 st.title("Stock Trading Game")
+st.write("Available Cash: " + availableCash)
 
 symbol = st.text_input("Enter a stock symbol 👇")
 if st.button("Check"):
