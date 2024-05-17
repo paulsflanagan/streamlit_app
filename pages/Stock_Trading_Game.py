@@ -10,28 +10,15 @@ td_key=st.secrets["td_key"]
 
 #url = "https://api.finazon.io/latest/time_series?apikey=" + fz_key
 
-url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1min&format=JSON&symbol=AAPL"
 
-response = requests.get(url)
-st.write(response.status_code)
-st.write(response.json())
-
-#API DOCS
-#https://www.alphavantage.co/documentation/
-
-# Time Series Monthly
-#https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=demo
-#https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=TSCO.LON&apikey=demo
-
-symbol = st.text_input("Enter a stock code 👇")
+symbol = st.text_input("Enter a stock symbol 👇")
 if st.button("Check"):
-  function = "GLOBAL_QUOTE"  
-  # GLOBAL QUOTE QUERY
-  url = "https://www.alphavantage.co/query?function=" + function + "&symbol=" + symbol +"&apikey=demo" 
-  response = requests.get(url) 
+  
+  url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1min&format=JSON&symbol=" + symbol
+  
+  response = requests.get(url)
   st.write(response.status_code)
-  st.write(str(response.json()))
-  st.write(response.json()['Global Quote']['05. price'])
+  st.write(response.json())
 
 
 # Assuming the JSON string is stored in a variable called 'json_data'
