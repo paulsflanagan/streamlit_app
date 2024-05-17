@@ -25,9 +25,9 @@ if st.button("Run"):
             clean_job_element = RemoveHTMLTags(str(job_element))
             buffer_string = buffer_string + "\n\n" + clean_job_element
         
-        if st.button("Export"):
-            export_file_name = "Web Scrape - " + url + ".txt"
-            st.download_button('Download Output', data=buffer_string, file_name=export_file_name)
+
+        export_file_name = "Web Scrape - " + url + ".txt"
+        st.download_button('Export', data=buffer_string, file_name=export_file_name)
         st.write(buffer_string)
     except MissingSchema:
         st.write("Full url required: https://")
