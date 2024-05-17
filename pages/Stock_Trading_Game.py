@@ -81,7 +81,7 @@ if symbol:
   available_cash_display = st.empty()
 
   if owns_current_stock:
-    available_cash_display.write("Available Cash: $" + str(availableCash) + " Currently Owned: " + amount_owned_current_stock)
+    available_cash_display.write("Available Cash: $" + str(availableCash) + " Currently Owned: " + str(amount_owned_current_stock))
   else:
     available_cash_display.write("Available Cash: $" + str(availableCash))
     
