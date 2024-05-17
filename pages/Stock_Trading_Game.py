@@ -41,13 +41,14 @@ if st.button("Check"):
   df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])
   
   #st.write(df)
-  
+  st.write("") 
+  st.subheader("Symbol: " + response.json()["meta"]["symbol"])
+  st.write("Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
+  st.write("") 
+  st.write("Value (USD): " + response.json()["values"][0]["close"])
   st.line_chart(data=df, x="Date-Time", y="Value")
 
-  st.write("Symbol: " + response.json()["meta"]["symbol"])
-  st.write("Exchange: " + response.json()["meta"]["exchange"]) 
-  st.write("Type: " + response.json()["meta"]["type"]) 
-  st.write("Value (USD): " + response.json()["values"][0]["close"])
+
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
