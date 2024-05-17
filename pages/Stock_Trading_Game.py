@@ -10,7 +10,7 @@ td_key=st.secrets["td_key"]
 
 #url = "https://api.finazon.io/latest/time_series?apikey=" + fz_key
 
-
+url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1min&format=JSON&symbol=AAPL"
 
 response = requests.get(url)
 st.write(response.status_code)
