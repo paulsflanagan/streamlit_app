@@ -25,14 +25,21 @@ if pull_count == 0:
 else:
   availableCash = account_details[1][0]['available_cash']
   trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
-  completed_stocks_list = []
-  current_stock = ""
-  st.write(trade_details)
-  for row in trade_details.data:
-    current_stock = row['stock_symbol']
-    if current_stock not in completed_stocks_list:
-      completed_stocks_list.append(row['stock_symbol'])
-  st.write(completed_stocks_list)
+  #extracted_stocks_list = []
+  #current_stock = ""
+  #current_stock_count = 0
+  #current_stock_value = 0
+  
+  #for row in trade_details.data:
+  #  current_stock = row['stock_symbol']
+  #  if current_stock not in extracted_stocks_list:
+  #    extracted_stocks_list.append(row['stock_symbol'])
+  #st.write(extracted_stocks_list)
+  
+  #for stock_symbol in extracted_stocks_list:
+  #  for row in trade_details.data:
+  #    if stock_symbol == row['stock_symbol']:
+        
   
 #st.write(account_details)
 st.write(availableCash)
