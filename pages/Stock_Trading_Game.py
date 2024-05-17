@@ -28,8 +28,9 @@ if st.button("Check"):
   st.write("Value (USD): " + response.json()["values"][0]["close"])
   chart_data = response.json()["values"]
   #df = pd.read_json(chart_data)
-  df = pd.read_json(str(chart_data))
-  st.write(df)
+  #df = pd.read_json(str(chart_data))
+  #st.write(df)
+  st.line_chart(data=chart_data, *, x=None, y=None, color=None, width=0, height=0, use_container_width=True)
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
