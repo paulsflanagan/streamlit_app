@@ -16,7 +16,7 @@ symbol = st.text_input("Enter a stock code 👇")
 if st.button("Check"):
   function = "GLOBAL_QUOTE"
   # GLOBAL QUOTE QUERY
-  url = "https://www.alphavantage.co/query?function=" + function + "GLOBAL_QUOTE&symbol=" + symbol +"&apikey=demo" 
+  url = "https://www.alphavantage.co/query?function=" + function + "&symbol=" + symbol +"&apikey=demo" 
   response = requests.get(url) 
 
   st.write(response.json()['Global Quote']['05. price'])
