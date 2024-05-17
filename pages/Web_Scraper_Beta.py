@@ -26,5 +26,7 @@ if st.button("Run"):
             buffer_string = buffer_string + "\n\n" + clean_job_element
         
         st.write(buffer_string)
+        if st.button("Export"):
+            
     except MissingSchema:
         st.write("Full url required: https://")
