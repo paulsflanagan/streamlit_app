@@ -45,7 +45,7 @@ if st.button("Check"):
   
   st.write(df)
   
-  st.line_chart(data=df)
+  st.line_chart(data=df, x="Date-Time", y="Value")
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
