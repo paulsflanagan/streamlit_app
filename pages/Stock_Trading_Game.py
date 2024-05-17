@@ -63,7 +63,8 @@ if symbol:
   #st.write("") 
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
-  st.write("Available Cash: $" + str(availableCash))
+  available_cash_display = st.empty()
+  available_cash_display.write("Available Cash: $" + str(availableCash))
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
     total_cost = float(amount) * float(currentValue)
