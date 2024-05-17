@@ -66,11 +66,12 @@ if symbol:
   st.write("Available Cash: $" + str(availableCash))
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
-    total_cost = float(amount) * float(currentValue)
+    total_cost = amount * float(currentValue)
     st.write(total_cost)
-    if float(total_cost) <= float(availableCash):
+    if total_cost <= float(availableCash):
       if st.button("Buy Now"):
-        availableCash -= float(total_cost)
+        st.write("bleh")
+        #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol,}).execute()
     else:
       st.write("Insufficient Funds")
   #st.write(chart_data)
