@@ -28,7 +28,8 @@ else:
 st.title("Stock Trading Game")
 
 symbol = st.text_input("Enter a stock symbol 👇")
-if st.button("Check"):
+#if st.button("Check"):
+if symbol:
   
   url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1week&format=JSON&symbol=" + symbol
   #try:
