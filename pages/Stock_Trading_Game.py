@@ -30,7 +30,7 @@ if st.button("Check"):
   #df = pd.read_json(chart_data)
   #df = pd.read_json(str(chart_data))
   #st.write(df)
-  st.line_chart(data=chart_data, *, x=None, y=None, color=None, width=0, height=0, use_container_width=True)
+  st.line_chart(data=chart_data)
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
