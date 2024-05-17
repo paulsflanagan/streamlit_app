@@ -9,7 +9,8 @@ fz_key=st.secrets["fz_key"]
 
 
 url = "https://api.finazon.io/latest?apikey=" + fz_key
-response = requests.get(url) 
+response = requests.get(url)
+st.write(fz_key)
 st.write(response.status_code)
 st.write(response.json())
 
