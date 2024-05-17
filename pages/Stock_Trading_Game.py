@@ -19,6 +19,7 @@ if st.button("Check"):
   response = requests.get(url)
   st.write(response.status_code)
   st.write(response.json())
+  st.write(response.json()['value'][0]['close'])
 
 
 # Assuming the JSON string is stored in a variable called 'json_data'
