@@ -65,12 +65,12 @@ if st.button("Check"):
   st.subheader("Purchase")
   st.write("Available Cash: $" + str(availableCash))
   amount = st.text_input("Enter an amount to purchase 👇")
-  if st.button("Purchase"):
-    total_cost = amount * currentValue
-    if total_cost <= availableCash:
-      st.write("Lets Make that Trade")
-    else:
-      st.write("Insufficient Funds")
+if st.button("Purchase"):
+  total_cost = amount * currentValue
+  if total_cost <= availableCash:
+    st.write("Lets Make that Trade")
+  else:
+    st.write("Insufficient Funds")
   #st.write(chart_data)
   #except:
    # st.write("Unable to find stock symbol")
