@@ -17,7 +17,7 @@ st.title("Stock Trading Game")
 symbol = st.text_input("Enter a stock symbol 👇")
 if st.button("Check"):
   
-  url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1min&format=JSON&symbol=" + symbol
+  url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1week&format=JSON&symbol=" + symbol
   #try:
   response = requests.get(url)
   #st.write(response.status_code)
