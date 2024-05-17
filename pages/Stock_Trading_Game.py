@@ -9,6 +9,9 @@ td_key=st.secrets["td_key"]
 # Quote Api
 #quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
 
+userName = st.experimental_user.email
+spb_url = st.secrets["spb_url"]
+spb_key = st.secrets["spb_key"]
 
 #url = "https://api.finazon.io/latest/time_series?apikey=" + fz_key
 
