@@ -19,6 +19,7 @@ if st.button("Check"):
   url = "https://www.alphavantage.co/query?function=" + function + "&symbol=" + symbol +"&apikey=demo" 
   response = requests.get(url) 
   st.write(response.status_code)
+  st.write(str(response.json()))
   st.write(response.json()['Global Quote']['05. price'])
 
 
