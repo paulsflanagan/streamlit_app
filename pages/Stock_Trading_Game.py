@@ -97,9 +97,24 @@ if symbol:
           data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost}).eq("user_name", userName).execute()
         else:
           data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost}).execute()
+          
         newAvailableCash = float(availableCash) - float(total_cost)
         data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
         account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+        trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+  
+        #extracted_stocks_list = []
+        owns_current_stock = False
+        amount_owned_current_stock = 0
+        cost_owned_current_stock = 0
+      
+        for row in trade_details.data:
+          current_stock = row['stock_symbol']
+          if current_stock == symbol:
+            owns_current_stock = True
+            amount_owned_current_stock = row['stock_amount']
+            cost_owned_current_stock = row['stock_cost']
+            
         if pull_count == 0:
           st.write("No Account Found - Visit Account to Begin")
         else:
