@@ -1,5 +1,6 @@
 import requests
 import streamlit as st
+from supabase import create_client, Client
 import json
 
 td_key=st.secrets["td_key"]
