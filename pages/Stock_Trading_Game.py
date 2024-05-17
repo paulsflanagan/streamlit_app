@@ -93,7 +93,7 @@ if symbol:
       if st.button("Buy Now"):
         if owns_current_stock:
           total_cost = total_cost + cost_owned_current_stock
-          int(amount) = int(amount) + int(amount_owned_current_stock)
+          amount = int(amount) + int(amount_owned_current_stock)
           data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost}).eq("user_name", userName).execute()
         else:
           data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost}).execute()
