@@ -8,6 +8,8 @@ td_key=st.secrets["td_key"]
 st.title("Stock Trading Game - Account")
 
 userName = st.experimental_user.email
+st.write(userName)
+
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
@@ -19,7 +21,7 @@ supabase: Client = create_client(spb_url, spb_key)
 account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
 #st.write(account_details)
 if pull_count == 0:
-  st.write("Welcome to Stock Trading Game " + "")
+  st.write("Welcome to Stock Trading Game " + userName)
   data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000}).execute()
   availableCash = 0
 else:
