@@ -64,7 +64,7 @@ if st.button("Check"):
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
   st.write("Available Cash: $" + str(availableCash))
-  amount = st.text_input("Enter an amount to purchase 👇")
+amount = st.text_input("Enter an amount to purchase 👇")
 if st.button("Purchase"):
   total_cost = amount * currentValue
   if total_cost <= availableCash:
