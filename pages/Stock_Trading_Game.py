@@ -14,11 +14,11 @@ quoteApiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IB
 
 symbol = st.text_input("Enter a stock code 👇")
 if st.button("Check"):
-  function = "GLOBAL_QUOTE"
+  function = "GLOBAL_QUOTE"  
   # GLOBAL QUOTE QUERY
   url = "https://www.alphavantage.co/query?function=" + function + "&symbol=" + symbol +"&apikey=demo" 
   response = requests.get(url) 
-
+  st.write(response.status_code)
   st.write(response.json()['Global Quote']['05. price'])
 
 
