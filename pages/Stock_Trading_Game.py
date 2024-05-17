@@ -6,6 +6,6 @@ url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IB
 
 response = requests.get(url) 
 
-st.write(response.status_code))
+st.write(response.status_code)
 st.write(response.json())
 #st.write(page)
