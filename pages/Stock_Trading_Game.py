@@ -71,7 +71,7 @@ if symbol:
     st.write(total_cost)
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
-        st.write("What What")
+        availableCash -= float(total_cost)
     else:
       st.write("Insufficient Funds")
   #st.write(chart_data)
