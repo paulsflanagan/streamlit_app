@@ -27,7 +27,7 @@ else:
   trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
   completed_stocks_list = []
   current_stock = ""
-  st.write(len(trade_details))
+  st.write(trade_details)
   for row in trade_details:
     current_stock = row['stock_symbol']
     if current_stock not in completed_stocks_list:
