@@ -15,17 +15,28 @@ st.title('Test Page')
 @st.cache_data
 def show_data():
     st.header("Data analysis")
-    data = api.get(...)
+    #data = api.get(...)
     st.success("Fetched data from API!")
     st.write("Here is a plot of the data:")
-    st.line_chart(data)
+    #st.line_chart(data)
     st.write("And here is the raw data:")
-    st.dataframe(data)
-
+    #st.dataframe(data)
+    
+@st.cache_data
+def show_data2():
+    st.header("Data analysis2")
+    #data = api.get(...)
+    st.success("Fetched data from API!2")
+    st.write("Here is a plot of the data:2")
+    #st.line_chart(data)
+    st.write("And here is the raw data:2")
+    #st.dataframe(data)
 
 if st.button('Button 1'):
-    flag = true
+    show_data()
 
+if st.button('Button 2'):
+    show_data2()
 
 
 
