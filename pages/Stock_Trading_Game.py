@@ -3,6 +3,7 @@ import streamlit as st
 import json
 import pandas as pd
 from io import StringIO
+from supabase import create_client, Client
 
 td_key=st.secrets["td_key"]
 
