@@ -13,6 +13,8 @@ spb_key = st.secrets["spb_key"]
 
 supabase: Client = create_client(spb_url, spb_key)
 
-account_details = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+account_details, count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+if count = 0:
+  
 
 st.write(account_details)
