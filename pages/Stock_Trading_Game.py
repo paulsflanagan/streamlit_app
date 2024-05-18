@@ -101,14 +101,18 @@ if symbol:
         if owns_current_stock:
           total_cost = total_cost + cost_owned_current_stock
           amount = int(amount) + int(amount_owned_current_stock)
-          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost}).eq("user_name", userName).execute()
+          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost_plus_fee}).eq("user_name", userName).execute()
         else:
-          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost}).execute()
+          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost_plus_fee}).execute()
           
-        newAvailableCash = float(availableCash) - float(total_cost)
+        newAvailableCash = float(availableCash) - float(total_cost_plus_fee)
         data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
         account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
         trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+        bank_account = supabase.table('StockTradingGame_BankDB').select("*").eq('bank_account', 'bank_account').execute()
+        bank_account_cash = bank_account[1][0]['account_balance']
+        bank_account_cash = bank_account_cash + fee
+        data, push_count = supabase.table('StockTradingGame_BankDB').update({"account_balance": bank_account_cash}).eq("bank_account", 'bank_account').execute()
   
         #extracted_stocks_list = []
         owns_current_stock = False
