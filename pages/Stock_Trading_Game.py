@@ -95,7 +95,7 @@ if symbol:
     total_cost = float(amount) * float(currentValue)
     fee = (float(amount) * float(currentValue)) * fee_percentage
     total_cost_plus_fee = total_cost + fee
-    st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Including Fee: " + str(fee))
+    st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Including Fee: " + str(round(fee, 2)))
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
         if owns_current_stock:
@@ -115,7 +115,7 @@ if symbol:
         bank_account, pull_count = supabase.table('StockTradingGame_BankDB').select("*").eq('bank_account', 'bank_account').execute()
         st.write(bank_account)
         bank_account_cash = bank_account[1][0]['account_balance']
-        bank_account_cash = bank_account_cash + fee
+        bank_account_cash = bank_account_cash + round(fee,2)
         data, push_count = supabase.table('StockTradingGame_BankDB').update({"account_balance": bank_account_cash}).eq("bank_account", 'bank_account').execute()
   
         #extracted_stocks_list = []
