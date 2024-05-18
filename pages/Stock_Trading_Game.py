@@ -82,7 +82,7 @@ if symbol:
       owns_current_stock = True
       amount_owned_current_stock = row['stock_amount']
       cost_owned_current_stock = row['stock_cost']
-      current_stock_difference = (amount_owned_current_stock * currentValue) - cost_owned_current_stock
+      current_stock_difference = (int(amount_owned_current_stock) * float(currentValue)) - float(cost_owned_current_stock)
   
   available_cash_display = st.empty()
 
