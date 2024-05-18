@@ -94,7 +94,7 @@ if symbol:
   if amount:
     total_cost = float(amount) * float(currentValue) + (float(amount) * float(currentValue))*0.02
     fee = (float(amount) * float(currentValue))*0.02
-    st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Including Fee: " + fee)
+    st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Including Fee: " + str(fee))
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
         if owns_current_stock:
