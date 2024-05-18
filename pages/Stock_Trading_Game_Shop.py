@@ -21,8 +21,10 @@ supabase: Client = create_client(spb_url, spb_key)
 
 account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
 #st.write(account_details)
-if pull_count == 0:
-  st.write("No Account Found - Visit Account to Begin")
+if account_details[1] == []:
+  st.write("Welcome to Stock Trading Game")
+  data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000}).execute()
+  availableCash = 20000
 else:
   availableCash = account_details[1][0]['available_cash']
   
