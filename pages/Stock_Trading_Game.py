@@ -94,7 +94,11 @@ if symbol:
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
     total_cost = float(amount) * float(currentValue)
-    fee = (float(amount) * float(currentValue)) * fee_percentage
+    potential_fee = (float(amount) * float(currentValue)) * fee_percentage
+    if potential_fee > 5.0:
+      fee = 5.0
+    else:
+      fee = potential_fee
     total_cost_plus_fee = total_cost + fee
     st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Including Fee: " + str(round(fee, 2)))
     if float(total_cost) <= float(availableCash):
