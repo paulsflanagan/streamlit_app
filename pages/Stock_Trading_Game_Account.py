@@ -29,7 +29,7 @@ else:
   trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
 
   for row in trade_details.data:
-      st.write("Amount: " + row['stock_amount'] + " - Cost: " + row['stock_cost'])
+      st.write("Amount: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
 
   #extracted_stocks_list = []
   #current_stock = ""
