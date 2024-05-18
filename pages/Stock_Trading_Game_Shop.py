@@ -42,7 +42,7 @@ if symbol:
   #try:
   response = requests.get(url)
   #st.write(response.status_code)
-  #st.write(response.json())
+  st.write(response.json())
   
   chart_data = response.json()["values"]
 
