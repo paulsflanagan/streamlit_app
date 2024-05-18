@@ -41,8 +41,8 @@ if symbol:
   url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1week&format=JSON&symbol=" + symbol
   #try:
   response = requests.get(url)
-  #st.write(response.status_code)
-  #st.write(response.json())
+  st.write(response.status_code)
+  st.write(response.json())
 
   chart_data = response.json()["values"]
   #df = pd.read_json(chart_data)
