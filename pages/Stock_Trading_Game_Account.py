@@ -30,7 +30,7 @@ else:
   st.subheader("Portfolio:")
   st.write("Available Cash: $" + str(availableCash))
   for row in trade_details.data:
-      st.write("Stock: " + str(row['stock_symbol']) + "Amount: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+      st.write("Stock: " + str(row['stock_symbol']) + " - Amount: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
 
   #extracted_stocks_list = []
   #current_stock = ""
