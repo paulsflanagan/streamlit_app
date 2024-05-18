@@ -28,6 +28,7 @@ else:
   availableCash = account_details[1][0]['available_cash']
   trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
   st.subheader("Portfolio:")
+  st.write("Available Cash: $" + availableCash)
   for row in trade_details.data:
       st.write("Stock: " + str(row['stock_symbol']) + "Amount: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
 
@@ -48,5 +49,4 @@ else:
         
   
 #st.write(account_details)
-st.write(availableCash)
-st.write(trade_details)
+#st.write(trade_details)
