@@ -90,6 +90,8 @@ if symbol:
 
   if owns_current_stock:
     available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(amount_owned_current_stock) + " - Current Profit/Loss: " + str(round(current_stock_difference,2)))
+  else:
+    available_cash_display.write("Available Cash: $" + str(availableCash))
     
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
