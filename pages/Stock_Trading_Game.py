@@ -27,7 +27,7 @@ else:
   availableCash = account_details[1][0]['available_cash']
   
 #st.write(account_details)
-
+fee_percentage = 0.02
 
 
 symbol = st.text_input("Enter a stock symbol 👇")
@@ -92,8 +92,9 @@ if symbol:
     
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
-    total_cost = float(amount) * float(currentValue) + (float(amount) * float(currentValue))*0.02
-    fee = (float(amount) * float(currentValue))*0.02
+    total_cost = float(amount) * float(currentValue)
+    fee = (float(amount) * float(currentValue)) * fee_percentage
+    total_cost_plus_fee = total_cost + fee
     st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Including Fee: " + str(fee))
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
