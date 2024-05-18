@@ -118,7 +118,7 @@ if symbol:
         trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
         
         bank_account, pull_bank_count = supabase.table('StockTradingGame_BankDB').select("*").eq('bank_account', 'bank_account').execute()
-        st.write(bank_account)
+        #st.write(bank_account)
         bank_account_cash = bank_account[1][0]['account_balance']
         bank_account_cash = bank_account_cash + round(fee,2)
         data, push_count = supabase.table('StockTradingGame_BankDB').update({"account_balance": bank_account_cash}).eq("bank_account", 'bank_account').execute()
