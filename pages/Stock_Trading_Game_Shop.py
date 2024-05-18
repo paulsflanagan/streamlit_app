@@ -47,6 +47,7 @@ if symbol:
     chart_data = response.json()["values"]
   except:
     st.write("Error Pulling Data")
+    break
   #df = pd.read_json(chart_data)
   #df = pd.read_json(str(chart_data))
   #st.write(df)
