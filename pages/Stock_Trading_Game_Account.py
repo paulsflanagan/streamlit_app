@@ -19,19 +19,21 @@ supabase: Client = create_client(spb_url, spb_key)
 
 
 account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
-st.write(account_details[1])
 
 if account_details[1] == []:
   st.write("Welcome to Stock Trading Game " + userName)
   data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000}).execute()
-  availableCash = 0
+  availableCash = 20000
 else:
   availableCash = account_details[1][0]['available_cash']
   trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
-  st.subheader("Portfolio:")
-  st.write("Available Cash: $" + str(availableCash))
+
   for row in trade_details.data:
       st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+
+
+st.subheader("Portfolio:")
+st.write("Available Cash: $" + str(availableCash))
 
   #extracted_stocks_list = []
   #current_stock = ""
