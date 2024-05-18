@@ -57,7 +57,7 @@ if symbol:
     value_list.append(row['close'])
     #take the date / time for x
     #and Close price for Y
-  df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])
+  df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value']).sort_values(by='Value', ascending=False)
   
   #st.write(df)
 
