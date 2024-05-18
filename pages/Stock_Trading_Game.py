@@ -81,6 +81,7 @@ if symbol:
     current_stock = row['stock_symbol']
     if current_stock == symbol:
       owns_current_stock = True
+      user_stock_id = row['id']
       amount_owned_current_stock = row['stock_amount']
       cost_owned_current_stock = row['stock_cost']
       current_stock_difference = (int(amount_owned_current_stock) * float(currentValue)) - float(cost_owned_current_stock)
@@ -101,7 +102,7 @@ if symbol:
         if owns_current_stock:
           total_cost_plus_fee = total_cost_plus_fee + cost_owned_current_stock
           amount = int(amount) + int(amount_owned_current_stock)
-          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost_plus_fee}).eq("user_name", userName).execute()
+          data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost_plus_fee}).eq("id", user_stock_id).execute()
         else:
           data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost_plus_fee}).execute()
           
