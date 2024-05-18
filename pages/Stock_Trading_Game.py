@@ -128,8 +128,10 @@ if symbol:
           current_stock = row['stock_symbol']
           if current_stock == symbol:
             owns_current_stock = True
+            user_stock_id = row['id']
             amount_owned_current_stock = row['stock_amount']
             cost_owned_current_stock = row['stock_cost']
+            current_stock_difference = (int(amount_owned_current_stock) * float(currentValue)) - float(cost_owned_current_stock)
             
         if pull_count == 0:
           st.write("No Account Found - Visit Account to Begin")
