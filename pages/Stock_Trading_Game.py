@@ -134,7 +134,7 @@ if symbol:
           st.write("No Account Found - Visit Account to Begin")
         else:
           availableCash = account_details[1][0]['available_cash']
-          available_cash_display.write("Available Cash: $" + str(availableCash) + "     Currently Owned: " + str(amount_owned_current_stock))
+          available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(amount_owned_current_stock) + " - Current Profit/Loss: " + str(round(current_stock_difference,2)))
         
     else:
       st.write("Insufficient Funds")
