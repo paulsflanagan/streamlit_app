@@ -36,10 +36,13 @@ symbol = st.text_input("Enter a stock symbol 👇")
 #if st.button("Check"):
 if symbol:
 
-  ### CASHE STOCK INFO TO DB? What is server time? Check last cashe vs server time > 1hour diff to determine if we re-submit api? (we only have 9 api calls per minute on free teir)
+  #### CASHE STOCK INFO TO DB? What is server time? Check last cashe vs server time > 1hour diff to determine if we re-submit api? (we only have 9 api calls per minute on free teir)
   
   url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1week&format=JSON&symbol=" + symbol
   #try:
+
+  #### WEEK DATA CAN BE DAYS OLD - SHOULD USE DAY or MIN?
+  
   response = requests.get(url)
   #st.write(response.status_code)
   st.write(response.json())
