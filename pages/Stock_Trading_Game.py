@@ -92,8 +92,8 @@ if symbol:
     
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
-    total_cost = float(amount) * float(currentValue)
-    st.write("Cost of purchase: $" + str(total_cost))
+    total_cost = float(amount) * float(currentValue) + (float(amount) * float(currentValue))*0.02
+    st.write("Cost of purchase: $" + str(round(total_cost,2)) + " - Fee: " + str(float(amount) * float(currentValue))*0.02)
     if float(total_cost) <= float(availableCash):
       if st.button("Buy Now"):
         if owns_current_stock:
