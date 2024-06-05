@@ -5,9 +5,10 @@ st.title('Lucid Generator')
 code = st.text_input("Enter Code", "")
 
 
-api_key=st.secrets["api_key"],
-api_version=st.secrets["api_version"],
-azure_endpoint=st.secrets["azure_endpoint"]
+l_cid = st.secrets["l_cid"]
+l_cs = st.secrets["l_cs"]
+
+st.write(l_cid)
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
