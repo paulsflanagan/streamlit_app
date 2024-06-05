@@ -52,6 +52,18 @@ if uploaded_file is not None:
     for i in data['conversationMessage']:
       messDict[i['id']] = i['name']
     #print(messDict)
+
+    
+    # Associated Intents - NEW 
+    #Intent Dictionary
+    intentDict = {}
+    for i in data['associatedIntents']:
+      intentDict[i['id']] = i['name']
+      #print(i)
+    #print(intentDict)
+
+
+
     
     
     
@@ -118,7 +130,25 @@ if uploaded_file is not None:
         row.append(engagement_type) #<-------- Engagement Type
     
         text = 'Blank' # reset text
-    
+
+          
+        # DIALOG_STARTER ENGAGEMENT - New
+        if results['type'] == 'DIALOG_STARTER':
+          try:
+            pattern = i['pattern']
+          except:
+            pattern = 'No Pattern'
+          try:
+            intentId = i['intentId']
+          except:
+            intentId = 'No Intent'
+          try:
+            intentName = intentDict[intentId]
+          except:
+            intentName = 'No Intent'
+          text = "Pattern: " + str(pattern) + "\nIntent: " + intentName
+
+          
         # TEXT ENGAGEMENT
         if results['type'] == 'TEXT':
           tile = results['tile']
