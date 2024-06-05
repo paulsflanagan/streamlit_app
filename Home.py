@@ -52,7 +52,8 @@ st.write("Please submit any issues or requests for tools.")
 
 st.subheader("- Web Scraper Beta:")
 st.write("Soon to be archived as this has moved to an asynch batch system. Unstable on browser.")
-
+st.write("")
+st.write("")
 st.write("All apps are open source: https://github.com/paulsflanagan/streamlit_app/")
 
 #@st.cache_data
