@@ -18,6 +18,8 @@ ADMIN_USERS=st.secrets["admin_users"]
 #current_tickets = supabase.table('ticketsDB').select("*").eq('user_name', userName).execute()
 current_tickets = supabase.table('ticketsDB').select("*").execute()
 
+placeholder = st.empty()
+
 with placeholder.container():
   if st.experimental_user.email in ADMIN_USERS:
     for x in current_tickets.data:
