@@ -1,4 +1,4 @@
-import streamlit as st
+ificimport streamlit as st
 from io import StringIO
 import requests
 import json
@@ -16,14 +16,14 @@ l_ruri = st.secrets["l_ruri"]
 
 st.write(' Visit: https://lucid.app/oauth2/authorize?client_id=P9FbSFWxRxWyQyP_qXaeZI6t1f2OFu9FJhRb1mbi&redirect_uri=https://lucid.app/oauth2/clients/P9FbSFWxRxWyQyP_qXaeZI6t1f2OFu9FJhRb1mbi/redirect&scope=lucidchart.document.content%20offline_access%20user.profile')
 
-code = st.text_input("Enter Code", "")
+code = st.text_input("Enter Verification Code", "")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a file (Bot Export CSV)")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     
-    if st.button("Submit"):
+    if st.button("Generate Lucid"):
         
         # Create oAuth token
         url = 'https://api.lucid.co/oauth2/token'
