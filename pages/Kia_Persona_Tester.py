@@ -49,7 +49,7 @@ systemPrompt = st.text_area('Write your system prompt here:', height=200, value=
     - For every opening tag you must add a closing tag
     - Only use the tags provided. Do not create new tags
     - Output in xml""")
-userPrompt = st.text_area('Write your system prompt here:', height=200, value="""
+userPrompt = st.text_area('Write your user prompt here:', height=200, value="""
     - You are an AI Bot that is very good at analysing conversation transcripts
     - Your goal is to find relevant information from the transcript
     - Only use information in the transcript provided
