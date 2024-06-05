@@ -49,17 +49,11 @@ def call_oai(userPrompt, systemPrompt):
     )
     return response.choices[0].message.content, fullPrompt
     
-systemPrompt = st.text_area('Paste your prompt here:', height=400, value="""
+systemPrompt = st.text_area('Paste your prompt here:', height=400, value="")
 
-
-""")
-
-userPrompt = st.text_area('Un Personified Response:', height=300, value="""
-
-
-""")
+userPrompt = st.text_area('Un Personified Response:', height=300, value="")
 
 if st.button('Run'):
     llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt)
-    st.write(call_oai(llmResponse))
+    st.write(llmResponse)
     data, count = supabase.table('kiaTesting').insert({"prompt": systemPrompt, "prepersona": userPrompt, "postpersona": llmResponse, "username": userName}).execute()
