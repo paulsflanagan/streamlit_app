@@ -166,8 +166,44 @@ if uploaded_file is not None:
           #print('Engagement Text: ' + text)
     
     
-        # BUTTON ENGAGEMENT
+
+    
+    
+        # TEXT_QUESTION ENGAGEMENT
+        if results['type'] == 'TEXT_QUESTION':
+    
+          tile = results['tile']
+          #print('Tile: ')
+          #print(tile)
+          tileData = tile['tileData']
+          try:
+            text = tileData[0]['text']
+          except:
+            text = 'Blank'
+          #print('Engagement Text: ' + text)
+
+        ####### BUTTONS SECTION
         buttons = ''
+    
+        # MULTIPLE CHOICE QUESTION ENGAGEMENT ######### Future Work needed
+    
+        if results['type'] == 'MULTIPLE_CHOICE_QUESTION':
+    
+          tile = results['tile']
+          tileData = tile['tileData']
+          try:
+            text = tileData[0]['text']
+          except:
+            text = 'Blank'
+          #print('Engagement Text: ' + text)
+          try:
+            mcq_buttons = tileData[0]['multipleChoice']['multipleChoices']
+            buttons = str(mcq_buttons)
+          except:
+            buttons = 'Blank'
+
+          
+        # BUTTON ENGAGEMENT ##### This section does not output buttons yet
         if results['type'] == 'BUTTON':
     
           tile = results['tile']
@@ -183,20 +219,6 @@ if uploaded_file is not None:
           buttons = tileData[0]['buttons']
           #for j in buttons:
             #print('Button Name: ' + j[ 'name'])
-    
-    
-        # TEXT_QUESTION ENGAGEMENT
-        if results['type'] == 'TEXT_QUESTION':
-    
-          tile = results['tile']
-          #print('Tile: ')
-          #print(tile)
-          tileData = tile['tileData']
-          try:
-            text = tileData[0]['text']
-          except:
-            text = 'Blank'
-          #print('Engagement Text: ' + text)
           
         row.append(text) #<-------- Text
         row.append(buttons) #<-------- Buttons
