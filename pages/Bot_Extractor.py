@@ -132,10 +132,15 @@ if uploaded_file is not None:
         text = 'Blank' # reset text
 
           
-        # DIALOG_STARTER ENGAGEMENT - New
+        # DIALOG_STARTER ENGAGEMENT
         if results['type'] == 'DIALOG_STARTER':
+          pattern = ''
+    
           try:
-            pattern = i['pattern']
+            patternList = i['pattern']
+            for each in patternList:
+              pattern = pattern + " " + each
+            print(pattern)
           except:
             pattern = 'No Pattern'
           try:
