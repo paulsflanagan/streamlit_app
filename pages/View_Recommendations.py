@@ -17,6 +17,7 @@ placeholder = st.empty()
 current_tickets = supabase.table('ticketsDB').select("*").execute()
 
 with placeholder.container():
+  #if userName = 
   for x in current_tickets.data:
       st.write('__')
       st.write('Created: ' + x['created_at'])
