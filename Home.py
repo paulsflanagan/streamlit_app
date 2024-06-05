@@ -21,7 +21,7 @@ st.write("- Kia Persona Tester: Temporary Script added to allow Kia to test Pers
 st.write("- Optimise KB for AI Search: No Changes.")
 st.write("- PDF Scraper: No Changes.")
 st.write("- Stock Trading Game Account: Just for Fun - Have a play.")
-st.write("- Stock Trading Game Shop: please note, you can buy but you cannot sell. Updates coming soon.")
+st.write("- Stock Trading Game Shop: Please note, you can buy but you cannot sell. Updates coming soon.")
 st.write("- Submit Recommendation: Please submit any issues or requests for tools")
 st.write("- Web Scraper Beta: Soon to be archived as this has moved to an asynch batch system. Unstable on browser.")
 
