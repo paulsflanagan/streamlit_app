@@ -51,7 +51,7 @@ def call_oai(userPrompt, systemPrompt):
     
 systemPrompt = st.text_area('Paste your prompt here:', height=200, value="")
 
-userPrompt = st.text_area('Un Personified Response:', height=200, value="")
+userPrompt = st.text_area('Paste your unpersonified Response:', height=200, value="")
 
 if st.button('Run'):
     llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt)
