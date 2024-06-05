@@ -166,9 +166,6 @@ if uploaded_file is not None:
           #print('Engagement Text: ' + text)
     
     
-
-    
-    
         # TEXT_QUESTION ENGAGEMENT
         if results['type'] == 'TEXT_QUESTION':
     
@@ -182,10 +179,12 @@ if uploaded_file is not None:
             text = 'Blank'
           #print('Engagement Text: ' + text)
 
+
+          
         ####### BUTTONS SECTION
         buttons = ''
     
-        # MULTIPLE CHOICE QUESTION ENGAGEMENT ######### Future Work needed
+        # MULTIPLE CHOICE QUESTION ENGAGEMENT
     
         if results['type'] == 'MULTIPLE_CHOICE_QUESTION':
     
@@ -199,6 +198,29 @@ if uploaded_file is not None:
           try:
             mcq_buttons = tileData[0]['multipleChoice']['multipleChoices']
             buttons = str(mcq_buttons)
+          except:
+            buttons = 'Blank'
+
+          
+         # QUICK REPLY ENGAGEMENT
+          
+        if results['type'] == 'QUICK_REPLY':
+    
+          tile = results['tile']
+          tileData = tile['tileData']
+    
+          try:
+            text = tileData[0]['text']
+          except:
+            text = 'Blank'
+          try:
+            qr_buttons = content = i['quickReplies']
+    
+            qr_list = []
+            for each in qr_buttons:
+              qr_list.append(each['title'])
+          
+            buttons = str(qr_list)
           except:
             buttons = 'Blank'
 
@@ -219,6 +241,8 @@ if uploaded_file is not None:
           buttons = tileData[0]['buttons']
           #for j in buttons:
             #print('Button Name: ' + j[ 'name'])
+
+
           
         row.append(text) #<-------- Text
         row.append(buttons) #<-------- Buttons
