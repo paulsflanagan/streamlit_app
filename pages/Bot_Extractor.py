@@ -183,9 +183,8 @@ if uploaded_file is not None:
           
         ####### BUTTONS SECTION
         buttons = ''
-    
+
         # MULTIPLE CHOICE QUESTION ENGAGEMENT
-    
         if results['type'] == 'MULTIPLE_CHOICE_QUESTION':
     
           tile = results['tile']
@@ -203,7 +202,6 @@ if uploaded_file is not None:
 
           
          # QUICK REPLY ENGAGEMENT
-          
         if results['type'] == 'QUICK_REPLY':
     
           tile = results['tile']
@@ -224,23 +222,25 @@ if uploaded_file is not None:
           except:
             buttons = 'Blank'
 
-          
-        # BUTTON ENGAGEMENT ##### This section does not output buttons yet
+
+        # BUTTON ENGAGEMENT 
         if results['type'] == 'BUTTON':
     
           tile = results['tile']
-          #print('Tile: ')
-          #print(tile)
           tileData = tile['tileData']
+    
           try:
             text = tileData[0]['text']
           except:
             text = 'Blank'
-          #print('Engagement Text: ' + text)
-          
-          buttons = tileData[0]['buttons']
-          #for j in buttons:
-            #print('Button Name: ' + j[ 'name'])
+          try:
+            b_buttons = tileData[0]['buttons']
+            b_list = []
+            for each in b_buttons:
+              b_list.append(each['name'])
+            buttons = str(b_list)
+          except:
+            buttons = 'Blank'
 
 
           
