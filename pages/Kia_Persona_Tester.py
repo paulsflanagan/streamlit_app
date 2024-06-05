@@ -9,4 +9,5 @@ client = AzureOpenAI(
     azure_endpoint=st.secrets["azure_endpoint"]
 )
 
+st.title('ChatGPT Emulator V2b')
 
