@@ -1,4 +1,4 @@
-ificimport streamlit as st
+import streamlit as st
 from io import StringIO
 import requests
 import json
