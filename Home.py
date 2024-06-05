@@ -7,36 +7,37 @@ import random
 
 
 
-st.title('Test Page')
+st.title('LivePerson Conversation Design Tool Kit')
 
+st.write("Welcome")
+st.write("Submit any issues or optimisation requests on the Submit Recommendation Tab")
+st.write("- Paul")
 
-
-
-@st.cache_data
-def show_data():
-    st.header("Data analysis")
-    #data = api.get(...)
-    st.success("Fetched data from API!")
-    st.write("Here is a plot of the data:")
-    #st.line_chart(data)
-    st.write("And here is the raw data:")
-    #st.dataframe(data)
+#@st.cache_data
+#def show_data():
+#    st.header("Data analysis")
+#    #data = api.get(...)
+#    st.success("Fetched data from API!")
+#    st.write("Here is a plot of the data:")
+#    #st.line_chart(data)
+#    st.write("And here is the raw data:")
+#    #st.dataframe(data)
     
-@st.cache_data
-def show_data2():
-    st.header("Data analysis2")
-    #data = api.get(...)
-    st.success("Fetched data from API!2")
-    st.write("Here is a plot of the data:2")
-    #st.line_chart(data)
-    st.write("And here is the raw data:2")
-    #st.dataframe(data)
+#@st.cache_data
+#def show_data2():
+#    st.header("Data analysis2")
+#    #data = api.get(...)
+#    st.success("Fetched data from API!2")
+#    st.write("Here is a plot of the data:2")
+#    #st.line_chart(data)
+#    st.write("And here is the raw data:2")
+#    #st.dataframe(data)
 
-if st.button('Button 1'):
-    show_data()
+#if st.button('Button 1'):
+#    show_data()
 
-if st.button('Button 2'):
-    show_data2()
+#if st.button('Button 2'):
+#    show_data2()
 
 
 
