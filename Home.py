@@ -7,9 +7,9 @@ import random
 
 
 
-st.title('LivePerson Conversation Design Tool Kit')
+st.title('LivePerson CD Tool Kit')
 
-st.write("Welcome")
+st.header("Welcome")
 st.write("Submit any issues or optimisation requests on the Submit Recommendation Tab")
 
 
