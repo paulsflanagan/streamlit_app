@@ -42,12 +42,12 @@ def call_oai(userPrompt, systemPrompt):
     )
     return response.choices[0].message.content, fullPrompt
     
-systemPrompt = st.text_area('Write your system prompt here:', height=600, value="""
+systemPrompt = st.text_area('Write your prompt here:', height=600, value="""
 
 
 """)
 
-userPrompt = st.text_area('Write your user prompt here:', height=400, value="""
+userPrompt = st.text_area('Un Personified Response:', height=400, value="""
 
 
 """)
