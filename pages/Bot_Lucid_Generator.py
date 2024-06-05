@@ -570,7 +570,7 @@ if uploaded_file is not None:
             'file': ('import.lucid', open('import.lucid', 'rb'), 'x-application/vnd.lucid.standardImport')
         }
         data = {
-            'title': '_____Ais Test Extraction',
+            'title': file_name,
             'product': 'lucidchart',
             #'parent': '1234'
         }
