@@ -11,16 +11,27 @@ supabase: Client = create_client(spb_url, spb_key)
 userName = st.experimental_user.email
 st.write(userName)
 
-placeholder = st.empty()
+ADMIN_USERS=st.secrets["admin_users"]
+
+
 
 #current_tickets = supabase.table('ticketsDB').select("*").eq('user_name', userName).execute()
 current_tickets = supabase.table('ticketsDB').select("*").execute()
 
 with placeholder.container():
-  #if userName = 
-  for x in current_tickets.data:
-      st.write('__')
-      st.write('Created: ' + x['created_at'])
-      st.write('User: ' + x['creator'])
-      st.write('Reccomendation: ' + x['context'])
-      st.write('Completed: ' + str(x['complete']))
+  if st.experimental_user.email in ADMIN_USERS:
+    for x in current_tickets.data:
+        st.write('__')
+        st.write('Created: ' + x['created_at'])
+        st.write('User: ' + x['creator'])
+        st.write('Reccomendation: ' + x['context'])
+        st.write('Completed: ' + str(x['complete']))
+  else:
+    st.write("Your Tickets:")
+    for x in current_tickets.data:
+      if x['creator'] == userName:
+        st.write('__')
+        st.write('Created: ' + x['created_at'])
+        st.write('User: ' + x['creator'])
+        st.write('Reccomendation: ' + x['context'])
+        st.write('Completed: ' + str(x['complete']))
