@@ -11,7 +11,7 @@ st.title('LivePerson Conversation Design Tool Kit')
 
 st.write("Welcome")
 st.write("Submit any issues or optimisation requests on the Submit Recommendation Tab")
-st.write("- Paul")
+
 
 #@st.cache_data
 #def show_data():
