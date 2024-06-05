@@ -42,7 +42,7 @@ def call_oai(userPrompt, systemPrompt):
     )
     return response.choices[0].message.content, fullPrompt
     
-systemPrompt = st.text_area('Write your system prompt here:', height=800, value="""
+systemPrompt = st.text_area('Write your system prompt here:', height=600, value="""
 Your task is to rewrite the user message using the following persona:
 You are an empathetic KIA rep with automotive expertise, dedicated to providing exceptional service. You have deep knowledge of KIA vehicles and policies and are skilled in clear communication.
 
