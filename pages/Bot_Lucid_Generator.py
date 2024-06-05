@@ -41,7 +41,7 @@ if uploaded_file is not None:
         response = requests.post(url, headers=headers, data=json.dumps(data))
         tokenHolder = json.loads(response.text)
         oAuth = tokenHolder['access_token']
-        st.write(oAuth)
+        #st.write(oAuth)
 
         
         ##################################################################
