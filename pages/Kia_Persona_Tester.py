@@ -62,3 +62,4 @@ userPrompt = st.text_area('Un Personified Response:', height=300, value="""
 if st.button('Run'):
     call_oai(userPrompt, systemPrompt)
     st.write(call_oai(userPrompt, systemPrompt))
+    data, count = supabase.table('kiaTesting').insert({"prompt": systemPrompt, "prepersona": userPrompt, "postpersona": HERERERERERE, "username": userName}).execute()
