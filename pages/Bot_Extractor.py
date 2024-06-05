@@ -140,7 +140,6 @@ if uploaded_file is not None:
             patternList = i['pattern']
             for each in patternList:
               pattern = pattern + " " + each
-            print(pattern)
           except:
             pattern = 'No Pattern'
           try:
