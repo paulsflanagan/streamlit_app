@@ -10,21 +10,48 @@ import random
 st.title('LivePerson CD Tool Kit')
 
 st.header("Updates - 06/06/24")
+
 st.subheader("- AI NLU Annotator:")
 st.write("Soon to be archived as this is now running through an AI Studio Simulation.")
-st.write("- AI Transcripts: Locked down to Admins only. This will be archived as this has been moved to AI Studio.")
-st.write("- Bot Extractor: Latest Update allows for extracting: Dialog Starter patterns and intents; Button options for multiple choice questions, quick replies, button type and structured engagements.")
-st.write("- Bot Lucid Generator: Locked to Admin only through verification code. Soon to be released to GA.")
-st.write("- Chat Gpt Emulator V2 Beta: Open for Beta Testing. Latest Updates: allowing for querying files (text based and pdf) and historical context")
-st.write("- Intents to Routing Prompts: No Changes")
-st.write("- KB to Routing Prompts: No Changes")
-st.write("- Kia Persona Tester: Temporary Script added to allow Kia to test Personification through llm.")
-st.write("- Optimise KB for AI Search: No Changes.")
-st.write("- PDF Scraper: No Changes.")
-st.write("- Stock Trading Game Account: Just for Fun - Have a play.")
-st.write("- Stock Trading Game Shop: Please note, you can buy but you cannot sell. Updates coming soon.")
-st.write("- Submit Recommendation: Please submit any issues or requests for tools")
-st.write("- Web Scraper Beta: Soon to be archived as this has moved to an asynch batch system. Unstable on browser.")
+
+st.subheader("- AI Transcripts:")
+st.write("Locked down to Admins only. This will be archived as this has been moved to AI Studio.")
+
+st.subheader("- Bot Extractor:")
+st.write("Latest Update allows for extracting: Dialog Starter patterns and intents; Button options for multiple choice questions, quick replies, button type and structured engagements.")
+
+st.subheader("- Bot Lucid Generator:")
+st.write("Locked to Admin only through verification code. Soon to be released to GA.")
+
+st.subheader("- Chat Gpt Emulator V2 Beta:")
+st.write("Open for Beta Testing. Latest Updates: allowing for querying files (text based and pdf) and historical context.")
+
+st.subheader("- Intents to Routing Prompts:")
+st.write("No Changes.")
+
+st.subheader("- KB to Routing Prompts:")
+st.write("No Changes.")
+
+st.subheader("- Kia Persona Tester:")
+st.write("Temporary Script added to allow Kia to test Personification through our Azure llm.")
+
+st.subheader("- Optimise KB for AI Search:")
+st.write("No Changes.")
+
+st.subheader("- PDF Scraper:")
+st.write("No Changes.")
+
+st.subheader("- Stock Trading Game Account:")
+st.write("Just for Fun - Have a play.")
+
+st.subheader("- Stock Trading Game Shop:")
+st.write("Please note, you can buy but you cannot sell. Updates coming soon.")
+
+st.subheader("- Submit Recommendation:")
+st.write("Please submit any issues or requests for tools.")
+
+st.subheader("- Web Scraper Beta:")
+st.write("Soon to be archived as this has moved to an asynch batch system. Unstable on browser.")
 
 st.write("All apps are open source: https://github.com/paulsflanagan/streamlit_app/")
 
