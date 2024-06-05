@@ -57,4 +57,6 @@ userPrompt = st.text_area('Write your system prompt here:', height=200, value=""
     - Only use the tags provided. Do not create new tags
     - Output in xml""")
 
-
+if st.button('Run'):
+    call_oai(userPrompt, systemPrompt)
+    st.write(call_oai(userPrompt, systemPrompt))
