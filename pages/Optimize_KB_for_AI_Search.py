@@ -21,7 +21,7 @@ Specifically focus on:
 Using natural keywords and keyphrases from other fields in the rewritten summary
 The goal is to rewrite the summary in a way that improves its findability and searchability, helping more easily surface related knowledge, instructions or answers.
 The summary cannot exceed 1000 characters.
-Please provide only the optimized version of the summary in french."""
+Please provide only the optimized version of the summary."""
 
 def call_oai(prompt, systemPrompt):
     response = client.chat.completions.create(
