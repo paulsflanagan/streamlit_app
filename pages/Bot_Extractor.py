@@ -242,6 +242,35 @@ if uploaded_file is not None:
           except:
             buttons = 'Blank'
 
+        # STRUCTURED ENGAGEMENT 
+        if results['type'] == 'STRUCTURED':
+    
+          tile = results['tile']
+          tileData = tile['tileData']
+    
+          try:
+            title = tileData[0]['title']
+          except:
+            title = 'Blank'
+          try:
+            subTitle = tileData[0]['subTitle']
+          except:
+            subTitle = 'Blank'
+          try:
+            image = tileData[0]['image']
+          except:
+            image = 'Blank'
+          
+          text = "Title: " + title + "\n" + "Subtitle: " + subTitle + "\n" + "Image: " + image
+    
+          try:
+            s_buttons = tileData[0]['buttons']
+            s_list = []
+            for each in s_buttons:
+              s_list.append(each['name'])
+            buttons = str(s_list)
+          except:
+            buttons = 'Blank'
 
           
         row.append(text) #<-------- Text
