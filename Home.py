@@ -9,8 +9,8 @@ import random
 
 st.title('LivePerson CD Tool Kit')
 
-st.subheader("Updates - 06/06/24")
-st.header("- AI NLU Annotator:")
+st.header("Updates - 06/06/24")
+st.subheader("- AI NLU Annotator:")
 st.write("Soon to be archived as this is now running through an AI Studio Simulation.")
 st.write("- AI Transcripts: Locked down to Admins only. This will be archived as this has been moved to AI Studio.")
 st.write("- Bot Extractor: Latest Update allows for extracting: Dialog Starter patterns and intents; Button options for multiple choice questions, quick replies, button type and structured engagements.")
