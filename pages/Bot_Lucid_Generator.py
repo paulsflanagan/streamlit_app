@@ -7,7 +7,7 @@ code = st.text_input("Enter Code", "")
 
 l_cid = st.secrets["l_cid"]
 l_cs = st.secrets["l_cs"]
-
+l_ruri = st.secrets["l_ruri"]
 
 
 uploaded_file = st.file_uploader("Choose a file")
