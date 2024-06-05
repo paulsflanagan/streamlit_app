@@ -150,7 +150,7 @@ if uploaded_file is not None:
             intentName = intentDict[intentId]
           except:
             intentName = 'No Intent'
-          text = "Pattern: " + pattern + "\nIntent: " + intentName
+          text = "\nPattern: " + pattern + "\nIntent: " + intentName
 
           
         # TEXT ENGAGEMENT
