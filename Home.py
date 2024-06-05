@@ -9,8 +9,21 @@ import random
 
 st.title('LivePerson CD Tool Kit')
 
-st.header("Welcome")
-st.write("Submit any issues or optimisation requests on the Submit Recommendation Tab")
+st.header("Updates - 06/06/24")
+st.write("- AI NLU Annotator: Soon to be archived as this is now running through an AI Studio Simulation.")
+st.write("- AI Transcripts: Locked down to Admins only. This will be archived as this has been moved to AI Studio.")
+st.write("- Bot Extractor: Latest Update allows for extracting: Dialog Starter patterns and intents; Button options for multiple choice questions, quick replies, button type and structured engagements.")
+st.write("- Bot Lucid Generator: Locked to Admin only through verification code. Soon to be released to GA.")
+st.write("- Chat Gpt Emulator V2 Beta: Open for Beta Testing. Latest Updates: allowing for querying files (text based and pdf) and historical context")
+st.write("- Intents to Routing Prompts: No Changes")
+st.write("- KB to Routing Prompts: No Changes")
+st.write("- Kia Persona Tester: Temporary Script added to allow Kia to test Personification through llm.")
+st.write("- Optimise KB for AI Search: No Changes.")
+st.write("- PDF Scraper: No Changes.")
+st.write("- Stock Trading Game Account: Just for Fun - Have a play.")
+st.write("- Stock Trading Game Shop: please note, you can buy but you cannot sell. Updates coming soon.")
+st.write("- Submit Recommendation: Please submit any issues or requests for tools")
+st.write("- Web Scraper Beta: Soon to be archived as this has moved to an asynch batch system. This will likely crash your browser.")
 
 
 #@st.cache_data
