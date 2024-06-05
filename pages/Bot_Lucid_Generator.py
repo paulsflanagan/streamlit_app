@@ -558,7 +558,7 @@ if uploaded_file is not None:
             zipf.write('document.json')
         
 
-
+        file_name = "Extraction: " + uploaded_file.name
         
         # Create Chart
         url = 'https://api.lucid.co/documents'
