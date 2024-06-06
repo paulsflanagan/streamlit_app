@@ -14,15 +14,19 @@ st.title('Lucid Generator')
 l_cid = st.text_input("Enter Lucid Client ID", "")
 l_cs = st.text_input("Enter Lucid Client Secret", "")
 
-if l_cid:
+if l_cid && l_cs:
     st.write(" Visit: https://lucid.app/oauth2/authorize?client_id=" + l_cid + "&redirect_uri=https://lucid.app/oauth2/clients/" + l_cid + "/redirect&scope=lucidchart.document.content%20offline_access%20user.profile")
     l_ruri = "https://lucid.app/oauth2/clients/" + l_cid + "/redirect"
+
+
+### Potential to pull from Secrets when account auth token is generated
 
 #l_cid = st.secrets["l_cid"]
 #l_cs = st.secrets["l_cs"]
 #l_ruri = st.secrets["l_ruri"]
 
-#st.write(' Visit: https://lucid.app/oauth2/authorize?client_id='P9FbSFWxRxWyQyP_qXaeZI6t1f2OFu9FJhRb1mbi&redirect_uri=https://lucid.app/oauth2/clients/P9FbSFWxRxWyQyP_qXaeZI6t1f2OFu9FJhRb1mbi/redirect&scope=lucidchart.document.content%20offline_access%20user.profile')
+###
+
 
 code = st.text_input("Enter Verification Code", "")
 
