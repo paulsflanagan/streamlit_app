@@ -11,6 +11,8 @@ st.title('LivePerson CD Tool Kit')
 
 st.header("Updates - 06/06/24")
 
+st.write("")
+
 st.subheader("- AI NLU Annotator:")
 st.write("Soon to be archived as this is now running through an AI Studio Simulation.")
 
