@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('LivePerson CD Tool Kit')
+st.title('LivePerson CD Toolkit')
 
 st.header("Updates - 06/06/24")
 
