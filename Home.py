@@ -55,4 +55,4 @@ st.write("")
 st.write("")
 st.write("All apps are open source: https://github.com/paulsflanagan/streamlit_app/")
 st.write("Web site: https://paulsflanagan.com/ ")
-st.write("Linked In: https://www.linkedin.com/in/paul-s-flanagan-46471a150/ "
+st.write("Linked In: https://www.linkedin.com/in/paul-s-flanagan-46471a150/ ")
