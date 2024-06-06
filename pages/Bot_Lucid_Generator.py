@@ -14,7 +14,7 @@ st.title('Lucid Generator')
 l_cid = st.text_input("Enter Lucid Client ID", "")
 l_cs = st.text_input("Enter Lucid Client Secret", "")
 
-if l_cid && l_cs:
+if l_cid and l_cs:
     st.write(" Visit: https://lucid.app/oauth2/authorize?client_id=" + l_cid + "&redirect_uri=https://lucid.app/oauth2/clients/" + l_cid + "/redirect&scope=lucidchart.document.content%20offline_access%20user.profile")
     l_ruri = "https://lucid.app/oauth2/clients/" + l_cid + "/redirect"
 
