@@ -85,12 +85,13 @@ if uploaded_file is not None:
             df["summary"] = new_summaries
             
             new_detail = []
-            
-            #for i, row in df.iterrows():
-            for x in range(df.shape[0]):
-                new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
-            df["detail"] = new_detail
-            #kb_df.to_csv(new_kb_filename, index=False)
+            ###################
+            ###### DISABLED FOR JEN K 07/06/24 - Re enable for GA
+            #for x in range(df.shape[0]):
+            #    new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
+            #df["detail"] = new_detail
+            ###################
+
     
             st.write("Updated KB")
             st.write(df)
