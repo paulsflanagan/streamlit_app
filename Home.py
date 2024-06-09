@@ -54,4 +54,3 @@ st.write("Soon to be archived as this has moved to an asynch batch system. Unsta
 st.write("")
 st.write("")
 st.write("All apps are open source: https://github.com/paulsflanagan/streamlit_app/")
-st.write("Linked In: https://www.linkedin.com/in/paul-s-flanagan-46471a150/ ")
