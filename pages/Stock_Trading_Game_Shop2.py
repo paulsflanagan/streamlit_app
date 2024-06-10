@@ -191,9 +191,10 @@ st.write("Available Cash: $" + availableCashStr)
 symbol = st.text_input("Enter a stock symbol 👇")
 #if st.button("Check"):
 if symbol:
+  
   symbol = symbol.upper()
   stockData = getStockData(symbol)
-  st.write(stockData)
+  currentValue = stockData["stock_data"]["values"][0]["close"]
   chartData = stockData["stock_data"]["values"]
 
   # Prepare Chart Data
@@ -209,10 +210,9 @@ if symbol:
   df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])#.sort_values(by='Value', ascending=True)
   df['Value'] = df['Value'].astype(float)
 
-  #currentValue = response.json()["values"][0]["close"]
   st.write("") 
   st.subheader("Symbol: " + symbol)
-  #st.write("Current Value (USD): $" + currentValue + " Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
+  st.write("Current Value (USD): $" + currentValue + " Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
   #st.write("") 
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
