@@ -185,7 +185,7 @@ account_details = getAccountDetails(userName)
 availableCash = account_details['available_cash']
 availableCashStr = str(account_details['available_cash'])
 
-st.write("Available Cash: " + availableCashStr)
+st.write("Available Cash: $" + availableCashStr)
 #account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
 #st.write(account_details)
 #if account_details[1] == []:
