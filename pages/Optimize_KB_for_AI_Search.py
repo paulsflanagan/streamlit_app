@@ -7,7 +7,6 @@ import pandas as pd
 
 
 st.title('Knowledgebase Optimization for AI Search')
-st.warning('Currently Adapted to not update the Detail - Will revert W/C 17th July', icon="⚠️")
 st.write("AI Search utilizes the KB summary for retrieval and the KB detail for response. This app will summarise the full article to replace the summary, then add the summary to the beginning of the detail. Original Script Thanks to Konrad Zuchniak")
 
 client = AzureOpenAI(
@@ -86,12 +85,10 @@ if uploaded_file is not None:
             df["summary"] = new_summaries
             
             new_detail = []
-            ###################
-            ###### DISABLED FOR JEN K 07/06/24 - Re enable for GA
-            #for x in range(df.shape[0]):
-            #    new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
-            #df["detail"] = new_detail
-            ###################
+
+            for x in range(df.shape[0]):
+                new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
+            df["detail"] = new_detail
 
     
             st.write("Updated KB")
