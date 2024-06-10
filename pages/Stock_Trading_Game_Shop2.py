@@ -196,10 +196,10 @@ if symbol:
   response = getStockData(symbol)
   #st.write(response.status_code)
   #st.write(response.json())
-  
+  st.write(chart_data)
   chart_data = response.json()["values"]
 
-  st.write(chart_data)
+  st.write(response)
 
   #df = pd.read_json(chart_data)
   #df = pd.read_json(str(chart_data))
