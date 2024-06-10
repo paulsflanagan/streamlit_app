@@ -225,30 +225,19 @@ if symbol:
   #trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
 
   st.write(ownedStock)
+
+  available_cash_display = st.empty()
   
-  #extracted_stocks_list = []
-  owns_current_stock = False
-  amount_owned_current_stock = 0
-  cost_owned_current_stock = 0
+  if ownedStock == []:
+    available_cash_display.write("Available Cash: $" + str(availableCash))
+  else:
+    ownedStockAmount = ownedStock['stock_amount']
+    ownedStockCost = ownedStock['stock_cost']
+    ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
+    available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
+    
 
-#  for row in trade_details.data:
-#    current_stock = row['stock_symbol']
-#    if current_stock == symbol:
-#      owns_current_stock = True
-#      user_stock_id = row['id']
-#      amount_owned_current_stock = row['stock_amount']
-#      cost_owned_current_stock = row['stock_cost']
-#      current_stock_difference = (int(amount_owned_current_stock) * float(currentValue)) - float(cost_owned_current_stock)
   
-#  available_cash_display = st.empty()
-
-#  if owns_current_stock:
-#    available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(amount_owned_current_stock) + " - Current Profit/Loss: " + str(round(current_stock_difference,2)))
-#  else:
-#    available_cash_display.write("Available Cash: $" + str(availableCash))
-
-
-
 
 
 
