@@ -5,13 +5,13 @@ import pandas as pd
 from io import StringIO
 from supabase import create_client, Client
 
-# Import Keys
+#### Import Keys
 td_key=st.secrets["td_key"]
 userName = st.experimental_user.email
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
-# Build Clients
+#### Build Clients
 supabase: Client = create_client(spb_url, spb_key)
 
 
@@ -186,11 +186,6 @@ availableCash = account_details['available_cash']
 availableCashStr = str(account_details['available_cash'])
 
 st.write("Available Cash: $" + availableCashStr)
-#account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
-#st.write(account_details)
-#if account_details[1] == []:
-#  st.write("Welcome to Stock Trading Game")
-#  data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000}).execute()
-#  availableCash = 20000
-#else:
-#  availableCash = account_details[1][0]['available_cash']
+
+
+
