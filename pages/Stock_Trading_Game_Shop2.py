@@ -187,5 +187,37 @@ availableCashStr = str(account_details['available_cash'])
 
 st.write("Available Cash: $" + availableCashStr)
 
+symbol = st.text_input("Enter a stock symbol 👇")
+#if st.button("Check"):
+if symbol:
+
+  
+  response = getStockData(symbol)
+  #st.write(response.status_code)
+  #st.write(response.json())
+  
+  chart_data = response.json()["values"]
+
+  st.write(chart_data)
+
+  #df = pd.read_json(chart_data)
+  #df = pd.read_json(str(chart_data))
+  #st.write(df)
+
+  ### FOR EACH IN VALUES
+  datetime_list = []
+  value_list = []
+  for row in chart_data:
+    #st.write("DateTime): " + row['datetime'])
+    datetime_list.append(row['datetime'])
+    #st.write("Value (USD): " + row['close'])
+    value_list.append(row['close'])
+    #take the date / time for x
+    #and Close price for Y
+  df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])#.sort_values(by='Value', ascending=True)
+  df['Value'] = df['Value'].astype(float)
+
+
+
 
 
