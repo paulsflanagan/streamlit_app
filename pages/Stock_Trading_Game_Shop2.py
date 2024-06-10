@@ -89,8 +89,8 @@ def setPurchasedStock(userName,symbol,amount,value):
   if ownedStock == []:
     data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": transactionValue}).execute()
   else:
-    updateAmount = ownedStock['stock_amount'] + amount
-    updateCost = ownedStock['stock_cost'] + transactionValue
+    updateAmount = int(ownedStock['stock_amount']) + int(amount)
+    updateCost = float(ownedStock['stock_cost']) + float(transactionValue)
     data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": updateAmount, "stock_cost": updateCost}).eq("user_name", userName).eq("stock_symbol", symbol).execute()
   # Log Trade
   logTrade(userName,symbol,"Buy",amount,value,fee)
