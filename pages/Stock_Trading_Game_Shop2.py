@@ -73,7 +73,7 @@ def addBankFunds(amount):
   supabase.table('StockTradingGame_BankDB').update({"account_balance": updateFunds}).eq("bank_account", 'bank_account').execute()
   return 'Updated Bank Funds'
   
-def getFee(amount,value):
+def getFee(amount: int,value: float):
   feePercentage = 0.002
   fee = (amount * value) * feePercentage
   return fee
