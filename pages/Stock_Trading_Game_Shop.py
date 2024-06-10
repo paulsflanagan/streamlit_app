@@ -198,7 +198,7 @@ if symbol:
   
   symbol = symbol.upper()
   stockData = getStockData(symbol)
-  st.write(stockData)
+  #st.write(stockData)
   if stockData["stock_data"]["status"] == "ok":
 
     currentValue = stockData["stock_data"]["values"][0]["close"]
