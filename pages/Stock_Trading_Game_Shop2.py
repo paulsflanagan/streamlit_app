@@ -191,7 +191,7 @@ st.write("Available Cash: $" + availableCashStr)
 symbol = st.text_input("Enter a stock symbol 👇")
 #if st.button("Check"):
 if symbol:
-
+  symbol = symbol.upper()
   stockData = getStockData(symbol)
   st.write(stockData)
   chartData = stockData["stock_data"]["values"]
