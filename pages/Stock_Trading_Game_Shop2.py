@@ -247,6 +247,52 @@ if symbol:
     st.write("Cost of purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
   
 
+    if float(purchaseCost) <= float(availableCash):
+      
+      if st.button("Buy Now"):
+        st.write("Purchase Ready") 
+      else:
+        st.write("Insufficient Funds")        
+          #if owns_current_stock:
+              #total_cost_plus_fee = total_cost_plus_fee + cost_owned_current_stock
+              #amount = int(amount) + int(amount_owned_current_stock)
+              #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost_plus_fee}).eq("id", user_stock_id).execute()
+            #else:
+              #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost_plus_fee}).execute()
+              
+            #newAvailableCash = float(availableCash) - float(total_cost_plus_fee)
+            #data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
+            
+            #account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+            
+            #trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+            
+            #bank_account, pull_bank_count = supabase.table('StockTradingGame_BankDB').select("*").eq('bank_account', 'bank_account').execute()
+            #st.write(bank_account)
+            #bank_account_cash = bank_account[1][0]['account_balance']
+            #bank_account_cash = bank_account_cash + round(fee,2)
+            #data, push_count = supabase.table('StockTradingGame_BankDB').update({"account_balance": bank_account_cash}).eq("bank_account", 'bank_account').execute()
+      
+            #extracted_stocks_list = []
+            #owns_current_stock = False
+            #amount_owned_current_stock = 0
+            #cost_owned_current_stock = 0
+          
+            #for row in trade_details.data:
+            #  current_stock = row['stock_symbol']
+            #  if current_stock == symbol:
+            #    owns_current_stock = True
+            #    user_stock_id = row['id']
+            #    amount_owned_current_stock = row['stock_amount']
+            #    cost_owned_current_stock = row['stock_cost']
+            #   current_stock_difference = (int(amount_owned_current_stock) * float(currentValue)) - float(cost_owned_current_stock)
+                
+            #if pull_count == 0:
+            #  st.write("No Account Found - Visit Account to Begin")
+            #else:
+            #availableCash = account_details[1][0]['available_cash']
+            #available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(amount_owned_current_stock) + " - Current Profit/Loss: " + str(round(current_stock_difference,2)))
+            
 
 
 
