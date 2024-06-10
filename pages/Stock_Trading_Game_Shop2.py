@@ -251,8 +251,8 @@ if symbol:
       
       if st.button("Buy Now"):
         st.write("Purchase Ready") 
-      else:
-        st.write("Insufficient Funds")        
+    else:
+      st.write("Insufficient Funds")        
           #if owns_current_stock:
               #total_cost_plus_fee = total_cost_plus_fee + cost_owned_current_stock
               #amount = int(amount) + int(amount_owned_current_stock)
