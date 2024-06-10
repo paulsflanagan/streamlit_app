@@ -199,9 +199,8 @@ if symbol:
   symbol = symbol.upper()
   stockData = getStockData(symbol)
   st.write(stockData)
-  if stockData == []: ###### stock_data status "ok" vs "error"
-    st.write("No Stock Data")
-  else:
+  if stockData["stock_data"]["status"] == "ok":
+
     currentValue = stockData["stock_data"]["values"][0]["close"]
     #st.write(stockData)
     stockExchange = stockData["stock_data"]["meta"]["exchange"]
@@ -273,7 +272,7 @@ if symbol:
             ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
             available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
           
-      else:
+      else: # if float(purchaseCost) <= float(availableCash
         st.write("Insufficient Funds")
         
     sellAmount = st.text_input("Enter an amount to sell 👇")    
@@ -303,9 +302,11 @@ if symbol:
             ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
             available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
           
-      else:
+      else: # if float(ownedStockAmount) >= float(sellAmount):
         st.write("Insufficient Stocks")        
-            
+        
+    else: # if stockData["stock_data"]["status"] == "ok":
+      st.write("No Stock Data")
 
 
 
