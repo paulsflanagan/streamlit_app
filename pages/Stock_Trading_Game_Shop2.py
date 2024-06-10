@@ -181,7 +181,8 @@ st.title("Stock Trading Game 2")
 st.write(userName)
 
 
-
+account_detail = getAccountDetails(userName)
+st.write(account_details)
 #account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
 #st.write(account_details)
 #if account_details[1] == []:
