@@ -241,7 +241,7 @@ if symbol:
   amount = st.text_input("Enter an amount to purchase 👇")
   if amount:
 
-    purchaseFee = getFee(amount,currentValue)
+    purchaseFee = getFee(int(amount),float(currentValue))
     purchaseCost = (float(amount) * float(currentValue)) + purchaseFee #@@ This could Be A Function
 
     st.write("Cost of purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
