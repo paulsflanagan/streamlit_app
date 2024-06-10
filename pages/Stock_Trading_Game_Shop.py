@@ -198,110 +198,114 @@ if symbol:
   
   symbol = symbol.upper()
   stockData = getStockData(symbol)
-  currentValue = stockData["stock_data"]["values"][0]["close"]
-  #st.write(stockData)
-  stockExchange = stockData["stock_data"]["meta"]["exchange"]
-  stockType = stockData["stock_data"]["meta"]["type"]
-  chartData = stockData["stock_data"]["values"]
-
-  # Prepare Chart Data
-  datetime_list = []
-  value_list = []
-  for row in chartData:
-    #st.write("DateTime): " + row['datetime'])
-    datetime_list.append(row['datetime'])
-    #st.write("Value (USD): " + row['close'])
-    value_list.append(row['close'])
-    #take the date / time for x
-    #and Close price for Y
-  df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])#.sort_values(by='Value', ascending=True)
-  df['Value'] = df['Value'].astype(float)
-
-  st.write("") 
-  st.subheader("Symbol: " + symbol)
-  st.write("Current Value (USD): $" + currentValue + " Exchange: " + stockExchange + " Type: " + stockType) 
-  #st.write("") 
-  st.line_chart(data=df, x="Date-Time", y="Value")
-  st.subheader("Purchase")
-
-
-  #### Display Available Cash and Currently Owned Stock
-  
-  ownedStock = getOwnedStock(userName,symbol)
-
-  available_cash_display = st.empty()
-  
-  if ownedStock == []:
-    ownedStockAmount = 0
-    available_cash_display.write("Available Cash: $" + str(availableCash))
+  st.write(stockData)
+  if stockData == []:
+    st.write("No Stock Data")
   else:
-    ownedStockAmount = ownedStock['stock_amount']
-    ownedStockCost = ownedStock['stock_cost']
-    ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
-    available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
-
-
-  #### Purchase Stocks
+    currentValue = stockData["stock_data"]["values"][0]["close"]
+    #st.write(stockData)
+    stockExchange = stockData["stock_data"]["meta"]["exchange"]
+    stockType = stockData["stock_data"]["meta"]["type"]
+    chartData = stockData["stock_data"]["values"]
   
-  buyAmount = st.text_input("Enter an amount to buy 👇")
-  if buyAmount:
-
-    purchaseFee = getFee(int(buyAmount),float(currentValue))
-    purchaseCost = (int(buyAmount) * float(currentValue)) + purchaseFee #@@ This could Be A Function
-
-    st.write("Cost of Purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
+    # Prepare Chart Data
+    datetime_list = []
+    value_list = []
+    for row in chartData:
+      #st.write("DateTime): " + row['datetime'])
+      datetime_list.append(row['datetime'])
+      #st.write("Value (USD): " + row['close'])
+      value_list.append(row['close'])
+      #take the date / time for x
+      #and Close price for Y
+    df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])#.sort_values(by='Value', ascending=True)
+    df['Value'] = df['Value'].astype(float)
   
-
-    if float(purchaseCost) <= float(availableCash):
-      
-      if st.button("Buy Now"):
-        setPurchasedStock(userName,symbol,buyAmount,currentValue)
-        
-        ownedStock = getOwnedStock(userName,symbol)
-
-        availableCash = getAvailableCash(userName)
-        
-        if ownedStock == []:
-          available_cash_display.write("Available Cash: $" + str(availableCash))
-        else:
-          ownedStockAmount = ownedStock['stock_amount']
-          ownedStockCost = ownedStock['stock_cost']
-          ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
-          available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
-        
+    st.write("") 
+    st.subheader("Symbol: " + symbol)
+    st.write("Current Value (USD): $" + currentValue + " Exchange: " + stockExchange + " Type: " + stockType) 
+    #st.write("") 
+    st.line_chart(data=df, x="Date-Time", y="Value")
+    st.subheader("Purchase")
+  
+  
+    #### Display Available Cash and Currently Owned Stock
+    
+    ownedStock = getOwnedStock(userName,symbol)
+  
+    available_cash_display = st.empty()
+    
+    if ownedStock == []:
+      ownedStockAmount = 0
+      available_cash_display.write("Available Cash: $" + str(availableCash))
     else:
-      st.write("Insufficient Funds")
-      
-  sellAmount = st.text_input("Enter an amount to sell 👇")    
+      ownedStockAmount = ownedStock['stock_amount']
+      ownedStockCost = ownedStock['stock_cost']
+      ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
+      available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
   
-  if sellAmount:
-
-    saleFee = getFee(int(sellAmount),float(currentValue))
-    saleValue = (int(sellAmount) * float(currentValue)) - saleFee #@@ This could Be A Function
-
-    st.write("Sale Value: $" + str(round(saleValue,2)) + " - Including Fee: " + str(round(saleFee, 2)))
   
-
-    if float(ownedStockAmount) >= float(sellAmount): #####
-      
-      if st.button("Sell Now"):
-        setSellStock(userName,symbol,sellAmount,currentValue)
+    #### Purchase Stocks
+    
+    buyAmount = st.text_input("Enter an amount to buy 👇")
+    if buyAmount:
+  
+      purchaseFee = getFee(int(buyAmount),float(currentValue))
+      purchaseCost = (int(buyAmount) * float(currentValue)) + purchaseFee #@@ This could Be A Function
+  
+      st.write("Cost of Purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
+    
+  
+      if float(purchaseCost) <= float(availableCash):
         
-        ownedStock = getOwnedStock(userName,symbol)
-
-        availableCash = getAvailableCash(userName)
-        
-        if ownedStock == []:
-          available_cash_display.write("Available Cash: $" + str(availableCash))
-        else:
-          ownedStockAmount = ownedStock['stock_amount']
-          ownedStockCost = ownedStock['stock_cost']
-          ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
-          available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
-        
-    else:
-      st.write("Insufficient Stocks")        
+        if st.button("Buy Now"):
+          setPurchasedStock(userName,symbol,buyAmount,currentValue)
           
+          ownedStock = getOwnedStock(userName,symbol)
+  
+          availableCash = getAvailableCash(userName)
+          
+          if ownedStock == []:
+            available_cash_display.write("Available Cash: $" + str(availableCash))
+          else:
+            ownedStockAmount = ownedStock['stock_amount']
+            ownedStockCost = ownedStock['stock_cost']
+            ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
+            available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
+          
+      else:
+        st.write("Insufficient Funds")
+        
+    sellAmount = st.text_input("Enter an amount to sell 👇")    
+    
+    if sellAmount:
+  
+      saleFee = getFee(int(sellAmount),float(currentValue))
+      saleValue = (int(sellAmount) * float(currentValue)) - saleFee #@@ This could Be A Function
+  
+      st.write("Sale Value: $" + str(round(saleValue,2)) + " - Including Fee: " + str(round(saleFee, 2)))
+    
+  
+      if float(ownedStockAmount) >= float(sellAmount): #####
+        
+        if st.button("Sell Now"):
+          setSellStock(userName,symbol,sellAmount,currentValue)
+          
+          ownedStock = getOwnedStock(userName,symbol)
+  
+          availableCash = getAvailableCash(userName)
+          
+          if ownedStock == []:
+            available_cash_display.write("Available Cash: $" + str(availableCash))
+          else:
+            ownedStockAmount = ownedStock['stock_amount']
+            ownedStockCost = ownedStock['stock_cost']
+            ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
+            available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
+          
+      else:
+        st.write("Insufficient Stocks")        
+            
 
 
 
