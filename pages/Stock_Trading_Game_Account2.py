@@ -43,7 +43,7 @@ def getPortfolio(userName):
 
 def displayPortfolio(userName):
   portfolio = getPortfolio(userName)
-  print("Portfolio:")
+  print("My Portfolio:")
   for row in portfolio.data:
     st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
 
