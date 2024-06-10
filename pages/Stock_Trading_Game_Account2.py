@@ -44,7 +44,7 @@ def displayPortfolio(userName):
   portfolio = getPortfolio(userName)
   print("Portfolio:")
   for row in portfolio.data:
-    print("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
 
 def getOwnedStock(userName,symbol):
   ownedStock = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).eq('stock_symbol', symbol).execute()
@@ -65,7 +65,4 @@ availableCash = getAvailableCash(userName)
 st.subheader("Portfolio:")
 st.write("Available Cash: $" + str(availableCash))
 
-
-
-for row in trade_details.data:
-    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+displayPortfolio(userName)
