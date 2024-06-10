@@ -197,8 +197,8 @@ if symbol:
   currentValue = stockData["stock_data"]["values"][0]["close"]
   st.write(stockData)
   stockExchange = stockData["meta"]["exchange"]
-  stockType = stockData["meta"]["type"]
-  chartData = stockData["stock_data"]["values"]
+  stockType = stockData["stock_data"]["meta"]["type"]
+  chartData = stockData["stock_data"]["stock_data"]["values"]
 
   # Prepare Chart Data
   datetime_list = []
