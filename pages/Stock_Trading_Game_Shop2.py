@@ -39,7 +39,7 @@ def getAvailableCash(userName):
   
 def setAvailableCash(userName,cash):
   setCash = round(cash,2)
-  data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": cash}).eq("user_name", userName).execute()
+  data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": setCash}).eq("user_name", userName).execute()
   return 'Cash updated'
 
 ## Portfolio
@@ -258,7 +258,7 @@ if symbol:
         
         ownedStock = getOwnedStock(userName,symbol)
 
-        available_cash_display = st.empty()
+        availableCash = getAvailableCash(userName)
         
         if ownedStock == []:
           available_cash_display.write("Available Cash: $" + str(availableCash))
