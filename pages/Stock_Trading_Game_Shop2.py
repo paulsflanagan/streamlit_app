@@ -183,7 +183,7 @@ def getStockValue(symbol):
 
 #### UI
 st.title("Stock Trading Game 2")
-st.write(userName)
+#st.write(userName)
 
 
 account_details = getAccountDetails(userName)
