@@ -128,7 +128,7 @@ st.write("Top Player Owned Stocks:")
 topOwnedStocks = getOrderdTotalOwnedStocks()
 for each in topOwnedStocks:
   st.write("Stock: " + each[0] + " - Owned: " + str(each[1]))
-  
+st.write("")  
 st.write("Top Value Player:")
 topValuePlayer = getOrderdHighestValuePlayer()
 for each in topValuePlayer:
