@@ -221,10 +221,9 @@ if symbol:
   st.subheader("Purchase")
 
 
+  #### Display Available Cash and Currently Owned Stock
+  
   ownedStock = getOwnedStock(userName,symbol)
-  #trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
-
-  st.write(ownedStock)
 
   available_cash_display = st.empty()
   
@@ -235,8 +234,17 @@ if symbol:
     ownedStockCost = ownedStock['stock_cost']
     ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
     available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
-    
 
+
+  #### Purchase Stocks
+  
+  amount = st.text_input("Enter an amount to purchase 👇")
+  if amount:
+
+    purchaseFee = getFee(amount,currentValue)
+    purchaseCost = (float(amount) * float(currentValue)) + purchaseFee #@@ This could Be A Function
+
+    st.write("Cost of purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
   
 
 
