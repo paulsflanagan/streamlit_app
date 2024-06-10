@@ -261,6 +261,7 @@ if symbol:
         availableCash = getAvailableCash(userName)
         
         if ownedStock == []:
+          ownedStockAmount = 0
           available_cash_display.write("Available Cash: $" + str(availableCash))
         else:
           ownedStockAmount = ownedStock['stock_amount']
@@ -291,6 +292,7 @@ if symbol:
         availableCash = getAvailableCash(userName)
         
         if ownedStock == []:
+          ownedStockAmount = 0
           available_cash_display.write("Available Cash: $" + str(availableCash))
         else:
           ownedStockAmount = ownedStock['stock_amount']
