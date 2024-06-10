@@ -193,6 +193,8 @@ symbol = st.text_input("Enter a stock symbol 👇")
 if symbol:
 
   stockData = getStockData(symbol)
+
+  st.write(stockData)
   
   chartData = stockData["values"]
   
