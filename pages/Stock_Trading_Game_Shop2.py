@@ -195,6 +195,7 @@ if symbol:
   symbol = symbol.upper()
   stockData = getStockData(symbol)
   currentValue = stockData["stock_data"]["values"][0]["close"]
+  st.write(stockData)
   stockExchange = stockData["meta"]["exchange"]
   stockType = stockData["meta"]["type"]
   chartData = stockData["stock_data"]["values"]
