@@ -281,7 +281,7 @@ if symbol:
     st.write("Sale Value: $" + str(round(saleValue,2)) + " - Including Fee: " + str(round(saleFee, 2)))
   
 
-    if float(ownedStock) <= float(sellAmount): #####
+    if float(ownedStockAmount) <= float(sellAmount): #####
       
       if st.button("Sell Now"):
         setSellStock(userName,symbol,sellAmount,currentValue)
