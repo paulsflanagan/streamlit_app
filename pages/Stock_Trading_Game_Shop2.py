@@ -215,7 +215,7 @@ if symbol:
 
   st.write("") 
   st.subheader("Symbol: " + symbol)
-  st.write("Current Value (USD): $" + currentValue + " Exchange: " + exchangeName + " Type: " + stockType) 
+  st.write("Current Value (USD): $" + currentValue + " Exchange: " + stockExchange + " Type: " + stockType) 
   #st.write("") 
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
