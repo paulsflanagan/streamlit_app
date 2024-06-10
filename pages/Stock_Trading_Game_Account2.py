@@ -2,6 +2,7 @@ import requests
 import streamlit as st
 from supabase import create_client, Client
 import json
+from collections import Counter
 
 #### Keys
 td_key=st.secrets["td_key"]
@@ -46,12 +47,26 @@ def displayPortfolio(userName):
   for row in portfolio.data:
     st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
 
-#def getOwnedStock(userName,symbol):
-#  ownedStock = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).eq('stock_symbol', symbol).execute()
-#  if ownedStock.data == []:
-#    return []
-#  else:
-#    return ownedStock.data[0]
+#### Showcase Functions
+def getTotalOwnedStocks():
+  trades_data = supabase.table('StockTradingGame_OwnedStocksDB').select("*").execute()
+  total_owned_data = {}
+  for each in trades_data.data:
+    stock_symbol = each['stock_symbol']
+    stock_amount = each['stock_amount']
+    if total_owned_data.get(stock_symbol) == None:
+      total_owned_data[stock_symbol] = stock_amount
+    else:
+      buffer_amount = total_owned_data[stock_symbol] + stock_amount
+      total_owned_data[stock_symbol] = buffer_amount
+  return total_owned_data
+
+def getOrderdTotalOwnedStocks():
+  total_owned_data = getTotalOwnedStocks()
+  c = Counter(total_owned_data)
+  ordered_total_owned_data = c.most_common()
+  return ordered_total_owned_data
+
 
 
 #### UI
@@ -66,3 +81,6 @@ st.subheader("Portfolio:")
 st.write("Available Cash: $" + str(availableCash))
 
 displayPortfolio(userName)
+
+st.subheader("Statistics:")
+st.write("Top Owned Stocks: " + str(getOrderdTotalOwnedStocks()))
