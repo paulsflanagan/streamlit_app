@@ -234,7 +234,7 @@ if symbol:
     ownedStockAmount = ownedStock['stock_amount']
     ownedStockCost = ownedStock['stock_cost']
     ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
-    available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: $" + str(round(ownedStockValueDifference,2)))
+    available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
     
 
   
