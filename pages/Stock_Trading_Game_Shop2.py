@@ -243,7 +243,7 @@ if symbol:
 
   #### Purchase Stocks
   
-  buyAmount = st.text_input("Enter an amount to purchase 👇")
+  buyAmount = st.text_input("Enter an amount to buy 👇")
   if buyAmount:
 
     purchaseFee = getFee(int(buyAmount),float(currentValue))
