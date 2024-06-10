@@ -250,7 +250,20 @@ if symbol:
     if float(purchaseCost) <= float(availableCash):
       
       if st.button("Buy Now"):
-        st.write("Purchase Ready") 
+        setPurchasedStock(userName,symbol,amount,currentValue)
+        
+        ownedStock = getOwnedStock(userName,symbol)
+
+        available_cash_display = st.empty()
+        
+        if ownedStock == []:
+          available_cash_display.write("Available Cash: $" + str(availableCash))
+        else:
+          ownedStockAmount = ownedStock['stock_amount']
+          ownedStockCost = ownedStock['stock_cost']
+          ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
+          available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
+        
     else:
       st.write("Insufficient Funds")        
           #if owns_current_stock:
