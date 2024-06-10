@@ -81,7 +81,7 @@ def getFee(amount,value):
 ## Purchase Stock
 def setPurchasedStock(userName,symbol,amount,value):
   fee = getFee(amount,value)
-  transactionValue = (amount * value) + fee
+  transactionValue = (int(amount) * float(value)) + fee
   availableCash = getAvailableCash(userName)
   if getAvailableCash(userName) < transactionValue:
     return 'Insufficient Funds'
