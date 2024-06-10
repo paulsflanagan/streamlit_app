@@ -41,11 +41,19 @@ def getPortfolio(userName):
    portfolio = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
    return portfolio
 
+#def displayPortfolio(userName):
+#  portfolio = getPortfolio(userName)
+#  print("My Portfolio:")
+#  for row in portfolio.data:
+#    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+    
 def displayPortfolio(userName):
   portfolio = getPortfolio(userName)
-  print("My Portfolio:")
+  print("Portfolio:")
   for row in portfolio.data:
-    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+    valueAmount = int(row['stock_amount']) * float(getStockValue(row['stock_symbol']))
+    valueDifference = valueAmount - float(row['stock_cost'])
+    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']) + " - Value: " + str(valueAmount)+ " - Difference: " + str(round(valueDifference,2)))
 
 
 #### UI
