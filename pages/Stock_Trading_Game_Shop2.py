@@ -195,6 +195,8 @@ if symbol:
   symbol = symbol.upper()
   stockData = getStockData(symbol)
   currentValue = stockData["stock_data"]["values"][0]["close"]
+  stockExchange = stockData["meta"]["exchange"]
+  stockType = stockData["meta"]["type"]
   chartData = stockData["stock_data"]["values"]
 
   # Prepare Chart Data
@@ -212,7 +214,7 @@ if symbol:
 
   st.write("") 
   st.subheader("Symbol: " + symbol)
-  st.write("Current Value (USD): $" + currentValue + " Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
+  st.write("Current Value (USD): $" + currentValue + " Exchange: " + exchangeName + " Type: " + stockType) 
   #st.write("") 
   st.line_chart(data=df, x="Date-Time", y="Value")
   st.subheader("Purchase")
