@@ -183,14 +183,14 @@ def getStockValue(symbol):
 
 #### UI
 st.title("Stock Trading Game v2.0")
-#st.write(userName)
+st.write(userName)
 
 
 account_details = getAccountDetails(userName)
 availableCash = account_details['available_cash']
 availableCashStr = str(account_details['available_cash'])
 
-st.write("Available Cash: $" + availableCashStr)
+#st.write("Available Cash: $" + availableCashStr)
 
 symbol = st.text_input("Enter a stock symbol 👇")
 #if st.button("Check"):
