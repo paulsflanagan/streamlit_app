@@ -35,6 +35,24 @@ def getAvailableCash(userName):
   account_details = getAccountDetails(userName)
   return account_details['available_cash']
 
+## Portfolio
+def getPortfolio(userName):
+   portfolio = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+   return portfolio
+
+def displayPortfolio(userName):
+  portfolio = getPortfolio(userName)
+  print("Portfolio:")
+  for row in portfolio.data:
+    print("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']))
+
+def getOwnedStock(userName,symbol):
+  ownedStock = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).eq('stock_symbol', symbol).execute()
+  if ownedStock.data == []:
+    return []
+  else:
+    return ownedStock.data[0]
+
 
 #### UI
 
