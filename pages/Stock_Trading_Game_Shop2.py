@@ -196,7 +196,7 @@ if symbol:
 
   st.write(stockData)
   
-  chartData = stockData["values"]
+  chartData = stockData["stock_data"]["values"]
   
   st.write(chartData)
   #st.write(response)
