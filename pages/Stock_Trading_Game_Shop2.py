@@ -159,7 +159,7 @@ def validLocalStockData(symbol):
 
 def updateLocalStockData(symbol):
   response = getLiveStockData(symbol)
-  setStockData(symbol, response.json())
+  setLocalStockData(symbol, response.json())
   return 'Updated Local Stock Data'
 
 
