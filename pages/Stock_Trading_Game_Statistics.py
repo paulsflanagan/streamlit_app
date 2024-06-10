@@ -17,6 +17,14 @@ supabase: Client = create_client(spb_url, spb_key)
 
 #### Functions
 
+### DataBase Functions
+
+## Portfolio
+def getPortfolio(userName):
+   portfolio = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
+   return portfolio
+
+
 #### Showcase Functions
 def getTotalOwnedStocks():
   trades_data = supabase.table('StockTradingGame_OwnedStocksDB').select("*").execute()
