@@ -2,7 +2,6 @@ import requests
 import streamlit as st
 from supabase import create_client, Client
 import json
-from collections import Counter
 from datetime import datetime
 
 #### Keys
