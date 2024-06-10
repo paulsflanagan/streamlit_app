@@ -242,19 +242,19 @@ if symbol:
 
   #### Purchase Stocks
   
-  amount = st.text_input("Enter an amount to purchase 👇")
-  if amount:
+  buyAmount = st.text_input("Enter an amount to purchase 👇")
+  if buyAmount:
 
-    purchaseFee = getFee(int(amount),float(currentValue))
-    purchaseCost = (float(amount) * float(currentValue)) + purchaseFee #@@ This could Be A Function
+    purchaseFee = getFee(int(buyAmount),float(currentValue))
+    purchaseCost = (int(buyAmount) * float(currentValue)) + purchaseFee #@@ This could Be A Function
 
-    st.write("Cost of purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
+    st.write("Cost of Purchase: $" + str(round(purchaseCost,2)) + " - Including Fee: " + str(round(purchaseFee, 2)))
   
 
     if float(purchaseCost) <= float(availableCash):
       
       if st.button("Buy Now"):
-        setPurchasedStock(userName,symbol,amount,currentValue)
+        setPurchasedStock(userName,symbol,buyAmount,currentValue)
         
         ownedStock = getOwnedStock(userName,symbol)
 
@@ -269,47 +269,38 @@ if symbol:
           available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
         
     else:
-      st.write("Insufficient Funds")        
-          #if owns_current_stock:
-              #total_cost_plus_fee = total_cost_plus_fee + cost_owned_current_stock
-              #amount = int(amount) + int(amount_owned_current_stock)
-              #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": amount, "stock_cost": total_cost_plus_fee}).eq("id", user_stock_id).execute()
-            #else:
-              #data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": total_cost_plus_fee}).execute()
-              
-            #newAvailableCash = float(availableCash) - float(total_cost_plus_fee)
-            #data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": newAvailableCash}).eq("user_name", userName).execute()
-            
-            #account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
-            
-            #trade_details = supabase.table('StockTradingGame_OwnedStocksDB').select("*").eq('user_name', userName).execute()
-            
-            #bank_account, pull_bank_count = supabase.table('StockTradingGame_BankDB').select("*").eq('bank_account', 'bank_account').execute()
-            #st.write(bank_account)
-            #bank_account_cash = bank_account[1][0]['account_balance']
-            #bank_account_cash = bank_account_cash + round(fee,2)
-            #data, push_count = supabase.table('StockTradingGame_BankDB').update({"account_balance": bank_account_cash}).eq("bank_account", 'bank_account').execute()
+      st.write("Insufficient Funds")
       
-            #extracted_stocks_list = []
-            #owns_current_stock = False
-            #amount_owned_current_stock = 0
-            #cost_owned_current_stock = 0
+  sellAmount = st.text_input("Enter an amount to sell 👇")    
+  
+  if sellAmount:
+
+    saleFee = getFee(int(sellAmount),float(currentValue))
+    saleValue = (int(sellAmount) * float(currentValue)) - saleFee #@@ This could Be A Function
+
+    st.write("Sale Value: $" + str(round(saleValue,2)) + " - Including Fee: " + str(round(saleFee, 2)))
+  
+
+    if float(ownedStock) <= float(sellAmount): #####
+      
+      if st.button("Sell Now"):
+        setSellStock(userName,symbol,sellAmount,currentValue)
+        
+        ownedStock = getOwnedStock(userName,symbol)
+
+        availableCash = getAvailableCash(userName)
+        
+        if ownedStock == []:
+          available_cash_display.write("Available Cash: $" + str(availableCash))
+        else:
+          ownedStockAmount = ownedStock['stock_amount']
+          ownedStockCost = ownedStock['stock_cost']
+          ownedStockValueDifference = (int(ownedStockAmount) * float(currentValue)) - float(ownedStockCost)
+          available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(ownedStockAmount) + " - Current Profit/Loss: " + str(round(ownedStockValueDifference,2)))
+        
+    else:
+      st.write("Insufficient Stocks")        
           
-            #for row in trade_details.data:
-            #  current_stock = row['stock_symbol']
-            #  if current_stock == symbol:
-            #    owns_current_stock = True
-            #    user_stock_id = row['id']
-            #    amount_owned_current_stock = row['stock_amount']
-            #    cost_owned_current_stock = row['stock_cost']
-            #   current_stock_difference = (int(amount_owned_current_stock) * float(currentValue)) - float(cost_owned_current_stock)
-                
-            #if pull_count == 0:
-            #  st.write("No Account Found - Visit Account to Begin")
-            #else:
-            #availableCash = account_details[1][0]['available_cash']
-            #available_cash_display.write("Available Cash: $" + str(availableCash) + " - Currently Owned: " + str(amount_owned_current_stock) + " - Current Profit/Loss: " + str(round(current_stock_difference,2)))
-            
 
 
 
