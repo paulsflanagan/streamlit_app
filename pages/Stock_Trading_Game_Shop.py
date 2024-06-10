@@ -305,8 +305,8 @@ if symbol:
       else: # if float(ownedStockAmount) >= float(sellAmount):
         st.write("Insufficient Stocks")        
         
-    else: # if stockData["stock_data"]["status"] == "ok":
-      st.write("No Stock Data")
+  else: # if stockData["stock_data"]["status"] == "ok":
+    st.write("No Stock Data")
 
 
 
