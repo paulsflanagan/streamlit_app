@@ -192,14 +192,11 @@ symbol = st.text_input("Enter a stock symbol 👇")
 #if st.button("Check"):
 if symbol:
 
+  stockData = getStockData(symbol)
   
-  response = getStockData(symbol)
-  #st.write(response.status_code)
-  #st.write(response.json())
-  st.write(response)
+  chartData = stockData["values"]
   
-  #chart_data = response.json()["values"]
-
+  st.write(chartData)
   #st.write(response)
 
   #df = pd.read_json(chart_data)
