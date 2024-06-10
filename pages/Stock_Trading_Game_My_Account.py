@@ -56,6 +56,59 @@ def displayPortfolio(userName):
     st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']) + " - Value: " + str(valueAmount)+ " - Difference: " + str(round(valueDifference,2)))
 
 
+### Stock Data Functions
+def getLiveStockData(symbol):
+  url = "https://api.twelvedata.com/time_series?apikey="+ td_key +"&interval=1day&format=JSON&symbol=" + symbol
+  response = requests.get(url)
+  return response
+
+def setLocalStockData(symbol, response):
+  data, push_count = supabase.table('StockTradingGame_StockDataDB').insert({"stock_symbol": symbol, "stock_data": response}).execute()
+
+def removeLocalStockData(symbol):
+    data, count = supabase.table('StockTradingGame_StockDataDB').delete().eq("stock_symbol", symbol).execute()
+
+def getLocalStockData(symbol):
+  stock_data = supabase.table('StockTradingGame_StockDataDB').select("*").eq('stock_symbol', symbol).execute()
+  if stock_data.data == []:
+    return []
+  else:
+    return stock_data.data[0]
+
+def validLocalStockData(symbol):
+  current_dateTime = datetime.now()
+  currentDate = current_dateTime.strftime('%Y-%m-%d')
+  stockData = getLocalStockData(symbol)
+  if stockData == []:
+    return False
+  if currentDate == stockData['created_at'][:10]:
+    return True
+  else:
+    return False
+
+def updateLocalStockData(symbol):
+  response = getLiveStockData(symbol)
+  setLocalStockData(symbol, response.json())
+  return 'Updated Local Stock Data'
+
+
+def getStockData(symbol):
+  if not validLocalStockData(symbol):
+    removeLocalStockData(symbol)
+    updateLocalStockData(symbol)
+  return getLocalStockData(symbol)
+
+def getStockValue(symbol):
+  response = getStockData(symbol)
+  try:
+    return response['stock_data']['values'][0]['close']
+  except:
+    return 'Invalid Stock Symbol'
+
+
+
+
+
 #### UI
 
 st.title("Stock Trading Game - Account")
