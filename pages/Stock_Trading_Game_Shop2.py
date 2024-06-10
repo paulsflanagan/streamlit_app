@@ -38,6 +38,7 @@ def getAvailableCash(userName):
   return account_details['available_cash']
   
 def setAvailableCash(userName,cash):
+  setCash = round(cash,2)
   data, push_count = supabase.table('StockTradingGame_AccountsDB').update({"available_cash": cash}).eq("user_name", userName).execute()
   return 'Cash updated'
 
