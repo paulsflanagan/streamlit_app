@@ -193,15 +193,10 @@ symbol = st.text_input("Enter a stock symbol 👇")
 if symbol:
 
   stockData = getStockData(symbol)
-  
+  st.write(stockData)
   chartData = stockData["stock_data"]["values"]
 
-  #df = pd.read_json(chart_data)
-  #df = pd.read_json(str(chart_data))
-  #st.write(df)
-
-  ### FOR EACH IN VALUES
-
+  # Prepare Chart Data
   datetime_list = []
   value_list = []
   for row in chartData:
@@ -214,7 +209,13 @@ if symbol:
   df = pd.DataFrame(list(zip(datetime_list, value_list)), columns =['Date-Time', 'Value'])#.sort_values(by='Value', ascending=True)
   df['Value'] = df['Value'].astype(float)
 
-
+  #currentValue = response.json()["values"][0]["close"]
+  st.write("") 
+  st.subheader("Symbol: " + symbol)
+  #st.write("Current Value (USD): $" + currentValue + " Exchange: " + response.json()["meta"]["exchange"] + " Type: " + response.json()["meta"]["type"]) 
+  #st.write("") 
+  st.line_chart(data=df, x="Date-Time", y="Value")
+  st.subheader("Purchase")
 
 
 
