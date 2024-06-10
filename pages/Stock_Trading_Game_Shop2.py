@@ -204,7 +204,7 @@ if symbol:
 
   datetime_list = []
   value_list = []
-  for row in chart_data:
+  for row in chartData:
     #st.write("DateTime): " + row['datetime'])
     datetime_list.append(row['datetime'])
     #st.write("Value (USD): " + row['close'])
