@@ -84,16 +84,18 @@ def getFee(amount,value):
 def setPurchasedStock(userName,symbol,amount,value):
   fee = getFee(amount,value)
   transactionValue = (int(amount) * float(value)) + fee
+  setTransactionValue = round(transactionValue,2)
   availableCash = getAvailableCash(userName)
   if getAvailableCash(userName) < transactionValue:
     return 'Insufficient Funds'
   ownedStock = getOwnedStock(userName,symbol)
   if ownedStock == []:
-    data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": transactionValue}).execute()
+    data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').insert({"user_name": userName, "stock_symbol": symbol, "stock_amount": amount, "stock_cost": setTransactionValue}).execute()
   else:
     updateAmount = int(ownedStock['stock_amount']) + int(amount)
     updateCost = float(ownedStock['stock_cost']) + float(transactionValue)
-    data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": updateAmount, "stock_cost": updateCost}).eq("user_name", userName).eq("stock_symbol", symbol).execute()
+    setUpdateCost = round(updateCost,2)
+    data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": updateAmount, "stock_cost": setUpdateCost}).eq("user_name", userName).eq("stock_symbol", symbol).execute()
   # Log Trade
   logTrade(userName,symbol,"Buy",amount,value,fee)
   # Update Cash
