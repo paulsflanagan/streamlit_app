@@ -50,7 +50,7 @@ def displayPortfolio(userName):
 
 #### UI
 
-st.title("Stock Trading Game - Account2")
+st.title("Stock Trading Game - Account")
 st.write(userName)
 
 
