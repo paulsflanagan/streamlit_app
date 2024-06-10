@@ -112,20 +112,20 @@ def setSellStock(userName,symbol,amount,value):
   ownedStock = getOwnedStock(userName,symbol)
   if ownedStock == []:
     return 'Unable to sell. Stock Not owned.'
-  costPerItem = ownedStock['stock_cost'] / ownedStock['stock_amount']
-  updateAmount = ownedStock['stock_amount'] - amount
+  updateAmount = int(ownedStock['stock_amount']) - int(amount)
+  costPerItem = float(ownedStock['stock_cost']) / float(ownedStock['stock_amount'])
   if updateAmount < 0:
     return 'Unable to sell. Selling more that held stock.'
   if updateAmount == 0:
     data, count = supabase.table('StockTradingGame_OwnedStocksDB').delete().eq("user_name", userName).eq("stock_symbol", symbol).execute()
   else:
-    updateCost = costPerItem * updateAmount
+    updateCost = float(costPerItem) * int(updateAmount)
     data, push_count = supabase.table('StockTradingGame_OwnedStocksDB').update({"stock_amount": updateAmount, "stock_cost": updateCost}).eq("user_name", userName).eq("stock_symbol", symbol).execute()
   # Log Trade
   logTrade(userName,symbol,"Sell",amount,value,fee)
   # Update Cash
   availableCash = getAvailableCash(userName)
-  updateAvailableCash = availableCash + transactionValue
+  updateAvailableCash = float(availableCash) + float(transactionValue)
   setAvailableCash(userName,updateAvailableCash) 
   # Update Bank Funds
   addBankFunds(fee)
