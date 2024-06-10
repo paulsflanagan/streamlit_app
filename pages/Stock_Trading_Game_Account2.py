@@ -83,7 +83,8 @@ st.write("Available Cash: $" + str(availableCash))
 displayPortfolio(userName)
 
 st.subheader("Statistics:")
+st.write("Top Player Owned Stocks:")
 topOwnedStocks = getOrderdTotalOwnedStocks()
 for each in topOwnedStocks:
-  st.write("Stock: " + each[0] + " Amount Owned: " + str(each[1]))
+  st.write("Stock: " + each[0] + " - Owned: " + str(each[1]))
 
