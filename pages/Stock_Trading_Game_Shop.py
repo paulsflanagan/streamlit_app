@@ -199,7 +199,7 @@ if symbol:
   symbol = symbol.upper()
   stockData = getStockData(symbol)
   st.write(stockData)
-  if stockData == []:
+  if stockData == []: ###### stock_data status "ok" vs "error"
     st.write("No Stock Data")
   else:
     currentValue = stockData["stock_data"]["values"][0]["close"]
