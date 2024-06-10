@@ -108,7 +108,7 @@ def setPurchasedStock(userName,symbol,amount,value):
 ## Sell Stock
 def setSellStock(userName,symbol,amount,value):
   fee = getFee(amount,value)
-  transactionValue = (amount * value) - fee
+  transactionValue = (int(amount) * float(value)) - fee
   ownedStock = getOwnedStock(userName,symbol)
   if ownedStock == []:
     return 'Unable to sell. Stock Not owned.'
