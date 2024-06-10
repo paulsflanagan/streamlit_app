@@ -71,6 +71,7 @@ def getBankFunds():
 
 def addBankFunds(amount):
   updateFunds = getBankFunds() + amount
+  setUpdateFunds = round(updateFunds,2)
   supabase.table('StockTradingGame_BankDB').update({"account_balance": updateFunds}).eq("bank_account", 'bank_account').execute()
   return 'Updated Bank Funds'
   
