@@ -181,11 +181,12 @@ st.title("Stock Trading Game 2")
 st.write(userName)
 
 
-account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
+
+#account_details, pull_count = supabase.table('StockTradingGame_AccountsDB').select("*").eq('user_name', userName).execute()
 #st.write(account_details)
-if account_details[1] == []:
-  st.write("Welcome to Stock Trading Game")
-  data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000}).execute()
-  availableCash = 20000
-else:
-  availableCash = account_details[1][0]['available_cash']
+#if account_details[1] == []:
+#  st.write("Welcome to Stock Trading Game")
+#  data, push_count = supabase.table('StockTradingGame_AccountsDB').insert({"user_name": userName, "available_cash": 20000}).execute()
+#  availableCash = 20000
+#else:
+#  availableCash = account_details[1][0]['available_cash']
