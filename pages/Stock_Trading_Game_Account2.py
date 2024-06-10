@@ -85,5 +85,5 @@ displayPortfolio(userName)
 st.subheader("Statistics:")
 topOwnedStocks = getOrderdTotalOwnedStocks()
 for each in topOwnedStocks:
-  st.write("Stock: " + each[0] + " Amount Owned: " + each[1])
+  st.write("Stock: " + each[0] + " Amount Owned: " + str(each[1]))
 
