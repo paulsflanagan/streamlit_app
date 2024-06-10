@@ -38,6 +38,27 @@ def getOrderdTotalOwnedStocks():
   return ordered_total_owned_data
 
 
+def getHighestValuePlayer():
+  account_details = supabase.table('StockTradingGame_AccountsDB').select("*").execute()
+  total_value_player = {}
+  for each in account_details.data:
+    user_name = each['user_name']
+    available_cash = each['available_cash']
+    portfolio = getPortfolio(user_name)
+    for stock in portfolio.data:
+      stock_symbol = stock['stock_symbol']
+      amount_owned = stock['stock_amount']
+      stock_value = getStockValue(stock_symbol)
+      value_owned = int(amount_owned) * float(stock_value)
+      available_cash = available_cash + value_owned
+    total_value_player[user_name] = round(available_cash,2)
+  return total_value_player
+
+def getOrderdHighestValuePlayer():
+  total_value_player = getHighestValuePlayer()
+  c = Counter(total_value_player)
+  ordered_total_value_player = c.most_common()
+  return ordered_total_value_player
 
 #### UI
 
@@ -49,3 +70,8 @@ st.write("Top Player Owned Stocks:")
 topOwnedStocks = getOrderdTotalOwnedStocks()
 for each in topOwnedStocks:
   st.write("Stock: " + each[0] + " - Owned: " + str(each[1]))
+  
+st.write("Top Value Player:")
+topValuePlayer = getOrderdHighestValuePlayer()
+for each in topValuePlayer:
+  st.write("Player: " + each[0] + " - Value: " + str(each[1]))
