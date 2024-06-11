@@ -199,6 +199,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           dialog_name = dialog_name.replace("'", "")
+          dialog_name = dialog_name.replace('"', "")
         
           shape = Template('{"id": "$current_engagement_id","type": "predefinedProcess","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$dialog_name","sideWidth": 0.1,"opacity": 100}')
           g_shapes.append(shape.substitute(current_engagement_id=current_engagement_id, bounding_box_x=g_bounding_box_x, bounding_box_y=g_bounding_box_y, bounding_box_w=bounding_box_w, bounding_box_h=bounding_box_h, bounding_box_r=g_bounding_box_r, dialog_name=dialog_name, style=g_style_dialog))
@@ -219,6 +220,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           engagement_name = engagement_name.replace("'", "")
+          engagement_name = engagement_name.replace('"', "")
         
           shape = Template('{"id": "$current_engagement_id","type": "rectangle","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$engagement_name","opacity": 100}')
           g_shapes.append(shape.substitute(current_engagement_id=current_engagement_id, bounding_box_x=g_bounding_box_x, bounding_box_y=g_bounding_box_y, bounding_box_w=bounding_box_w, bounding_box_h=bounding_box_h, bounding_box_r=g_bounding_box_r, engagement_name=engagement_name, style=g_style_rectangle))
@@ -237,6 +239,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           text = text.replace("'", "")
+          text = text.replace('"', "")
         
           shape = Template('{"id": "$current_engagement_id","type": "rectangle","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$text","opacity": 100}')
           g_shapes.append(shape.substitute(current_engagement_id=current_engagement_id, bounding_box_x=g_bounding_box_x, bounding_box_y=g_bounding_box_y, bounding_box_w=bounding_box_w, bounding_box_h=bounding_box_h, bounding_box_r=g_bounding_box_r, text=text, style=g_style_rectangle))
@@ -254,6 +257,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           text = text.replace("'", "")
+          text = text.replace('"', "")
         
           shape = Template('{"id": "$current_engagement_id","type": "rectangle","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$text","opacity": 100}')
           g_shapes.append(shape.substitute(current_engagement_id=current_engagement_id, bounding_box_x=g_bounding_box_x, bounding_box_y=g_bounding_box_y, bounding_box_w=bounding_box_w, bounding_box_h=bounding_box_h, bounding_box_r=g_bounding_box_r, text=text, style=g_style_rectangle))
@@ -271,6 +275,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           engagement_name = engagement_name.replace("'", "")
+          engagement_name = engagement_name.replace('"', "")
         
           shape = Template('{"id": "$current_engagement_id","type": "directAccessStorage","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$engagement_name","opacity": 100}')
           g_shapes.append(shape.substitute(current_engagement_id=current_engagement_id, bounding_box_x=g_bounding_box_x, bounding_box_y=g_bounding_box_y, bounding_box_w=bounding_box_w, bounding_box_h=bounding_box_h, bounding_box_r=g_bounding_box_r, engagement_name=engagement_name, style=g_style_rectangle))
@@ -288,7 +293,9 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           engagement_name = engagement_name.replace("'", "")
+          engagement_name = engagement_name.replace('"', "")
           text = text.replace("'", "")
+          text = text.replace('"', "")
         
           engagement_text = engagement_name + text
         
@@ -310,6 +317,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           engagement_name = engagement_name.replace("'", "")
+          engagement_name = engagement_name.replace('"', "")
         
           #shape = Template('{"id": "ds_$engagement_name","type": "manualInput","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$engagement_name","customData": [{"key":"Num","value":"$shape_counter"},{"key":"Prev","value":"=upstream.Num"}],"opacity": 100}')
           shape = Template('{"id": "$current_engagement_id","type": "manualInput","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$engagement_name","opacity": 100}')
@@ -332,6 +340,7 @@ if uploaded_file is not None:
           updateCurrentEngagement(current_engagement_id)
         
           dialog_name = dialog_name.replace("'", "")
+          dialog_name = dialog_name.replace('"', "")
         
           shape = Template('{"id": "$current_engagement_id","type": "predefinedProcess","boundingBox": {"x": $bounding_box_x, "y": $bounding_box_y, "w": $bounding_box_w, "h": $bounding_box_h, "rotation": $bounding_box_r},"style": $style,"text": "$dialog_name","sideWidth": 0.1,"opacity": 100}')
           g_shapes.append(shape.substitute(current_engagement_id=current_engagement_id, bounding_box_x=g_bounding_box_x, bounding_box_y=g_bounding_box_y, bounding_box_w=bounding_box_w, bounding_box_h=bounding_box_h, bounding_box_r=g_bounding_box_r, dialog_name=dialog_name, style=g_style_dialog))
