@@ -44,7 +44,7 @@ st.subheader("- Stock Trading Game Account:")
 st.write("Just for Fun - Have a play.")
 
 st.subheader("- Stock Trading Game Shop:")
-st.write("Please note, you can buy but you cannot sell. Updates coming soon.")
+st.write("Just for Fun - Have a play.")
 
 st.subheader("- Submit Recommendation:")
 st.write("Please submit any issues or requests for tools.")
