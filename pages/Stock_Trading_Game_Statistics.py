@@ -79,7 +79,7 @@ def getStockValue(symbol):
 
 def getTotalOwnedStocksStatistic():
   total_owned_stock, pull_count = supabase.table('StockTradingGame_StatisticsDB').select("total_owned_stock").execute()
-  print(total_owned_stock[1][0]['total_owned_stock'])
+  return total_owned_stock[1][0]['total_owned_stock']
 
 def getHighestValuePlayer():
   account_details = supabase.table('StockTradingGame_AccountsDB').select("*").execute()
