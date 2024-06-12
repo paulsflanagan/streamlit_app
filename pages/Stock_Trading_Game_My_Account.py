@@ -116,7 +116,7 @@ def getStockValue(symbol):
 
 #### UI
 
-st.title("Stock Trading Game - Account TEST123")
+st.title("Stock Trading Game - Account")
 st.write(userName)
 
 
