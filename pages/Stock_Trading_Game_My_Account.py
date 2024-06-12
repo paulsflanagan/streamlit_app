@@ -124,7 +124,7 @@ availableCash = getAvailableCash(userName)
 prevDividend = getPrevDividend(userName)
   
 st.subheader("Portfolio:")
-st.write("Available Cash: $" + str(availableCash) + " - Yesterdays Dividend: \$" + str(prevDividend))
+st.write("Available Cash: " + str(availableCash) + " - Yesterdays Dividend: " + str(prevDividend))
 
 displayPortfolio(userName)
 
