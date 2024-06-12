@@ -35,6 +35,11 @@ def getAccountDetails(userName):
 def getAvailableCash(userName):
   account_details = getAccountDetails(userName)
   return account_details['available_cash']
+  
+def getPrevDividend(userName):
+  prev_dividend, pull_count = supabase.table('StockTradingGame_AccountsDB').select("prev_dividend").eq('user_name', userName).execute()
+  return prev_dividend[1][0]['prev_dividend']
+
 
 ## Portfolio
 def getPortfolio(userName):
@@ -116,9 +121,10 @@ st.write(userName)
 
 
 availableCash = getAvailableCash(userName)
+prevDividend = getPrevDividend(userName)
   
 st.subheader("Portfolio:")
-st.write("Available Cash: $" + str(availableCash))
+st.write("Available Cash: $" + str(availableCash) + " Dividend: " + str(prevDividend))
 
 displayPortfolio(userName)
 
