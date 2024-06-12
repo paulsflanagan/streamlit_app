@@ -85,12 +85,18 @@ def getHighestValuePlayerStatistic():
   total_owned_stock, pull_count = supabase.table('StockTradingGame_StatisticsDB').select("highest_value_player").execute()
   return total_owned_stock[1][0]['highest_value_player']
 
+def getBestPerformingStocksStatistic():
+  total_owned_stock, pull_count = supabase.table('StockTradingGame_StatisticsDB').select("best_performing_stock").execute()
+  return total_owned_stock[1][0]['best_performing_stock']
+
 #### UI
 
 st.title("Stock Trading Game - Player Statistics")
 st.write(userName)
 
 st.subheader("Statistics:")
+topPerformingStocks = getBestPerformingStocksStatistic()
+st.write("Top Performing Stocks " + topPerformingStocks)
 topOwnedStocks = getTotalOwnedStocksStatistic()
 st.write("Top Player Owned Stocks " + topOwnedStocks)
 topValuePlayer = getHighestValuePlayerStatistic()
