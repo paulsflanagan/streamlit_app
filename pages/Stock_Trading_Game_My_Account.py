@@ -58,7 +58,7 @@ def displayPortfolio(userName):
   for row in portfolio.data:
     valueAmount = int(row['stock_amount']) * float(getStockValue(row['stock_symbol']))
     valueDifference = valueAmount - float(row['stock_cost'])
-    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']) + " - Value: " + str(round(valueAmount),2)+ " - Difference: " + str(round(valueDifference,2)))
+    st.write("Stock: " + str(row['stock_symbol']) + " - Owned: " + str(row['stock_amount']) + " - Cost: " + str(row['stock_cost']) + " - Value: " + str(valueAmount) + " - Difference: " + str(round(valueDifference,2)))
 
 
 ### Stock Data Functions
