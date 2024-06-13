@@ -57,8 +57,12 @@ if uploaded_file is not None:
     # Associated Intents - NEW 
     #Intent Dictionary
     intentDict = {}
-    for i in data['associatedIntents']:
-      intentDict[i['id']] = i['name']
+    try:
+        for i in data['associatedIntents']:
+          intentDict[i['id']] = i['name']
+    except:
+        intentDict = {}
+        #print('No Associated intents')
       #print(i)
     #print(intentDict)
 
