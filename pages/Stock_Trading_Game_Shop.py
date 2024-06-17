@@ -76,7 +76,7 @@ def addBankFunds(amount):
   return 'Updated Bank Funds'
   
 def getFee(amount,value):
-  feePercentage = 0.002
+  feePercentage = 0.0
   fee = (int(amount) * float(value)) * feePercentage
   return fee
 
