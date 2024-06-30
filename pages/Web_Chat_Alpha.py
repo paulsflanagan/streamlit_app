@@ -24,4 +24,4 @@ message_space = col1.empty()
 userPrompt = st.chat_input("Say Something")
 
 if userPrompt:
-    data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_message": userPrompt}).execute()
+    data, count = supabase.table('webChat').insert({"user_name": userName, "user_message": userPrompt}).execute()
