@@ -22,3 +22,6 @@ message_space = col1.empty()
 #col2.write("Users")
 
 userPrompt = st.chat_input("Say Something")
+
+if userPrompt:
+    data, count = supabase.table('StreamlitDB').insert({"user_name": userName, "user_message": userPrompt}).execute()
