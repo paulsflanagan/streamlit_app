@@ -42,7 +42,7 @@ def update_message_space():
 
 ## UI HERE
 
-st.title('Web Chat - Alpha')
+st.title('Community Web Chat')
 
 col1, col2 = st.columns([0.9, 0.1], gap="large")
 #message_space = col1.empty()
