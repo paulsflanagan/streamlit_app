@@ -12,7 +12,8 @@ spb_key = st.secrets["spb_key"]
 supabase: Client = create_client(spb_url, spb_key)
 
 def format_chat_timestamp(timestamp):
-    parsed_time = datetime.fromisoformat(timestamp)
+    parsed_time = datetime.fromisoformat(timestamp.replace('Z', '+00:00').split('.')[0])
+    #parsed_time = datetime.fromisoformat(timestamp)
     current_time = datetime.now(timezone.utc)
     time_difference = current_time - parsed_time
 
