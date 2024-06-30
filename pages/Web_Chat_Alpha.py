@@ -33,7 +33,7 @@ for row in conversation_history.data:
     #message_space.write(row['user_name'] + ": " + row['user_message'])
     display_string = display_string + row['user_name'] + ": " + row['user_message'] + "\n"
 
-message_space.write(display_string)
+message_space.markdown(display_string)
 
 if userPrompt:
     data, count = supabase.table('webChat').insert({"user_name": userName, "user_message": userPrompt}).execute()
