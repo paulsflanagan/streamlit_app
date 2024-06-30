@@ -24,7 +24,8 @@ message_space = col1.empty()
 
 userPrompt = st.chat_input("Say Something")
 
-conversation_history = supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute()
+conversation_history = reversed(supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute())
+
 #message_space.write(conversation_history)
 display_string = ""
 for row in conversation_history.data:
