@@ -33,7 +33,7 @@ def update_message_space():
     display_string = ""
     for row in conversation_history:
         formatted_timestamp = format_chat_timestamp(row['created_at'])
-        display_string = display_string + formatted_timestamp + '  \n'
+        display_string = display_string + ':gray[' + formatted_timestamp + ']  \n'
         clean_user_name = row['user_name'].replace("@liveperson.com", "").replace("@gmail.com", "")
         display_string = display_string + clean_user_name + ": " + row['user_message'] + '  \n\n'
     
