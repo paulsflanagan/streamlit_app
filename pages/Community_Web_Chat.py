@@ -44,6 +44,8 @@ def update_message_space():
 
 st.title('Community Web Chat')
 st.write('Welcome to LivePerson\'s CD ToolKit Chat Room. Lets start a conversation to improve our workflow.')
+st.write(' ')
+st.write(' ')
 
 col1, col2 = st.columns([0.9, 0.1], gap="large")
 #message_space = col1.empty()
