@@ -1,4 +1,4 @@
-import streamlit as st
+simport streamlit as st
 from supabase import create_client, Client
 import time
 
@@ -23,7 +23,7 @@ message_space = col1.empty()
 
 userPrompt = st.chat_input("Say Something")
 
-conversation_history = supabase.table('webChat').select("*").order('id', { ascending: false }).limit(1).execute()
+conversation_history = supabase.table('webChat').select("*").order('id', { desc:True }).limit(1).execute()
 message_space.write(conversation_history)
 
 #counter = 1
