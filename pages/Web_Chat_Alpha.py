@@ -25,12 +25,15 @@ message_space = col1.empty()
 userPrompt = st.chat_input("Say Something")
 
 conversation_history = supabase.table('webChat').select("*").order('id', desc=False ).limit(5).execute()
-message_space.write(conversation_history)
-
+#message_space.write(conversation_history)
+display_string = ""
 for row in conversation_history.data:
-    message_space.write(row['created_at'])
-    message_space.write(row['user_name'] + ": " + row['user_message'])
-    
+    display_string = display_string + row['created_at'] + "\n"
+    #message_space.write(row['created_at'])
+    #message_space.write(row['user_name'] + ": " + row['user_message'])
+    display_string = display_string + row['user_name'] + ": " + row['user_message'] + "\n"
+
+message_space.write(display_string)
 
 if userPrompt:
     data, count = supabase.table('webChat').insert({"user_name": userName, "user_message": userPrompt}).execute()
