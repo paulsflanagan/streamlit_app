@@ -16,7 +16,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 st.title('Web Chat - Alpha')
 
-col1, col2 = st.columns([1.0, 0], gap="large")
+col1, col2 = st.columns([0.9, 0.1], gap="large")
 #message_space = col1.empty()
 message_space = col1.empty()
 
