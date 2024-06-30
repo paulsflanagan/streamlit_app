@@ -27,7 +27,7 @@ conversation_history = supabase.table('webChat').select("*").order('id', desc=Tr
 message_space.write(conversation_history)
 
 for row in conversation_history.data:
-    message_space.write(row['created_at'] + " " + row['user_name'] + ": " row['user_message'])
+    message_space.write(row['created_at'] + " " + row['user_name'] + ": " + row['user_message'])
     
 
 if userPrompt:
