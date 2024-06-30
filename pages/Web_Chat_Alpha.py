@@ -35,7 +35,7 @@ def update_message_space():
         formatted_timestamp = format_chat_timestamp(row['created_at'])
         display_string = display_string + ':gray[' + formatted_timestamp + ']  \n'
         clean_user_name = row['user_name'].replace("@liveperson.com", "").replace("@gmail.com", "")
-        display_string = display_string + clean_user_name + ": " + row['user_message'] + '  \n\n'
+        display_string = display_string + ':blue[' + clean_user_name + ":] " + row['user_message'] + '  \n\n'
     
     message_space.markdown(display_string)
 
