@@ -31,7 +31,7 @@ for row in conversation_history.data:
     display_string = display_string + row['created_at'] + '  \n'
     #message_space.write(row['created_at'])
     #message_space.write(row['user_name'] + ": " + row['user_message'])
-    display_string = display_string + row['user_name'] + ": " + row['user_message'] + '  \n'
+    display_string = display_string + row['user_name'] + ": " + row['user_message'] + '  \n\n'
 
 message_space.markdown(display_string)
 
