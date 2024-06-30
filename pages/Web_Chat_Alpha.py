@@ -26,7 +26,8 @@ userPrompt = st.chat_input("Say Something")
 
 conversation_history = supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute()
 st.write(conversation_history)
-conversation_history_test = reverse(conversation_history.data)
+#reversed_data = list(reversed(data))
+conversation_history_test = list(reversed(conversation_history.data))
 st.write(conversation_history_test)
 #message_space.write(conversation_history)
 display_string = ""
