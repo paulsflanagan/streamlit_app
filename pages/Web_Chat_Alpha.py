@@ -24,14 +24,10 @@ message_space = col1.empty()
 
 userPrompt = st.chat_input("Say Something")
 
-conversation_history = supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute()
-st.write(conversation_history)
-#reversed_data = list(reversed(data))
-conversation_history_test = list(reversed(conversation_history.data))
-st.write(conversation_history_test)
-#message_space.write(conversation_history)
+conversation_history_backwards = supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute()
+conversation_history = list(reversed(conversation_history_backwards.data))
 display_string = ""
-for row in conversation_history.data:
+for row in conversation_history:
     display_string = display_string + row['created_at'] + '  \n'
     #message_space.write(row['created_at'])
     #message_space.write(row['user_name'] + ": " + row['user_message'])
