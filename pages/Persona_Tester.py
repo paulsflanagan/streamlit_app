@@ -16,7 +16,7 @@ spb_key = st.secrets["spb_key"]
 
 supabase: Client = create_client(spb_url, spb_key)
 
-st.title('Kia Persona Tester')
+st.title('Persona Tester')
 
 
 def call_oai(userPrompt, systemPrompt):
