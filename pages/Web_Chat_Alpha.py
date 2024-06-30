@@ -23,7 +23,7 @@ message_space = col1.empty()
 
 userPrompt = st.chat_input("Say Something")
 
-conversation_history = supabase.table('webChat').select("*").order('id', desc=True ).limit(1).execute()
+conversation_history = supabase.table('webChat').select("*").order('id', desc=True ).limit(50).execute()
 message_space.write(conversation_history)
 
 #counter = 1
