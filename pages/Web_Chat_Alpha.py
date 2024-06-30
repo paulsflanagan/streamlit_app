@@ -19,3 +19,5 @@ st.title('Messenger - Alpha')
 col1, col2 = st.columns([0.6, 0.4], gap="large")
 message_space = col1.empty()
 
+#col2.write("Users")
+
