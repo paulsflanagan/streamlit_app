@@ -34,9 +34,8 @@ def update_message_space():
     for row in conversation_history:
         formatted_timestamp = format_chat_timestamp(row['created_at'])
         display_string = display_string + formatted_timestamp + '  \n'
-        #message_space.write(row['created_at'])
-        #message_space.write(row['user_name'] + ": " + row['user_message'])
-        display_string = display_string + row['user_name'] + ": " + row['user_message'] + '  \n\n'
+        clean_user_name = row['user_name'].replace("@liveperson.com", "").replace("@gmail.com", "")
+        display_string = display_string + clean_user_name + ": " + row['user_message'] + '  \n\n'
     
     message_space.markdown(display_string)
 
