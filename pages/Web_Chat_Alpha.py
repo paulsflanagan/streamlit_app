@@ -27,6 +27,19 @@ def format_chat_timestamp(timestamp):
     else:
         return parsed_time.strftime('%Y-%m-%d %I:%M %p')
 
+def update_message_space():
+    conversation_history_backwards = supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute()
+    conversation_history = list(reversed(conversation_history_backwards.data))
+    display_string = ""
+    for row in conversation_history:
+        formatted_timestamp = format_chat_timestamp(row['created_at'])
+        display_string = display_string + formatted_timestamp + '  \n'
+        #message_space.write(row['created_at'])
+        #message_space.write(row['user_name'] + ": " + row['user_message'])
+        display_string = display_string + row['user_name'] + ": " + row['user_message'] + '  \n\n'
+    
+    message_space.markdown(display_string)
+
 
 ## UI HERE
 
@@ -37,22 +50,12 @@ col1, col2 = st.columns([0.9, 0.1], gap="large")
 message_space = col1.empty()
 
 #col2.write("Users")
-
+update_message_space()
 userPrompt = st.chat_input("Say Something")
 
-conversation_history_backwards = supabase.table('webChat').select("*").order('id', desc=True ).limit(5).execute()
-conversation_history = list(reversed(conversation_history_backwards.data))
-display_string = ""
-for row in conversation_history:
-    formatted_timestamp = format_chat_timestamp(row['created_at'])
-    display_string = display_string + formatted_timestamp + '  \n'
-    #message_space.write(row['created_at'])
-    #message_space.write(row['user_name'] + ": " + row['user_message'])
-    display_string = display_string + row['user_name'] + ": " + row['user_message'] + '  \n\n'
-
-message_space.markdown(display_string)
 
 if userPrompt:
     data, count = supabase.table('webChat').insert({"user_name": userName, "user_message": userPrompt}).execute()
+    update_message_space()
 
 
