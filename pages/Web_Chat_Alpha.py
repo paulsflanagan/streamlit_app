@@ -23,5 +23,15 @@ message_space = col1.empty()
 
 userPrompt = st.chat_input("Say Something")
 
+conversation_history = supabase.table('webChat').select("*").execute()
+message_space.write(conversation_history)
+
+#counter = 1
+#for row in conversation_history.data:
+#    if counter > len(conversation_history.data)-6:
+#        with col2.expander(row['user_query']):
+#            st.write(row['llm_response'])
+#    counter += 1
+
 if userPrompt:
     data, count = supabase.table('webChat').insert({"user_name": userName, "user_message": userPrompt}).execute()
