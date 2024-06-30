@@ -13,8 +13,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 def format_chat_timestamp(timestamp):
     parsed_time = datetime.fromisoformat(timestamp.replace('Z', '+00:00').split('.')[0])
-    current_time = datetime.now(timezone.utc)
-    current_time.replace(tzinfo=None)
+    current_time = datetime.now()
     time_difference = current_time - parsed_time
 
     if time_difference < timedelta(minutes=1):
