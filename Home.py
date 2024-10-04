@@ -56,6 +56,6 @@ st.write("")
 st.write("All apps are open source: https://github.com/paulsflanagan/streamlit_app/")
 
 st.image(
-            "https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/6/2017/11/04133712/waterfall.jpg",
+            "https://drive.google.com/file/d/1bYXra2YLgPNHpicqFlTA7bSHacX8nrYO/view?usp=sharing",
             width=400, # Manually Adjust the width of the image as per requirement
         )
