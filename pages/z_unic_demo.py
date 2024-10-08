@@ -32,3 +32,44 @@ if st.button("test"):
     
     idToken = response.json()['idToken']
     st.write(idToken)
+
+    #Start AIStudio Conversation
+    url = 'https://aistudio-p-eu.liveperson.net/api/v1/conversations'
+    headers = {
+        'Authorization': 'Bearer ' + idToken,
+        'Content-Type': 'application/json',
+    }
+    data = {
+        "flow_id": ais_flow_id,
+        "saved": True,
+        "source": "CONVERSATIONAL_CLOUD"
+    
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    
+    if response.status_code == 200:
+        st.write('Success:', response.json())
+    else:
+        st.write('Error:', response.text)
+    
+    conversationId = response.json()['id']
+    st.write(conversationId)
+
+    #Get AIStudio Response
+    url = 'https://aistudio-p-eu.liveperson.net/api/v2/flows/' + ais_flow_id
+    headers = {
+        'Authorization': 'Bearer ' + idToken,
+        'Content-Type': 'application/json',
+    }
+    data = {
+        "text": "Can you help me?",
+        "conv_id": conversationId,
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    
+    if response.status_code == 200:
+        st.write('Success:', response.json())
+    else:
+        st.write('Error:', response.text)
