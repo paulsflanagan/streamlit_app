@@ -25,13 +25,13 @@ if st.button("test"):
     
     response = requests.post(url, headers=headers, json=data)
     
-    if response.status_code == 200:
-        st.write('Success:', response.json())
-    else:
-        st.write('Error:', response.text)
+    #if response.status_code == 200:
+        #st.write('Success:', response.json())
+    #else:
+        #st.write('Error:', response.text)
     
     idToken = response.json()['idToken']
-    st.write(idToken)
+    #st.write(idToken)
 
     #Start AIStudio Conversation
     url = 'https://aistudio-p-eu.liveperson.net/api/v1/conversations'
@@ -48,13 +48,13 @@ if st.button("test"):
     
     response = requests.post(url, headers=headers, json=data)
     
-    if response.status_code == 200:
-        st.write('Success:', response.json())
-    else:
-        st.write('Error:', response.text)
+    #if response.status_code == 200:
+        #st.write('Success:', response.json())
+    #else:
+        #st.write('Error:', response.text)
     
     conversationId = response.json()['id']
-    st.write(conversationId)
+    #st.write(conversationId)
 
     #Get AIStudio Response
     url = 'https://aistudio-p-eu.liveperson.net/api/v2/flows/' + ais_flow_id
@@ -68,8 +68,8 @@ if st.button("test"):
     }
     
     response = requests.post(url, headers=headers, json=data)
-    
-    if response.status_code == 200:
-        st.write('Success:', response.json())
-    else:
-        st.write('Error:', response.text)
+    st.write(response.text)
+    #if response.status_code == 200:
+        #st.write('Success:', response.json())
+    #else:
+        #st.write('Error:', response.text)
