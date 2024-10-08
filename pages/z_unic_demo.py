@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import json
 
 
 ais_auth_geo = st.secrets["ais_auth_geo"]
@@ -68,7 +69,7 @@ if st.button("test"):
     }
     
     response = requests.post(url, headers=headers, json=data)
-    reply = response.text
+    reply = json.dumps(response.text)
     st.write(reply)
     #if response.status_code == 200:
         #st.write('Success:', response.json())
