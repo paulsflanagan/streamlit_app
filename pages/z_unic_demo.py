@@ -69,8 +69,8 @@ if st.button("test"):
     }
     
     response = requests.post(url, headers=headers, json=data)
-    reply = response.text
-    st.write(reply)
+    data = json.loads(response.text)
+    st.write(data[0]['text'])
     #if response.status_code == 200:
         #st.write('Success:', response.json())
     #else:
