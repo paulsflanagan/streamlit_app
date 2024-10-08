@@ -10,9 +10,8 @@ ais_flow_id = st.secrets["ais_flow_id"]
 
 st.title('UNIC Demo')
 
-
-# = st.container(height=300)
-#messages.chat_input("type here")
+col1, col2 = st.columns([0.4, 0.6], gap="large")
+col1.chat_input("type here")
 
 #Generate Auth Token
 import requests
