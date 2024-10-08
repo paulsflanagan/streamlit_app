@@ -11,11 +11,10 @@ ais_flow_id = st.secrets["ais_flow_id"]
 st.title('UNIC Demo')
 
 col1, col2 = st.columns([0.4, 0.6], gap="large")
-col1.chat_input("type here")
+user_query = col1.chat_input("type here")
 
 #Generate Auth Token
-import requests
-if st.button("test"):
+if user_query:
     url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + ais_auth_geo
     headers = {
         'Content-Type': 'application/json',
@@ -67,13 +66,13 @@ if st.button("test"):
         'Content-Type': 'application/json',
     }
     data = {
-        "text": "Can you help me?",
+        "text": user_query,
         "conv_id": conversationId,
     }
     
     response = requests.post(url, headers=headers, json=data)
     data = json.loads(response.text)
-    st.write(data[0]['text'])
+    col1.write(data[0]['text'])
     #if response.status_code == 200:
         #st.write('Success:', response.json())
     #else:
