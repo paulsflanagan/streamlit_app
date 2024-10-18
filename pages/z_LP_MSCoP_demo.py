@@ -27,7 +27,7 @@ else:
 
 ## AZURE CLIENT
 
-client = AzureOpenAI(
+client_us = AzureOpenAI(
     api_key=st.secrets["api_key_us"],
     api_version=st.secrets["api_version_us"],
     azure_endpoint=st.secrets["azure_endpoint_us"]
