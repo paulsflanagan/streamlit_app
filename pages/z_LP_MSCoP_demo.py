@@ -116,15 +116,15 @@ additionalContext = 'None'
 
 
 
-def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
+#def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
 
     
-    fullPrompt = [
-        {
-            "role": "system",
-            "content": systemPrompt + " %DOCUMENT: " + additionalContext
-        }
-    ]
+#    fullPrompt = [
+#        {
+#            "role": "system",
+#            "content": systemPrompt + " %DOCUMENT: " + additionalContext
+#        }
+#    ]
     
     #counter = 1
     #for row in conversation_history.data:
@@ -144,35 +144,37 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
         #counter += 1
 
 
-    fullPrompt.append(
-        {
-            "role": "user",
-            "content": userPrompt
-        }
-    )
+ #   fullPrompt.append(
+ #       {
+ #          "role": "user",
+ #           "content": userPrompt
+  #      }
+  #  )
 
     #st.write(fullPrompt)
     
-    response = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=fullPrompt,
-    temperature=0,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-    )
-    return response.choices[0].message.content, fullPrompt
+ #   response = client.chat.completions.create(
+ #   model="gpt-4o-mini",
+ #   messages=fullPrompt,
+ #   temperature=0,
+ #   max_tokens=256,
+ #   top_p=1,
+ #   frequency_penalty=0,
+ #   presence_penalty=0
+ #   )
+ #   return response.choices[0].message.content, fullPrompt
 
-def next_query_button_click(query):
-    st.session_state.key = query
+#def next_query_button_click(query):
+#    st.session_state.key = query
 
 
 #time.sleep(3)
 
-systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words unless the user states otherwise.'''
+#systemPrompt = '''You are a helpful assistant. Answer the users query. Limit your responses to 200 words unless the user states otherwise.'''
 #if not userPrompt:
 #if 'userPrompt' in locals():
+
+
 userPrompt = st.chat_input("Say Something")
 #nextQueryPrompt = '''From the provided information create three short 4-5 word questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
 
@@ -189,9 +191,9 @@ if userPrompt:
       messages=[
         {"role": "system", "content": """
             Your task is to select the URLs from the list that would most likely answer the users query. 
-        Return the URLs as a comma seperated list. Example: link1.com, link2.com. 
-        Return a maximum of 5 URLs.
-        Only return the link do not return any Markdown or html.
+            Return the URLs as a comma seperated list. Example: link1.com, link2.com. 
+            Return a maximum of 5 URLs.
+            Only return the link do not return any Markdown or html.
         """},
         {"role": "assistant", "content": "URLs: " + str(url_links)},
         {"role": "user", "content": userPrompt}
@@ -228,14 +230,14 @@ if userPrompt:
       ]
     )
     
-    response = completion.choices[0].message.content
+    llmResponse = completion.choices[0].message.content
 
     
     #llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
     #st.write(fullPrompt)
-    #data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
+    data, count = supabase.table('LPDevGPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": messages}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
-    split_text = response.split(" ")
+    split_text = llmResponse.split(" ")
     displayed_text = '#### LP-GPT \n\n'
 
 
