@@ -13,7 +13,7 @@ import os
 from bs4 import BeautifulSoup
 
 
-
+URL = "https://developers.liveperson.com/sitemap.xml"
 
 ## SESSION ID
 
@@ -179,11 +179,60 @@ userPrompt = st.chat_input("Say Something")
 
 
 if userPrompt:
-    llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
+
+
+    completion = client_us.chat.completions.create(
+      model="gpt-4o-mini",
+      messages=[
+        {"role": "system", "content": """
+            Your task is to select the URLs from the list that would most likely answer the users query. 
+        Return the URLs as a comma seperated list. Example: link1.com, link2.com. 
+        Return a maximum of 5 URLs.
+        Only return the link do not return any Markdown or html.
+        """},
+        {"role": "assistant", "content": "URLs: " + str(url_links)},
+        {"role": "user", "content": user_query}
+      ]
+    )
+    urls_list_string = completion.choices[0].message.content
+    #print(urls_list_string)
+    
+    urls_list = urls_list_string.split(',')
+    
+    #print(urls_list)
+    
+    amalgamated_article_text = ''
+    
+    for each_url in urls_list:
+      page = requests.get(each_url)
+      soup = BeautifulSoup(page.content, "html.parser")
+      soup_text = soup.get_text()
+      soup_text = soup_text.replace('\n', ' ')
+      amalgamated_article_text = amalgamated_article_text + "URL: " + each_url + "\n Article Information: " + soup_text + "\n"
+    
+    #print(amalgamated_article_text)
+    
+    completion = client_us.chat.completions.create(
+      model="gpt-4o-mini",
+      messages=[
+        {"role": "system", "content": """
+        You are a Spirax Virtual Assistant.
+        Your task is to answer the users query using the provided articles. 
+        Return the response followed by any Article URL's you have used in your answer. 
+        """},
+        {"role": "assistant", "content": "URLs: " + amalgamated_article_text},
+        {"role": "user", "content": userPrompt}
+      ]
+    )
+    
+    response = completion.choices[0].message.content
+
+    
+    #llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
     #st.write(fullPrompt)
-    data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
+    #data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
-    split_text = llmResponse.split(" ")
+    split_text = response.split(" ")
     displayed_text = '#### ChatGPT \n\n'
 
 
