@@ -181,7 +181,7 @@ userPrompt = st.chat_input("Say Something")
 if userPrompt:
 
     url_link = requests.get(URL)
-    url_link_soup = bs.BeautifulSoup(url_link.text, "xml")
+    url_link_soup = bs.BeautifulSoup(url_link.text, "lxml")
     url_links = url_link_soup.find_all("loc")
 
     completion = client_us.chat.completions.create(
