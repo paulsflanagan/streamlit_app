@@ -1,12 +1,9 @@
 import streamlit as st
 from openai import AzureOpenAI
 from supabase import create_client, Client
-#from io import StringIO
-#from pypdf import PdfReader 
 import time
 import json
 import uuid
-
 import bs4 as bs
 import requests
 import os
@@ -22,8 +19,6 @@ if 'key' not in st.session_state:
     session_id = uuid.uuid4()
 else:
     session_id = st.session_state['key']
-    
-#st.write(UID)
 
 ## AZURE CLIENT
 
@@ -46,8 +41,6 @@ supabase: Client = create_client(spb_url, spb_key)
 ## UI HERE
 
 st.title('LP-GPT')
-#if st.button("Clear Conversation"):
-    #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
 col1, col2 = st.columns([0.9, 0.1], gap="large")
 #uploaded_file = col1.file_uploader("", accept_multiple_files=False)
@@ -71,28 +64,6 @@ additionalContext = 'None'
  #       with col2.expander(row['user_query']):
 #            st.write(row['llm_response'])
 #    counter += 1
-
-
-
-#if uploaded_file is not None:
-#    try:
-#        bytes_data = uploaded_file.getvalue()
-#        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-#        string_data = stringio.read()
-#        additionalContext = string_data
-#   except:
-#        try:
-#            reader = PdfReader(uploaded_file)
-#            #st.write(len(reader.pages))
-#            text = '%PDF Document: \n\n'
-#            counter = 1
-#            for each in reader.pages:
-#                text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text() + "\n\n"
-#                counter += 1
-#                additionalContext = text
-#                #st.write(text)
-#        except:
-#            st.write("Error Reading File")
 
 
 # def update_screen():
@@ -176,9 +147,6 @@ additionalContext = 'None'
 
 
 userPrompt = st.chat_input("Say Something")
-#nextQueryPrompt = '''From the provided information create three short 4-5 word questions related to the subject matter and return formatted like this: ["question 1", "question 2","question 3"]'''
-
-
 
 if userPrompt:
 
@@ -256,12 +224,14 @@ if userPrompt:
     
     #with col2.expander(userPrompt):
     #    st.write(llmResponse)
+
     
     for x in split_text:
         displayed_text = displayed_text + ' ' + x
         response_message_space.markdown(displayed_text)
         time.sleep(0.1)
-        
+
+
     #st.write('Bot: ' + llm_response)
     #st.write(' ')
     #next_query_llm_response = call_oai(userPrompt, nextQueryPrompt, conversationHistory)
