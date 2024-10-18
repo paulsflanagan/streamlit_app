@@ -7,6 +7,13 @@ import time
 import json
 import uuid
 
+import bs4 as bs
+import requests
+import os
+from bs4 import BeautifulSoup
+
+
+
 
 ## SESSION ID
 
