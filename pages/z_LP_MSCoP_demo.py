@@ -236,7 +236,7 @@ if userPrompt:
     #data, count = supabase.table('StreamlitDB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = response.split(" ")
-    displayed_text = '#### ChatGPT \n\n'
+    displayed_text = '#### LPDevGPT \n\n'
 
 
     ## ADD CONVERSATION HISTORY TO PROMPT
