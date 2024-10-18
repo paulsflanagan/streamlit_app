@@ -40,7 +40,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 ## UI HERE
 
-st.title('LP-GPT')
+st.title('LP Developer Co-Pilot')
 
 col1, col2 = st.columns([0.9, 0.1], gap="large")
 #uploaded_file = col1.file_uploader("", accept_multiple_files=False)
