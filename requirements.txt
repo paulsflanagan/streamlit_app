@@ -6,3 +6,4 @@ langchain
 supabase
 pypdf
 beautifulsoup4
+lxml
