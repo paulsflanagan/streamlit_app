@@ -216,10 +216,8 @@ if userPrompt:
       amalgamated_article_text = amalgamated_article_text + "URL: " + each_url + "\n Article Information: " + soup_text + "\n"
     
     #print(amalgamated_article_text)
-    
-    completion = client_us.chat.completions.create(
-      model="gpt-4o-mini",
-      messages=[
+
+    fullPrompt=[
         {"role": "system", "content": """
         You are a LivePerson Virtual Assistant.
         Your task is to answer the users query using the provided articles. 
@@ -228,6 +226,11 @@ if userPrompt:
         {"role": "assistant", "content": "URLs: " + amalgamated_article_text},
         {"role": "user", "content": userPrompt}
       ]
+    
+    
+    completion = client_us.chat.completions.create(
+      model="gpt-4o-mini",
+      messages=fullPrompt
     )
     
     llmResponse = completion.choices[0].message.content
@@ -235,7 +238,7 @@ if userPrompt:
     
     #llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
     #st.write(fullPrompt)
-    data, count = supabase.table('LPDevGPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": messages}).execute()
+    data, count = supabase.table('LPDevGPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llmResponse.split(" ")
     displayed_text = '#### LP-GPT \n\n'
