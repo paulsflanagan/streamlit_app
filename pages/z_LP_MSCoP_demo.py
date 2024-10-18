@@ -48,7 +48,7 @@ user_message_space = col1.empty()
 response_message_space = col1.empty()
 #history_message_space = col2.empty()
 
-conversation_history = 'None'
+conversation_history = []
 additionalContext = 'None'
 
 #col2.write("Conversation History")
