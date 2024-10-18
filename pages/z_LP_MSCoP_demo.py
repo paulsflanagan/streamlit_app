@@ -45,7 +45,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 ## UI HERE
 
-st.title('LP-GPT')
+st.title('LP-GPT - (developers.liveperson.com)')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
