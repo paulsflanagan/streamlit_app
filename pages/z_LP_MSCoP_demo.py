@@ -1,8 +1,8 @@
 import streamlit as st
 from openai import AzureOpenAI
 from supabase import create_client, Client
-from io import StringIO
-from pypdf import PdfReader 
+#from io import StringIO
+#from pypdf import PdfReader 
 import time
 import json
 import uuid
@@ -57,13 +57,13 @@ additionalContext = 'None'
 #    st.session_state['key'] = uuid.uuid4()
 #    history_message_space.write("Session Cleared")
 
-conversation_history = supabase.table('StreamlitDB').select("*").eq('session_id', session_id).execute()
-counter = 1
-for row in conversation_history.data:
-    if counter > len(conversation_history.data)-6:
-        with col2.expander(row['user_query']):
-            st.write(row['llm_response'])
-    counter += 1
+#conversation_history = supabase.table('StreamlitDB').select("*").eq('session_id', session_id).execute()
+#counter = 1
+#for row in conversation_history.data:
+#    if counter > len(conversation_history.data)-6:
+ #       with col2.expander(row['user_query']):
+#            st.write(row['llm_response'])
+#    counter += 1
 
 
 
