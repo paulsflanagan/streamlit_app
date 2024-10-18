@@ -194,7 +194,7 @@ if userPrompt:
         Only return the link do not return any Markdown or html.
         """},
         {"role": "assistant", "content": "URLs: " + str(url_links)},
-        {"role": "user", "content": user_query}
+        {"role": "user", "content": userPrompt}
       ]
     )
     urls_list_string = completion.choices[0].message.content
