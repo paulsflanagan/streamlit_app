@@ -67,28 +67,28 @@ for row in conversation_history.data:
 
 
 
-if uploaded_file is not None:
-    try:
-        bytes_data = uploaded_file.getvalue()
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        string_data = stringio.read()
-        additionalContext = string_data
-    except:
-        try:
-            reader = PdfReader(uploaded_file)
-            #st.write(len(reader.pages))
-            text = '%PDF Document: \n\n'
-            counter = 1
-            for each in reader.pages:
-                text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text() + "\n\n"
-                counter += 1
-                additionalContext = text
-                #st.write(text)
-        except:
-            st.write("Error Reading File")
+#if uploaded_file is not None:
+#    try:
+#        bytes_data = uploaded_file.getvalue()
+#        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+#        string_data = stringio.read()
+#        additionalContext = string_data
+#   except:
+#        try:
+#            reader = PdfReader(uploaded_file)
+#            #st.write(len(reader.pages))
+#            text = '%PDF Document: \n\n'
+#            counter = 1
+#            for each in reader.pages:
+#                text = text + "%PAGE: " + str(counter) + "\n\n" + each.extract_text() + "\n\n"
+#                counter += 1
+#                additionalContext = text
+#                #st.write(text)
+#        except:
+#            st.write("Error Reading File")
 
 
-#def update_screen():
+# def update_screen():
 #    response = supabase.table('StreamlitDB').select("*").eq('user_name', userName).execute()
     #st.text_area('Conversation:', height=400, value=str(response))
 #    testString = ''
