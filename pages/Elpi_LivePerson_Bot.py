@@ -209,7 +209,7 @@ if userPrompt:
     data, count = supabase.table('LPWebsiteGPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llmResponse.split(" ")
-    displayed_text = '#### LP-GPT \n\n'
+    displayed_text = '#### Elpi \n\n'
 
 
     ## ADD CONVERSATION HISTORY TO PROMPT
