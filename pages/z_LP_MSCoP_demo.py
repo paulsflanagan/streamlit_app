@@ -219,7 +219,7 @@ if userPrompt:
       model="gpt-4o-mini",
       messages=[
         {"role": "system", "content": """
-        You are a Spirax Virtual Assistant.
+        You are a LivePerson Virtual Assistant.
         Your task is to answer the users query using the provided articles. 
         Return the response followed by any Article URL's you have used in your answer. 
         """},
