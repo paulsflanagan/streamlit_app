@@ -10,8 +10,8 @@ import os
 from bs4 import BeautifulSoup
 
 
-URLs = ["https://www.qantas.com/qcom4-sitemap.xml"]
-#,"https://www.qantas.com/qcom4-sitemap.xml" - Airport Guides
+URLs = ["https://www.qantas.com/qcom3-sitemap.xml"]
+#,"https://www.qantas.com/qcom4-sitemap.xml" - Airport Guides - (too big)
 #,"https://www.qantas.com/qcom3-sitemap.xml" - onbord information /seat maps
 #,"https://www.qantas.com/qcom6-sitemap.xml" - frequent flyer / mebeships
 #,"https://www.qantas.com/city-pairs-sitemap.xml"
