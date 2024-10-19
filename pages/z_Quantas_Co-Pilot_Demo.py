@@ -223,7 +223,7 @@ if userPrompt:
     
     #llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
     #st.write(fullPrompt)
-    data, count = supabase.table('TP_GPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
+    data, count = supabase.table('Quantas_GPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llmResponse.split(" ")
     displayed_text = '#### Quantas-GPT \n\n'
