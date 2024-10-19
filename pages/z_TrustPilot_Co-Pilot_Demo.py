@@ -10,7 +10,7 @@ import os
 from bs4 import BeautifulSoup
 
 
-URL = "https://www.trustpilot.com/trust/sitemaps/domain_en-gb.xml"
+URLs = ["https://trustpilot.com/trust/sitemaps/domain_en-gb.xml","https://trustpilot.com/blog/sitemaps/domain_en-gb.xml"]
 
 ## SESSION ID
 
@@ -150,9 +150,13 @@ userPrompt = st.chat_input("Say Something")
 
 if userPrompt:
 
-    url_link = requests.get(URL)
-    url_link_soup = bs.BeautifulSoup(url_link.text, "lxml")
-    url_links = url_link_soup.find_all("loc")
+    url_links = []
+    for URL in URLs:
+      url_link = requests.get(URL)
+      url_link_soup = bs.BeautifulSoup(url_link.text, "xml")
+      url_links_buffer = url_link_soup.find_all("loc")
+      url_links_buffer = url_links_buffer + url_link_soup.find_all("path")
+      url_links = url_links + url_links_buffer
 
     completion = client_us.chat.completions.create(
       model="gpt-4o-mini",
@@ -190,8 +194,12 @@ if userPrompt:
         You are a LivePerson Virtual Assistant.
         Your task is to answer the users query using the provided articles. 
         Return the response followed by any Article URL's you have used in your answer. 
+        Example:
+
+        ANSWER
+        Resources: URL1, URL2, URL3
         """},
-        {"role": "assistant", "content": "URLs: " + amalgamated_article_text},
+        {"role": "assistant", "content": "Articles: " + amalgamated_article_text},
         {"role": "user", "content": userPrompt}
       ]
     
