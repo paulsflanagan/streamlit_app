@@ -164,7 +164,6 @@ if userPrompt:
         {"role": "system", "content": """
             Your task is to select the URLs from the list that would most likely answer the users query. 
             Return the URLs as a comma seperated list. Example: link1.com, link2.com. 
-            Return a maximum of 5 URLs.
             Only return the link do not return any Markdown or html.
         """},
         {"role": "assistant", "content": "URLs: " + str(url_links)},
