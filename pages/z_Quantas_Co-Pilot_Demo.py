@@ -10,7 +10,7 @@ import os
 from bs4 import BeautifulSoup
 
 
-URLs = ["https://trustpilot.com/trust/sitemaps/domain_en-gb.xml","https://trustpilot.com/blog/sitemaps/domain_en-gb.xml"]
+URLs = ["https://www.qantas.com/flights-to-city-sitemap.xml","https://www.qantas.com/qcom4-sitemap.xml","https://www.qantas.com/qcom5-sitemap.xml", "https://www.qantas.com/qcom3-sitemap.xml","https://www.qantas.com/qcom6-sitemap.xml", "https://www.qantas.com/qcom2-sitemap.xml", "https://www.qantas.com/flights-to-country-sitemap.xml","https://www.qantas.com/city-pairs-sitemap.xml","https://www.qantas.com/travelinsider/en/sitemap.xml","https://www.qantas.com/agencyconnect/sitemap.xml","https://www.qantas.com/qcom8-sitemap.xml","https://www.qantas.com/qcom1-sitemap.xml","https://www.qantas.com/qcom9-sitemap.xml","https://www.qantas.com/qcom7-sitemap.xml"]
 
 ## SESSION ID
 
