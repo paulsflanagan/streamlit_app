@@ -10,7 +10,7 @@ import os
 from bs4 import BeautifulSoup
 
 
-URLs = ["https://www.qantas.com/flights-to-country-sitemap.xml"]
+URLs = ["https://www.qantas.com/qcom4-sitemap.xml"]
 #,"https://www.qantas.com/qcom4-sitemap.xml" - Airport Guides
 #,"https://www.qantas.com/qcom3-sitemap.xml" - onbord information /seat maps
 #,"https://www.qantas.com/qcom6-sitemap.xml" - frequent flyer / mebeships
