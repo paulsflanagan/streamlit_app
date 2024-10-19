@@ -192,7 +192,7 @@ if userPrompt:
         {"role": "system", "content": """
         You are a LivePerson Virtual Assistant.
         Your task is to answer the users query using the provided articles. 
-        Return the response followed by any Article URL's you have used in your answer. 
+        Return the response followed by any Article URL's you have referrenced in your answer. 
         Example:
 
         ANSWER
