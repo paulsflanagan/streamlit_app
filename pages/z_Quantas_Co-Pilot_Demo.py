@@ -23,7 +23,7 @@ URLs = ["https://www.qantas.com/qcom3-sitemap.xml"]
 #,https://www.qantas.com/qcom9-sitemap.xml - corporate cards and ?
 #,"https://www.qantas.com/qcom7-sitemap.xml" - inspiration / blogs
 #,"https://www.qantas.com/qcom5-sitemap.xml" - General Info (baggage payments etc)
-#, "https://www.qantas.com/qcom2-sitemap.xml" - Travel guides
+#,"https://www.qantas.com/qcom2-sitemap.xml" - Travel guides
 #,"https://www.qantas.com/qcom8-sitemap.xml" - future history / sustainability
 
 ## SESSION ID
