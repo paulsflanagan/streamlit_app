@@ -88,10 +88,10 @@ if user_query:
 
     for each_url in urls_list:
         article_text, pull_count = supabase.table('LivePerson_site_scrape').select("summary").eq("url", each_url).execute()
-    try:
-        summary = article_text[1][0]["summary"]
-    except:
-        summary = ""
+        try:
+            summary = article_text[1][0]["summary"]
+        except:
+            summary = ""
         
         amalgamated_article_text = amalgamated_article_text + "URL: " + each_url + "\n Article Information: " + summary + "\n"
         
