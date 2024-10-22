@@ -80,7 +80,9 @@ if user_query:
     )
 
     urls_list_string = completion.choices[0].message.content
-    col1.write(urls_list_string)
+    
+    #col1.write(urls_list_string)
+    
     urls_list_json = json.loads(urls_list_string)
     urls_list = urls_list_json.get('urls', [])
 
@@ -95,7 +97,8 @@ if user_query:
         
         amalgamated_article_text = amalgamated_article_text + "URL: " + each_url + "\n Article Information: " + summary + "\n"
         
-    col1.write(amalgamated_article_text)
+    #col1.write(amalgamated_article_text)
+    
     # US COMPLETION MODEL 4o Mini
     completion = client_us.chat.completions.create(
         model="gpt-4o-mini",
