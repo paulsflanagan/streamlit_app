@@ -10,7 +10,7 @@ import os
 from bs4 import BeautifulSoup
 
 
-URL = "https://www.liveperson.com/sitemap/sitemap-0.xml"
+#URL = "https://www.liveperson.com/sitemap/sitemap-0.xml"
 
 ## SESSION ID
 
