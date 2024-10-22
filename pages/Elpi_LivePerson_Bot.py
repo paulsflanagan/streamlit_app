@@ -111,6 +111,8 @@ if user_query:
 
     llmResponse = completion.choices[0].message.content
 
+    fullPrompt = '' #Temporary
+    
     data, count = supabase.table('LPWebsiteGPT_DB').insert({"session_id": str(session_id), "user_name": userName, "user_query": user_query, "llm_response": llmResponse, "full_prompt": fullPrompt}).execute()
     user_message_space.markdown('#### You \n\n' + user_query)
     split_text = llmResponse.split(" ")
