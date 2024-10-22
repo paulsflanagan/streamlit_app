@@ -93,8 +93,9 @@ if user_query:
     except:
         summary = ""
         
-    amalgamated_article_text = amalgamated_article_text + "URL: " + each_url + "\n Article Information: " + summary + "\n"
-
+        amalgamated_article_text = amalgamated_article_text + "URL: " + each_url + "\n Article Information: " + summary + "\n"
+        
+    col1.write(amalgamated_article_text)
     # US COMPLETION MODEL 4o Mini
     completion = client_us.chat.completions.create(
         model="gpt-4o-mini",
