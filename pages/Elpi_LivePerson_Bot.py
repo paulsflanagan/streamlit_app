@@ -80,7 +80,7 @@ if user_query:
     )
 
     urls_list_string = completion.choices[0].message.content
-
+    col1.write(urls_list_string)
     urls_list_json = json.loads(urls_list_string)
     urls_list = urls_list_json.get('urls', [])
 
