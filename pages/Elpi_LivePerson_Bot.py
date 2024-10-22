@@ -49,9 +49,9 @@ response_message_space = col1.empty()
 conversation_history = []
 additionalContext = 'None'
 
-userPrompt = st.chat_input("Say Something")
+user_query = st.chat_input("Say Something")
 
-if userPrompt:
+if user_query:
 
     article_details_search, pull_count = supabase.table('LivePerson_site_scrape').select("*").execute()
 
