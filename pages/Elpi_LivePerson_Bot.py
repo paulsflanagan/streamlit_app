@@ -70,7 +70,6 @@ if user_query:
             {"role": "system", "content": """
                 Your task is to select the URLs from the list that would most likely answer the users query.
                 Return a maximum of 5 URLs.
-                Return the URLs as a Comma Seperated List.
                 Return a JSON object with a field called urls that is an array of the urls.
     
             """},
