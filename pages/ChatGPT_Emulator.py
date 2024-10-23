@@ -21,9 +21,9 @@ else:
 ## AZURE CLIENT
 
 client = AzureOpenAI(
-    api_key=st.secrets["api_key"],
-    api_version=st.secrets["api_version"],
-    azure_endpoint=st.secrets["azure_endpoint"]
+    api_key=st.secrets["api_key_us"],
+    api_version=st.secrets["api_version_us"],
+    azure_endpoint=st.secrets["azure_endpoint_us"]
 )
 
 ## SECRETS
@@ -147,13 +147,10 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
     #st.write(fullPrompt)
     
     response = client.chat.completions.create(
-    model="llmgateway-text-35turbo-1106-model",
-    messages=fullPrompt,
+    model="gpt-4o-mini",
     temperature=0,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
+    messages=fullPrompt,
+
     )
     return response.choices[0].message.content, fullPrompt
 
