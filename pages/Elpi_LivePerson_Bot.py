@@ -58,7 +58,7 @@ if user_query:
     llm_search_string = ""
 
     for each in article_details_search[1]:
-        buffer_string = "URL: " + each['url'] + " - (Contains: " + each['title'] + ")\n"
+        buffer_string = "URL: " + each['url'] + " - (Contains: " + each['title'] + ")\n || "
         llm_search_string = llm_search_string + buffer_string
 
     col1.write(llm_search_string)
