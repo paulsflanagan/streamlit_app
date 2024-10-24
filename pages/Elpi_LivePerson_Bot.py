@@ -60,6 +60,8 @@ if user_query:
     for each in article_details_search[1]:
         buffer_string = "URL: " + each['url'] + " - (Contains: " + each['title'] + ")\n"
         llm_search_string = llm_search_string + buffer_string
+
+    col1.write(llm_search_string)
     
     # US COMPLETION MODEL 4o Mini
     completion = client_us.chat.completions.create(
@@ -68,7 +70,7 @@ if user_query:
         temperature = 0,
         messages=[
             {"role": "system", "content": """
-                Your task is to select the URLs from the list that would most likely answer the users query.
+                Your task is to select the top 5 URLs from the list that would most likely answer the users query.
                 Return a maximum of 5 URLs.
                 Return a JSON object with a field called urls that is an array of the urls.
     
