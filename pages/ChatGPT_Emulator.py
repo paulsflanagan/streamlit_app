@@ -173,7 +173,7 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
 
     #)
     #return response.choices[0].message.content, fullPrompt
-    return callGatewayFP(full_prompt)
+    return callGatewayFP(fullPrompt)
 
 def next_query_button_click(query):
     st.session_state.key = query
