@@ -3,6 +3,7 @@ from openai import AzureOpenAI
 import csv
 import streamlit as st
 import pandas as pd
+import requests
 #from io import StringIO
 
 
