@@ -10,11 +10,26 @@ st.title('Knowledgebase Optimization for AI Search - Summary Only')
 st.warning('Currently Adapted to NOT Update the Detail', icon="⚠️")
 st.write("AI Search utilizes the KB summary for retrieval and the KB detail for response. This app will summarise the full article to replace the summary, then add the summary to the beginning of the detail. Original Script Thanks to Konrad Zuchniak")
 
-client = AzureOpenAI(
-    api_key=st.secrets["api_key"],
-    api_version=st.secrets["api_version"],
-    azure_endpoint=st.secrets["azure_endpoint"]
-)
+#client = AzureOpenAI(
+#    api_key=st.secrets["api_key"],
+#    api_version=st.secrets["api_version"],
+#    azure_endpoint=st.secrets["azure_endpoint"]
+#
+#)
+
+# Create LLM Gateway Client
+
+idToken = st.secrets["llm_gateway_token"]
+account_id = st.secrets["cb_account_id"]
+trace_id = "paul_poc_GPT_EMULATOR"
+gateway_url = 'https://lo.cbllmgateway.liveperson.net/api/v1/gateway/llm/accounts/' + account_id + '/chats?trace_id=' + trace_id + '&activate_links=false&handle_hallucinations=false&highlight_hallucinations=false&use_pl_cache=false&pci_mask_prompt=false'
+headers = {'Authorization': 'Bearer ' + idToken,'Content-Type': 'application/json',}
+
+def callGateway(system_prompt,assistant_prompt,user_prompt):
+  data = {"messages_list": [{"role": "system", "content": system_prompt},{"role": "assistant", "content": assistant_prompt},{"role": "user", "content": user_prompt},],'subscription_name': 'ai-studio','request_config': {'model_name': 'gpt-4o',}}
+  response = requests.post(gateway_url, headers=headers, json=data)
+  return response.json()['results'][0]['text']
+
 
 sPromptReWriteSummary = """
 Your job is to Summarize the article in a way that is optimized for searches of knowledge bases and documentation.
