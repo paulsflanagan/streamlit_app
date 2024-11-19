@@ -41,8 +41,8 @@ def callGateway(system_prompt,assistant_prompt,user_prompt):
   response = requests.post(gateway_url, headers=headers, json=data)
   return response.json()['results'][0]['text']
 
-def callGatewayFP(full_prompt):
-  data = {"messages_list": [full_prompt,],'subscription_name': 'ai-studio','request_config': {'model_name': 'gpt-4o',}}
+def callGatewayFP(fullPrompt):
+  data = {"messages_list": [fullPrompt,],'subscription_name': 'ai-studio','request_config': {'model_name': 'gpt-4o',}}
   response = requests.post(gateway_url, headers=headers, json=data)
   return response.json()['results'][0]['text']
 
