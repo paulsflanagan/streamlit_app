@@ -20,13 +20,28 @@ else:
 
 ## AZURE CLIENT
 
-client = AzureOpenAI(
-    api_key=st.secrets["api_key_us"],
-    api_version=st.secrets["api_version_us"],
-    azure_endpoint=st.secrets["azure_endpoint_us"]
-)
+#client = AzureOpenAI(
+#    api_key=st.secrets["api_key_us"],
+#    api_version=st.secrets["api_version_us"],
+#    azure_endpoint=st.secrets["azure_endpoint_us"]
+#)
 
 ## SECRETS
+
+# Create LLM Gateway Client
+
+idToken = st.secrets["llm_gateway_token"]; #userdata.get('llm_gateway_token')
+account_id = st.secrets["cb_account_id"] #userdata.get('cb_account_id')
+trace_id = "paul_poc_GPTEMULATOR"
+gateway_url = 'https://lo.cbllmgateway.liveperson.net/api/v1/gateway/llm/accounts/' + account_id + '/chats?trace_id=' + trace_id + '&activate_links=false&handle_hallucinations=false&highlight_hallucinations=false&use_pl_cache=false&pci_mask_prompt=false'
+headers = {'Authorization': 'Bearer ' + idToken,'Content-Type': 'application/json',}
+
+def callGateway(system_prompt,assistant_prompt,user_prompt):
+  data = {"messages_list": [{"role": "system", "content": system_prompt},{"role": "assistant", "content": assistant_prompt},{"role": "user", "content": user_prompt},],'subscription_name': 'ai-studio','request_config': {'model_name': 'gpt-4o',}}
+  response = requests.post(gateway_url, headers=headers, json=data)
+  return response.json()['results'][0]['text']
+
+# Create SupaBase Client
 
 userName = st.experimental_user.email
 spb_url = st.secrets["spb_url"]
