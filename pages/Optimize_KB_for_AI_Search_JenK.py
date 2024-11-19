@@ -21,7 +21,7 @@ st.write("AI Search utilizes the KB summary for retrieval and the KB detail for 
 
 idToken = st.secrets["llm_gateway_token"]
 account_id = st.secrets["cb_account_id"]
-trace_id = "paul_poc_GPT_EMULATOR"
+trace_id = "paul_poc_kb_optimiser"
 gateway_url = 'https://lo.cbllmgateway.liveperson.net/api/v1/gateway/llm/accounts/' + account_id + '/chats?trace_id=' + trace_id + '&activate_links=false&handle_hallucinations=false&highlight_hallucinations=false&use_pl_cache=false&pci_mask_prompt=false'
 headers = {'Authorization': 'Bearer ' + idToken,'Content-Type': 'application/json',}
 
@@ -32,33 +32,33 @@ def callGateway(system_prompt,assistant_prompt,user_prompt):
 
 
 sPromptReWriteSummary = """
-Your job is to Summarize the article in a way that is optimized for searches of knowledge bases and documentation.
+Your task is to Summarize the article in a way that is optimized for searches of knowledge bases and documentation.
 Specifically focus on:
 Using natural keywords and keyphrases from other fields in the rewritten summary
 The goal is to rewrite the summary in a way that improves its findability and searchability, helping more easily surface related knowledge, instructions or answers.
 The summary cannot exceed 1000 characters.
 Please provide only the optimized version of the summary."""
 
-def call_oai(prompt, systemPrompt):
-    response = client.chat.completions.create(
-    model="llmgateway-text-35turbo-1106-model",
-    messages=[
-        {
-        "role": "system",
-        "content": systemPrompt
-        },
-        {
-        "role": "user",
-        "content": prompt
-        }
-    ],
-    temperature=0,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-    )
-    return response.choices[0].message.content
+#def call_oai(prompt, systemPrompt):
+#    response = client.chat.completions.create(
+#    model="llmgateway-text-35turbo-1106-model",
+#    messages=[
+#        {
+#        "role": "system",
+#        "content": systemPrompt
+#        },
+#        {
+#        "role": "user",
+#        "content": prompt
+#        }
+#    ],
+#    temperature=0,
+#    max_tokens=256,
+#    top_p=1,
+#    frequency_penalty=0,
+#    presence_penalty=0
+#    )
+#    return response.choices[0].message.content
 
 
 
@@ -91,7 +91,9 @@ if uploaded_file is not None:
                 category = df['category'].iloc[x]
                 tags = df['tags'].iloc[x]
                 article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
-                new_summary = call_oai(article_data, sPromptReWriteSummary)
+                user_prompt = "Run your task."
+                new_summary = callGateway(sPromptReWriteSummary,article_data,user_prompt)
+                #new_summary = call_oai(article_data, sPromptReWriteSummary)
                 #st.write("Old Summary: " + summary)
                 #st.write("New Summary: " + new_summary)
                 new_summaries.append(new_summary)
