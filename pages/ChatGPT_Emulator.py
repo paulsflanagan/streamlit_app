@@ -41,6 +41,11 @@ def callGateway(system_prompt,assistant_prompt,user_prompt):
   response = requests.post(gateway_url, headers=headers, json=data)
   return response.json()['results'][0]['text']
 
+def callGatewayFP(full_prompt):
+  data = {"messages_list": [full_prompt,],'subscription_name': 'ai-studio','request_config': {'model_name': 'gpt-4o',}}
+  response = requests.post(gateway_url, headers=headers, json=data)
+  return response.json()['results'][0]['text']
+
 # Create SupaBase Client
 
 userName = st.experimental_user.email
@@ -160,14 +165,15 @@ def call_oai(userPrompt, systemPrompt, conversation_history, additionalContext):
     )
 
     #st.write(fullPrompt)
-    
-    response = client.chat.completions.create(
-    model="gpt-4o-mini",
-    temperature=0,
-    messages=fullPrompt,
 
-    )
-    return response.choices[0].message.content, fullPrompt
+    #response = client.chat.completions.create(
+    #model="gpt-4o-mini",
+    #temperature=0,
+    #messages=fullPrompt,
+
+    #)
+    #return response.choices[0].message.content, fullPrompt
+    return callGatewayFP(full_prompt)
 
 def next_query_button_click(query):
     st.session_state.key = query
