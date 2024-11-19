@@ -33,7 +33,7 @@ else:
 
 idToken = st.secrets["llm_gateway_token"]; #userdata.get('llm_gateway_token')
 account_id = st.secrets["cb_account_id"] #userdata.get('cb_account_id')
-trace_id = "paul_poc_GPTEMULATOR"
+trace_id = "paul_poc_GPT_EMULATOR"
 gateway_url = 'https://lo.cbllmgateway.liveperson.net/api/v1/gateway/llm/accounts/' + account_id + '/chats?trace_id=' + trace_id + '&activate_links=false&handle_hallucinations=false&highlight_hallucinations=false&use_pl_cache=false&pci_mask_prompt=false'
 headers = {'Authorization': 'Bearer ' + idToken,'Content-Type': 'application/json',}
 
