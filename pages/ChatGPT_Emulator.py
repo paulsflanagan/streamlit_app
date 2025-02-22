@@ -49,7 +49,7 @@ def callGatewayFP(fullPrompt):
 
 # Create SupaBase Client
 
-userName = "Unknown" #st.experimental_user.email
+userName = "Unknown" #st.experimental_user.email # Streamlit broke experimental_user
 spb_url = st.secrets["spb_url"]
 spb_key = st.secrets["spb_key"]
 
