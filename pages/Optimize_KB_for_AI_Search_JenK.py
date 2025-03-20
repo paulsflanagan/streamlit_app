@@ -94,6 +94,8 @@ if uploaded_file is not None:
                 article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
                 user_prompt = "Run your task."
                 new_summary = callGateway(sPromptReWriteSummary,article_data,user_prompt)
+                if len(new_summary) >= 1000:
+                  new_summary = new_summary[:999]
                 #new_summary = call_oai(article_data, sPromptReWriteSummary)
                 #st.write("Old Summary: " + summary)
                 #st.write("New Summary: " + new_summary)
