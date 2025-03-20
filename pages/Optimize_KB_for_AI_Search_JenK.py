@@ -37,7 +37,7 @@ Your task is to Summarize the article in a way that is optimized for searches of
 Specifically focus on:
 Using natural keywords and keyphrases from other fields in the rewritten summary
 The goal is to rewrite the summary in a way that improves its findability and searchability, helping more easily surface related knowledge, instructions or answers.
-The summary cannot exceed 1000 characters.
+Ensure the summary less than 900 characters.
 Please provide only the optimized version of the summary."""
 
 #def call_oai(prompt, systemPrompt):
