@@ -59,7 +59,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 ## UI HERE
 
-st.title('ChatGPT 4o Emulator')
+st.title('ChatGPT 4o-mini Emulator')
 #if st.button("Clear Conversation"):
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
