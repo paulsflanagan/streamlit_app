@@ -38,7 +38,7 @@ gateway_url = 'https://lo.cbllmgateway.liveperson.net/api/v1/gateway/llm/account
 headers = {'Authorization': 'Bearer ' + idToken,'Content-Type': 'application/json',}
 
 def callGateway(system_prompt,assistant_prompt,user_prompt):
-  data = {"messages_list": [{"role": "system", "content": system_prompt},{"role": "assistant", "content": assistant_prompt},{"role": "user", "content": user_prompt},],'subscription_name': 'ai-studio','request_config': {'model_name': 'gpt-4o',}}
+  data = {"messages_list": [{"role": "system", "content": system_prompt},{"role": "assistant", "content": assistant_prompt},{"role": "user", "content": user_prompt},],'subscription_name': 'lp-llm-ptu','request_config': {'model_name': 'gpt-4o-mini-2024-07-18',}}
   response = requests.post(gateway_url, headers=headers, json=data)
   return response.json()['results'][0]['text']
 
