@@ -1,43 +1,45 @@
 import json
-from openai import AzureOpenAI
+#from openai import AzureOpenAI
 import csv
 import streamlit as st
 import pandas as pd
 from io import StringIO
 
 import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 
 
 st.title('Convert Intents to Routing Prompts')
 st.write("Original Script Thanks to Ethan Selfridge")
 
-client = AzureOpenAI(
-    api_key=st.secrets["api_key"],
-    api_version=st.secrets["api_version"],
-    azure_endpoint=st.secrets["azure_endpoint"]
+#client = AzureOpenAI(
+#    api_key=st.secrets["api_key"],
+#    api_version=st.secrets["api_version"],
+#    azure_endpoint=st.secrets["azure_endpoint"]
 )
 
 
-def call_oai(prompt):
-    response = client.chat.completions.create(
-    model="llmgateway-text-35turbo-1106-model",
-    messages=[
-        {
-        "role": "system",
-        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be a sentence at most 20 words. Do not use bullet points."
-        },
-        {
-        "role": "user",
-        "content": prompt
-        }
-    ],
-    temperature=0,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-    )
-    return response.choices[0].message.content
+#def call_oai(prompt):
+#    response = client.chat.completions.create(
+#    model="llmgateway-text-35turbo-1106-model",
+#    messages=[
+#        {
+#        "role": "system",
+#        "content": "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be a sentence at most 20 words. Do not use bullet points."
+#        },
+#        {
+#        "role": "user",
+#        "content": prompt
+#        }
+#    ],
+#    temperature=0,
+#    max_tokens=256,
+#    top_p=1,
+#    frequency_penalty=0,
+#    presence_penalty=0
+#    )
+#    return response.choices[0].message.content
 
 
 # Upload CSV
