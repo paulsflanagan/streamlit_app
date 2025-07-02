@@ -40,6 +40,9 @@ def call_oai(prompt):
 
 # Upload CSV
 
+system_prompt = "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be a sentence at most 20 words. Do not use bullet points."
+assistant_prompt = ""
+user_prompt = ""
 
 def callGateway(system_prompt,assistant_prompt,user_prompt):
   data = {"messages_list": [{"role": "system", "content": system_prompt},{"role": "assistant", "content": assistant_prompt},{"role": "user", "content": user_prompt},],'subscription_name': 'lp-llm-ptu','request_config': {'model_name': 'gpt-4o-mini-2024-07-18',}}
@@ -106,7 +109,7 @@ if uploaded_file is not None:
                 #print(f"{i}/{amnt} Intent: {intent_elem['intent']}")
                 phrases = ",".join([p for p in intent_elem['phrases'] if p and p != "" and p != "Regexes"])
                 user_message = f"Examples of user messages: {phrases}"
-                description = call_oai(user_message)
+                description = callGateway(system_prompt,assistant_prompt,user_message)
                 #st.write(f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: {route_name}\n")
                 outputString = outputString + f"\nintent: {intent_name}\n\tdesc: {description}\n\troute: [ROUTE::{route_name}]\n"
 
