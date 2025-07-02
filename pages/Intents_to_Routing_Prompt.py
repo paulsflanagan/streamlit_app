@@ -5,6 +5,8 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 
+import requests
+
 
 st.title('Convert Intents to Routing Prompts')
 st.write("Original Script Thanks to Ethan Selfridge")
