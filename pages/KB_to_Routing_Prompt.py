@@ -49,6 +49,38 @@ sPromptRoutesFromIntent = ""
 
 
 
+idToken = st.secrets["llm_gateway_token"]
+account_id = st.secrets["cb_account_id"]
+trace_id = "paul_poc_kb_optimiser"
+gateway_url = 'https://lo.cbllmgateway.liveperson.net/api/v1/gateway/llm/accounts/' + account_id + '/chats?trace_id=' + trace_id + '&activate_links=false&handle_hallucinations=false&highlight_hallucinations=false&use_pl_cache=false&pci_mask_prompt=false'
+headers = {'Authorization': 'Bearer ' + idToken,'Content-Type': 'application/json',}
+
+system_prompt = "Your job is to describe what the user is trying to do given the follow examples input messages. Your description should be a sentence at most 20 words. Do not use bullet points."
+assistant_prompt = ""
+user_prompt = ""
+
+def callGateway(system_prompt,assistant_prompt,user_prompt):
+  data = {"messages_list": [{"role": "system", "content": system_prompt},{"role": "assistant", "content": assistant_prompt},{"role": "user", "content": user_prompt},],'subscription_name': 'lp-llm-ptu','request_config': {'model_name': 'gpt-4o-mini-2024-07-18',}}
+  #response = requests.post(gateway_url, headers=headers, json=data)
+  #return response.json()['results'][0]['text']
+  
+  session = requests.Session()
+  retries = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])  # Retry on these status codes
+  session.mount('https://', HTTPAdapter(max_retries=retries))
+  
+
+  try:
+    response = session.post(gateway_url, headers=headers, json=data)
+    response.raise_for_status()  # Raise an exception for bad status codes
+    return response.json()['results'][0]['text']
+  except requests.exceptions.RequestException as e:
+    print(f"Error calling gateway: {e}")
+    # You can choose to handle the error here, e.g., retry with a delay, skip the current row, etc.
+    # For now, we'll just return an empty string
+    return ""
+
+
+
 
 # Upload CSV
 
