@@ -1,5 +1,5 @@
 import json
-from openai import AzureOpenAI
+#from openai import AzureOpenAI
 import csv
 import streamlit as st
 import pandas as pd
@@ -9,11 +9,11 @@ from io import StringIO
 st.title('Convert a Knowledge Base to Routing Prompts')
 st.write("Original Script Thanks to Ethan Selfridge")
 
-client = AzureOpenAI(
-    api_key=st.secrets["api_key"],
-    api_version=st.secrets["api_version"],
-    azure_endpoint=st.secrets["azure_endpoint"]
-)
+#client = AzureOpenAI(
+#    api_key=st.secrets["api_key"],
+#    api_version=st.secrets["api_version"],
+#    azure_endpoint=st.secrets["azure_endpoint"]
+#)
 
 sPromptIntentsFromKB = """
 Your job is to analyze the following article and provide an intent and description that could be served by that article.
@@ -22,26 +22,26 @@ A description is a sentence that describes what the user could want to do in det
 You should return each intent and description in this format: Intent:<intent name>\nDescription:<description>"""
 sPromptRoutesFromIntent = ""
 
-def call_oai(prompt, systemPrompt):
-    response = client.chat.completions.create(
-    model="llmgateway-text-35turbo-1106-model",
-    messages=[
-        {
-        "role": "system",
-        "content": systemPrompt
-        },
-        {
-        "role": "user",
-        "content": prompt
-        }
-    ],
-    temperature=0,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-    )
-    return response.choices[0].message.content
+#def call_oai(prompt, systemPrompt):
+#    response = client.chat.completions.create(
+#    model="llmgateway-text-35turbo-1106-model",
+#    messages=[
+3        {
+#        "role": "system",
+#        "content": systemPrompt
+#        },
+#        {
+#        "role": "user",
+#        "content": prompt
+#        }
+#    ],
+#    temperature=0,
+#    max_tokens=256,
+#    top_p=1,
+#    frequency_penalty=0,
+#    presence_penalty=0
+#    )
+#    return response.choices[0].message.content
 
 
 
