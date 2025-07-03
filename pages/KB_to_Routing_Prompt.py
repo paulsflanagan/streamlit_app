@@ -24,6 +24,7 @@ Your job is to analyze the following article and provide an intent and descripti
 An intent is a short phrase (5 words or less) that describes something that a customer could want to do. 
 A description is a sentence that describes what the user could want to do in detail.
 You should return each intent and description in this format: Intent:<intent name>\nDescription:<description>"""
+assistant_prompt = ""
 sPromptRoutesFromIntent = ""
 
 #def call_oai(prompt, systemPrompt):
@@ -108,7 +109,7 @@ if uploaded_file is not None:
     
                 article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}\n\nIntent and Description List: '
                 #print(f"{i}/{len(rows)}")
-                possible_intents = call_oai(article_data, sPromptIntentsFromKB)
+                possible_intents = callGateway(sPromptIntentsFromKB,assistant_prompt,article_data) #call_oai(article_data, sPromptIntentsFromKB)
                 generated_intents.append(possible_intents)
                 
             #st.write("GENERATED INTENTS:: " + str(generated_intents))
