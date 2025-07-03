@@ -31,7 +31,7 @@ sPromptRoutesFromIntent = ""
 #    response = client.chat.completions.create(
 #    model="llmgateway-text-35turbo-1106-model",
 #    messages=[
-3        {
+#        {
 #        "role": "system",
 #        "content": systemPrompt
 #        },
