@@ -60,8 +60,9 @@ def call_gateway(system_prompt,assistant_prompt,user_prompt):
     #logging.debug(f"LLM Response: {response.json()['results'][0]['text']}")
     return response.json()['results'][0]['text']
   except requests.exceptions.RequestException as e:
-    #logging.error(f"Error calling LLM Gateway: {e}")
     return None
+    #logging.error(f"Error calling LLM Gateway: {e}")
+    #return None
 
 
 ## Call Gateway With User Defined Messages Json ##
@@ -86,8 +87,9 @@ def call_gateway_BYOM(messages_list):
     #logging.debug(f"LLM Response: {response.json()['results'][0]['text']}")
     return response.json()['results'][0]['text']
   except requests.exceptions.RequestException as e:
-    #logging.error(f"Error calling LLM Gateway BYOM: {e}")
     return None
+    #logging.error(f"Error calling LLM Gateway BYOM: {e}")
+    #return None
 
 
 ### DataBase Tools Module
@@ -108,7 +110,7 @@ supabase: Client = create_client(spb_url, spb_key)
 
 db_table = 'habits_web_scrape'
 
-supabase_initialized = True
+#supabase_initialized = True
 
 
 ## SupaBase Interaction Functions
@@ -129,8 +131,9 @@ def get_data_from_table(table_name):
     #logging.info(f"Successfully fetched data from table: {table_name}")
     return response.data
   except Exception as e:
-    #logging.error(f"Error fetching data from {table_name}: {e}")
     return None
+    #logging.error(f"Error fetching data from {table_name}: {e}")
+    #return None
 
 def get_data_from_table_where(table_name, column_name, column_value):
   """Fetches data from a specified Supabase table where a column matches a value.
@@ -148,8 +151,9 @@ def get_data_from_table_where(table_name, column_name, column_value):
     #logging.info(f"Successfully fetched data from table: {table_name} where {column_name} is {column_value}")
     return response.data
   except Exception as e:
-    #logging.error(f"Error fetching data from {table_name} where {column_name} is {column_value}: {e}")
     return None
+    #logging.error(f"Error fetching data from {table_name} where {column_name} is {column_value}: {e}")
+    #return None
 
 def insert_data_into_table(table_name, data):
   """Inserts a new row of data into a specified Supabase table.
@@ -167,9 +171,10 @@ def insert_data_into_table(table_name, data):
     #logging.debug(f"Inserted data: {data}")
     return response.data
   except Exception as e:
+    return None
     #logging.error(f"Error inserting data into {table_name}: {e}")
     #logging.debug(f"Data that failed to insert: {data}")
-    return None
+    #return None
 
 def update_data_in_table(table_name, id_value, data):
   """Updates data in a specified Supabase table based on an ID.
@@ -188,9 +193,10 @@ def update_data_in_table(table_name, id_value, data):
     #logging.debug(f"Updated data: {data}")
     return response.data
   except Exception as e:
+    return None
     #logging.error(f"Error updating data in {table_name} with id: {id_value}: {e}")
     #logging.debug(f"Data that failed to update: {data}")
-    return None
+    #return None
 
 def delete_data_from_table(table_name, id_value):
   """Deletes data from a specified Supabase table based on an ID.
@@ -207,8 +213,9 @@ def delete_data_from_table(table_name, id_value):
     #logging.info(f"Successfully deleted data from table: {table_name} with id: {id_value}")
     return response.data
   except Exception as e:
-    #logging.error(f"Error deleting data from {table_name} with id: {id_value}: {e}")
     return None
+    #logging.error(f"Error deleting data from {table_name} with id: {id_value}: {e}")
+    #return None
 
 
 # Specialty Access Functions
@@ -229,8 +236,9 @@ def get_column_data_from_table(table_name, column_name):
     #logging.info(f"Successfully fetched data from columns 'id' and '{column_name}' in table: {table_name}")
     return response.data
   except Exception as e:
-    #logging.error(f"Error fetching data from columns 'id' and '{column_name}' in table {table_name}: {e}")
     return None
+    #logging.error(f"Error fetching data from columns 'id' and '{column_name}' in table {table_name}: {e}")
+    #return None
 
 def get_cell_data_from_table(table_name, column_name, row_id):
   """Fetches data from a specific cell in a Supabase table based on row ID and column name.
@@ -248,8 +256,9 @@ def get_cell_data_from_table(table_name, column_name, row_id):
     #logging.info(f"Successfully fetched data from cell in table: {table_name} with id: {row_id} and column: {column_name}")
     return response.data.get(column_name)
   except Exception as e:
-    #logging.error(f"Error fetching data from cell in table {table_name} with id: {row_id} and column: {column_name}: {e}")
     return None
+    #logging.error(f"Error fetching data from cell in table {table_name} with id: {row_id} and column: {column_name}: {e}")
+    #return None
 
 def get_details_from_id_list(table_name, id_list):
   """Fetches 'title' and 'detail' columns for a list of row IDs from a Supabase table.
@@ -269,9 +278,10 @@ def get_details_from_id_list(table_name, id_list):
       if response.data:
         results.append(response.data)
         #logging.info(f"Successfully fetched details for id: {row_id}")
-      else:
+      #else:
         #logging.warning(f"No data found for id: {row_id}")
     except Exception as e:
+      return None
       #logging.error(f"Error fetching details for id: {row_id}: {e}")
   return results
 
@@ -321,18 +331,21 @@ def knowledge_search(table_name, article_limit, query):
       id_list = [item['id'] for item in response_data]
       #logging.info(f"Extracted List of IDs: {id_list}")
     except json.JSONDecodeError as e:
+      return None
       #logging.error(f"Error decoding JSON response: {e}")
       #logging.error(f"Response content that caused error: {response}")
     except TypeError as e:
+      return None
       #logging.error(f"TypeError during ID extraction: {e}")
       #logging.error(f"Response data causing TypeError: {response_data}")
   else:
+    return None
     #logging.warning("No response data from LLM to extract IDs from.")
   if id_list:
     knowledge_context = get_details_from_id_list(table_name, id_list)
   else:
     knowledge_context = []
-  #logging.info(f"Retrieved Knowledge: {knowledge_context}")
+    #logging.info(f"Retrieved Knowledge: {knowledge_context}")
   return knowledge_context
 
 
