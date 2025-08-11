@@ -353,7 +353,7 @@ def knowledge_search(table_name, article_limit, query):
 
 ### Resolve Query - With x Turn Conversation History #CONVERSATION HISTORY NOT YET ENABLED
 
-query = "What is Habits for a better world all about eh?"
+query = "" #"What is Habits for a better world all about eh?"
 article_limit = 1
 
 
@@ -387,7 +387,7 @@ def resolve_query(db_table, article_limit, query):
   #print(messages_list) # Keep print for debugging for now
 
   response = call_gateway_BYOM(messages_list)
-  add_local_conversation_history(query, response)
+  #add_local_conversation_history(query, response) #DISABLED
   return response
 
 
