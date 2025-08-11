@@ -482,7 +482,7 @@ userPrompt = st.chat_input("Say Something")
 
 
 if userPrompt:
-    llmresponse = resolve_query(db_table, article_limit, query)
+    llmResponse = resolve_query(db_table, article_limit, query)
     #llmResponse, fullPrompt = call_oai(userPrompt, systemPrompt, conversation_history, additionalContext)
     #st.write(fullPrompt)
     data, count = supabase.table('habits_conversation_logs').insert({"session_id": str(session_id), "user_name": "", "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": ""}).execute()
