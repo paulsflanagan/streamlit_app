@@ -401,7 +401,7 @@ st.title('Habits GPT UI')
     #data, count = supabase.table('StreamlitDB').delete().eq('user_name', userName).execute()
 
 col1, col2 = st.columns([0.6, 0.4], gap="large")
-uploaded_file = col1.file_uploader("", accept_multiple_files=False)
+#uploaded_file = col1.file_uploader("", accept_multiple_files=False)
 user_message_space = col1.empty()
 response_message_space = col1.empty()
 #history_message_space = col2.empty()
@@ -409,7 +409,7 @@ response_message_space = col1.empty()
 #conversationHistory = 'None'
 additionalContext = 'None'
 
-col2.write("Conversation History")
+#col2.write("Conversation History")
 #st.sidebar
 #if col2.button("Reset Session"):
 #    st.session_state['key'] = uuid.uuid4()
