@@ -102,9 +102,9 @@ def call_gateway_BYOM(messages_list):
 #if 'supabase_initialized' not in globals(): ## DISABLED
 
 ## Create SupaBase Client
-td_key = userdata.get('td_key')
-spb_url = userdata.get('spb_url')
-spb_key = userdata.get('spb_key')
+#td_key = userdata.get('td_key')
+spb_url = st.secrets["spb_url"]
+spb_key = st.secrets["spb_key"]
 
 supabase: Client = create_client(spb_url, spb_key)
 
