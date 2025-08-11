@@ -306,7 +306,7 @@ def knowledge_search(table_name, article_limit, query):
   titles = get_column_data_from_table(db_table, 'title')
 
   # LLM determines which titles are relevant to the query.
-  system_prompt = f"The list provided in CONTEXT contains titles to articles relating to Habits for a Better World and their projects. Return up to {article_limit} titles that are relevant to the users message. return them in json format including the relevant ids."
+  system_prompt = f"The list provided in CONTEXT contains titles to articles relating to Habits for a Better World and their projects. Return up to {article_limit} titles that are relevant to the users message. If you are unable to find any relevant articles return the home page. Return them in json format including the relevant ids."
   context = "CONTEXT: " + str(titles)
   response = call_gateway(system_prompt,context,query)
 
