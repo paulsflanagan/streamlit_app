@@ -490,7 +490,7 @@ if userPrompt:
     data, count = supabase.table('habits_conversation_logs').insert({"session_id": str(session_id), "user_name": "", "user_query": userPrompt, "llm_response": llmResponse, "full_prompt": ""}).execute()
     user_message_space.markdown('#### You \n\n' + userPrompt)
     split_text = llmResponse.split(" ")
-    displayed_text = '#### HaBot \n\n'
+    displayed_text = '#### HaiBot \n\n'
 
 
     ## ADD CONVERSATION HISTORY TO PROMPT
