@@ -306,7 +306,7 @@ def knowledge_search(table_name, article_limit, query):
   titles = get_column_data_from_table(db_table, 'title')
 
   # LLM determines which titles are relevant to the query.
-  system_prompt = f"The list provided in CONTEXT contains titles to articles. Return up to {article_limit} titles that are relevant to the user utterance. return them in json format including the relevant ids."
+  system_prompt = f"The list provided in CONTEXT contains titles to articles relating to Habits for a Better World and their projects. Return up to {article_limit} titles that are relevant to the users message. return them in json format including the relevant ids."
   context = "CONTEXT: " + str(titles)
   response = call_gateway(system_prompt,context,query)
 
@@ -371,7 +371,7 @@ def resolve_query(db_table, article_limit, query):
   """
 
   knowledge_context = knowledge_search(db_table, article_limit, query)
-  system_prompt = f"Answer the users query using only information found in the CONTEXT provided. Answer in polite, professional and conversational manner. CONTEXT: {knowledge_context}"
+  system_prompt = f"You are a helpful assistant working for Habits for a Better World. Answer the users query using only information found in the CONTEXT provided. Answer in polite, professional and conversational manner. CONTEXT: {knowledge_context}"
   st.write(system_prompt)
   local_conversation_history = "" #get_local_conversation_history() ##DISABLED CONVERSATION HISTORY
 
