@@ -309,6 +309,7 @@ def knowledge_search(table_name, article_limit, query):
   system_prompt = f"The list provided in CONTEXT contains titles to articles relating to Habits for a Better World and their projects. Return up to {article_limit} titles that are relevant to the users message. Return them in json format including the relevant ids."
   context = "CONTEXT: " + str(titles)
   response = call_gateway(system_prompt,context,query)
+  st.write(response)
 
   #logging.info(f"LLM Gateway Response for ID extraction: {response}")
   id_list = [] # Initialize id_list as an empty list
