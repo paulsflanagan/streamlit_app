@@ -309,7 +309,7 @@ def knowledge_search(table_name, article_limit, query):
   system_prompt = f"The list provided in CONTEXT contains titles to articles relating to Habits for a Better World and their projects. Return up to {article_limit} titles that are relevant to the users message. Return them in json format including the relevant ids."
   context = "CONTEXT: " + str(titles)
   response = call_gateway(system_prompt,context,query)
-  st.write(response)
+  #st.write(response)
 
   #logging.info(f"LLM Gateway Response for ID extraction: {response}")
   id_list = [] # Initialize id_list as an empty list
@@ -373,7 +373,7 @@ def resolve_query(db_table, article_limit, query):
 
   knowledge_context = knowledge_search(db_table, article_limit, query)
   system_prompt = f"You are a helpful assistant working for Habits for a Better World. Answer the users query using only information found in the CONTEXT provided. Answer in polite, professional and conversational manner. If you are unable to answer their query or their query is off topic, make a clean joke (maybe a pun on what they said) then playfully guide them back to talking about Habits for a Better World. CONTEXT: {knowledge_context}"
-  st.write(system_prompt)
+  #st.write(system_prompt)
   local_conversation_history = "" #get_local_conversation_history() ##DISABLED CONVERSATION HISTORY
 
   # Construct messages_list ensuring it's always a flat list of dictionaries
