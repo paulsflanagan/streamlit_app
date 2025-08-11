@@ -355,7 +355,7 @@ def knowledge_search(table_name, article_limit, query):
 ### Resolve Query - With x Turn Conversation History #CONVERSATION HISTORY NOT YET ENABLED
 
 query = "" #"What is Habits for a better world all about eh?"
-article_limit = 1
+article_limit = 5
 
 
 def resolve_query(db_table, article_limit, query):
