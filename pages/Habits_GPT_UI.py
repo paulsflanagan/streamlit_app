@@ -58,7 +58,7 @@ def call_gateway(system_prompt,assistant_prompt,user_prompt):
     response.raise_for_status() # Raise an exception for bad status codes
     #logging.info("Successfully received response from LLM Gateway.")
     #logging.debug(f"LLM Response: {response.json()['results'][0]['text']}")
-    st.write('Tokens Used: ' + str(response.json()['usage_metrics']['total_tokens'])
+    st.write('Tokens Used: ' + str(response.json()['usage_metrics']['total_tokens']))
     return response.json()['results'][0]['text']
   except requests.exceptions.RequestException as e:
     return None
@@ -86,7 +86,7 @@ def call_gateway_BYOM(messages_list):
     response.raise_for_status() # Raise an exception for bad status codes
     #logging.info("Successfully received response from LLM Gateway.")
     #logging.debug(f"LLM Response: {response.json()['results'][0]['text']}")
-    st.write('Tokens Used: ' + str(response.json()['usage_metrics']['total_tokens'])
+    st.write('Tokens Used: ' + str(response.json()['usage_metrics']['total_tokens']))
     return response.json()['results'][0]['text']
   except requests.exceptions.RequestException as e:
     return None
