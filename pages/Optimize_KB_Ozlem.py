@@ -50,7 +50,8 @@ def callGateway(system_prompt,assistant_prompt,user_prompt):
 
 
 sPromptGenerateQuestions = """
-Your task is to generate three different questions that can be answered by the information in the article. 
+Your task is to generate three different questions that can be answered by the information in the article.
+Do not number the questions.
 Please provide only the questions you have generated."""
 
 sPromptReWriteSummary = """
@@ -116,7 +117,7 @@ if uploaded_file is not None:
                 user_prompt = "Run your task."
                 generated_questions = callGateway(sPromptGenerateQuestions,article_data,user_prompt)
                 new_summary_pre = callGateway(sPromptReWriteSummary,article_data,user_prompt)
-                new_summary = generated_questions + new_summary_pre
+                new_summary = generated_questions + "/n/n" + new_summary_pre
                 if len(new_summary) >= 1000:
                   new_summary = new_summary[:999]
                 new_summaries.append(new_summary)
