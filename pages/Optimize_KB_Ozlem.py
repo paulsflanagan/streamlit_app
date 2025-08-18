@@ -10,8 +10,8 @@ from requests.packages.urllib3.util.retry import Retry
 
 
 st.title('Knowledgebase Optimization for AI Search - Summary Only')
-st.warning('Currently Adapted to NOT Update the Detail', icon="⚠️")
-st.write("AI Search utilizes the KB summary for retrieval and the KB detail for response. This app will summarise the full article to replace the summary, then add the summary to the beginning of the detail. Original Script Thanks to Konrad Zuchniak")
+st.warning('Ozlem', icon="⚠️")
+st.write("AI Search utilizes the KB summary for retrieval and the KB detail for response. This app will generate three questions that can be answered by the article, summarise the full article, add the questions to the beginning of the summary and replace the summary.")
 
 #client = AzureOpenAI(
 #    api_key=st.secrets["api_key"],
@@ -49,12 +49,16 @@ def callGateway(system_prompt,assistant_prompt,user_prompt):
     return ""
 
 
+sPromptGenerateQuestions = """
+Your task is to generate three different questions that can be answered by the information in the article. 
+Please provide only the questions you have generated."""
+
 sPromptReWriteSummary = """
 Your task is to Summarize the article in a way that is optimized for searches of knowledge bases and documentation.
 Specifically focus on:
 Using natural keywords and keyphrases from other fields in the rewritten summary
 The goal is to rewrite the summary in a way that improves its findability and searchability, helping more easily surface related knowledge, instructions or answers.
-Ensure the summary less than 900 characters.
+Ensure the summary less than 800 characters.
 Please provide only the optimized version of the summary."""
 
 #def call_oai(prompt, systemPrompt):
@@ -110,27 +114,17 @@ if uploaded_file is not None:
                 tags = df['tags'].iloc[x]
                 article_data = f'## ARTICLE ##\nTitle: {title}, Summary: {summary}, Detail: {detail},  Category: {category }, Tags: {tags}, Optimized Summary:'
                 user_prompt = "Run your task."
-                new_summary = callGateway(sPromptReWriteSummary,article_data,user_prompt)
+                generated_questions = callGateway(sPromptGenerateQuestions,article_data,user_prompt)
+                new_summary_pre = callGateway(sPromptReWriteSummary,article_data,user_prompt)
+                new_summary = generated_questions + new_summary_pre
                 if len(new_summary) >= 1000:
                   new_summary = new_summary[:999]
-                #new_summary = call_oai(article_data, sPromptReWriteSummary)
-                #st.write("Old Summary: " + summary)
-                #st.write("New Summary: " + new_summary)
                 new_summaries.append(new_summary)
                 
             t.write("... 🔥 Conversion Complete")
             
             df["summary"] = new_summaries
-            
-            new_detail = []
-            ###################
-            ###### DISABLED FOR JEN K 07/06/24 - Re enable for GA
-            #for x in range(df.shape[0]):
-            #    new_detail.append(f"{df['summary'].iloc[x]} {df['detail'].iloc[x]}")
-            #df["detail"] = new_detail
-            ###################
 
-    
             st.write("Updated KB")
             st.write(df)
             
