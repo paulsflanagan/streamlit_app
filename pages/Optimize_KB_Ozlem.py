@@ -50,7 +50,7 @@ def callGateway(system_prompt,assistant_prompt,user_prompt):
 
 
 sPromptGenerateQuestions = """
-Your task is to generate three different questions that can be answered by the information in the article.
+Your task is to generate three different questions from the users perspective relevant to the information in the article.
 Do not number the questions.
 Please provide only the questions you have generated."""
 
